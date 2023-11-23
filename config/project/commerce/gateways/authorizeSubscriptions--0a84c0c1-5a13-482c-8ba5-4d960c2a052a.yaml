@@ -1,0 +1,52 @@
+handle: authorizeSubscriptions
+isFrontendEnabled: '0'
+name: 'Authorize Subscriptions'
+paymentType: purchase
+settings:
+  acceptJS: null
+  apiLoginId: $AUTH_API_LOGIN_ID
+  developerMode: ''
+  disableAcceptData: null
+  insertForm: null
+  paymentButton: null
+  plans:
+    -
+      - '69.99 Monthly'
+      - '30'
+      - days
+      - '69.99'
+      - '69.99'
+      - ''
+      - '9999'
+      - '30'
+      - '0'
+    -
+      - '49.99 Monthly'
+      - '30'
+      - days
+      - '49.99'
+      - '49.99'
+      - ''
+      - '9999'
+      - '30'
+      - '0'
+    -
+      - '59.99 Monthly'
+      - '30'
+      - days
+      - '59.99'
+      - '59.99'
+      - ''
+      - '9999'
+      - '30'
+      - '0'
+  publicKey: $AUTH_PUB_CLIENT_KEY
+  reference: null
+  savePaymentMethods: null
+  savedCardPrefix: null
+  transactionKey: $AUTH_TRANS_KEY
+  voidRefunds: null
+  webhookSignature: $AUTH_SIGNATURE_KEY
+  webhookUrl: 'https://olina.test/commerce/webhooks/process-webhook/gateway/3'
+sortOrder: 99
+type: digitalpros\commerce\authorize\gateways\Subscriptions

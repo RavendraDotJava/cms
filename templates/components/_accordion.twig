@@ -1,0 +1,35 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'id' : '',
+  'trigger' : '',
+  'content' : '',
+  'element' : 'li',
+  'heading' : 'h2',
+  'respond' : 'none',
+  'mq' : '',
+  'bg': 'white',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.id is not empty %}
+  {% set buttonId = settings.id %}
+  <{{ settings.element }} class="rounded-md mb-md w-full" x-comp="accordion" x-data="accordion({respond:'{{ settings.respond }}', mq: '{{ settings.mq }}' })" @resize.window="onResize()">
+    <{{ settings.heading }} class="relative">
+      <button id="{{ buttonId }}-btn" class="block w-full text-left text-h5 font-normal leading-md relative pl-p32 pr-p64 py-p32 rounded-lg mt-p16 {{ settings.bg == 'white' ? 'bg-salt' : 'bg-white' }}" @click="toggle()" aria-controls="{{ buttonId }}-answer" aria-expanded="false" x-ref="btn" x-bind:aria-expanded="isExpanded()">{{ settings.trigger }}</button>
+      <span class="c-chevron c-chevron-faq absolute right-p24 top-center" x-show="showChevron()" x-bind:class="flipChevron()"></span>
+    </{{ settings.heading }}>
+    <div class="hidden overflow-hidden px-md" x-ref="window">
+      <div id="{{ buttonId }}-answer" aria-labelledby="{{ buttonId }}-btn" aria-hidden="true" x-ref="answer" x-show="isActive()" x-collapse.duration.700ms x-bind:aria-hidden="isHidden()">
+        <div class="c-content py-p24 px-p32">
+          {{ settings.content|raw }}
+        </div>
+      </div>
+    </div>
+  </{{ settings.element }}>
+{% endif %}

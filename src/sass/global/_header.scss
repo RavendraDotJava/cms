@@ -1,0 +1,84 @@
+/* --------------------------------- *
+ * SITE HEADER
+ * --------------------------------- */
+
+.c-header {
+
+
+  [x-ref="header-bar"] {
+    @apply fixed top-0 left-auto right-auto w-full opacity-100;
+    transition: opacity .2s ease, top 0s ease .2s;
+  }
+
+  &.js-sticky.js-nav {
+
+    .c-logo-wrap,
+    .c-btn-menu {
+      animation-name: mobilefade;
+      animation-iteration-count: 1;
+      animation-duration: .2s;
+      // animation-delay: .6s;
+    }
+  }
+
+  &.js-sticky {
+    [x-ref="header-bar"] {
+
+      // animation-name: sticky;
+      // animation-iteration-count: 1;
+      // animation-duration: .3s;
+
+      &.js-out {
+        // animation-name: stickyout;
+        top: 0;
+        opacity: 1;
+        transition: opacity .2s ease, top 0s ease 0s;
+      }
+
+      top: -100%;
+      opacity: 0;
+
+      // > div {
+      //   @apply pl-p24;
+      // }
+    }
+
+    [aria-controls="global-search-form"] {
+      display: none;
+    }
+
+    .c-nav-bar {
+      // display: flex;
+      // justify-content: flex-end;
+    }
+
+    &:not(.js-nav ) [x-ref="header-bar"] {
+      // @apply shadow-lg;
+    }
+  }
+}
+
+// @screen mq768 {
+//   .c-header {
+//     &.js-sticky:not(.js-nav) {
+//       [x-ref="header-bar"]>div {
+//         @apply pl-p48;
+//       }
+//     }
+//   }
+// }
+
+// @keyframes sticky {
+//   0% { transform: translate3d(0, 0, 0) }
+//   100% { transform: translate3d(0, -105%, 0) }
+// }
+
+// @keyframes stickyout {
+//   0% { transform: translate3d(0, -105%, 0) }
+//   100% { transform: translate3d(0, 0, 0) }
+// }
+
+@keyframes mobilefade {
+  0% { opacity: 0 }
+  100% { opacity: 100 }
+}

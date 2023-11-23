@@ -1,0 +1,105 @@
+/* Environment Notice Banner */
+#main-container {
+	position: relative;
+}
+
+#main-container::before {
+	content: "STAGING ENVIRONMENT";
+	background: linear-gradient(43.01deg, #00B4CD 13.05%, #00CDE6 96.08%);
+	display: block;
+	padding: 1rem;
+	color: #fff;
+	font-weight: 600;
+	width: 100%;
+	position: relative;
+	top: -16px;
+}
+
+/* Matrix block titles */
+.matrixblock>.titlebar>.blocktype {
+  font-weight: 700;
+}
+
+/* Inline Redactor Heading Tags */
+.vui-editor h1::before,
+.vui-editor h2::before,
+.vui-editor h3::before,
+.vui-editor h4::before,
+.vui-editor h5::before,
+.vui-editor h6::before {
+	content: "H";
+	background-color: #ededed;
+	color: #CCC;
+	display: inline-block;
+	padding: 0.125rem 0.5rem;
+	font-size: 1rem;
+	line-height: 1.25;
+	margin-right: 0.5rem;
+	border-radius: 0.125rem;
+}
+
+.vui-editor h1::before {
+	content: "H1";
+}
+
+.vui-editor h2::before {
+	content: "H2";
+}
+
+.vui-editor h3::before {
+	content: "H3";
+}
+
+.vui-editor h4::before {
+	content: "H4";
+}
+
+.vui-editor h5::before {
+	content: "H5";
+}
+
+.vui-editor h6::before {
+	content: "H6";
+}
+
+/* Inline Redactor Heading Tags */
+.redactor-box h1::after,
+.redactor-box h2::after,
+.redactor-box h3::after,
+.redactor-box h4::after,
+.redactor-box h5::after,
+.redactor-box h6::after {
+	content: "H";
+	background-color: #ededed;
+	color: #CCC;
+	display: inline-block;
+	padding: 0.125rem 0.5rem;
+	font-size: 1rem;
+	line-height: 1.25;
+	margin-left: 0.5rem;
+	border-radius: 0.125rem;
+}
+
+.redactor-box h1::after {
+	content: "H1";
+}
+
+.redactor-box h2::after {
+	content: "H2";
+}
+
+.redactor-box h3::after {
+	content: "H3";
+}
+
+.redactor-box h4::after {
+	content: "H4";
+}
+
+.redactor-box h5::after {
+	content: "H5";
+}
+
+.redactor-box h6::after {
+	content: "H6";
+}

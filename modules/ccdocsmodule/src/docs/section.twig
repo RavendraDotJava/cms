@@ -1,0 +1,29 @@
+{% extends "_layouts/cp" %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+  {
+    label: 'Sections & Entries'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/sections/'),
+  }  
+] %}
+
+{% block content %}
+  
+  <div class="documentation">
+    <section>
+    {% if types|length > 1 %}
+      <p class="large">{{ docSectionDescription(section, true) }}</p>
+      {{ docEntryTypes(section) }}
+    {% else %}
+      <p class="large">{{ docSectionDescription(section, true) }}</p>
+      <p>It contains the following fields:</p>
+      {{ entryTypeDoc(types[0].handle, true) }} 
+    {% endif %}
+    </section>
+  </div>
+
+{% endblock %}

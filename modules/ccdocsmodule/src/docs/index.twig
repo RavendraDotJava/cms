@@ -1,0 +1,65 @@
+{% extends "_layouts/cp" %}
+{% set title = "Documentation"|t('plugin-handle') %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+    <p class="large">This training document is intended as a general overview of the process of adding, managing and editing content on the <span class="highlight">{{ siteName }}</span> website through the use of the Craft CMS admin panel. Its primary purpose is to introduce core concepts, methods of organization and common content patterns. The goal is that with this foundational knowledge, content editors should be able to approach other areas of the site with confidence.</p>
+    {% include '_docs/contents.twig' with { intro: false } %}
+    </section>
+    <section id="craft">
+      <h2>About Craft CMS</h2>
+      <p>Craft CMS is a content management system developed and supported by Pixel&amp;Tonic. Despite the similarity in names, it has <em>no direct affiliation</em> with Craft&amp;Crew, save that we endorse its use and have selected it as the CMS of choice for powering the <span class="highlight">{{ siteName }}</span> website.</p>
+      <p>Like any CMS, it allows content editors to create pages, resources and other forms of content through a consistent interface. By default, Craft makes no specific assumptions about the nature of the site’s content. Instead, it provides the pieces required for us to develop a purposeful content architecture that meets the site’s unique needs. These structures are then combined with a powerful templating engine for applying the visual design later and supplemented with plugins and custom modules where additional functionality is required.</p>
+    </section>
+    <section id="dashboard">
+      <h2>Dashboard</h2>
+      <p>The dashboard is the default view when first logging into the Craft admin. It can be reached by clicking on the <span class="highlight">Dashboard</span> option in the sidebar.</p>
+      {{ getDocumentationImage('sidebar-dashboard.png') }}
+      <p>The dashboard contains a collection of widgets that provide a general overview of the site. Users can customize these widgets to provide a more personalized view.</p>
+      {{ getDocumentationImage('dashboard.png') }}
+      <p>One of the widgets which can be added to the dashboard is a documentation widget featuring quick links to key documentation articles.</p>
+    </section>
+    <section id="entries">
+      <h2>Entries</h2>
+      <p>The entries section is where the vast majority of content will reside. Here, you can find existing entries and add new entries to the site. It can be reached by clicking on the <span class="highlight">Entries</span> option in the sidebar.</p>
+      {{ getDocumentationImage('sidebar-entries.png') }}
+      <p>For more information on entries, refer to the <a href="{{ getAdminUrl() }}documentation/sections">Sections &amp; Entries</a> documentation.</p>
+    </section>
+    <section id="entries">
+      <h2>Globals</h2>
+      <p>The Globals section is where various site-wide settings can be defined.  It can be reached by clicking on the <span class="highlight">Globals</span> option in the sidebar.</p>
+      {{ getDocumentationImage('sidebar-globals.png') }}
+      <p>For more information on the specific settings in this section, refer to the <a href="{{ getAdminUrl() }}documentation/globals">Globals</a> documentation.</p>
+    </section>
+    <section id="entries">
+      <h2>Assets</h2>
+      <p>The Assets section is where various media assets reside. Here, you can find collections of images, logos, and videos for embedding. It can be reached by clicking on the <span class="highlight">Assets</span> option in the sidebar.</p>
+      {{ getDocumentationImage('sidebar-assets.png') }}
+      <p>For more information, refer to the <a href="{{ getAdminUrl() }}documentation/assets">Assets</a> documentation.</p>
+    </section>
+    <section id="entries">
+      <h2>Navigation</h2>
+      <p>The Navigation section is where the site’s various menus are defined. It can be reached by clicking on the <span class="highlight">Navigation</span> option in the sidebar.</p>
+      {{ getDocumentationImage('sidebar-navigation.png') }}
+      <p>For more information, refer to the <a href="{{ getAdminUrl() }}documentation/navigation">Navigation</a> documentation.</p>
+    </section>
+    <section id="entries">
+      <h2>SEOmatic</h2>
+      <p>The SEOnatuc section is where many of the site's SEO configurations are defined. It can be reached by clicking on the <span class="highlight">SEOmatic</span> option in the sidebar.</p>
+      {{ getDocumentationImage('sidebar-seo.png') }}
+      <p>For more information, refer to the <a href="{{ getAdminUrl() }}documentation/seo">SEO</a> documentation.</p>
+    </section>    
+    <section id="entries">
+      <h2>Utilities</h2>
+       <p>The Utilities section contains a number of utilities. It can be reached by clicking on the <span class="highlight">Navigation</span> option in the sidebar.</p>
+      {{ getDocumentationImage('sidebar-utilities.png') }}
+      <p>Most utilities are restricted to admin users. The one option that is available to content editors is the <span class="highlight">Caches</span> utility, which is made available in order for content editors to be able to clear caches. In the vast majority of cases, the CMS is intelligent enough to know when it needs to automatically clear the cache, but in the event that it does not, this utility remains an option.</p>
+      <p>If clearing a cahce <em>does</em> prove necessary, it will almost always be a matter of clearing <span class="highlight">Template caches</span>. These caches save generated HTML into the database for easy retrieval when display templates, avoiding the need for the system to continually re-generate the exact same code over and over again.</p>
+      <p>To clear the <span class="highlight">Template caches</span>, select the Template Caches checkbox and then click the <span class="highlight">Invalidate caches</span> button, as shown here:</p>
+      {{ getDocumentationImage('utilities-template-caches.png') }}
+      <p>This will clear all the cached data from the database. These caches will be automatically re-generated as users visit pages</p>
+      <div class="readable"><blockquote class="note"><b>Note:</b> Clearing any of the caches should not break the website. Because caches are simply a means of avoiding re-genearting static items. That being said, clearing caches <em>can</em> present a temporary hit to performance, as the server is required to work harder to re-generate these static assets. This is especially true of asset-based caches. Use this functionality with caution.</blockquote></div>      
+    </section>    
+  </div>
+{% endblock %}

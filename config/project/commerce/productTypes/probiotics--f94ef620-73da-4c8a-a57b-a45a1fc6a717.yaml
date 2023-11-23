@@ -1,0 +1,299 @@
+descriptionFormat: '{product.title} - {title}'
+handle: probiotics
+hasDimensions: false
+hasProductTitleField: true
+hasVariantTitleField: true
+hasVariants: true
+name: Probiotics
+productFieldLayouts:
+  282517f7-75cf-4a8b-8b11-ea76070a8e82:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 1262417d-adab-4273-9f2b-02709eae6778 # Site Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 19ebee23-6ce0-4bc3-acca-f5a5ac89a62e
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c33fc3e4-b462-468d-87e1-7ea3b8753025
+            userCondition: null
+            warning: null
+            width: 50
+        name: Header
+        uid: 25301479-1235-442b-8365-ad513f69ab4e
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: 'Product Name'
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\commerce\fieldlayoutelements\ProductTitleField
+            uid: a638e2e7-deb7-4451-8347-9c3568b29263
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 5588ca64-cd6e-41cd-9faa-b87493493fc9 # Media
+            instructions: 'Upload or select an image to be used as the main image for this product and its variants.'
+            label: 'Main Product Image'
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9760c834-e022-44b0-9a7c-0f059108de81
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b9038da0-0346-422d-8c0e-7e24f3d5d788 # Product Images
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 147a2e41-0504-4b13-8381-f6f3c54e047d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 4787b09f-f4e6-4424-8a11-76ff94882ff4 # Product Description - Brief
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 006a0aa3-17e0-4665-9d55-dcc945892197
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 014427c7-e63c-4977-8f5f-fec3592088d4 # Product Description - Detailed
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ff1d86c8-67e5-4d53-adb4-5e8c00da9dd9
+            userCondition: null
+            warning: null
+            width: 100
+        name: Product
+        uid: a7e2e663-29be-44d7-a164-64a494cc9fb7
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\commerce\fieldlayoutelements\VariantsField
+            uid: c6ed05c0-d116-4138-b385-92604b2dba32
+            userCondition: null
+            warning: null
+        name: Variants
+        uid: 0044d938-55b3-4511-b6b0-430d527107f2
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 58b621fe-f59f-4396-9e39-122f0ee45c29 # Product Benefits
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c30bc1dc-cc42-4b92-9696-aeb7c3eb11d0
+            userCondition: null
+            warning: null
+            width: 100
+        name: Benefits
+        uid: beffcc60-4343-4473-8f34-da2f6978e548
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 9f869ddb-d881-4c45-be88-4d34eedcf43d # Product CTA
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 114ac630-1295-4279-b3a6-7fd698d3c661
+            userCondition: null
+            warning: null
+            width: 100
+        name: CTA
+        uid: f33f7c7d-b47a-47a3-b08e-a3c23b98c158
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: de7bfa84-786b-40d4-b041-90b52c9a6108
+            userCondition: null
+            warning: null
+            width: 100
+        name: Modules
+        uid: 58abc23a-bd33-4abd-960f-a30f6e2b0a21
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: f5534be7-e8ed-4cd9-9931-f8a429ce7d33 # Description
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2a8e2d75-495c-4346-b2c1-ab1c6af33437
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6b73ca17-a446-4410-9dae-7d2e8144ba16 # Keywords
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9d66d081-7f6b-496c-8ca7-e5d6ec667c96
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: cfaf61af-023f-4a7f-bceb-c91f9475c5c5 # Card Button Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 164df4f8-cbc3-4f62-9895-9a05d099a981
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 914324c7-ee2e-4375-9d32-7e56bb2d0c99 # SEO Settings
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3abc0505-9224-4ba2-9630-3302a248a564
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: 7b4cc422-01df-451f-9d0f-b680a6d05bc2
+        userCondition: null
+productTitleFormat: ''
+siteSettings:
+  da016506-9b96-43e4-9e38-d4c30ec3294c: # Olina
+    hasUrls: true
+    template: entries/_product.twig
+    uriFormat: 'probiotics/{slug}'
+skuFormat: ''
+variantFieldLayouts:
+  23caa3a9-116e-46e5-bd66-ba26e19f2f43:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\commerce\fieldlayoutelements\VariantTitleField
+            uid: 0a2273f2-a8b6-4956-bac7-3d50e0a511f7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 4c8d67a8-9fe0-4399-8183-ca0f2afd60f5 # Subscription
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ecdcb2ec-e2c2-4ef5-bc26-3995ce94ae27
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: c89ea0fd-a722-4671-a591-aa85d3412ef0
+        userCondition: null
+variantTitleFormat: '{product.title}'

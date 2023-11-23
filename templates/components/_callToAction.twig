@@ -1,0 +1,91 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'cta' : '',
+  'ctaContent': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+
+{% if settings.cta is not empty %}
+
+  {% set cta = settings.cta %}
+  {# The callToAction field on the CTA entry #}
+  {% set ctaContent = settings.ctaContent %}
+
+  {# set ctaContent to be included in cardLarge #}
+  {% set cardLargeContent %}
+
+    <div class="mq1024:flex items-center">
+
+      {% if ctaContent.image is not empty %}
+        {% set hasImg = true %}
+
+        <div class="w-full mq1024:w-1/3 mq1280:w-1/2">
+          {% include 'components/_image.twig'|siteInclude with { settings: {
+            'image' : ctaContent.image.one,
+            'format' : 'fit',
+            'class': 'relative mq1024:absolute z-20 left-0 inset-y-0 mq1024:rounded-l-2xl overflow-hidden flex items-center justify-center mq1024:justify-start mq1024:w-1/3 mq1280:w-1/2',
+            'imageClass': 'mq1024:-ml-p40'
+          }} %}
+        </div>
+      {% else %}
+        {% set hasImg = false %}
+      {% endif %}
+
+      <div class="relative z-20 {{ hasImg ? 'mq1024:w-2/3 mq1280:w-1/2 mq1024:pl-p40' : 'mq1024:flex justify-between w-full' }}">
+        <div class="{{ hasImg ? '' : 'mq1024:w-1/2 shrink-0 mq1024:pr-p40 mb-p40 mq1024:mb-none' }}">
+          <h2 class="mb-p20 text-p35 mq1280:text-p50">{{ ctaContent.heading is not empty ? ctaContent.heading : cta.title }}</h2>
+
+          {% if ctaContent.textContent is not empty %}
+            <p class="text-lg">{{ ctaContent.textContent }}</p>
+          {% endif %}
+        </div>
+
+
+        <div class="text-center {{ hasImg ? 'mt-p32' : 'mq1024:w-1/2 shrink-0 mq1024:pl-p40' }}">
+
+          {% if ctaContent.primaryButton %}
+          {% if not ctaContent.primaryButton.isEmpty() %}
+            {% include 'components/_button.twig'|siteInclude with { settings: {
+              'text'  : ctaContent.primaryButton.text,
+              'href'  : ctaContent.primaryButton.url,
+              'type'  : 'link',
+              'style' : 'largeTerracotta',
+              'class': 'block mb-p32'
+            }} %}
+          {% endif %}
+          {% endif %}
+
+
+
+          {% if ctaContent.secondaryButtonPrefix is not empty %}
+            <span class="block mq768:inline-block text-lg font-normal mr-p8">{{ ctaContent.secondaryButtonPrefix }}</span>
+          {% endif %}
+          {% if ctaContent.secondaryButton %}
+          {% if not ctaContent.secondaryButton.isEmpty() %}
+            {% include 'components/_button.twig'|siteInclude with { settings: {
+              'text'  : ctaContent.secondaryButton.text,
+              'href'  : ctaContent.secondaryButton.url,
+              'type'  : 'link',
+              'style' : 'arrow',
+              'class': 'inline-block mx-auto text-terracotta'
+            }} %}
+          {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endset %}
+
+  {% include 'components/_cardLarge' with { 'settings': {
+    'showDivider': false,
+    'decoration': ctaContent.ctaDecoration,
+    'cardContent': cardLargeContent,
+  }} %}
+{% endif %}

@@ -1,0 +1,40 @@
+columnSuffix: wmjubjsn
+contentColumnType: string
+fieldGroup: 5766805a-9191-425e-b67b-3af732ab84d1 # Feeds
+handle: entryType
+instructions: 'Select the type of content that this feed should display.'
+name: 'Entry Type'
+searchable: false
+settings:
+  newLabelFormat: '{{ label }}'
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Blog Posts'
+        -
+          - value
+          - blog
+    -
+      __assoc__:
+        -
+          - label
+          - Recipes
+        -
+          - value
+          - recipe
+    -
+      __assoc__:
+        -
+          - label
+          - All
+        -
+          - value
+          - all
+  sourceGlobal: filterEntryType
+  sourceLabelHandle: label
+  sourceValueHandle: value
+translationKeyFormat: null
+translationMethod: none
+type: modules\ccfieldsmodule\fields\PresetDropdown

@@ -1,0 +1,24 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'author' : '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.author is not empty %}
+  <div class="flex items-center">
+    {% include 'components/_image.twig'|siteInclude with { settings: {
+      'image' : settings.author.authorPhoto.one,
+      'format' : 'square',
+      'class': 'mr-p8',
+      'imageClass': 'rounded-full w-p40 h-p40 border border-white'
+    }} %}
+    <span class="text-lg font-normal">{{ settings.author }}</span>
+  </div>
+{% endif %}
+

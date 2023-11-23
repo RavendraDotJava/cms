@@ -1,0 +1,64 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'id' : '',
+  'slides' : [],
+	'autoplay' : false,
+	'speed' : 10,
+	'ctrlStyle' : 'primary',
+} %}
+
+{% set slideDefaults = {
+	'id' : '',
+	'heading' : '',
+	'content' : '',
+	'button' : false,
+	'image' : false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div x-comp="slider" x-data="slider({autoplay:{{ settings.autoplay ? 'true' : 'false'}},speed:{{ settings.speed }}})">
+
+	<ul class="relative" x-ref="window" x-swipe.click @swipeleft="nextSlide()" @swiperight="prevSlide()">
+		{% for slide in settings.slides %}
+			{% set slide = slideDefaults|merge(slide) %}
+			<li class="flex items-center" x-show.transition="showSlide({{ loop.index }})" x-ref="slide-{{ loop.index }}"
+				x-transition:enter="c-panel-enter"
+				x-transition:enter-start="c-panel-enter-start"
+				x-transition:enter-end="c-panel-enter-end"
+				x-transition:leave="c-panel-leave"
+				x-transition:leave-start="c-panel-leave-start"
+				x-transition:leave-end="c-panel-leave-end">
+				<div class="bg-white text-type shadow-lg p-p64 relative z-10 w-8/12">
+					{% if slide.heading is not empty %}<h2 class="h4 mb-p24">{{ slide.heading }}</h2>{% endif %}
+					<div class="c-content mb-p32">
+						{{ slide.content|markdown|raw }}
+					</div>
+				</div>
+				<div class="w-4/12">
+					<div class="-ml-p256 flex justify-end">
+					{% include 'components/_image.twig'|siteInclude with { settings: {
+						'image' : slide.image,
+						'format' : 'square'
+					}} %}
+					</div>
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+
+	<div class="flex justify-end items-center mt-p24">
+		<div class="bg-rule h-p4 w-full mr-p32">
+			<div class="h-p4 bg-brand animate-timer duration-300" x-ref="timer" x-show="!isModal() && !isPaused() && timer"></div>
+		</div>
+		<button class="{{ component('button', settings.ctrlStyle, 'mr-p8') }}" @click="prevSlide()">Previous</button>
+		<button class="{{ component('button', settings.ctrlStyle, 'mr-p8') }}" @click="nextSlide()">Next</button>
+		<button class="{{ component('button', settings.ctrlStyle) }}" @click="togglePause()" x-text="isPaused() ? 'Play' : 'Pause'">Pause</button>
+	</div>
+
+</div>

@@ -1,0 +1,109 @@
+fieldLayouts:
+  97bb938c-a9a4-4ba2-b156-95b0ca665c45:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 6dd64306-f722-488b-8eab-6fed909e543a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1262417d-adab-4273-9f2b-02709eae6778 # Site Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 619896c4-1c69-4712-8c2c-451a22b2b2a7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 42068c87-5114-4d8d-804d-4e5e89e57829
+            userCondition: null
+            warning: null
+            width: 100
+        name: Header
+        uid: e930cf29-8e5b-4750-8632-83512b143b1e
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: e12607d1-b6e4-4d30-bf2a-2b3e527e1dd1 # No Order Text
+            instructions: 'Use this field to add text to display when a user does not have any saved addresses.'
+            label: 'No Addresses Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c9c96a05-9a3d-4a5e-957f-f4266aa68db3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 96d5acb4-9f5d-4cc4-bcbd-e2024fdfd12c # Add Address
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 99e5d8d2-374e-4903-bd29-134400ca5f49
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 3ed437e4-57df-474d-b42e-a8e3a4bbcdde # Link
+            instructions: 'Use this field to create a link at the bottom of the saved addresses list.'
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1b8705d0-2784-4d08-a9ab-a6ed9b04b8f6
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: f13e8393-1aa7-4e1d-bba6-36a6b8903e1d
+        userCondition: null
+handle: customerAddresses
+hasTitleField: true
+name: 'Customer Addresses'
+section: 2f6507e5-d577-4de4-948b-33f3785ad4d6 # Customer Profile
+sortOrder: 5
+titleFormat: '{section.name}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

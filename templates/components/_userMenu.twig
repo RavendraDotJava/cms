@@ -1,0 +1,67 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set menuItems = craft.navigation.nodes('userNavigation').all() %}
+
+<div class="relative group border-y border-rule-dark mq768:border-none mq768:ml-p16">
+  {% if currentUser %}
+    <div x-data="{ userMenuOpen: false }">
+      {# User Menu Button #}
+      <button type="button" class="py-p8 px-p40 mq768:p-none flex mq768:inline-flex items-center w-full mq768:w-auto appearance-none focus:outline-0" @click="userMenuOpen = ! userMenuOpen">
+        <div class="flex mq768:inline-flex items-center w-full" :class="headerStyle == 'white' ? 'text-white mq768:text-basalt' : 'text-white mq768:text-white'">
+          <span class="mr-p16 mq768:mr-p8">
+            {% include 'components/_userPhoto.twig' with { 'settings': {
+              'classes' : 'w-p40 h-p40 border border-white',
+              'fontSize': 'text-h5',
+              'imgSize': 150,
+              'id': 'user-photo-menu',
+            }} %}
+          </span>
+          <span class="text-lg mq768:text-sm font-medium transition-colors max-w-p120 truncate">
+            {% if currentUser.fullName is not empty %}
+              {{- currentUser.fullName -}}
+            {% elseif currentUser.username is not empty %}
+              {{- currentUser.username -}}
+            {% else %}
+              {{- currentUser.email -}}
+            {% endif %}
+          </span>
+          <span class="ml-auto mq768:ml-p8 transition-transform" :class="userMenuOpen ? 'transform rotate-180' : ''">
+            {{ helpers.icon('chevron-down', 'w-p12 h-p12 fill-current') }}
+          </span>
+        </div>
+      </button>
+
+      {# Large Screen Menu #}
+      <template x-if="!menuMobile">
+        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-p8" @click.outside="userMenuOpen = false">
+          <ul class="w-p256 shadow-sm rounded-2xl" x-cloak x-transition x-show="userMenuOpen">
+            <div class="overflow-hidden rounded-2xl bg-white">
+              {% for item in menuItems %}
+                <li><a href="{{ item.url }}" class="p-p16 block text-sm font-medium transition-colors text-basalt hover:bg-salt">{{ item.title }}</a></li>
+              {% endfor %}
+            </div>
+          </ul>
+        </div>
+      </template>
+
+      {# Small Screen Menu #}
+      <template x-if="menuMobile">
+        <ul x-cloak x-collapse x-show="userMenuOpen" class="py-p32">
+          {% for item in menuItems %}
+            <li><a href="{{ item.url }}" class="p-p16 px-p40 block text-bd font-light text-white">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </template>
+    </div>
+  {% else %}
+    {# Toggles the #modalId-registerSignIn in partials/_header.twig since the user menu is inside of a <template> tag #}
+    <div class="block text-center">
+      <button type="button" class="p-p32 p-p16 mq768:p-none mx-auto inline-block mq768:block" x-data @click="cModalTrigger($event, 'modalId-registerSignIn')">
+        <span class="text-center text-white font-medium text-lg" :class="headerStyle == 'white' ? 'mq768:text-basalt' : 'mq768:text-white'">{{- "Sign In"|t -}}</span>
+      </button>
+    </div>
+  {% endif %}
+</div>
+
+
+

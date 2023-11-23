@@ -1,0 +1,33 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+    'id' : false,
+    'title' : '',
+    'details' : '',
+    'href' : false
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.title is not empty and settings.href is not empty %}
+<div class="c-search-result cursor-pointer" x-comp="card" x-data="card()" @click="onClick($event)" @touchstart.passive="onTouch($event)" @keypress="onKey($event)" tabindex="0">
+  <h2 id="search-result-{{ settings.id }}" class="no-override text-h3 leading-h5 font-normal mb-p16">{{ settings.title }}</h2>
+  {% if settings.details is not empty %}<div class="mb-p16">{{ settings.details|raw }}</div>{% endif %}
+  {% set urlFragments = settings.href|split('//') %}
+  {% include 'components/_button.twig'|siteInclude with { settings: { 
+      'text'  : urlFragments[1],
+      'href'  : settings.href,
+      'style' : 'search',
+      'atts'  : {
+        'x-ref' : 'link',
+        'tabindex' : '-1',
+        '@click' : 'buttonClick(event)',
+        'aria-describedby' : 'search-result-' ~ settings.id
+      }
+    }} %}
+</div>
+{% endif %}

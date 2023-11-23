@@ -1,0 +1,54 @@
+.c-tooltip {
+  &[x-cloak] {
+    display: none;
+  }
+
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0 6px 10px);
+  animation-name: tooltip;
+  animation-duration: .3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  transform: translate3d(-50%, -1.25rem, 0);
+  transition: transform .3s ease;
+  position: relative;
+
+  .p::after {
+    border: 10px solid;
+    border-color: white transparent transparent;
+    content: "";
+    left: 50%;
+    margin-left: -10px;
+    position: absolute;
+    top: 100%;
+    transition: left .3s ease;
+  }
+
+  &.left {
+    transform: translate3d(-22px, -1.25rem, 0);
+
+    .p::after {
+      left: 9%;
+    }
+  }
+
+  &.right {
+    transform: translate3d(calc(-100% + 22px), -1.25rem, 0);
+
+    .p::after {
+      left: 91%;
+    }
+  }
+
+}
+
+@keyframes tooltip {
+  0% {
+    opacity: 0;
+    bottom: 70%;
+  }
+
+  100% {
+    opacity: 1;
+    bottom: 100%
+  }
+}

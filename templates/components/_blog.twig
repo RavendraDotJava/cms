@@ -1,0 +1,113 @@
+{# Extend the template.
+ # In order to get this working, the JavaScript fetch request needs to pass the appropriate
+ # 'application/feed' request.
+ #}
+{# {% extends (craft.app.request.headers.get('Content-Type') == 'application/json') ?
+   "feeds/_fetch.twig" :
+   "feeds/_static.twig"
+%} #}
+
+<p>Come on my soul.</p>
+
+{% if config is not defined %}
+  {% set entryId = craft.app.request.queryParams['entry'] %}
+  {% set entry = craft.entries.id(entryId).one() %}
+  {% set config = feedConfig('resources', entry) %}
+{% endif %}
+
+{# Set the sections #}
+{% set sections = ['blog', 'caseStudy', 'podcast', 'report'] %}
+{% set categories = [] %}
+{% set related = [] %}
+{% set filterSections = [] %}
+{% set test = '' %}
+{% if craft.app.request.queryParams['filters'] is defined %}
+  {% if craft.app.request.queryParams['filters'] is not empty %}
+    {% set filters = craft.app.request.queryParams['filters']|split(':') %}
+    {% for filter in filters %}
+      {% set f = filter|split('.') %}
+      {% set test = test ~ f[0] %}
+      {% if f[0] == 'type' %}
+        {% set filterSections = filterSections|merge([f[1]]) %}
+      {% elseif f[0] == 'cat' %}
+        {% set categories = categories|merge([f[1]]) %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endif %}
+
+{% if filterSections is not empty %}
+  {% set sections = filterSections %}
+{% endif %}
+
+{% if categories is not empty %}
+  {% set related = craft.entries.slug(categories) %}
+{% endif %}
+
+{# Ensure featured is defined #}
+{% if featured is not defined %}
+  {% set featured = craft.app.request.queryParams('exclude') %}
+{% elseif featured != false %}
+  {% set featured = featured.id %}
+{% endif %}
+
+{# Get the data #}
+{% if featured is not empty %}
+  {% paginate craft.entries().section(sections).relatedTo(related).id(['not',featured]).limit(config['count'])  as pageInfo, resources %}
+{% else %}
+  {% paginate craft.entries().section(sections).relatedTo(related).limit(config['count'])  as pageInfo, resources %}
+{% endif %}
+
+{# Define the html feed #}
+{% set htmlOutput %}
+<div class="c-feed flex flex-wrap md:-mx-em mb-md" x-ref="feed" :class="fade ? 'js-show' : 'js-hide'">
+  {% set delay = 0 %}
+  {% if resources is not empty %}
+  {% for resource in resources %}
+    {% set img = resource.heroImage is not empty ? resource.heroImage.one() : false %}
+    {% set category = resource.category is not empty ? resource.category.one().title : '' %}
+      {% include 'components/_cardResource.twig'|siteInclude with { settings: {
+        'heading' : resource.title,
+        'text'  : getEntrySnippet(resource),
+        'image' : img,
+        'button'  : {
+          'text' : 'Read %this article%',
+          'href' : resource.url
+        },
+        'tag' : category,
+        'size' : 'medium',
+        'style' : 'transition-delay: ' ~ delay ~ 's;'
+      }} %}
+      {% set delay = delay + 0.05 %}
+  {% endfor %}
+  {% else %}
+    <div class="w-full px-sm">
+      <div class="relative h-xl flex text-center items-center justify-center">
+        <span class="absolute top-0 left-1/2 transform -translate-x-1/2 block {{ isUpsiide ? 'bg-clarity' : 'bg-bar' }} w-xl h-xl rounded-full"></span>
+        <p class="relative z-10 font-medium">{{ 'No matching resources found.'|t }}</p>
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endset %}
+
+{# Static Content #}
+{% block static %}
+  {{ htmlOutput|raw }}
+{% endblock %}
+
+{# Static Pagination #}
+{% block paginate %}
+  {# {% include 'components/_pagination.twig'|siteInclude with { settings: {
+      'pageInfo' : pageInfo,
+  }} %} #}
+{% endblock %}
+
+{# AJAX Feed Content #}
+{% block ajax %}
+  {% set result = {
+    'pageInfo' : pageInfo,
+    'body' : htmlOutput
+  } %}
+  {{ result|json_encode|raw }}
+{% endblock %}

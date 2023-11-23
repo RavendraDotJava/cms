@@ -1,0 +1,47 @@
+<form method="post" class="mt-p16">
+  {{ csrfInput() }}
+  {{ actionInput('commerce/cart/update-cart') }}
+
+  {{ successMessageInput('{product} added to cart.'|t({
+    product: product.title
+  })) }}
+
+  {% if product.getVariants()|length > 1 %}
+    {% tag 'select' with {
+        name: 'purchasableId',
+        class: [
+            'px-p16',
+            'py-p8',
+            'border',
+            'border-rule',
+            'rounded',
+            'mb-p16',
+          ]
+        } %}
+    {% for variant in product.getVariants() %}
+      {{ tag('option', {
+        value: variant.id,
+        text: variant.title,
+      }) }}
+    {% endfor %}
+    {% endtag %}
+  {% else %}
+    {{ hiddenInput('purchasableId', product.defaultVariant.id) }}
+  {% endif %}
+
+  <div>
+    {% if product.availableForPurchase %}
+      {{ tag('button', {
+          type: 'submit',
+          class: component('button', 'primary', ''),
+          text: 'Add to cart'|t
+      }) }}
+    {% else %}
+      {{ tag('button', {
+          type: 'submit',
+          class: component('button', 'primary', 'disabled'),
+          text: 'Unavailable'|t
+      }) }}
+    {% endif %}
+  </div>
+</form>

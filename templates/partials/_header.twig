@@ -1,0 +1,135 @@
+{% import 'partials/_macros' as helpers %}
+
+{% if entry.headerStyle or product.headerStyle is defined %}
+  {% set headerStyle = entry.headerStyle ? entry.headerStyle : product.headerStyle %}
+{% else %}
+  {% set headerStyle = 'white' %}
+{% endif %}
+
+<!-- Global Header -->
+<header class="c-header relative"
+        x-data="header({ headerStyle: '{{ headerStyle }}' })"
+        x-trap="menuOpen"
+        @resize.window="onResize()"
+        :class="menuBarClass()"
+        x-cloak>
+
+	{# <a class="{{ component('skip') }}" href="#main" x-ref="skip" x-show="!menuOpen" @click="onSkip()"><span>{{ 'Skip to Main Content'|t }}</span></a> #}
+
+	<div x-ref="header-wrap">
+		<div class="relative z-50 py-p48 mq768:pt-p100" x-ref="header-bar" :class="menuOpen ? 'bg-basalt' : headerStyle == 'white' ? 'bg-white' : 'bg-transparent'" x-init="headerTimeline()">
+			<div class="{{ component('modulePadding', false, 'c-container') }}">
+				<div class="{{ component('moduleWidth', false, 'flex relative z-0 justify-between') }}">
+
+          {# Mobile Menu Button #}
+          <button class="c-btn-menu block mq768:hidden relative w-p32 h-p32" @click="toggleMenu()" :aria-expanded="menuOpen ? 'true' : 'false'" type="button">
+            <span class="bar1 block absolute left-0 right-0 top-1/2 transform -translate-y-p6 w-p32 h-p2" :class="menuOpen ? 'bg-white' : headerStyle == 'white' ? 'bg-basalt' : 'bg-white'"></span>
+            {# <span class="bar2 block absolute left-0 right-0 top-1/2 transform bg-basalt w-p32 h-p2"></span> #}
+            <span class="bar3 block absolute left-0 right-0 top-1/2 transform translate-y-p6 w-p32 h-p2" :class="menuOpen ? 'bg-white' : headerStyle == 'white' ? 'bg-basalt' : 'bg-white'"></span>
+            <span class="sr-only">{{ 'Menu'|t }}</span>
+          </button>
+
+
+					<div class="relative z-10">
+						<a class="c-logo" href="{{ siteUrl() }}" :class="menuOpen ? 'fill-white' : headerStyle == 'white' ? 'fill-basalt' : 'fill-white'">
+							{% include 'partials/_logo' %}
+						</a>
+					</div>
+					<div class="flex items-center mq768:flex-1">
+
+						{# Desktop Nav - Rendered if mobileMenu property is false. #}
+						<template x-if="!menuMobile">
+							<nav aria-label="{{ 'Primary Navigation'|t }}" x-links class="ml-p64">
+								{% set nodes = craft.navigation.nodes('primaryNavigation').level(1).all() %}
+								<ul class="flex justify-start">
+									{% nav node in nodes %}
+										<li class="relative mr-p32">
+                      <a href="{{ node.url }}" class="font-medium text-lg relative group" :class="headerStyle == 'white' ? 'text-basalt' : 'text-white'">
+                        <span class="absolute left-0 -bottom-p12 bg-sand w-p30 h-p5 transition-opacity group-hover:opacity-100 group-focus:opacity-100 {{ node.active ? 'opacity-100' : 'opacity-0' }}"></span>
+                        {{ node.title }}
+                      </a>
+                    </li>
+									{% endnav %}
+								</ul>
+							</nav>
+						</template>
+
+            <div class="mq768:ml-auto flex items-center">
+              <template x-if="!menuMobile">
+                {% include 'components/_userMenu' %}
+              </template>
+              <div class="mq768:ml-p64">
+                {% include 'components/_buttonCart' %}
+              </div>
+            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{# Mobile Nav - Rendered if mobileMenu property is true. #}
+	<template x-if="menuMobile">
+		<div class="c-nav-panel fixed z-40 bg-basalt top-0 right-0 bottom-0 w-full overflow-auto pt-headerSm" :class="menuOpen ? 'js-active' : 'js-inactive'" :aria-hidden="open ? 'false' : 'true'">
+			<div x-show="!menuHide">
+
+        {% include 'components/_userMenu' %}
+
+				<nav class="py-p64 mx-p40" aria-label="{{ 'Primary Navigation'|t }}" >
+					{% set nodes = craft.navigation.nodes('primaryNavigation').all() %}
+					<ul class="pl-p20">
+						{% nav node in nodes %}
+							<li class="relative mb-p20 last:mb-none">
+                <a href="{{ node.url }}" class="font-medium text-p26 relative {{ node.active ? 'text-salt' : 'text-white' }}">
+                  {% if node.active %}
+                    <span class="absolute -left-p20 inset-y-0 bg-salt w-p5"></span>
+                  {% endif %}
+                  {{ node.title }}
+                </a>
+              </li>
+						{% endnav %}
+					</ul>
+				</nav>
+
+        <nav class="pt-p50 border-t border-rule-dark mx-p40" aria-label="{{ 'Secondary Navigation'|t }}" >
+            {% set nodes = craft.navigation.nodes('footerNavigation').all() %}
+            <ul class="">
+              {% nav node in nodes %}
+                <li class="relative mb-p20">
+                  <a href="{{ node.url }}" class="font-light relative {{ node.active ? 'text-salt' : 'text-white' }}">
+                    {{ node.title }}
+                  </a>
+                </li>
+              {% endnav %}
+            </ul>
+          </nav>
+        </div>
+
+        <div class="mx-p40 mt-p64 pb-p64">
+          <p class="text-white font-light antialiased text-sm mb-p8 mq768:mb-none mq768:mr-p8 mq768:border-r border-rule-dark mq768:pr-p8">&copy; {{ 'Copyright'|t }} {{ now|date('Y') }}.</p>
+          {% set legalNavigation = craft.navigation.nodes('legalNavigation').level(1).all() %}
+          {% if legalNavigation %}
+            <nav aria-label="{{ 'Legal Navigation'|t }}" x-links>
+              <ul class="flex flex-wrap">
+                {% nav node in legalNavigation %}
+                  <li class="ml-p8 first:ml-none pr-p8 last:pr-none border-r border-rule-dark last:border-none">
+                    <a href="{{ node.url }}" class="font-light text-sm relative text-white block hover:underline {{ node.active ? 'underline font-medium' }}">
+                      {{ node.title }}
+                    </a>
+                  </li>
+                {% endnav %}
+              </ul>
+            </nav>
+          {% endif %}
+        </div>
+
+        <div class="mx-p40 pb-p64">
+          {% include 'partials/_social' %}
+        </div>
+
+			</div>
+		</div>
+	</template>
+</header>
+<!-- End Global Header -->
+

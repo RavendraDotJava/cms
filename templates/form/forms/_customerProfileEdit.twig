@@ -1,0 +1,146 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'redirectUrl' : '',
+  'successMessage': false,
+  'buttonText': 'Save'|t,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set user = user ?? currentUser %}
+
+<form method="post" action="" accept-charset="UTF-8" enctype="multipart/form-data">
+  {{ csrfInput() }}
+  {{ actionInput('users/save-user') }}
+  {{ redirectInput(redirectUrl ?? '') }}
+  {{ successMessageInput(settings.successMessage) }}
+  {{ redirectInput(settings.redirectUrl) }}
+
+  {{ hiddenInput('userId', currentUser.id) }}
+
+  <div class="mb-p40">
+
+    <div class="mb-p32">
+      <div x-data="{ files: null }">
+        {{ input('file', 'photo', null, {
+          id: 'photo',
+          accept: 'image/png,image/jpeg',
+          class: 'hidden',
+          'x-on:change': "files = Object.values($event.target.files)"
+        }) }}
+
+        <div x-text="files ? files.map(file => file.name).join(', ') : ''" class="mb-p16"></div>
+      </div>
+
+      <label for="photo" class="{{ component('button', 'small', 'cursor-pointer') }}">
+        {% if user.photo %}
+          {{ "Upload a new photo"|t }}
+        {% else %}
+          {{ "Upload a photo"|t }}
+        {% endif %}
+      </label>
+    </div>
+
+    {% if user.photo %}
+      <label for="delete-photo" class="mb-p32 block">
+        {{ input('checkbox', 'deletePhoto', '1', {
+          id: 'delete-photo',
+          class: component('checkbox', false, ''),
+        }) }}
+        <span class="{{ component('label', false, 'inline cursor-pointer') }}">{{ 'Delete current photo' }}</span>
+      </label>
+    {% endif %}
+
+    {% if user is defined %}
+      {{ helpers.errorList(user.getErrors('firstName')) }}
+    {% endif %}
+  </div>
+
+  <div class="mb-p16">
+    {% include 'form/items/_input' with { 'settings': {
+      'type': 'text',
+      'value': user is defined ? user.username : '',
+      'name': 'username',
+      'label': 'Username'|t,
+      'atts': {
+        'placeholder': 'Username'|t,
+        'id': 'username',
+        'required': true,
+        'class': component('input', false, ''),
+      }
+    }} %}
+    {% if user is defined %}
+      {{ helpers.errorList(user.getErrors('userName')) }}
+    {% endif %}
+  </div>
+
+
+  <div class="mq640:flex -mx-p8">
+    <div class="mq640:w-1/2 px-p8">
+      {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'name': 'firstName',
+        'label': 'First Name'|t,
+        'value': user is defined ? user.firstName : '',
+        'atts': {
+          'id': 'firstName',
+          'placeholder': 'First Name'|t,
+          'required': true,
+          'class': component('input', false, ''),
+        }
+      }} %}
+      {% if user is defined %}
+        {{ helpers.errorList(user.getErrors('firstName')) }}
+      {% endif %}
+    </div>
+
+    <div class="mq640:w-1/2 px-p8">
+      {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'value': user is defined ? user.lastName : '',
+        'name': 'lastName',
+        'label': 'Last Name'|t,
+        'atts': {
+          'placeholder': 'Last Name'|t,
+          'id': 'lastName',
+          'required': true,
+          'class': component('input', false, ''),
+        }
+      }} %}
+      {% if user is defined %}
+        {{ helpers.errorList(user.getErrors('lastName')) }}
+      {% endif %}
+    </div>
+  </div>
+  <div class="mb-p16">
+    {% include 'form/items/_input' with { 'settings': {
+      'type': 'email',
+      'name': 'email',
+      'value': user.email ?? cart.email ?? null,
+      'label': 'Email'|t,
+      'atts': {
+        'id': 'email',
+        'placeholder': 'email@site.com'|t,
+        'required': true,
+        'class': component('input', false, ''),
+      }
+    }} %}
+    {% if user is defined %}
+      {{ helpers.errorList(user.getErrors('email')) }}
+    {% endif %}
+  </div>
+
+  <div class="flex items-center justify-between mt-p40">
+
+    {{ tag('button', {
+      type: 'submit',
+      class: component('button', 'primary', ''),
+      text: settings.buttonText,
+    }) }}
+  </div>
+</form>

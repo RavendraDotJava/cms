@@ -1,0 +1,21 @@
+{
+  "toolbarFixed": true,
+  "buttons": [
+    "formatting",
+    "bold",
+    "italic",
+    "link",
+    "unordered-list",
+    "ordered-list",
+    "undo",
+    "redo",
+    "html"
+  ],
+  "formatting": [
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6"
+  ]
+}

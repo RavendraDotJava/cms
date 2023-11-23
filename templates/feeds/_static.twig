@@ -1,0 +1,57 @@
+{# _static.twig
+ #
+ # This template is used to power the feed module for the site. Each feed has its own separate
+ # template, which should extend this template for the inital static render, while extending the
+ # _feed.twig template when accessing dynamic content via Alpine feed component. This allows
+ # this static template to provide all the component scaffolding, leaving the _feed.twig component
+ # to simply return the expected content (usually in JSON format).
+ #
+ # The way this template is configured also allows us to accomodate for SEO considerations, ensuring
+ # that the appropriate content appears on the page, including the initial pagination to allow
+ # for linking. The Alpine component then intializes its own JavaScript-powered pagination and
+ # replaces the static pagination.
+ #
+ # Lastly, this template initializes a custom <script> block, using the {% js %} tag. This script
+ # gets added to the bottom of the page, and basically allows us to define a series of classes and
+ # data, which can be configured it Twig according to the site group and language.
+ #}
+
+{% import 'partials/_macros' as helpers %}
+
+<div class="mq768:px-p16 mb-p32" x-show="active">
+  {# <div class="mb-p32 mq768:mx-p16 xl:h-p40 transition duration-500 text-type" :class="fade ? 'opacity-100' : 'opacity-0'" x-ref="pagination-top" x-init="setPagination({{ pageInfo|json_encode|replace('"', "'")|raw }})">
+    <div class="c-pagination flex items-center justify-start ">
+      <template x-for="item in getPagination()">
+        <span>
+          <template x-if="item.href">
+            <a :class="item.class" :href="item.href" x-html="item.label" @click="doPage($event,item.page)"></a>
+          </template>
+          <template x-if="!item.href">
+            <span :class="item.class" x-html="item.label"></span>
+          </template>
+        </span>
+      </template>
+    </div>
+  </div> #}
+  <div class="mb-p50 mq768:mx-p16 transition duration-500 text-basalt border-b border-sand" :class="fade ? 'opacity-100' : 'opacity-0'" x-ref="pagination-bottom">
+    {% block paginateTop %}
+      {# Static pagination will be added here #}
+    {% endblock %}
+  </div>
+
+
+  <div role="region" aria-live="polite">
+    {# By defining this in a <template> tag, we can easily force re-render of the content,
+     # thereby allowing to automatically initialize any child compoents that are included. #}
+    <template x-if="active" x-ref="slot">
+      {% block static %}
+        {# Initial feed content will be added here #}
+      {% endblock %}
+    </template>
+  </div>
+  <div class="mt-p50 mq768:mx-p16 transition duration-500 text-basalt border-t border-sand" :class="fade ? 'opacity-100' : 'opacity-0'" x-ref="pagination-bottom">
+    {% block paginate %}
+      {# Static pagination will be added here #}
+    {% endblock %}
+  </div>
+</div>

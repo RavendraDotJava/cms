@@ -1,0 +1,22 @@
+columnSuffix: dqldpqkn
+contentColumnType: text
+fieldGroup: 6f4fa5af-dc3c-425b-9183-f24f31360424 # Checkout
+handle: checkoutText
+instructions: null
+name: 'Checkout Text'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  initialRows: 7
+  manualConfig: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  trimEmptyParagraphs: true
+  vizyConfig: Simple.json
+translationKeyFormat: null
+translationMethod: none
+type: verbb\vizy\fields\VizyField

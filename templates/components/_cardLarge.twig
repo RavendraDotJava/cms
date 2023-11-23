@@ -1,0 +1,105 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'showDecoration': true,
+  'showDivider': false,
+  'cardContent': '',
+  'decoration': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{# Is there a decoration ? #}
+{# {% if settings.decoration is not empty %} #}
+  {% set decoration = settings.decoration %}
+{# {% endif %} #}
+
+{# Set the decoration position #}
+{% if decoration == 'diagonalBrushBL' or decoration == 'diagonalBrushTL' %}
+  {% set decorationPosition = 'left' %}
+{% elseif decoration == 'horizontalBrush' %}
+  {% set decorationPosition = 'right' %}
+{% elseif decoration == 'verticalBrush' %}
+  {% set decorationPosition = 'bottom' %}
+{% else %}
+  {% set decorationPosition = 'none' %}
+{% endif %}
+
+{# Set the card content padding based on the decoration position #}
+{% if decorationPosition == 'left' %}
+  {% set cardContentClasses = '' %}
+{% elseif decorationPosition == 'right' %}
+  {% set cardContentClasses = 'mq768:pr-p230' %}
+{% elseif decorationPosition == 'bottom' %}
+  {% set cardContentClasses = 'pb-p50 mq768:pb-p100' %}
+{% else %}
+  {% set cardContentClasses = '' %}
+{% endif %}
+
+<div class="{{ component('moduleWidth') }}">
+  <div class="{{ component('roundedCard', 'productCta', 'relative z-20') }}">
+
+    <div class="{{ cardContentClasses }}">
+      {{ settings.cardContent  }}
+    </div>
+
+    {% if decorationPosition == 'right' and settings.showDecoration %}
+
+      {% if decoration == 'horizontalBrush' %}
+        <div class="absolute right-0 inset-y-0 z-10 overflow-hidden rounded-r-p20 hidden mq768:block w-p230">
+          {% include 'svg/_horizontalBrush' with {'settings': {
+              'classes': 'absolute left-0 inset-y-0 min-h-p288 h-full min-w-p230 w-auto'
+            }} %}
+        </div>
+      {% endif %}
+
+
+    {% elseif decorationPosition == 'left' and settings.showDecoration %}
+
+      {% if decoration == 'diagonalBrushBL' %}
+        <div class="absolute left-0 inset-y-0 z-10 overflow-hidden rounded-l-p20 hidden mq768:block w-p300">
+          {% include 'svg/_diagonalBrushBL' with {'settings': {
+              'classes': 'absolute right-0 -bottom-p100'
+            }} %}
+        </div>
+      {% endif %}
+
+      {% if decoration == 'diagonalBrushTL' %}
+        <div class="absolute left-0 inset-y-0 z-10 overflow-hidden rounded-l-p20 hidden mq768:block w-p300">
+          {% include 'svg/_diagonalBrushTL' with {'settings': {
+              'classes': 'absolute right-0 -top-p128'
+            }} %}
+        </div>
+      {% endif %}
+
+    {% endif %}
+
+    {% if settings.showDecoration %}
+
+      {% if decoration != 'verticalBrush' %}
+        <div class="absolute bottom-0 inset-x-0 h-p100 z-10 overflow-hidden rounded-b-p20 mq768:hidden">
+          {% include 'svg/_verticalBrush' with {'settings': {
+              'classes': 'relative w-screen h-auto top-full -translate-y-p100 left-1/2 -translate-x-1/2'
+            }} %}
+        </div>
+      {% endif %}
+
+      {% if decoration == 'verticalBrush' %}
+        <div class="absolute bottom-0 inset-x-0 h-p128 z-10 overflow-hidden rounded-b-p20">
+          {% include 'svg/_brushBottomGreen' with {'settings': {
+              'classes': 'relative w-auto h-auto top-full -translate-y-p128 left-1/2 -translate-x-1/2'
+            }} %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+  </div>
+
+  {% if settings.showDivider %}
+    <div class="my-p100 w-full h-p10 bg-sand"></div>
+  {% endif %}
+</div>

@@ -1,0 +1,19 @@
+columnSuffix: kugoxezu
+contentColumnType: text
+fieldGroup: 3f0bc8e2-2e90-4b58-be74-00243d9b4a9e # SEO
+handle: keywords
+instructions: 'Use this field to apply any custom keywords that this entry should rank for in the site''s internal search. This can be useful for pages that need to rank for keywords that are not in the main content (often for compliance reasons) or to increase the search score for a particular keyword. '
+name: Keywords
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

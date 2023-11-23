@@ -1,0 +1,37 @@
+{% extends "_layouts/cp" %}
+{% set title = "Field: Matrix"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+  {
+    label: 'Fields'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/fields/'),
+  }  
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+      <p>The matrix field is a uniquely powerful field type, which allows us to add different collections of fields. We refer to these groupings as modules and use them deploy the different modules.</p>
+      <p>Adding a module to a matrix field is as simple as clicking the appropriate module name from the matrix selector. This selector will appear in one of two formats:</p>
+      {{ getDocumentationImage('field-matrix-selector.png') }}
+      <p>If there is sufficient space to show all the available blocks, it will appear as a horizontal list, as shown on the left. Otherwise, it will appear as a dropdown, as shown on the right. Either way, clicking the desired module name will create a new set of fields that match the configuration of that module.</p>
+      <p>Here is an example of a Text + Media module:</p>
+      {{ getDocumentationImage('field-matrix-example.png') }}
+      <p>Once deployed, content editors can deploy content into the fields and add image assets. In many modules, there will also be fields specifically intended to control the design and presentation of the module on the front-end.</p>
+      <p>Once a module has been deployed, it is also possible to use its controls to make certain adjustments. These controls exist primarily through these two icons, which appear in the top right of the module's header bar.</p>
+      {{ getDocumentationImage('field-matrix-controls.png') }}
+      <p>The icon on the left (gear icon) presents a dropdown which allows users to:</p>
+      <ul>
+        <li><span class="highlight">Collapse/Expand</span> - Collapsing a module hides all the fields, showing only the header bar. Expanding a module reveals the fields again. Collapsing and expanding matrix modules can also be achieved simply by double-clicking the header bar.</li>
+        <li><span class="highlight">Disable/Enable</span> - Disabling a module will prevent it from being rendered on the front end. All modules are enabled by default when they are added. Disabling a module can be helpful when content needs to be temporarily removed from a page. When that temporary requirement no longer exists, it can simply be re-enabled without having to re-build the module.</li>
+        <li><span class="highlight">Delete</span> - Deletes the module.</li>
+        <li><span class="highlight">Add new module above</span> - There will also be options for adding a new instance of each of the available modules associated with the larger matrix field. This can be helpful for adding a new module between two existing modules.</li>
+      </ul>
+      <p>The icon on the right allows for modules to be dragged and dropped.</p>  
+    </section>
+  </div>
+{% endblock %}

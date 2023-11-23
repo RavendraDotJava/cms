@@ -1,0 +1,79 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'video' : false,
+  'format' : 'standard',
+  'width' : 'default',
+  'class' : '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set video = false %}
+{% if settings.video is numeric %}
+  {% set asset = craft.assets().id(settings.video).limit(1).one() %}
+  {% set video = videoAttributes(asset) %}
+{% elseif settings.video is iterable %}
+  {% set video = videoAttributes(settings.video) %}
+{% elseif settings.video is not empty %}
+  {% set video = videoPlaceholder(settings.video) %}
+{% else %}
+  {% set video = false %}
+{% endif %}
+
+{% if video is not empty %}
+
+  {% set class = '' %}
+  {% if settings.class is not empty %}
+    {% set class = class ~ ' ' ~ settings.class %}
+  {% endif %}
+
+  {% set href = '' %}
+  {% set id = video.videoId %}
+  {% set platform = video.videoType %}
+  {% set transcriptId = video.videoTranscript %}
+
+    {% if id is not empty %}
+      {% if video.videoTranscript|raw is not empty %}
+      {% set transcriptId = id ~ '-transcript-' ~ craft.ccHelpersModule.getRandomString(6) %}
+      <template id="{{ transcriptId }}">
+      <div class="c-content">
+        {{ video.videoTranscript|raw }}
+      </div>
+      </template>
+      {% endif %}
+      {% set btnInteract = 'group-hover:bg-orange-hover group-focus:bg-orange-hover group-hover:border-orange-hover group-focus:border-orange-hover' %}
+      {% set iconInteract = 'fill-white group-focus:fill-orange-hover group-hover:fill-orange-hover' %}
+      <div class="c-video {{ ((settings.width == 'full ' ? 'w-full ' : ' ') ~ class)|trim }}">
+        <a class="group no-override inline-block relative" href="{{ href }}" data-video="{{ id }}" data-platform="{{ platform }}" data-transcript="{{ transcriptId }}" x-data @click="cModalTrigger($event, '', 'video', {bg: 'bg-transparent'})">
+          {% include 'components/_image.twig'|siteInclude with { settings: {
+            'image' : settings.video,
+            'format' : settings.format,
+            'class' : 'pointer-events-none inline-block',
+            'imageClass' : 'inline-block rounded-2xl',
+            'block' : true,
+            'width' : 'full',
+          }} %}
+          <span class="pointer-events-none absolute inset-0 bg-video group-hover:bg-video-overlay transition-colors duration-300 flex justify-center items-center rounded-2xl overflow-hidden">
+            <span class="pointer-events-none inline-flex items-center">
+              <span class="relative z-10 pointer-events-none inline-flex justify-center items-center">{{ getIcon('play', 'video', 'pointer-events-none') }}</span>
+              <span class="sr-only">Play Video</span>
+            </span>
+          </span>
+        </a>
+      </div>
+    {% else %}
+      {% include 'components/_image.twig'|siteInclude with { settings: {
+        'image' : settings.video,
+        'format' : settings.format,
+        'class' : 'pointer-events-none',
+        'block' : true,
+        'width' : 'full',
+      }} %}
+    {% endif %}
+
+{% endif %}

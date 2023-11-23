@@ -1,0 +1,135 @@
+{% extends "_layouts/cp" %}
+{% set title = "Accessibility"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+    <p class="large">Accessibility is an important and often challenging aspect of building and populating websites. The underlying concept behind accessibility is to ensure that everyone is able to use the website, regardless of disability (physical or cognitive), circumstance or choice of technology. One common way to think about accessibility is to break it down into <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head">four key principles</a>. These include:</p>
+    <ul>
+      <li><span class="highlight">Perceivable</span></li>
+      <li><span class="highlight">Operable</span></li>
+      <li><span class="highlight">Understandable</span></li>
+      <li><span class="highlight">Robust</span></li>
+    </ul>
+    <p>Each of these principles (collectively referred to by the acronym POUR) underscores a different aspect of inclusiveness. When considered together, they can help achieve a broader range of thinking that leads to more accessible solutions.</p>
+
+    <h2>Perceivable</h2>
+    <p>In a nutshell, perceivable means that the website must allow for sensory engagement with the content to take in the presented information. This includes:</p>
+    <ul>
+      <li>Reading or viewing content on a visual display, such as a monitor, phone or television.</li>
+      <li>Listening to content that could be native audio, closed captions or text-to-speech.</li>
+      <li>Consuming content through a device like a braille display.</li>
+    </ul>
+
+    <h2>Operable</h2>
+    <p>For a site to be operable, the user must be able to perform key actions using standard input methods. These include:<p>
+    <ul>
+      <li><span class="highlight">Mouse</span> - the user must be able to use the mouse in its intended fashion.</li>
+      <li><span class="highlight">Keyboard</span> - the user must be able to operate the website using the keyboard. This is a critical component of accessibility as many forms of assistive technology allow users to either use a keyboard or emulate keyboard inputs through other devices.</li>
+      <li><span class="highlight">Touch</span> - the user should be able to operate the website using a touch screen without relying on a mouse or keyboard.</li>
+    </ul>
+
+    <h2>Understandable</h2>
+    <p>It’s easy to make assumptions about content that we’re already familiar with, believing that just because we understand it, everyone else must understand it too. However, this is not always the case.</p>
+    <p>For a website to be understandable, its content should:</p>
+    <ul>
+      <li>Be written (or otherwise created) with the needs of the target audience in mind. This includes reading ability, education level and subject familiarity. As a rule, it is better to err on the side of simple language and avoid the overuse of acronyms and jargon wherever possible.</li>
+      <li>Provide alternatives for non-textual content (such as images or video) that describes that content in a meaningful way and contributes to the user’s understanding.</li>
+      <li>Additionally, the site’s functionality must also be understandable. This includes navigation and other interactive elements.</li>
+    </ul>
+
+    <h2>Robust</h2>
+    <p>The requirement for a site to be “robust” is perhaps the most ambiguous of the POUR principles, but at its root, it means that a site should function in the broadest range of possible clients (browsers) and devices.</p>
+    <p>Deciding where to land on this point can be challenging, and it is virtually impossible to account for every potential browser or device. However, some general practices can help in this regard. These include:</p>
+    <ul>
+      <li>Responsive design</li>
+      <li>Progressive enhancement</li>
+      <li>Graceful degradation</li>
+    </ul>
+    </section>
+    <section>
+      <h2>Accessibility in Action</h2>
+      <p>With the four pillars of accessibility, much of the impetus of making an accessible website involves ensuring that it is properly coded. There are, however, some aspects of accessibility that are highly reliant on the content entered into the CMS. </p>
+      <section>
+      <h3>Text Content</h3>
+      <p>Because content needs to be understandable to make it fully accessible, it‘s important to think about how page content is written and phrased. Wherever possible, keep sentences concise and avoid the use of jargon or buzzwords. Focus on writing content for people rather than search engines, and keep content easily scannable.</p>
+      <p>Other tips for writing accessible content include:</p>
+      <ul>
+        <li>Use brief paragraphs</li>
+        <li>Use lists where appropriate (though it‘s is best to avoid over-reliance on lists)</li>
+        <li>Use proper headings to structure content</li>
+        <li>Define acronyms and initialisms on the first use</li>
+      </ul>
+      </section>
+      <section>
+      <h3>Heading Structures</h3>
+      <p>Headings provide structure to a page. Using appropriate headings breaks up content, making it easily scannable. Additionally headings provide key landmarks for users using screen readers to consume page content.</p>
+      <p>For this reason, it is also important to structure headings properly:</p>
+      <ul>
+        <li>Headings are defined using specific HTML tags such as <span class="highlight">&lt;h1&gt;</span>, <span class="highlight">&lt;h2&gt;</span>, <span class="highlight">&lt;h3&gt;</span> etc.</li>
+        <li>The <span class="highlight">&lt;h1&gt;</span> is almost always the main page heading. Sometimes this is the same as the page title. Other times, it can be a custom heading. Either way, there is generally only a single <span class="highlight">&lt;h1&gt;</span> per page.</li>
+        <li>In most content modules, there will be a heading, which will render as an <span class="highlight">&lt;h2&gt;</span></li>
+        <li>In rich text fields, headings can be defined using the Formatting button.</li>
+        <li>Do <strong>not</strong> skip heading levels. An <span class="highlight">&lt;h4&gt;</span> should never appear without an <span class="highlight">&lt;h3&gt;</span> preceding it. This helps maintain a document structure that is logical to screen readers.</li>
+        <li>Do <strong>not</strong> use bolded or italicized text in place of proper headings. Screen readers will understand bolded or italicized text as content that should be emphasized. It will not recognize them as headings, thus breaking the document structure.</li>
+      </ul>
+      </section>
+      <section>
+      <h3>Image Alternative Text</h3>
+      <p>Due to their visual nature, images cannot be perceived (or fully perceived) by users with visual impairments. To help fill this gap, HTML provides a means of providing “alternative text” on images (commonly referred to as the Alt Text).</p>
+      <p>This Alt Text is a plain-text description of the image applied via the element’s src attribute. It can generally be defined on the image asset within Craft.</p>
+      <p>Crafting meaningful Alt Text can be an art, but some key considerations include:</p>
+      <ul>
+        <li>Alt Text should be an alternative to the image’s content. Generic text like “featured image” is generally not sufficient.</li>
+        <li>Instead, Alt Text should attempt to approximate the experience of viewing the image in its context. This can sometimes mean describing the image as it relates to its context. In a photograph of a young woman using a mobile device, what is the critical information? Is it the woman, the phone or both? Should the user infer that she is using a specific app or website? Thinking about context is an important component to writing meaningful Alt Text.</li>
+        <li>In most cases, this will mean providing text that describes the image, but in some cases, it may make sense to explain the purpose of the image rather than its contents. This is most often true when the image has a functional purpose, such as when included as a link or a button. In these cases, the Alt Text should provide context as to the function of the link or button.</li>
+      </ul>
+      </section>
+      <section>
+      <h3>Link Text</h3>
+      <p>Links are an essential part of websites. They provide a means of navigation between (and in some cases, within) pages. They also provide the means of linking to other websites or downloadable documents such as PDFs. </p>
+      <p>Given the relative importance of links, links must be made accessible. The key to achieving this is to ensure that links include meaningful content. Screen readers allow users to move through a document via links, which means that these users can arrive on a link without listening to the full context.</p>
+      <p>As such, a well-intentioned link with the following formatting can become problematic (the link here is represented by underline but is not active):</p>
+      <ul>
+        <li><span class="highlight">Click here to download our report.</span></li>
+      </ul>
+      <p>A user moving through links on the page may only hear “click here” and have no context about what clicking will do or where it will take them. A more accessible link pattern would be something like:</p>
+      <ul>
+        <li><span class="highlight">Download our report.</span></li>
+      </ul>
+      <p>In this case, the link becomes self-descriptive, informing the user precisely what will happen when they click the link (this is also good for SEO). </p>
+      <p>In some situations, a link may sit in a context that appears to explain the link’s purpose, such as the “learn more” button on a card. In these cases, it can occasionally be helpful to provide additional context via text that is exposed only to screen readers. In many places across the site, this is applied automatically. However, custom links and buttons can also apply this technique by wrapping text in percentage sign tokens. For example:</p>
+      <ul>
+        <li><span class="highlight">Read more %about what we do%</span></li>
+      </ul>
+      <p>In this instance, the words “about what we do” will be visually hidden on the page but will be exposed to screen readers to provide additional contextual information.</p>
+      </section>
+      <section>
+      <h3>Video</h3>
+      <p>Video is a popular form of media on many websites, but it comes with its own set of accessibility requirements. Given that most video combines both visual and audio content, the primary accessibility requirements surround providing alternative content in the appropriate contexts.</p>
+      <p>A video that contains audio content should include appropriate captions. Some video hosting platforms like YouTube will attempt to automatically generate captions by programmatically parsing a video’s audio track. However, while convenient, such auto-generated captions are not always the most reliable and can occasionally produce unexpected results. Wherever possible, it is preferable to implement captions manually. Again, tools like YouTube have options for implementing custom captions.</p>
+      <p>While captions provide the ability to add an alternative for users who cannot hear audio content, videos should still account for users who cannot see the visual component of video. There are two main ways to achieve this:</p>
+      <ul>
+        <li>Ideally, the video would include descriptive audio. Descriptive audio uses spoken language to explain those aspects of what is happening on screen that are necessary for fully understanding the content. Descriptive audio can often be implemented by including a secondary or alternate audio track. For information on writing descriptive audio, please refer to the following resources:
+          <ul>
+            <li><a href="https://sc.edu/about/offices_and_divisions/digital-accessibility/guides_tutorials/audio_descriptions/writing-audio-descriptions/index.php">“Writing Audio Descriptions”</a> from the University of South Carolina.</li>
+          </ul>
+        </li>
+        <li>Another option is to include a written transcript of the video content. The transcript provides a text-based alternative to the video‘s audio track. Many platforms like YouTube will generate transcripts from closed captions. However, these transcripts may not be accessible from embedded videos. For this reason, <a href="{{ getAdminUrl() }}/documentation/assets#volume-videos">videos</a> on this site provide the ability to include a transcript that appears alongside the video content. For more information about transcripts, refer to the following resources:
+          <ul>
+            <li><a href="https://sc.edu/about/offices_and_divisions/digital-accessibility/guides_tutorials/captioning_transcripts/transcripts/index.php">“Transcripts”</a> from the University of South Carolina</li>
+            <li><a href="https://krisrivenburgh.medium.com/youtube-accessibility-how-to-make-accessible-videos-with-closed-captions-2208acf17eeb">“YouTube Accessibility: How to Make Accessible Videos with Closed Captions”</a> by Kris Rivenburg</li>
+          </ul>
+        </li>
+      </ul>
+      </section>
+    </section>
+  </div>
+{% endblock %}

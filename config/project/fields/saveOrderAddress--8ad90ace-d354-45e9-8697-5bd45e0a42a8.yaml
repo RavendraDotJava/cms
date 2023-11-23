@@ -1,0 +1,14 @@
+columnSuffix: cyinaiiy
+contentColumnType: boolean
+fieldGroup: e45d60f9-6bb1-4f38-8e88-322a944a0cbc # Order
+handle: saveOrderAddress
+instructions: 'The value of this field determines whether or not the user selected to have their shipping address saved after their order has completed.'
+name: 'Save Order Address'
+searchable: false
+settings:
+  default: false
+  offLabel: null
+  onLabel: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

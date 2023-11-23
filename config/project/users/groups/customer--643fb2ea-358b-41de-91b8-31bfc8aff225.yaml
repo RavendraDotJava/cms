@@ -1,0 +1,8 @@
+description: null
+handle: customer
+name: Customer
+permissions:
+  - editusers
+  - registerusers
+  - 'saveassets:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'viewassets:15453f3c-bbed-40a1-b82f-9dca388f6180' # User

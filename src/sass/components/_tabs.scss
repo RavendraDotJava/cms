@@ -1,0 +1,70 @@
+.c-tab {
+  &:hover,
+  &:focus {
+    @apply text-brand;
+  }
+  &:focus {
+    @apply shadow-sm;
+    outline: none;
+  }
+  &[aria-selected="true"] {
+    @apply text-brand shadow-lg border-brand;
+  }
+  span {
+    @apply relative top-0;
+    transition: top .3s ease-in;
+  }
+}
+
+.c-tab-window {
+  transition: height .3s ease;
+}
+
+.c-panel {
+  &[aria-hidden="true"] {
+    @apply hidden;
+  }
+}
+
+.c-panel-enter {
+  @apply absolute top-0 left-0 right-0 transition ease-out delay-200 duration-100;
+
+  .c-panel-image {
+    @apply transition ease-out duration-100 delay-200;
+  }
+}
+.c-panel-enter-start {
+  @apply opacity-0;
+
+  .c-panel-image {
+    transform: translateX(200px);
+  }
+}
+.c-panel-enter-end {
+  @apply opacity-100;
+
+  .c-panel-image {
+    transform: translateX(0);
+  }
+}
+.c-panel-leave {
+  @apply transition ease-in duration-200;
+
+  .c-panel-image {
+    @apply transition ease-in duration-200;
+  }
+}
+.c-panel-leave-start {
+  @apply absolute top-0 left-0 right-0 opacity-100;
+
+  .c-panel-image {
+    transform: translateX(0);
+  }
+}
+.c-panel-leave-end {
+  @apply opacity-0;
+
+  .c-panel-image {
+    transform: translateX(-200px);
+  }
+}

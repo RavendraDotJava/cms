@@ -1,0 +1,6 @@
+color: turquoise
+default: false
+description: 'Order is shipping'
+handle: shipping
+name: Shipping
+sortOrder: 99

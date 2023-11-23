@@ -1,0 +1,19 @@
+/* --------------------------------- *
+ * LOGO
+ * --------------------------------- */
+
+$logo-ratio: 40 / 120; // height / width in pixels
+$logo-width: 7.5rem;
+
+.c-logo {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	z-index: 2;
+	text-decoration: none;
+
+	svg {
+		width: $logo-width;
+		height: $logo-width * $logo-ratio;
+	}
+}

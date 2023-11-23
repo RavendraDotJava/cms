@@ -1,0 +1,47 @@
+@charset 'UTF-8';
+
+@tailwind base;
+
+/* --------------------------------- *
+ * BASE                              *
+ * --------------------------------- */
+@import 'base/typography';
+// @import 'base/document';
+
+// /* --------------------------------- *
+//  * COMPONENTS                        *
+//  * --------------------------------- */
+@tailwind components;
+@import 'components/container';
+@import 'components/content';
+@import 'components/logo';
+@import 'components/feed';
+@import 'components/icon';
+@import 'components/logo';
+@import 'components/button';
+@import 'components/chevron';
+@import 'components/tabs';
+@import 'components/tabs';
+@import 'components/tooltip';
+@import 'components/modal';
+@import 'components/panel';
+
+// /* --------------------------------- *
+//  * MODULES                           *
+//  * --------------------------------- */
+@import 'modules/sliderSimple';
+
+// /* --------------------------------- *
+//  * GLOBALS                           *
+//  * --------------------------------- */
+@import 'global/header';
+// @import 'global/footer';
+// @import 'global/nav';
+
+// /* --------------------------------- *
+//  * Effects                           *
+//  * --------------------------------- */
+@import 'global/fx';
+
+@tailwind utilities;
+@import 'base/utility';

@@ -1,0 +1,39 @@
+{# Output an SVG icon #}
+{% macro icon(slug, class) %}
+{% apply spaceless %}
+  {% if slug != 'none' %}
+    {% set iconClass = 'c-icon' ~ ' ' ~ class %}
+    {% if (getenv('ENVIRONMENT') == 'dev') %}
+			{% set ver = "now"|date('mdyhis') %} {# Development - timestamped #}
+		{% else %}
+			{% set ver = (getenv('CRAFTENV_VER') is not empty) ? getenv('CRAFTENV_VER') : '1.0' %} {# Production - env version number #}
+		{% endif %}
+    <svg role="presentation" class="{{ iconClass|t }}"><use xlink:href="/ui/icons.svg?{{ ver }}#icon-{{ slug }}" /></svg>
+  {% endif %}
+{% endapply %}
+{% endmacro %}
+
+{% macro readTime(text) %}
+{% apply spaceless %}
+    {# settings #}
+    {% set wordsPerMinute = 265 %}
+    {% set showLessThanMinute = true %}
+    {# logic #}
+    {% set plaintext = text|striptags|replace({'â€”': ' ', 'â€“': ' ', '-': ' ', '\n': ' '}) %}
+    {% set words = plaintext|split(' ') %}
+    {% set minutes = ceil(words|length / wordsPerMinute) %}
+    {% set seconds = minutes * 60 %}
+    {% set formatter = create({ class: 'craft\\i18n\\Formatter' }) %}
+    {% if (words|length / wordsPerMinute) * 60 < 60 and showLessThanMinute %}
+        {{'less than'|t ~ ' ' ~ formatter.asDuration(60)}}
+    {% else %}
+        {{formatter.asDuration(seconds)}}
+    {% endif %}
+{% endapply %}
+{% endmacro %}
+
+{% macro errorList(errors) %}
+  {% if errors %}
+    {{ ul(errors, { class: 'text-sm text-error my-p16' }) }}
+  {% endif %}
+{% endmacro %}

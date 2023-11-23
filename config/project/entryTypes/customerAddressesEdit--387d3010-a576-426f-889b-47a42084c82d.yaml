@@ -1,0 +1,67 @@
+fieldLayouts:
+  a7f29b9e-5d49-4b90-acfb-e995da99679a:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: ab32421c-b057-47fe-a8ee-4477e9d41176
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1262417d-adab-4273-9f2b-02709eae6778 # Site Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 35b4be6a-cc30-461f-9046-322df24b59a8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a71e79b4-7321-435a-8d7f-a88d4afb06c6
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 19727673-4bd6-429b-afab-f6a185909c9b
+        userCondition: null
+handle: customerAddressesEdit
+hasTitleField: true
+name: 'Customer Addresses Edit'
+section: 2f6507e5-d577-4de4-948b-33f3785ad4d6 # Customer Profile
+sortOrder: 6
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,0 +1,36 @@
+.c-modal-enter {
+  @apply transition-opacity duration-500;
+  .c-modal-box {
+    @apply transform transition-transform duration-500;
+  }
+}
+.c-modal-enter-start {
+  @apply opacity-0;
+  .c-modal-box {
+    @apply translate-y-p24;
+  }
+}
+.c-modal-enter-end {
+  @apply opacity-100;
+  .c-modal-box {
+    @apply translate-y-none;
+  }
+}
+.c-modal-leave {
+  @apply transition-opacity duration-500;
+  .c-modal-box {
+    @apply transform transition-transform duration-500;
+  }
+}
+.c-modal-leave-start {
+  @apply opacity-100;
+  .c-modal-box {
+    @apply translate-y-none;
+  }
+}
+.c-modal-leave-end {
+  @apply opacity-0;
+  .c-modal-box {
+    @apply translate-y-p24;
+  }
+}

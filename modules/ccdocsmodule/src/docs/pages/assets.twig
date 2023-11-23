@@ -1,0 +1,56 @@
+{% extends "_layouts/cp" %}
+{% set title = "Assets"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+    <p class="large">Assets include all images, documents and other media used on the site. This documentation page reviews the assets that exist on the site and some additional information on handling images within Craft.</p>
+    <div class="contents">
+      <ul>
+        <li><a href="#image-editing">Image Editing</a></li>
+        <li><a href="#asset-volumes">Asset Volumes</a></li>
+      </ul>
+    </div>
+    </section>
+    <section id="image-editing">
+      <h2>Image Editing</h2>
+      <p>When image assets are configured for display with entries, the website is configured to automatically crop and scale those images to the required size though functionality known as <span class="highlights">transforms</span>. This functionality happens automatically, based on the context in which the image is displayed. For example, an image displayed in the header will be different in size and cropping compared to the same image used in the Text + Media module.</p>
+      <p>However, Craft does have a few built-in options that provide you with tools for controlling images. Under <span class="highlight">Assets > Images</span>, click on a specific image. This will take you to the Asset editor screen, which is similar to editing an entry. Here you can edit the title and provide alternative Text. For assets in certain volumes, there might also be additional field option specific to that asset type.</p>
+      <p>Additionally, you also have the option of downloading the file or replacing it with a new file. You can also directly edit the file name by eiditng the text in the <span class="highlight">Filename</span> field. If you hover over the preview image, an <span class="highlight">Edit</span> button will appear:</p>
+      {{ getDocumentationImage('assets-image-edit.png') }}
+      <p>Clicking on this button will open up a simple image editor, which provides some basic image maipulation tools. These include:</p>
+      <ul>
+        <li>Use the rotation slider at the bottom</li>
+        <li>Rotate left</li>
+        <li>Rotate right</li>
+        <li>Flip Vertical</li>
+        <li>Flip Horizontal</li>
+        <li>Crop</li>
+        <li>Set the focal point</li>
+      </ul>
+      <p>Basic rotation and flip controls are located under the <span class="highlight">Rotate</span> tab along the side.</p>
+      {{ getDocumentationImage('assets-image-rotate-controls.png') }}
+      <p>For more controlled rotation, use the rotation slider that appears just below the image:</p>
+      {{ getDocumentationImage('assets-image-rotation.png') }}
+      <p>This will rotate the image while <em>still maintaining the bounding box</em> This can be useful for making small adjustments to the image, but be aware that the more severe the rotation, the more the image will be zoomed, potentially leading to a loss in image quality. 
+      <p>Basic crop controls are located under the <span class="highlight">Crop</span> tab along the side.</p>
+      {{ getDocumentationImage('assets-image-crop-controls.png') }}
+      <p>Cropping allows you to select from a pre-determined set of aspect ratios or to set a custom size. Typically, cropping should not be necessary, as image transforms are generated automatically, but this can be a useful tool for additional fine-grain control.</p>
+      <p>Perhaps the most useful feature in the entire image editor is the <span class="highlight">Focal Point</span> feature, which is available through both the <span class="highlight">Rotate</span> and <span class="highlight">Crop</span> side tabs. Clicking on this feature will place a small dot on the image:</p>
+      {{ getDocumentationImage('assets-image-focal-point.png') }}
+      <p>This dot represents the "focal point" of the image. By default, it is set to the exact centre of the image. However, it can be dragged to any point in the image. Once the focal point has been changed and the asset saved, all transforms will be generated <em>based on the focal point</em>. This means that with images that feature a subject that is off-center, transforms will be generated so that the subject remains in the image instead of being cropped out at certain sizes—which can happen when the focal point defaults to center.</p>
+    </section>
+    <section id="asset-volumes" class="norule">
+      <h2>Asset Volumes</h2>
+      <p>Every asset on the site belongs to what's called a <span class="highlight">volume</span>. Volumes can be thought of as containers or collections that house a specific form of media. Different volumes are used for different types of media used for different purposes across the site.</p>
+    </section> 
+    {{ docElements('assets') }}    
+  </div>
+{% endblock %}

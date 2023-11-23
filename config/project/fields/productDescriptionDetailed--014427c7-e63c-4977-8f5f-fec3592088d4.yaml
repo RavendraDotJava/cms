@@ -1,0 +1,22 @@
+columnSuffix: hvdfvmnt
+contentColumnType: text
+fieldGroup: 0166bfae-8627-47ea-9ab1-c9cc949d3ee5 # Product
+handle: productDescriptionDetailed
+instructions: 'Enter a detailed description of this product.'
+name: 'Product Description - Detailed'
+searchable: true
+settings:
+  availableTransforms: '*'
+  availableVolumes: '*'
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  initialRows: 7
+  manualConfig: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  trimEmptyParagraphs: true
+  vizyConfig: Simple.json
+translationKeyFormat: null
+translationMethod: none
+type: verbb\vizy\fields\VizyField

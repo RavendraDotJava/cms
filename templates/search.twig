@@ -1,0 +1,58 @@
+{% extends "_layout" %}
+{% import 'partials/_macros' as helpers %}
+
+{% set query = craft.app.request.getParam('query') ?? 'keyword' %}
+
+{% if seomatic is defined %}
+	{% do seomatic.meta.setAttributes({
+	  "seoTitle": 'Search Results'|t
+	}) %}
+{% endif %}
+
+{% block content %}
+
+<div class="py-p64 mq768:py-p96 px-p24 mq768:px-p48 mq1024:px-p64">
+<div class="max-w-p1440 mx-auto">
+
+	<div class="max-w-4xl mx-auto">
+
+		{% set searchResults = craft.entries.section(['page', 'blog']).search(query) %}
+
+		<p class="mb-p64">{{ (searchResults.all()|length ~ ' results found for '|t ~ '<span class="font-medium text-wf-dark">' ~ query ~ '</span>' ~ ':'|t)|raw }}</p>
+
+		{% if searchResults.all()|length %}
+
+		{% paginate searchResults.orderBy('score DESC').limit(1) as pageInfo, pageEntries %}
+
+			<div class="-mt-p32">
+				{% for result in pageEntries %}
+					<div class="mt-p32">
+						{% include 'components/_searchResult.twig'|siteInclude with { settings: {
+							'id' : result.id,
+							'title' : result.title,
+							'details' :  getEntrySnippet(result, 250),
+							'href' : result.url
+						}} %}
+					</div>
+				{% endfor %}
+			</div>
+
+			{% if pageInfo.totalPages > 1 %}
+				<div class="mt-p64">
+					{% include 'components/_pagination' with { 'settings': {
+						'pageInfo' : pageInfo,
+						'params' : '?query=' ~ query
+					}} %}
+				</div>
+			{% endif %}
+
+		{% else %}
+			<p>{{ 'No results found matching your search query.'|t }}</p>
+		{% endif %}
+
+	</div>
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,161 @@
+fieldLayouts:
+  84ad3f70-aa01-40cc-8589-b0cd00116c19:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 3986cd32-de95-4619-ba34-3b74fcaa0380
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1262417d-adab-4273-9f2b-02709eae6778 # Site Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bcfdb500-a6b6-48fe-81be-5d8a9f0f810c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 70cd30ca-41a5-4f2f-9ee1-0bf9e2025a63
+            userCondition: null
+            warning: null
+            width: 100
+        name: Header
+        uid: 82d325e5-34af-4a27-8da8-0eb72968d8d8
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: d3bfabb5-8866-4800-b96c-5f27d67a7676 # Checkout Step
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3e89a7db-96e1-4d12-b7e0-807533eca639
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\LineBreak
+            uid: 8c9fe33c-5418-416f-a7ac-bb9673f0695c
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: c8b0755e-8212-4a0a-9b4d-97401085e0e7 # Checkout Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2b54d550-28ff-47d8-83bd-a09c42dd8959
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 2baf79f3-8a6d-4ba5-baa2-ebecf707d81a # Checkout Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 477b2d0b-8e57-4517-8a16-fe5ad7b477b8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 12e8d532-62d8-48bc-b519-36582071c601
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 7fc3fc05-0137-49b6-8d71-ab23acbb9122 # Form Submission Redirect
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 07c119a4-45d6-4593-be7f-8768c505cc8a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 60f2ea8e-952b-4494-831b-188c6fc1647f # Form Submit Button Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2f482595-0c70-40b7-9196-845c36f67e9d
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\LineBreak
+            uid: 36fd7486-ccd7-4f30-8d39-e391bc52713f
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 4c902f96-ee5e-48b0-97f8-433efb8726e9 # Form Success Message
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 16eeed54-b412-4881-b174-6fc2d30ad0a8
+            userCondition: null
+            warning: null
+            width: 50
+        name: Form
+        uid: 7b0801ef-c008-4ec3-b186-a0aa84d9b450
+        userCondition: null
+handle: checkoutShipping
+hasTitleField: true
+name: 'Checkout Shipping'
+section: a8188730-d041-4b1c-91c1-19fba1e60b19 # Checkout
+sortOrder: 4
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,0 +1,19 @@
+columnSuffix: ebsbyrqf
+contentColumnType: string(120)
+fieldGroup: 6f4fa5af-dc3c-425b-9183-f24f31360424 # Checkout
+handle: formSubmitButtonText
+instructions: 'Use this field to change the form submit button text.'
+name: 'Form Submit Button Text'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 30
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: Submit
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

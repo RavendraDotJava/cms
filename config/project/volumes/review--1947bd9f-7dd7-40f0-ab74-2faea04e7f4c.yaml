@@ -1,0 +1,66 @@
+fieldLayouts:
+  6cb2f5c0-79c2-4b9a-bfd5-d1f002244dee:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 9a720ed4-7472-4c08-bb01-db3ab0f2e984
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            attribute: alt
+            class: null
+            cols: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: true
+            required: false
+            rows: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AltField
+            uid: d15f722e-859f-459e-823e-8a8ae1e50f68
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ade386e8-feaa-4a83-ad21-a9d92987cb0a
+        userCondition: null
+fs: transforms
+handle: review
+name: Review
+sortOrder: 5
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: user
+transformSubpath: review

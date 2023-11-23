@@ -1,0 +1,34 @@
+{% extends craft.app.request.isAjax ? "_ajax" : "_layout" %}
+
+{% import 'partials/_macros' as helpers %}
+
+{# AJAX Request #}
+{% block ajax %}
+  {# Include a different AJAX template here #}
+{% endblock %}
+
+{# Regular Request #}
+{% block content %}
+
+  {# Cache without params #}
+  {% if entry is defined and entry.slug == '__home__' %}
+    {% set cacheKey = 'homepage' %}
+  {% else %}
+    {% set cacheKey = (craft.app.request.pageNum > 1) ? craft.app.request.pathInfo ~ '/page/' ~ craft.app.request.pageNum : craft.app.request.pathInfo %}
+  {% endif %}
+  {# {% cache globally using key cacheKey unless craft.app.request.queryStringWithoutPath is not empty %} #}
+  {% apply spaceless %}
+
+    {% include 'partials/_modules.twig' with { settings: {
+      'modules' : entry.ingredientsList,
+    }} %}
+
+    {% include 'partials/_modules.twig' with { settings: {
+      'modules' : entry.contentModules,
+    }} %}
+
+
+  {% endapply %}
+  {# {% endcache %} #}
+
+{% endblock %}

@@ -1,0 +1,280 @@
+fieldLayouts:
+  fd5a3f28-d65b-4067-946b-090a4ae2357d:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 0dc331bd-ca29-4bcf-8282-5fcfe611d5d0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1262417d-adab-4273-9f2b-02709eae6778 # Site Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: afef8906-9901-4b60-a061-9ff6fad5c377
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4c953706-c634-447e-b910-04f762bd603b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Header
+        uid: e04acb0b-762e-4c19-878d-ea68e2a8cba1
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: d3bfabb5-8866-4800-b96c-5f27d67a7676 # Checkout Step
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7a3aedaf-9c8a-46f7-b220-6c24aae89b3f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: 'Sign In Content'
+            type: craft\fieldlayoutelements\Heading
+            uid: 75f846f6-94d8-483b-9c18-c9279e6e46d8
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: c8b0755e-8212-4a0a-9b4d-97401085e0e7 # Checkout Heading
+            instructions: null
+            label: 'Sign In Heading'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d65b43e4-be5d-4656-b7b2-77c62a9ca41a
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 2baf79f3-8a6d-4ba5-baa2-ebecf707d81a # Checkout Text
+            instructions: null
+            label: 'Sign In Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 25a35401-7338-4899-9820-77b14d185513
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: 'Register Content'
+            type: craft\fieldlayoutelements\Heading
+            uid: c69a723a-19c4-4611-841b-d985d48f01f4
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 5d9f5ab9-deed-4803-ac0f-44c105942f77 # Checkout Register Heading
+            instructions: null
+            label: 'Register Heading'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c3c9cbce-556f-447a-961e-6430f886df75
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: cc3c87ad-e702-4696-8203-32a9bd68ebf4 # Checkout Register Text
+            instructions: null
+            label: 'Register Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ea869cdd-3f24-43f5-bdd2-fe73004ce67d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 19b74e82-292a-49bb-889c-ae380c4e6e76
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 7fc3fc05-0137-49b6-8d71-ab23acbb9122 # Form Submission Redirect
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8a4e498e-0ce6-4ce5-8998-751baf28b051
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: 'Sign In Form'
+            type: craft\fieldlayoutelements\Heading
+            uid: 37ff41fa-10ec-440d-9997-92eb332ca668
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 60f2ea8e-952b-4494-831b-188c6fc1647f # Form Submit Button Text
+            instructions: null
+            label: 'Sign In Button Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1417ca8a-5887-45c3-8cab-fee16758ea7f
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\LineBreak
+            uid: 6880022e-0bf7-4798-8144-2b70580df0a3
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 4c902f96-ee5e-48b0-97f8-433efb8726e9 # Form Success Message
+            instructions: null
+            label: 'Sign In Success Message'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cedd793a-fa20-4a92-aa91-1230c449cb1c
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            heading: 'Register Form'
+            type: craft\fieldlayoutelements\Heading
+            uid: abdfbc7e-cee6-4ed3-9163-0c70ae4c9414
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: ca961b5c-b391-465b-b037-e4b2ce254647 # Continue As Guest
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e525d9ea-d0e2-4748-a68c-01560eefbc9d
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\LineBreak
+            uid: 8a7c354c-fd2a-4909-82cd-9f3da93b6b4d
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: a1859b2f-005f-4742-9734-a9926bb6a304 # Checkout Register Submit Button Text
+            instructions: null
+            label: 'Register Submit Button Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b8752ca8-ec74-41fa-994a-11b5efc2fed7
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\LineBreak
+            uid: 3309d31c-4b7e-460c-9e5a-756ec1ce0685
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: e6b43f4b-4361-46f8-bdb6-e636dc2ec74f # Checkout Register Success Message
+            instructions: null
+            label: 'Register Success Message'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 95e4d363-eeb9-4056-8954-28f0bbfd00d9
+            userCondition: null
+            warning: null
+            width: 50
+        name: Form
+        uid: e221a71f-5608-461f-8b31-65ea5389f763
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 37dc545e-cad4-4d8c-8c83-4f904638204b # No Email Redirect
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1f6eea26-921f-4a14-b622-8b2fae03de72
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 8c08f1fc-b9e5-4710-8813-d9f98cbe18de # Current User Redirect
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c332bf76-5621-4c77-8640-c3f5692ab84a
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Other Redirects'
+        uid: 7793cf77-7e0c-4ce3-a54a-d6b652482873
+        userCondition: null
+handle: checkoutRegisterSignIn
+hasTitleField: true
+name: 'Checkout Register/Sign In'
+section: a8188730-d041-4b1c-91c1-19fba1e60b19 # Checkout
+sortOrder: 2
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

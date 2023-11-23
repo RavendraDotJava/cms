@@ -1,0 +1,11 @@
+<div class="my-p32">
+  {% for button in buttons %}
+    {% include 'components/_button.twig'|siteInclude with { settings: { 
+      'text'  : button.button.text,
+      'href'  : button.button.url,
+      'type'  : 'link',
+      'style' : 'primary',
+      'class' : 'mr-p8'
+    }} %}
+  {% endfor %}
+</div> 

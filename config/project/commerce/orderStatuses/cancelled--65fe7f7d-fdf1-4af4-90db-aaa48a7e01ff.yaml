@@ -1,0 +1,6 @@
+color: red
+default: false
+description: 'When an order has been cancelled.'
+handle: cancelled
+name: Cancelled
+sortOrder: 99

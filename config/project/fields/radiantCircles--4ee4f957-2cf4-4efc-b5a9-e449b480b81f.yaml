@@ -1,0 +1,14 @@
+columnSuffix: cxmueyge
+contentColumnType: boolean
+fieldGroup: 1901e8d3-2a7e-47ef-94ec-a27c6f4346e2 # Header
+handle: radiantCircles
+instructions: 'Use this field to toggle the display of the radiant circles decoration.'
+name: 'Radiant Circles'
+searchable: false
+settings:
+  default: false
+  offLabel: null
+  onLabel: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

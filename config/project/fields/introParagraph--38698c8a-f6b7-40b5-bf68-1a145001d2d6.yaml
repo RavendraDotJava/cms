@@ -1,0 +1,19 @@
+columnSuffix: ytwattux
+contentColumnType: text
+fieldGroup: 1901e8d3-2a7e-47ef-94ec-a27c6f4346e2 # Header
+handle: introParagraph
+instructions: 'Use this field to add a custom intro to the page header for this entry.'
+name: 'Intro Paragraph'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 2
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,74 @@
+/**
+ * CCFields module for Craft CMS
+ *
+ * Instructions Field CSS
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2021 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   CCFieldsModule
+ * @since     1.0.0
+ */
+
+ .cc-icon-picker {
+   margin-top: 1.5rem;
+ }
+
+ .cc-icon-btn {
+   display: inline-block;
+   vertical-align: top;
+   margin-right: 1em;
+   margin-bottom: 1em;
+   cursor: pointer;
+ }
+
+  .cc-icon-btn:hover .cc-icon-btn__icon {
+    fill: #1f2933;
+  }
+  .cc-icon-btn:focus .cc-icon-btn__icon {
+    fill: #1f2933;
+  }
+
+ .cc-icon-btn .cc-icon-btn__icon {
+   width: 2rem;
+   height: 2rem;
+   fill: #33404d;
+   transform: scale(.75);
+   transition: fill .3s ease, transform .3s ease;
+ }
+
+ .cc-icon-btn.js-active .cc-icon-btn__icon {
+   fill: #E12D39;
+   transform: scale(1);
+ }
+
+ .cc-icon-btn.js-inactive .cc-icon-btn__icon {
+   fill: #bac5d5;
+   transform: scale(.75);
+ }
+
+ .cc-icon-clear {
+   display: inline-flex;
+   align-items: center;
+   cursor: pointer;
+   color: #596673;
+   border-radius: 5px;
+   padding: .35em .75em;
+   border: 1px dashed #bac5d5;
+ }
+
+ .cc-icon-clear:hover {
+   color: #1f2933;
+   border: 1px solid #e6edf5;
+   background-color: #e6edf5;
+ } 
+
+ .cc-icon-clear .delete {
+   margin-left: .5em;
+   position: relative;
+   top: -1px;
+ }
+
+ .cc-icon-clear:hover .delete::before {
+   color: #CF1124;
+ }  

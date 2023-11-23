@@ -1,0 +1,310 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+	'modules' : false,
+} %}
+
+{% if settings is defined %}
+	{% set settings = defaults|merge(settings) %}
+{% else %}
+	{% set settings = defaults %}
+{% endif %}
+
+{% set total = setModuleTotal(settings.modules.all()|length) %}
+
+{% if total > 0 %}
+
+<div class="relative">
+
+	{% for block in settings.modules.all() %}
+
+		{# Current module info #}
+		{% set currentBlockType = block.type.handle %}
+		{% set blockConfig = getModuleLayout(block) %}
+
+		{# Output modules #}
+		{% switch currentBlockType %}
+
+			{% case 'testModule' %}
+				{% include 'components/_module' with { 'settings': {
+					'module' : currentBlockType,
+					'config' : blockConfig,
+					'settings' : {
+						'heading' : block.heading,
+					}
+				}} %}
+
+			{% case 'clients' %}
+				{% include 'components/_module' with { 'settings': {
+					'module' : currentBlockType,
+					'config' : blockConfig,
+					'settings' : {
+						'heading' : block.heading,
+						'content' : block.contentText,
+						'clients' : block.clients,
+					}
+				}} %}
+
+			{% case 'contentWell' %}
+				{% include 'components/_module' with { 'settings': {
+					'module' : currentBlockType,
+					'config' : blockConfig,
+					'settings' : {
+						'content' : block.contentWell
+					}
+				}} %}
+
+			{% case 'faqs' %}
+				{% include 'components/_module' with { 'settings': {
+					'module' : currentBlockType,
+					'config' : blockConfig,
+					'settings' : {
+						'heading' : block.heading,
+						'content' : block.contentText,
+						'questions' : block.questions,
+					}
+				}} %}
+
+			{% case 'testimonials' %}
+				{% include 'components/_module' with { 'settings': {
+					'module' : currentBlockType,
+					'config' : blockConfig,
+					'settings' : {
+						'heading' : block.heading,
+						'content' : block.contentText,
+						'testimonials' : block.testimonials,
+					}
+				}} %}
+
+			{% case 'textMedia' %}
+				{% include 'components/_module' with { 'settings': {
+					'module' : currentBlockType,
+					'config' : blockConfig,
+					'settings' : {
+						'heading' : block.heading,
+						'content' : block.contentText,
+						'media'   : block.media.one(),
+						'button'  : block.button,
+						'invert'  : block.alignment,
+					}
+				}} %}
+
+			{% case 'benefits' %}
+				{% include 'components/_module' with { 'settings': {
+					'module' : currentBlockType,
+					'config' : blockConfig,
+          'class': 'overflow-hidden',
+					'settings' : {
+						'heading' : block.heading,
+						'content' : block.contentText,
+						'benefits' : block.benefits,
+            'bgMedia': block.bgMedia,
+            'fgMedia': block.fgMedia,
+            'radiantCircles': block.radiantCircles,
+					}
+				}} %}
+
+			{% case 'emphasizedContent' %}
+				{% include 'components/_module' with { 'settings': {
+					'module' : currentBlockType,
+					'config' : blockConfig,
+					'settings' : {
+						'highlights' : block.highlights,
+						'alignment'  : block.initialAlignment,
+					}
+				}} %}
+
+			{% case 'callToAction' %}
+				{% include 'components/_module' with { 'settings': {
+					'module' : currentBlockType,
+					'config' : blockConfig,
+          'class': 'overflow-hidden',
+					'settings' : {
+						'heading' : block.heading,
+						'content' : block.contentText,
+            'bannerImage': block.bannerImage,
+            'backgroundColorBottom': block.backgroundColorBottom,
+            'cta': block.callToAction,
+						'button'  : block.button,
+					}
+				}} %}
+
+			{% case 'htmlEmbed' %}
+				{% include 'components/_module' with { 'settings': {
+					'module' : currentBlockType,
+					'config' : blockConfig,
+					'settings' : {
+						'embedCode' : block.embedCode,
+						'alignment' : block.alignment,
+						'width'     : block.width,
+					}
+				}} %}
+
+      {% case "deepDive" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'class': 'overflow-x-clip',
+          'settings': {
+            'heading' : block.heading,
+            'textLeft' : block.introText,
+            'textRight' : block.supplementaryText,
+            'textColumnAlignment': block.textColumnAlignment,
+            'detailsList' : block.detailsList,
+            'fgImage': block.fgImage.one,
+            'bgImage': block.bgImage.one,
+            'radiantCircles': block.radiantCircles,
+            'parallax': block.parallaxImage,
+          }
+        }} %}
+
+      {% case "productCards" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'heading' : block.heading,
+            'cardsPerRow': block.cardsPerRow,
+            'intro' : block.intro,
+            'cards' : block.cards,
+            'button': block.button,
+          }
+        }} %}
+
+      {% case "productReviews" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'heading': block.heading,
+            'textContent': block.textContent,
+            'product': block.product,
+            'manualSubmissions': block.manualSubmissions,
+          }
+        }} %}
+
+      {% case "entryCards" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'heading'    : block.heading,
+            'intro'      : block.intro,
+            'entries'    : block.cards,
+            'sections'   : block.sections,
+            'categories' : block.categories,
+            'backfill'   : block.backfill,
+            'button'     : block.button,
+          }
+        }} %}
+
+      {% case "contentCards" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'heading' : block.heading,
+            'intro' : block.intro,
+            'cards' : block.cards,
+            'button': block.button,
+          }
+        }} %}
+
+      {% case "productFeature" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'product' : block.product,
+            'description' : block.description,
+            'benefits': block.benefits,
+            'image' : block.image,
+            'button': block.button,
+          }
+        }} %}
+
+      {% case "productCta" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'heading': block.heading,
+            'textContent': block.textContent,
+            'buttonText': block.buttonText,
+            'showQuantity': block.quantity,
+          }
+        }} %}
+
+      {% case "ingredientsList" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'ingredientsList': block.ingredients,
+            'decoration': block.decoration,
+            'notes': block.notes,
+          }
+        }} %}
+
+      {% case "ctaEntry" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'heading' : block.heading,
+            'textContent' : block.textContent,
+            'image': block.image,
+            'primaryButton': block.primaryButton,
+            'secondaryButton': block.secondaryButton,
+          }
+        }} %}
+
+      {% case "comparisonChart" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'heading': block.heading,
+            'textContent': block.textContent,
+            'image': block.image,
+            'columnHeadings': block.columnHeadings,
+            'features': block.features,
+          }
+        }} %}
+
+      {% case "relatedProducts" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'heading': block.heading,
+            'textContent': block.textContent,
+            'button': block.button,
+            'cards': block.products
+          }
+        }} %}
+
+      {% case "form" %}
+        {% include 'components/_module.twig' with { 'settings': {
+          'module': currentBlockType,
+          'config': blockConfig,
+          'settings': {
+            'heading': block.heading,
+            'textContent': block.textContent,
+            'form': block.form,
+          }
+        }} %}
+
+			{% default %}
+				<section class="py-p64 mq768:py-p128" data-module-num="blockConfig.moduleCount">
+					<div class="max-w-p1280 mx-auto">
+						<h2 style="color:red;">ERROR: Module type '{{ currentBlockType }}' does not have a matching template.</h2>
+					</div>
+				</section>
+
+		{% endswitch %}
+
+	{% endfor %}
+
+</div>
+{% endif %}

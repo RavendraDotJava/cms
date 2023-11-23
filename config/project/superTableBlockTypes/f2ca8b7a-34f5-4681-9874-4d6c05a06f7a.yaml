@@ -1,0 +1,97 @@
+changedFieldIndicator: null
+field: b1f88553-b54e-471b-b4b3-1d47754dc07b # Social Media
+fieldLayouts:
+  5b8ac163-fd70-47c8-b41b-975389fdf827:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: a21e12c1-d447-4a80-880a-f73e41fafaee # Icon
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: acc687c1-f905-4dfe-933b-25914cfe9cc8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 9752b783-a46a-4dd9-8399-78a4d6aac13d # Title
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: afe89808-fecb-4c6e-b198-f2a561023124
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 717f7300-100d-436f-9e8c-fae604871315 # URL
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bc4ad558-3f82-45b8-bdad-e443348c5ca0
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: b108e282-6bdf-42ea-b41f-160c98f584f0
+        userCondition: null
+fields:
+  717f7300-100d-436f-9e8c-fae604871315: # URL
+    columnSuffix: null
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: socialUrl
+    instructions: 'Enter the URL to the social media account.'
+    name: URL
+    searchable: false
+    settings:
+      maxLength: 255
+      types:
+        - url
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  9752b783-a46a-4dd9-8399-78a4d6aac13d: # Title
+    columnSuffix: null
+    contentColumnType: string(240)
+    fieldGroup: null
+    handle: socialTitle
+    instructions: 'Enter the name of this social media link. This text will be used by screen readers for accessibility.'
+    name: Title
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: 60
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  a21e12c1-d447-4a80-880a-f73e41fafaee: # Icon
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: icon
+    instructions: 'Select an icon.'
+    name: Icon
+    searchable: false
+    settings:
+      sets:
+        - social
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Icon

@@ -1,0 +1,88 @@
+{% import 'partials/_macros' as helpers %}
+
+{% if not currentUser %}
+    {% exit 404 %}
+{% endif %}
+
+{% set addressId = craft.app.request.queryParam('addressId') %}
+{% set redirect = craft.app.request.queryParam('redirect') %}
+
+{% set countryCode = craft.app.request.queryParam('countryCode') %}
+
+{% if not address is defined %}
+  {% if addressId %}
+    {% set address = collect(currentUser.addresses).firstWhere('id', addressId) %}
+    {% if not address %}
+        {% exit 404 %}
+    {% endif %}
+  {% else %}
+    {% set address = create({
+        class: 'craft\\elements\\Address',
+        ownerId: currentUser.id,
+        countryCode: countryCode ?? 'US'
+    }) %}
+  {% endif %}
+{% endif %}
+
+{% if currentUser %}
+
+<div class="mq768:flex">
+
+  <div class="">
+    {% include 'components/_userPhoto.twig' with { 'settings': {
+      'classes' : 'w-p256 h-p256',
+      'fontSize': 'text-h1',
+      'imgSize': 300,
+      'id': 'user-photo-large',
+    }} %}
+  </div>
+
+  <div class="mq768:ml-p50 flex-1">
+
+    <h1 class="text-p35 font-normal">
+      {% if addressId %}
+          {{- 'Edit address'|t -}}
+      {% else %}
+          {{- 'Add a new address'|t -}}
+      {% endif %}
+    </h1>
+
+    <form method="post" action="" class="mt-p40">
+      {{ csrfInput() }}
+      {{ actionInput('users/save-address') }}
+      {{ redirectInput(redirect ?: '') }}
+
+      {% if addressId %}
+        {{ hiddenInput('addressId', addressId) }}
+      {% endif %}
+
+      <div x-comp="countryCode" x-data="countryCode({ countryCode: '' })">
+        {{ include('form/items/address/_fields', {
+            address: address,
+            showLabelField: true,
+        }) }}
+      </div>
+
+      {{ hiddenInput('ownerId', currentUser.id) }}
+
+      {{ tag('button', {
+        type: 'submit',
+        class: component('button', false, 'mt-p40'),
+        text: 'Save Address'|t
+      }) }}
+    </form>
+</div>
+{% endif %}
+
+{# {% if not entry.linkField.isEmpty() %}
+  {% include 'components/_button.twig'|siteInclude with { settings: {
+    'text'  : entry.linkField.text,
+    'type'  : 'link',
+    'href'  : entry.linkField.url,
+    'style' : 'arrow',
+    'class' : 'mr-p8 mb-p20 mt-p50',
+    'icon'  : 'triangle-in-circle-left',
+    'iconAlign' : 'left',
+  }} %}
+{% endif %} #}
+

@@ -1,0 +1,120 @@
+changedFieldIndicator: null
+field: b8ba4488-3ef7-4910-b137-7734e13e06e8 # Links
+fieldLayouts:
+  02d98755-9659-4f58-b54c-3b5f8499a5dc:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 67e63ba4-466c-4ce1-a122-862af7c4b151 # Icon
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f6527376-8546-479d-b5f5-e45555024bc2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f526959b-e0bb-4a75-943f-9c5cf4d525c9 # Link
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: decf973c-ed92-4a7c-9aaf-6d00e7270c9b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 88d29ec0-2a38-4737-bb5b-0e599994dfc1
+        userCondition: null
+fields:
+  67e63ba4-466c-4ce1-a122-862af7c4b151: # Icon
+    columnSuffix: nafatnxm
+    contentColumnType: string
+    fieldGroup: null
+    handle: icon
+    instructions: null
+    name: Icon
+    searchable: false
+    settings:
+      sets:
+        - UI-profile
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Icon
+  f526959b-e0bb-4a75-943f-9c5cf4d525c9: # Link
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: sectionLink
+    instructions: null
+    name: Link
+    searchable: false
+    settings:
+      allowCustomText: true
+      allowTarget: false
+      autoNoReferrer: false
+      customTextMaxLength: 0
+      customTextRequired: false
+      defaultLinkName: entry
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        asset:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        category:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        craftCommerce-product:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        custom:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        email:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        entry:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: true
+          sources:
+            - singles
+            - 'section:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+        site:
+          enabled: false
+          sites: '*'
+        tel:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        url:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        user:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField

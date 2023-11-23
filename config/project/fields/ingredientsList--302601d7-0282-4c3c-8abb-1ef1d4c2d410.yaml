@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: f1f1ffc6-b86c-414b-ab39-d213b7efe85e # Modules
+handle: ingredientsList
+instructions: 'Ingredients can be Ingredient entries or Products. If both have been selected for a row the Product will take precedence.'
+name: 'Ingredients List'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_ingredientslist}}'
+  maxBlocks: 1
+  minBlocks: null
+  propagationKeyFormat: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

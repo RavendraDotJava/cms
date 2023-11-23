@@ -1,0 +1,89 @@
+{% apply spaceless %}
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'text'  : '',
+  'entry' : {},
+  'href'  : false,
+  'type'  : 'link',
+  'style' : '',
+  'class' : '',
+  'disabled' : false,
+  'video' : false,
+  'image' : false,
+  'params' : false,
+  'atts'  : {},
+  'icon'  : false,
+  'iconAlign' : 'right',
+  'iconReact' : true,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{# Set the href variable #}
+{% set href = settings.href %}
+{% if settings.entry is not empty %}
+  {% if settings.entry.url is defined %}
+    {% set href = settings.entry.url %}
+  {% endif %}
+{% endif %}
+
+{# Set the class #}
+{% set class = "c-btn" %}
+{% if settings.style is not empty %}
+  {% set class = class ~ " c-btn-" ~ settings.style %}
+{% endif %}
+{% if settings.class is not empty %}
+  {% set class = class ~ " " ~ settings.class %}
+{% endif %}
+
+{# Set the attributes #}
+{% set atts = "" %}
+{% if settings.disabled %}
+  {% set atts = " disabled" %}
+{% endif %}
+{% if settings.atts is not empty %}
+  {% for att, val in settings.atts %}
+    {% if val is not iterable and val is not same as(false) %}
+      {% set atts = atts ~ " " ~ att %}
+      {% if val is not same as(true) %}
+        {% set atts = atts ~ '="' ~ val ~ '"' %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{# Set the text #}
+{% set text = settings.text %}
+{% if settings.icon is not empty %}
+  {% set iconInteract = ' ' %}
+  {% set iconStyle = ('button-' ~ settings.style)|camel %}
+  {% if settings.iconAlign == 'left' %}
+    {% set text = getIcon(settings.icon, iconStyle, (settings.iconReact ? 'mr-p8 -ml-p2 right-0 group-hover:right-p4 group-focus:right-p4' : 'mr-p8 -ml-p2')) ~ settings.text %}
+  {% else %}
+    {% set text = settings.text ~ getIcon(settings.icon, iconStyle, (settings.iconReact ? 'ml-p8 -mr-p2 left-0 group-hover:left-p4 group-focus:left-p4' : 'ml-p8 -mr-p2')) %}
+  {% endif %}
+{% endif %}
+
+{% set class = component('button', settings.style, settings.class) %}
+
+{# Set params #}
+{% set params = false %}
+{% if (settings.image or settings.video) and settings.params is not empty %}
+  {% set params = settings.params|json_encode %}
+{% endif %}
+
+{% if settings.type == "button" %}
+  <button class="{{ class }}"{{ atts is not empty ? atts|raw : '' }}>{{ text|raw }}</button>
+{% elseif settings.image %}
+  <a href="{{ href }}" class="{{ class }}"{{ atts is not empty ? atts|raw : '' }}{{ params is not empty ? ('data-params="' ~ params|e('html') ~ '"')|raw : '' }} x-data @click="cModalTrigger($event, '', 'image')">{{ text|raw }}</a>
+{% elseif settings.video %}
+  <a href="{{ href }}" class="{{ class }}"{{ atts is not empty ? atts|raw : '' }} data-video="{{ settings.video }}" x-data @click="cModalTrigger($event, '', 'video')" {{ params is not empty ? ('data-params="' ~ params|e('html') ~ '"')|raw : '' }}>{{ text|raw }}</a>
+{% else %}
+  <a href="{{ href }}" class="{{ class }}"{{ atts is not empty ? atts|raw : '' }}>{{ text|raw }}</a>
+{% endif %}
+{% endapply %}

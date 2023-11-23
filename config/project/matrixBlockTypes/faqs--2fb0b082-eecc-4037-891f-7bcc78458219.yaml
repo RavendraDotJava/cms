@@ -1,0 +1,212 @@
+field: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+fieldLayouts:
+  3d73f8ab-e538-46d7-9de3-042bef25a0a6:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: bbc23cb0-80e6-4ae6-ba38-1a6a0b8452f9 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 301320c9-f87e-4085-a82d-eeda8910fc53
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: fb6d2d4e-4217-4dfa-953d-3d606f96b896 # Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fe9bf8ad-202d-49bf-9826-a4ff20d3ce10
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 695e9090-0c77-43d1-b268-235e729bea6c # Questions
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: af9507fb-a356-43d7-98d9-ad5472d0ecf5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 0debb9eb-7e0b-4b3d-a287-433057ad818a # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6809eedd-737e-4433-a479-a3e7d4657d1c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 080ab367-0f38-4af3-a5a0-8b483087797a
+        userCondition: null
+fields:
+  0debb9eb-7e0b-4b3d-a287-433057ad818a: # Module
+    columnSuffix: dizxukpj
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: white
+      decorations: ''
+      decorationsDefault: ''
+      independentPadding: '1'
+      moduleId: ''
+      overflow: ''
+      padding:
+        - none
+        - small
+        - medium
+        - large
+      paddingDefault: medium
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+  695e9090-0c77-43d1-b268-235e729bea6c: # Questions
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: questions
+    instructions: 'Use this field to add the questions for this module.'
+    name: Questions
+    searchable: false
+    settings:
+      blockTypeFields: 0
+      changedFieldIndicator: 664366844
+      columns:
+        __assoc__:
+          -
+            - dbd38305-efbf-44e4-b014-611692891afe # Question
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 7cfbb76c-d4ca-495d-895a-2e3910ea3606 # Answer
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_18_questions}}'
+      fieldLayout: matrix
+      maxRows: null
+      minRows: null
+      propagationKeyFormat: null
+      propagationMethod: all
+      selectionLabel: null
+      staticField: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\supertable\fields\SuperTableField
+  bbc23cb0-80e6-4ae6-ba38-1a6a0b8452f9: # Heading
+    columnSuffix: llspwiwu
+    contentColumnType: string
+    fieldGroup: null
+    handle: heading
+    instructions: "Use this field to add a heading to this module.\r\n\r\nTo highlight a particular piece of the heading text, wrap the targeted words in single asterisk (`*`). For example: `this is a *highlighted* heading`.\r\n\r\nThis field also allows you to set the heading level. _Please use this feature with caution and ensure proper document structure,_ as improper document structures are an accessibility concern. "
+    name: Heading
+    searchable: false
+    settings:
+      defaults:
+        __assoc__:
+          -
+            - levels
+            -
+              __assoc__:
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+          -
+            - sizing
+            -
+              __assoc__:
+                -
+                  - default
+                  - Default
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+                -
+                  - h5
+                  - H5
+      heading: ''
+      levelDefault: h2
+      levels:
+        - h2
+        - h3
+        - h4
+      sizing:
+        - h1
+        - h2
+        - h3
+        - h4
+      sizingDefault: h2
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Heading
+  fb6d2d4e-4217-4dfa-953d-3d606f96b896: # Content
+    columnSuffix: yieiaeey
+    contentColumnType: text
+    fieldGroup: null
+    handle: contentText
+    instructions: 'Use this field to add introductory content for this module.'
+    name: Content
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: true
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: faqs
+name: FAQs
+sortOrder: 3

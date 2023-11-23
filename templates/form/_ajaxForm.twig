@@ -1,0 +1,67 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'action' : '',
+  'successMessage': '',
+  'reloadOnSuccess': false,
+  'form': '',
+  'formData': '',
+  'id': 'ajaxForm'
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set formData = {} %}
+{% if settings.formData is not empty %}
+  {% set formData = settings.formData|json_encode() %}
+  {# {% set formData = {} %}
+  {% for key, item in settings.formData %} #}
+    {# {{ key }} {{ item }} #}
+    {# {% set formData = formData|merge(key ~ ":" ~ "'" ~ item ~ "',") %} #}
+  {# {% endfor %} #}
+{% endif %}
+
+
+{% import 'partials/_macros' as helpers %}
+
+<form method="post"
+  accept-charset="UTF-8"
+  id="{{ settings.id }}"
+  name="{{ settings.id }}"
+  x-comp="ajaxForm"
+  x-data="ajaxForm({
+    token: '{{ craft.app.request.getCsrfToken() }}',
+    action: '{{ settings.action }}',
+    successMessage: '{{ settings.successMessage }}',
+    formData: {{ formData }},
+    reloadOnSuccess: {{ settings.reloadOnSuccess }},
+  })"
+  @submit.prevent="onSubmit"
+  class="relative">
+  <div class="transition-opacity" :class="loading ? 'opacity-20 pointer-events-none' : ''">
+
+    <div x-show="isSuccess || hasError">
+      <div class="flex mb-p32">
+        <template x-if="isSuccess">
+          {{ helpers.icon('checkmark', 'fill-success w-p32 h-p32 mr-p10') }}
+        </template>
+        <template x-if="hasError">
+          {{ helpers.icon('cross', 'fill-error w-p32 h-p32 mr-p10') }}
+        </template>
+        <p x-text="message" class="font-normal text-lg"></p>
+      </div>
+    </div>
+
+    {% include "form/forms/_" ~ settings.form ~ ".twig" %}
+
+  </div>
+  <div x-cloak x-show="loading" class="absolute inset-0 flex items-center justify-center">
+    <div class="text-center">
+      {% include "svg/_loading.twig" %}
+    </div>
+  </div>
+</form>

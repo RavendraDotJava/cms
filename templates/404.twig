@@ -1,0 +1,32 @@
+{% extends "_layout" %}
+{% import 'partials/_macros' as helpers %}
+
+{% do seomatic.meta.setAttributes({
+  "seoTitle": 'Page Not Found'|t
+}) %}
+
+{% block content %}
+
+<div class="h-screen pt-headerSm mq768:pt-headerLg">
+  <div class="{{ component('modulePadding', false, '') }}">
+    <div class="{{ component('headerWrap', false, '') }}">
+      <h1 class="mb-p50">{{ notFound.heading }}</h1>
+      <div class="c-content max-w-3xl">
+        <p>{{ notFound.introParagraph }}</p>
+      </div>
+      <div class="mt-p50 mq768:max-w-3xl">
+        {% for button in notFound.buttons %}
+          {% include 'components/_button.twig'|siteInclude with { settings: {
+            'text'  : button.button.text,
+            'href'  : button.button.url,
+            'type'  : 'link',
+            'style' : button.buttonStyle,
+            'class' : 'mx-p8 mb-p16 mq768:mb-none last:mb-none first:ml-none'
+          }} %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

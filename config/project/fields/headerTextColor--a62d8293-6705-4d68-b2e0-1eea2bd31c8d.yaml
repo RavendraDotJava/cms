@@ -1,0 +1,15 @@
+columnSuffix: bmorscit
+contentColumnType: text
+fieldGroup: 1901e8d3-2a7e-47ef-94ec-a27c6f4346e2 # Header
+handle: headerTextColor
+instructions: 'Use this field to change the color of the text in the page header.'
+name: 'Header Text Color'
+searchable: false
+settings:
+  default: null
+  palette: 'Olina Text'
+  setRandom: false
+  useConfigFile: true
+translationKeyFormat: null
+translationMethod: none
+type: percipiolondon\colourswatches\fields\ColourSwatches

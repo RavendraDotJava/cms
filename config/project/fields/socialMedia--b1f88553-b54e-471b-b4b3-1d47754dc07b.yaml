@@ -1,0 +1,44 @@
+columnSuffix: ybrqtohr
+contentColumnType: string
+fieldGroup: d1d877d6-8695-4cbb-8eda-fa0a9e729c90 # Author
+handle: socialMedia
+instructions: 'On large screens, social media links will display in the site footer. On smaller screens, they will also display within the main navigation.'
+name: 'Social Media'
+searchable: false
+settings:
+  blockTypeFields: 0
+  changedFieldIndicator: 1803501970
+  columns:
+    __assoc__:
+      -
+        - a21e12c1-d447-4a80-880a-f73e41fafaee # Icon
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 9752b783-a46a-4dd9-8399-78a4d6aac13d # Title
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 717f7300-100d-436f-9e8c-fae604871315 # URL
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+  contentTable: '{{%stc_socialmedia}}'
+  fieldLayout: table
+  maxRows: null
+  minRows: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  selectionLabel: 'Add a social media link'
+  staticField: null
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

@@ -1,0 +1,1186 @@
+dateModified: 1700150404
+elementSources:
+  Solspace\Freeform\Elements\Submission:
+    -
+      key: '*'
+      type: native
+    -
+      heading: Forms
+      type: heading
+    -
+      key: 'form:1'
+      type: native
+    -
+      key: 'form:2'
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'form:3'
+      tableAttributes:
+        - id
+        - status
+        - dateCreated
+        - form
+        - 'field:17'
+      type: native
+    -
+      key: 'form:4'
+      type: native
+  craft\commerce\elements\Product:
+    -
+      key: '*'
+      type: native
+    -
+      heading: 'Product Types'
+      type: heading
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'productType:f94ef620-73da-4c8a-a57b-a45a1fc6a717' # Probiotics
+      tableAttributes:
+        - stock
+        - defaultPrice
+        - defaultSku
+        - variants
+        - 'field:5588ca64-cd6e-41cd-9faa-b87493493fc9' # Media
+        - link
+      type: native
+  craft\elements\Asset:
+    -
+      key: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      type: native
+    -
+      key: 'volume:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+      type: native
+    -
+      key: 'volume:e2f95299-9ec8-4cf5-983a-5036117ee9b0'
+      type: native
+    -
+      defaultSort:
+        - dateCreated
+        - desc
+      disabled: false
+      key: 'volume:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+      tableAttributes:
+        - filename
+        - size
+        - dateModified
+        - uploader
+        - link
+      type: native
+    -
+      defaultSort:
+        - dateCreated
+        - desc
+      disabled: false
+      key: 'volume:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+      tableAttributes:
+        - filename
+        - size
+        - dateModified
+        - uploader
+        - 'field:f5c9ae05-6879-4996-9abb-0518808f911f' # Video File MP4
+        - link
+        - kind
+      type: native
+    -
+      defaultSort:
+        - dateCreated
+        - desc
+      disabled: false
+      key: 'folder:9f8d8084-2b4d-428e-8071-ac2c1db0c9cd'
+      tableAttributes:
+        - filename
+        - size
+        - dateModified
+        - uploader
+        - link
+      type: native
+  craft\elements\Entry:
+    -
+      disabled: false
+      key: '*'
+      tableAttributes:
+        - section
+        - postDate
+        - expiryDate
+        - link
+      type: native
+    -
+      heading: Singles
+      type: heading
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: singles
+      tableAttributes:
+        - uri
+        - link
+      type: native
+    -
+      heading: Pages
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      disabled: false
+      key: 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+      tableAttributes:
+        - postDate
+        - dateUpdated
+        - revisionCreator
+        - type
+        - section
+        - link
+      type: native
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: false
+      key: 'section:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - author
+        - 'field:d4b86a43-1de0-4002-b815-54c7bebd8616' # Categories
+        - link
+        - 'field:ae3b1630-c045-45b9-acd8-63268c2b371d' # Hero Image
+      type: native
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: false
+      key: 'section:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - 'field:d4b86a43-1de0-4002-b815-54c7bebd8616' # Categories
+        - author
+        - 'field:ae3b1630-c045-45b9-acd8-63268c2b371d' # Hero Image
+        - link
+      type: native
+    -
+      heading: Fragments
+      type: heading
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'section:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+      tableAttributes:
+        - 'field:46ebd2a3-87ff-402b-8830-a7f8e851ec6f' # Author Photo
+        - postDate
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'section:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+      tableAttributes:
+        - postDate
+        - author
+      type: native
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: false
+      key: 'section:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+      tableAttributes:
+        - postDate
+        - author
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'section:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+      tableAttributes:
+        - 'field:f5534be7-e8ed-4cd9-9931-f8a429ce7d33' # Description
+        - postDate
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'section:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+      tableAttributes:
+        - 'field:321c21ab-ea1f-44aa-8af0-d45271f50c1b' # Benefit Description
+      type: native
+    -
+      heading: Subscription
+      type: heading
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: false
+      key: 'section:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+      tableAttributes:
+        - author
+        - link
+      type: native
+    -
+      heading: Checkout
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      disabled: false
+      key: 'section:a8188730-d041-4b1c-91c1-19fba1e60b19' # Checkout
+      tableAttributes:
+        - uri
+        - link
+      type: native
+    -
+      heading: User
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      disabled: false
+      key: 'section:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+      tableAttributes:
+        - uri
+        - link
+      type: native
+  craft\elements\User:
+    -
+      key: '*'
+      type: native
+    -
+      defaultSort:
+        - username
+        - asc
+      disabled: false
+      key: admins
+      tableAttributes:
+        - fullName
+        - email
+        - dateCreated
+        - lastLoginDate
+        - id
+      type: native
+    -
+      heading: 'Account Type'
+      type: heading
+    -
+      key: credentialed
+      type: native
+    -
+      key: inactive
+      type: native
+    -
+      heading: Groups
+      type: heading
+    -
+      key: 'group:f0814832-8091-484e-a92d-3845677d2eb8' # Content Editor
+      type: native
+    -
+      defaultSort:
+        - username
+        - asc
+      disabled: false
+      key: 'group:643fb2ea-358b-41de-91b8-31bfc8aff225' # Customer
+      tableAttributes:
+        - fullName
+        - email
+        - dateCreated
+        - lastLoginDate
+        - id
+      type: native
+email:
+  fromEmail: $EMAIL_SYSTEM_ADDRESS
+  fromName: $EMAIL_SENDER_NAME
+  replyToEmail: $EMAIL_REPLY_ADDRESS
+  template: null
+  transportSettings:
+    encryptionMethod: none
+    host: $SMTP_HOST_NAME
+    password: $SMTP_PASSWORD
+    port: $SMTP_PORT
+    timeout: '10'
+    useAuthentication: '1'
+    username: $SMTP_USERNAME
+  transportType: craft\mail\transportadapters\Smtp
+fs:
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      cdnUrlPattern: ''
+      customSubfolder: images
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: olina-joy/local/images/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: '@web/volumes/images'
+  review:
+    hasUrls: true
+    name: Review
+    settings:
+      cdnUrlPattern: ''
+      customSubfolder: review
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: olina-joy/local/review/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: 'https://cdn2.assets-servd.host/'
+  transforms:
+    hasUrls: true
+    name: Transforms
+    settings:
+      cdnUrlPattern: ''
+      customSubfolder: transforms
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: olina-joy/local/transforms/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: '@web/volumes/transforms'
+  user:
+    hasUrls: true
+    name: User
+    settings:
+      cdnUrlPattern: ''
+      customSubfolder: user
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: olina-joy/local/user/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: '@web/volumes/user'
+  videoFiles:
+    hasUrls: true
+    name: 'Video Files'
+    settings:
+      cdnUrlPattern: ''
+      customSubfolder: video-files
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: olina-joy/local/video-files/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: '@web/volumes/video-files'
+  videos:
+    hasUrls: true
+    name: 'Videos External'
+    settings:
+      cdnUrlPattern: ''
+      customSubfolder: videos-external
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: olina-joy/local/videos-external/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: '@web/volumes/videos'
+meta:
+  __names__:
+    0a84c0c1-5a13-482c-8ba5-4d960c2a052a: 'Authorize Subscriptions' # Authorize Subscriptions
+    0ad367fe-f69b-412f-b5fb-de24d7d7ac7e: 'Order Success Message' # Order Success Message
+    0b17acd4-4bab-4948-8650-e0c6de8ca19e: 'Filter ID' # Filter ID
+    0c050765-98ea-4597-99b4-983560a048a4: 'Feed Page' # Feed Page
+    0d4bc536-f7c2-4bc8-8efa-fb7c5b30e699: 'Alert Text' # Alert Text
+    0d488905-f65a-402d-bc98-eeb91c45321e: 'Product Cards' # Product Cards
+    0debb9eb-7e0b-4b3d-a287-433057ad818a: Module # Module
+    0dfa94ca-6b89-4bf2-8119-a1b1e269747a: 'Text Content' # Text Content
+    0f245ff3-7c7c-412c-ab9d-1957c74c445c: Benefits # Benefits
+    1a3cdcab-623b-4b11-ade7-52a84d584457: 'Order Status Details' # Order Status Details
+    1a896f00-10fe-46a2-9e87-79a81cd9230e: 'Radiant Circles' # Radiant Circles
+    1c8a3c63-b631-4cf5-8fdf-7f0f495f9305: 'Logo Size' # Logo Size
+    01c86e51-5bd8-409c-92f3-6dc083b3d89b: Author # Author
+    1cb23527-b0ce-4041-bec6-3b9136a632a1: 'Text Left' # Text Left
+    1cd4213c-748a-4b0c-8e49-5d01457b3efa: 'Media Location' # Media Location
+    1cdea1b8-7c2b-4215-8384-77b4ff7ea1e4: Button # Button
+    1d9dbb85-1646-450d-9921-7f7a7e557fd1: 'Initial Alignment' # Initial Alignment
+    1d23ee39-4c0f-40cb-8279-5137cf5f751f: Module # Module
+    1df467d1-e32e-472e-8fdc-9cbc2d3b9213: Description # Description
+    1e97c7e4-388d-49f1-aea8-bda27cd82509: Module # Module
+    1fe652bb-c976-4de7-a2e4-6c5f907afda8: Notes # Notes
+    2a23faaf-94ed-4002-9bb8-276816811957: Heading # Heading
+    2a652de9-4dba-40b0-a94e-17e6450e2362: Module # Module
+    2aa97740-4cf1-49ad-8b1d-aa1e9eccc385: Icon # Icon
+    2b0c3b53-a004-4b4e-aaa9-bbb32d0b0cdd: Heading # Heading
+    2baf79f3-8a6d-4ba5-baa2-ebecf707d81a: 'Checkout Text' # Checkout Text
+    2c1d5586-a028-4226-8102-387a312d3aa7: 'Cookie Expiry' # Cookie Expiry
+    2df6c602-1395-4920-aa49-54976d61f985: Notice # Notice
+    2ec24e1b-5f0d-4e2a-9f31-6d6b1830d3d9: Heading # Heading
+    2f3a72a7-dd64-4556-9a1c-d8ce203b5678: 'Button Text' # Button Text
+    2f6507e5-d577-4de4-948b-33f3785ad4d6: 'Customer Profile' # Customer Profile
+    2fb0b082-eecc-4037-891f-7bcc78458219: FAQs # FAQs
+    2ff1c694-b820-49aa-a8c7-c7c081fc29b4: 'Select measurement unit' # Select measurement unit
+    3b1d5657-f4f2-42df-ad71-e8eec665b105: Blog # Blog
+    3b9e6a4a-e2c6-4bf6-bed8-be124c0ef788: 'CTA Heading (Guest)' # CTA Heading (Guest)
+    3b45b705-e6aa-4972-859f-28beb3be31e5: Heading # Heading
+    3beb015d-7093-4a5b-a59f-b476590c93d0: 'Product CTA' # Product CTA
+    3cc6b0fd-cdf1-4336-997b-8ead86698e1f: Quantity # Quantity
+    3cd587cd-f255-4e48-b1f0-e02272f93ed8: Heading # Heading
+    3cdd4183-4ac5-4f80-ab33-25b86595f590: Color # Color
+    3d794beb-26a8-4dd6-886d-00d51f747cb8: Parallax # Parallax
+    3e336f44-41a0-4694-98e4-225eec21d73c: 'Video Type' # Video Type
+    3ed437e4-57df-474d-b42e-a8e3a4bbcdde: Link # Link
+    3f0bc8e2-2e90-4b58-be74-00243d9b4a9e: SEO # SEO
+    03f96217-4005-4a6a-9662-8aefec9110af: 'Button Color' # Button Color
+    3fb4418d-4565-47d4-8f02-0088c97eb53e: Cards # Cards
+    3fb10233-24fa-4c13-9a26-4dee515b5632: Shipping # Shipping
+    3fdcb1fe-2f14-4373-b2d0-00da5d35dafd: Relations # Relations
+    4a17fa06-0984-40e9-87ac-f54b82f830a3: Default # Default
+    4b6e076e-5d4c-4015-a95a-f53157368b1b: Default # Default
+    04b690e2-7379-41cf-85fc-26b3c1611748: 'Forgot Password Heading' # Forgot Password Heading
+    4c6ba5dd-7eca-49fc-9f60-b4943c7676a9: Features # Features
+    4c8d67a8-9fe0-4399-8183-ca0f2afd60f5: Subscription # Subscription
+    4c902f96-ee5e-48b0-97f8-433efb8726e9: 'Form Success Message' # Form Success Message
+    4cbea96f-2640-4363-b9c8-913606b7fa45: Image # Image
+    4cd70106-1bf0-4138-bdf1-9bd0cd20cc2a: 'Background Media' # Background Media
+    4d96cfbc-c428-4085-815f-f310416b40dc: 'Deactivate Confirmation Message' # Deactivate Confirmation Message
+    4ec6b010-b1cb-4e15-bf9f-fa3de410dd07: 'CTA Text (User)' # CTA Text (User)
+    4ee4f957-2cf4-4efc-b5a9-e449b480b81f: 'Radiant Circles' # Radiant Circles
+    4f31fe64-e32a-4d96-b192-7cdc3d9ba727: Media # Media
+    4f370f67-c4f8-4523-b748-0fccd96841e3: Module # Module
+    4f37786c-6a3f-457d-bd5b-5d1076c56f59: 'Secondary Button Prefix' # Secondary Button Prefix
+    4fc0e144-54cf-4c56-bf70-f15cbae6c0e3: 'HTML Embed' # HTML Embed
+    04fe8547-3f55-4da7-b1a5-7b70c1c933d2: 'Video Files' # Video Files
+    05ae0857-ee4f-45f0-b0af-6ae648cd7caa: Avatax # Avatax
+    05ce362b-819c-48e6-8016-2a01c432bdf2: Button # Button
+    5d9f5ab9-deed-4803-ac0f-44c105942f77: 'Checkout Register Heading' # Checkout Register Heading
+    5e0652c4-1d7f-4746-8769-06c85cabeca0: 'Comparison Chart' # Comparison Chart
+    5e2692b0-61e2-409b-901c-828603000c58: Heading # Heading
+    5eac682c-de9a-4433-9865-0a28b75890c1: 'Card Link' # Card Link
+    5eec94af-2a5f-4210-9df2-6affa3c1a6ed: 'Text Content' # Text Content
+    5f0a8185-7da8-474a-bd9b-08e033129269: Media # Media
+    6a9fed13-c245-4f09-9811-d1f76da51463: 'Text Column Alignment' # Text Column Alignment
+    6b18f9dd-482a-494e-a796-a558aed7a79b: 'Product Benefit' # Product Benefit
+    6b73ca17-a446-4410-9dae-7d2e8144ba16: Keywords # Keywords
+    6ba022d5-9f92-4b34-9fe6-21d87781114a: Image # Image
+    6bd0980e-c683-4a78-ba64-fc76ce40b40f: 'Call to Action' # Call to Action
+    6cb97e74-cbd2-4a17-ae4d-7c775a6cf9a3: Text # Text
+    6ccac5c7-7a82-4b97-a889-8d1b6fff11ec: 'Text Content' # Text Content
+    6db7c242-c603-427f-b058-90594a792c2f: Content # Content
+    6ef1d25b-ab04-4063-88e3-110f404e5949: 'Empty Cart Message' # Empty Cart Message
+    6f4fa5af-dc3c-425b-9183-f24f31360424: Checkout # Checkout
+    6f418409-f60c-4dcb-9e0e-c78b08721a12: Recipe # Recipe
+    6fcc16ea-71a9-42cc-84ca-3c3c24a0a418: 'Text Content' # Text Content
+    7a3da8b3-4693-4025-a484-ee1eb12b5a87: 'Product Feature' # Product Feature
+    7a67f244-a44e-4e4b-8e40-7fe57c61ac98: Default # Default
+    7a169c40-4a9f-4c1b-987c-c28bb90c5b7b: New # New
+    7b2fcf17-543b-43a1-8571-ddf266d2539c: 'Video Transcript' # Video Transcript
+    7b8f749b-f6b8-42ec-8eb0-d78f62ee700c: 'Password Set Text' # Password Set Text
+    7bb6f41d-e08f-4190-9911-b8135c725160: 'Registration Redirect' # Registration Redirect
+    7c86c6cd-e0b0-4e34-9dcd-dd563bfae3da: Button # Button
+    7cfbb76c-d4ca-495d-895a-2e3910ea3606: Answer # Answer
+    7dde3bd6-c56c-403c-91ed-aab3e0b37b69: Display # Display
+    7dfab067-63b6-4d0a-8bf8-16956be55ad4: 'Modular Page' # Modular Page
+    7fc3fc05-0137-49b6-8d71-ab23acbb9122: 'Form Submission Redirect' # Form Submission Redirect
+    8ad90ace-d354-45e9-8697-5bd45e0a42a8: 'Save Order Address' # Save Order Address
+    8c08f1fc-b9e5-4710-8813-d9f98cbe18de: 'Current User Redirect' # Current User Redirect
+    8d46fc4e-4535-415e-b65a-6297a3e82f4a: 'Pending Activation Notice' # Pending Activation Notice
+    8e047e23-f7d2-4839-9e32-b8438195c119: Form # Form
+    8fa5b4f5-0dba-4403-b6f7-883613510a7d: Products # Products
+    9b19d4b2-7974-4dcf-ae48-cba502ffa4f5: Heading # Heading
+    9b3986b7-c3a5-44e7-9f43-6412e17579b6: 'Text Content' # Text Content
+    9d1d24d4-2b07-49db-9d74-8d22b32059a8: Module # Module
+    9dbbcc68-4ce5-4a97-b35f-7712e536c0cd: Button # Button
+    9e3d69b9-fdb5-4534-8275-3f621255e9a6: Heading # Heading
+    9e6a8cc2-2aaa-402c-9d11-f2ca9d4de326: 'CTA Text (User)' # CTA Text (User)
+    9f3ae588-aa03-48d0-a36a-2417f9d54bce: 'Filter ID' # Filter ID
+    9f869ddb-d881-4c45-be88-4d34eedcf43d: 'Product CTA' # Product CTA
+    9fc00bfb-3338-4f1f-bdb6-00b29f24300b: Clients # Clients
+    9fd6a88f-cc42-48c6-9bb1-9b742c529046: Filters # Filters
+    9ff556b0-1cf4-4002-90a6-6014eef0bf88: 'Manually Select Submissions' # Manually Select Submissions
+    11cf7dd4-914b-4d92-9030-a40a51ceb2b5: Module # Module
+    11d98a47-2dae-4c32-8385-aa9c89c3c447: 'Embed Code' # Embed Code
+    13b84cb9-113e-4526-aff3-e3b4df65a74e: Content # Content
+    14b50e08-cdfa-431f-a303-5358565d2dc0: 'Page Header Padding' # Page Header Padding
+    14bcd923-294e-4491-a08a-2f99d2b9b123: 'Basic Page' # Basic Page
+    16e66539-7b53-4876-aaad-1d94fe487315: Product # Product
+    17d7c779-fb65-451f-8256-9fdcee265a91: 'Register Heading' # Register Heading
+    17f3db5c-5749-45c0-b326-c3472011501e: Categories # Categories
+    22d1e75c-3fdd-4da1-9391-178150ab3dc0: Cards # Cards
+    23a16136-6014-4415-8828-cc4ba7ed8206: Categories # Categories
+    27cf3d3f-bc27-4c28-95c9-84ebd15857c4: Cart # Cart
+    27ee7fd9-ddac-484d-b208-3b0a210b9bc8: Default # Default
+    28bb6eb1-4b27-4660-9847-9ffe1dd5d3f7: Image # Image
+    28bd01bb-dc9b-4dc4-bd34-36767e990274: 'Benefit Name' # Benefit Name
+    31a9da52-68fc-4bf6-b0ee-ffe2080327f3: Button # Button
+    31e07f6a-2ea1-473b-ae35-665cf67e6b48: 'Icon List' # Icon List
+    33af70d3-e860-410d-b3c6-a419d69c5209: 'Checkout Register/Sign In' # Checkout Register/Sign In
+    37dc545e-cad4-4d8c-8c83-4f904638204b: 'No Email Redirect' # No Email Redirect
+    40c0ce0d-af11-4361-84ed-81752116132e: Heading # Heading
+    40ca8b9c-3f41-499b-bb47-107bdd4a8b74: Module # Module
+    042b953d-385e-4544-997f-3b43dcf291e6: '404' # 404
+    43d82d49-59c5-402b-85a6-b009c84626c8: Pages # Pages
+    46ebd2a3-87ff-402b-8830-a7f8e851ec6f: 'Author Photo' # Author Photo
+    49f2d177-25ef-412a-b1d6-ddc3c1610e32: 'Column Name' # Column Name
+    50d573b1-ebb8-4c84-beee-6e0e58c331e9: Content # Content
+    51b9fc8a-ac11-4b22-a4f8-a2b63608a269: Heading # Heading
+    52b87f76-788c-4d4e-89ed-9f60e7475787: Heading # Heading
+    52ce231a-caa8-409d-b1e1-712f35a541c7: 'Button Link' # Button Link
+    52d198b4-25f1-4832-a440-e0741c9bac18: 'Foreground Media' # Foreground Media
+    53dc002b-5888-4b8a-acfc-5781b6d39ee9: Width # Width
+    54a3c05b-2ff1-41a1-ac01-cc2f02150db3: Button # Button
+    56a15819-e4ce-4601-acb9-c045865e6752: Highlights # Highlights
+    56ad6d80-7299-4290-99b3-43ed585679f4: Content # Content
+    057f05bc-e4bf-4c08-94e8-1e40cc56bea7: Media # Media
+    58a66f0d-1503-4847-b56a-aee9326627eb: 'Order Entry' # Order Entry
+    58b621fe-f59f-4396-9e39-122f0ee45c29: 'Product Benefits' # Product Benefits
+    60cad0ef-585d-4351-a04d-a86ee2d7854c: 'Filter ID' # Filter ID
+    60f2ea8e-952b-4494-831b-188c6fc1647f: 'Form Submit Button Text' # Form Submit Button Text
+    065fa9d4-18e9-4c07-a87d-c2e8ba144137: 'Foreground Image' # Foreground Image
+    65fe7f7d-fdf1-4af4-90db-aaa48a7e01ff: Cancelled # Cancelled
+    67e63ba4-466c-4ce1-a122-862af7c4b151: Icon # Icon
+    070ca9d5-4671-4265-9bca-e796e1fdb024: 'Customer Subscriptions' # Customer Subscriptions
+    0070e085-8f40-4e03-9993-2d70a654cd78: 'Checkout Addresses' # Checkout Addresses
+    71f769d8-a4c5-4c54-980a-bd10ef008795: 'CTA Decoration' # CTA Decoration
+    75a04f23-4426-40c3-991c-a3ee529eedce: Heading # Heading
+    79ba406f-f174-4417-9802-ecff456e26b6: Heading # Heading
+    81a71f74-9a84-445d-b58e-78de547d7f8b: Image # Image
+    82ac52a1-2ad2-49d1-bbec-68b6778696bc: 'Text Content' # Text Content
+    82b8a3b1-765f-4800-b1a6-e9c04841d582: Authorize # Authorize
+    88aa0e2d-f8f9-4574-83b0-9454b8e01b63: Order # Order
+    90cc9309-355e-4e60-8b18-cb380d1a2120: HeadingLe # HeadingLe
+    92c539c5-e961-4fb3-b1d2-6d221805330c: 'Disclaimer Text' # Disclaimer Text
+    93e74a8e-072a-4812-9449-90a7d96ea10f: 'Citation Detail' # Citation Detail
+    094c0a55-58b3-4e60-9591-bab1831193cc: 'Primary Button' # Primary Button
+    94cd2b39-c53c-465d-b3ba-3ca493faea54: Product # Product
+    94fa7bc7-f98e-4cab-9085-2bfce3a119a7: 'Product Benefits' # Product Benefits
+    96ae9512-2817-4b13-8656-2f8a7cce93bc: 'Copyright Text' # Copyright Text
+    96d5acb4-9f5d-4cc4-bcbd-e2024fdfd12c: 'Add Address' # Add Address
+    99dee7d9-ceb3-4397-935b-5a1fdc6b7bd6: 'Footer Navigation' # Footer Navigation
+    99ea5efc-9c8b-45fc-83c0-96f9dc748ea5: 'Edit Address ' # Edit Address 
+    0166bfae-8627-47ea-9ab1-c9cc949d3ee5: Product # Product
+    201cce0e-5de4-454a-812c-e58729c8e2a5: Module # Module
+    225f33a6-8fb4-4927-9d52-53d9ffbb4258: 'CTA Heading (Guest)' # CTA Heading (Guest)
+    228b3771-6166-4c1f-9799-c00a4acb5ac4: 'Button Link' # Button Link
+    305c3ba1-4ab0-4c00-9caa-581b64b6dac2: Heading # Heading
+    321c21ab-ea1f-44aa-8af0-d45271f50c1b: 'Benefit Description' # Benefit Description
+    331ea7a5-4f6b-4e2a-9da7-cc8c85be26ea: Description # Description
+    332a8485-73d8-4ee2-85f6-0850ea9437ef: Content # Content
+    360e633b-8ece-4eb3-90db-8044b967f111: 'Video ID' # Video ID
+    361faeb0-b5ad-4241-a7c1-355bc04c3d4f: Benefits # Benefits
+    387d3010-a576-426f-889b-47a42084c82d: 'Customer Addresses Edit' # Customer Addresses Edit
+    453ae731-dd26-40ad-af46-3ed3b7ce06ef: Intro # Intro
+    0532bdd7-cc30-4009-a614-c9112330df4c: 'Cards Per Row' # Cards Per Row
+    537a53c4-976d-424a-b290-6867fb0252c4: Product # Product
+    570cf309-122f-4a68-8eb6-0a9e52f7b434: Ingredients # Ingredients
+    580bff42-c9e1-4561-af45-9212aea26d63: Module # Module
+    580d90ea-4899-46fe-8e51-415012c3b3ba: 'Text Content' # Text Content
+    599e0f23-292c-45fe-850b-ab298e84558c: Icon # Icon
+    601faa45-0a91-48f9-8a35-9e2e4967cdc2: 'Subscription Plan Details' # Subscription Plan Details
+    637a7ee0-c66b-4245-b08f-e47cf1a5ce49: 'Call to Action' # Call to Action
+    641a23c9-d7a6-44f9-8969-514e4138dc8a: 'Secondary Button' # Secondary Button
+    643fb2ea-358b-41de-91b8-31bfc8aff225: Customer # Customer
+    649c3c9c-8e4e-4849-b787-e158369f313b: Relations # Relations
+    665ef669-4de1-4301-9392-07207c3be8f0: 'Content Well' # Content Well
+    665f563e-4cd6-4cd1-a76b-0a35e892a7a1: Decoration # Decoration
+    695e9090-0c77-43d1-b268-235e729bea6c: Questions # Questions
+    701e9518-a15c-4199-b392-b0c7c4b6767e: 'Action Text' # Action Text
+    704dc5e6-fe1e-49d1-8448-62f2212f1f50: User # User
+    717f7300-100d-436f-9e8c-fae604871315: URL # URL
+    721a4c78-f881-41e4-8774-2f09b50cd977: Icon # Icon
+    00727e79-cbc2-4589-ba34-4d58fac1a35b: 'Page Header Style' # Page Header Style
+    792e73f4-8396-479b-bf92-944ddccce664: 'Details List' # Details List
+    814c1913-3e82-4490-bc1d-fd21b03dca9d: Heading # Heading
+    849f7c0b-dd6e-4b82-b827-4debafdd372b: 'Password Set Heading' # Password Set Heading
+    888e0188-b995-4402-810e-f6985238b64a: Image # Image
+    929ada61-659c-4330-bad0-1fe95169ff7a: Module # Module
+    979ac923-ab00-44c7-8df0-e4c2b138a441: 'Intro Text' # Intro Text
+    998f09c0-59f9-4184-a6d6-909ddd0a02e1: 'Primary Button' # Primary Button
+    1043b29e-618b-4e9c-b256-4f4f427f35a2: 'CTA Heading' # CTA Heading
+    1177ac9f-0c02-49a6-b6a6-917ac4375789: 'Background Color (Bottom)' # Background Color (Bottom)
+    1901e8d3-2a7e-47ef-94ec-a27c6f4346e2: Header # Header
+    1947bd9f-7dd7-40f0-ab74-2faea04e7f4c: Review # Review
+    2083c19f-62ce-441a-b177-e0f99efaa169: Form # Form
+    2377d8c4-15a6-4459-b01f-37929083d574: 'Vertical Line' # Vertical Line
+    2620dbea-d634-4e9c-ab91-ab2d85a31dd5: 'Supplementary Text' # Supplementary Text
+    3800e9ed-6377-4797-ad9a-3afe116711a9: Content # Content
+    3949de3d-eac8-48c6-97ca-8841dead060c: 'Ingredients List' # Ingredients List
+    4787b09f-f4e6-4424-8a11-76ff94882ff4: 'Product Description - Brief' # Product Description - Brief
+    004795e9-9ab8-44b3-a96c-6a343b346b18: 'Sign In Text' # Sign In Text
+    5155b603-5ad2-4915-8702-c914667ca083: 'Entry Type' # Entry Type
+    5256aa43-aac3-45ca-97a8-eeefae718438: 'AvaTax Tax Code' # AvaTax Tax Code
+    5588ca64-cd6e-41cd-9faa-b87493493fc9: Media # Media
+    6323f401-1768-4910-a3cb-4224267e6934: Product # Product
+    7017fdf0-807c-4c91-8adf-bc0babf1437c: Color # Color
+    7393bf74-9e83-4ef1-8823-f28edb7540e7: Footer # Footer
+    7439dd01-22db-43ec-a8de-6700bdb9fef6: 'Checkout Payment' # Checkout Payment
+    7720f599-2289-443d-9116-37368bd3cbc0: 'Customer Profile Edit' # Customer Profile Edit
+    7918ffa1-07f2-4091-a3f0-e6bed5cd43bf: 'Text Content' # Text Content
+    8115d7cb-6dda-4d7b-9876-6efc03ae1d5b: 'Secondary Button' # Secondary Button
+    8212ef00-9865-49fb-91d3-55a4685ed92a: Media # Media
+    8299bb27-529a-4aed-b5f2-083007df3e2c: Author # Author
+    8359eb46-f325-4bb5-9b2c-ceab6f0b1d99: Icon # Icon
+    08710ea3-e348-48d3-8571-a4abf61c981c: 'Public Schema' # Public Schema
+    9752b783-a46a-4dd9-8399-78a4d6aac13d: Title # Title
+    9990e566-d2c4-40c0-ae2c-e4b3815379e6: Text # Text
+    014427c7-e63c-4977-8f5f-fec3592088d4: 'Product Description - Detailed' # Product Description - Detailed
+    15453f3c-bbed-40a1-b82f-9dca388f6180: User # User
+    23256a38-e5ac-46f3-81be-66849d16f46e: Speed # Speed
+    25908c3a-6d5b-40ed-8cf1-3a74c4d37829: Form # Form
+    029031f9-6419-4824-a32f-91772a2585de: Decoration # Decoration
+    31512a18-094d-406a-9239-dcf0499144f2: Category # Category
+    38698c8a-f6b7-40b5-bf68-1a145001d2d6: 'Intro Paragraph' # Intro Paragraph
+    43426cb9-9bbf-4a3a-8187-3dc134393bc2: 'Order Tracking Number' # Order Tracking Number
+    43843b6e-2f8b-4c1c-a050-01c2ab9a4b7d: 'Details List' # Details List
+    052027f5-bdb7-4f68-974a-88be9b601711: Heading # Heading
+    53184d2b-0953-4653-9a07-e1fa10be2878: Order # Order
+    59013a07-402f-4c70-8ad6-7ffac3505436: Reviews # Reviews
+    69101e0e-f3bf-4fd4-9e69-cb06f7b4c9af: 'Column Headings' # Column Headings
+    73746a98-f3e9-44a0-865e-736bbe7ee377: Actions # Actions
+    79082a8a-1e17-4636-aec2-5abae827ff90: Content # Content
+    79329b7d-26e6-43b1-a8fc-ab13613488e7: Heading # Heading
+    83877ac3-e363-4637-a600-4cf6308001bf: 'Secondary Button' # Secondary Button
+    85947e8f-7d37-4af5-832f-7295156e218b: 'Order Tracking Carrier' # Order Tracking Carrier
+    88786e95-61bb-4d87-8c2b-aa72f850c936: 'Column Colour' # Column Colour
+    92447d89-7c58-4389-83d5-cd9b430cfc51: Heading # Heading
+    94452cfe-48ba-4aee-a1f6-3f34f087db4d: Heading # Heading
+    0096342c-b711-44cf-89ae-1611800e90cc: 'Related Products' # Related Products
+    201326a0-d266-456a-a7f8-843366230841: 'Radiant Circles' # Radiant Circles
+    281307c6-8ab0-4c47-b229-431e5796fde6: Highlights # Highlights
+    302601d7-0282-4c3c-8abb-1ef1d4c2d410: 'Ingredients List' # Ingredients List
+    319973fb-aa22-4cdd-ad46-64d90dafa3f7: 'Test Table' # Test Table
+    358375a2-80e5-43fc-98cb-53a40f733731: Module # Module
+    590746d4-f9df-475f-a1ef-fb92914db75c: Heading # Heading
+    842802dd-9df3-4d94-8219-a280544c5e55: Test # Test
+    849814e4-c9bf-4019-94d3-d8ad5ba06f16: 'Background Media' # Background Media
+    914324c7-ee2e-4375-9d32-7e56bb2d0c99: 'SEO Settings' # SEO Settings
+    996838eb-5673-4df7-b55e-a08a2d00b08e: Module # Module
+    1262417d-adab-4273-9f2b-02709eae6778: 'Site Header Style' # Site Header Style
+    2991178e-2167-4790-8e89-53e12fdab154: 'Text Content' # Text Content
+    5503792f-54df-423f-a1d4-53a6e606ba39: Author # Author
+    5766805a-9191-425e-b67b-3af732ab84d1: Feeds # Feeds
+    7321572e-5780-45f9-9d82-b341995d4579: 'Order Tracking Url' # Order Tracking Url
+    08443896-a29a-4f54-bd5e-61b7a59f01d3: Alignment # Alignment
+    9518037d-2435-4366-878c-838a2c03513a: 'Text Right' # Text Right
+    11863599-23c6-4281-8741-0d261a077350: Cart # Cart
+    18708076-c578-48ca-a5db-24780aae91c2: Content # Content
+    20880297-926b-46cd-9509-4cf1cf40b48f: Heading # Heading
+    24373304-1d32-48e1-a53c-549809c2fe67: Colour # Colour
+    30877511-3aed-4431-a52a-6876a73518e1: Module # Module
+    50919027-53da-4a78-abc8-a1b673fb2638: Button # Button
+    55636913-b4d9-4664-8a84-063fad308780: Module # Module
+    63188338-d41b-4fde-9989-e60584ec7828: 'Customer Reset Password' # Customer Reset Password
+    65169690-fb6f-4b2f-b6f2-2a5c60f26b02: 'Button Text' # Button Text
+    68682410-9af6-4b10-8068-6a8ea5936a01: Blog # Blog
+    68974515-06fa-44a2-9c96-ff5acdadb85a: Button # Button
+    69396920-8909-4af0-b148-90bf67c13805: Delivered # Delivered
+    74164938-bb69-469d-b4ce-1a651eee4972: 'Content Well' # Content Well
+    81990103-16c8-43ef-a13e-bf5474a6914c: 'User Navigation' # User Navigation
+    a02d3097-5172-475d-959c-89e19f15760b: Heading # Heading
+    a03d703d-a926-481c-8d2c-f04fe135a34b: Heading # Heading
+    a0909383-e5a9-4d8d-af1a-1fef825b9f42: Module # Module
+    a4e790fa-5eae-45f7-baea-c08aae1e368b: 'Background Image' # Background Image
+    a6b0d191-27eb-475d-a485-8b11d0877f8c: Ingredient # Ingredient
+    a8ee60cd-9e7b-4f81-a3ba-24ba5da90a4d: 'CTA Text (Guest)' # CTA Text (Guest)
+    a12c4b4d-9b71-4b91-94d2-8db5faa27cf4: Default # Default
+    a17ce85e-50af-4a1c-b85d-5c528d304c90: Alignment # Alignment
+    a21e12c1-d447-4a80-880a-f73e41fafaee: Icon # Icon
+    a62d8293-6705-4d68-b2e0-1eea2bd31c8d: 'Header Text Color' # Header Text Color
+    a72b2027-755d-4aeb-805b-63ee764f76cc: Ingredient # Ingredient
+    a97ffe63-a0eb-4cdc-a8e2-77a2e689f04d: Quantity # Quantity
+    a156c240-6097-49df-b9de-7e7ad7b50f39: Alerts # Alerts
+    a702eb0a-6d08-4038-b5f4-ba5dc3771426: 'Radiant Circles' # Radiant Circles
+    a761c7d6-6827-4eb0-999d-173f8ad256af: 'Alert Banner' # Alert Banner
+    a952bf2b-b44b-4581-bf77-5a1b7d885121: User # User
+    a1859b2f-005f-4742-9734-a9926bb6a304: 'Checkout Register Submit Button Text' # Checkout Register Submit Button Text
+    a538916c-4601-4832-ad98-bedeb317f535: Button # Button
+    a7731437-e0e8-40cf-829d-4e4308466deb: Button # Button
+    a8188730-d041-4b1c-91c1-19fba1e60b19: Checkout # Checkout
+    a8926105-5819-4d18-b3fc-f8cf1eef762d: Heading # Heading
+    aadb845d-5f8e-47ef-af6b-f337ea288d6b: 'Forgot Password Text' # Forgot Password Text
+    ab77e866-90e4-42dd-a7df-5767e239bb69: 'Alert Banner' # Alert Banner
+    abbdd14f-37e4-4070-9898-9b16bfbf6caa: 'Button Style' # Button Style
+    abda4614-ee87-4664-bcfc-fb2a71e77aef: 'Link Section' # Link Section
+    ad293fae-50be-4dd6-81da-6bbfb16d92da: Action # Action
+    ad354585-7430-4d9c-b1fd-cd0e9c539839: Button # Button
+    ae3b1630-c045-45b9-acd8-63268c2b371d: 'Hero Image' # Hero Image
+    af08c092-13bf-477f-a2ab-f9919ec03b00: 'Customer Addresses' # Customer Addresses
+    af65b24a-23cb-4955-b1f5-c27eda84b228: Icon # Icon
+    b0e2dd1b-8b14-410e-89ce-8acb40971314: Ingredients # Ingredients
+    b03ddbec-637d-4a46-bab0-032178db88eb: 'Button Style' # Button Style
+    b1e9bbd7-3fd7-464c-9e39-69f6c654c8c7: 'Checkout Payment Method' # Checkout Payment Method
+    b1f88553-b54e-471b-b4b3-1d47754dc07b: 'Social Media' # Social Media
+    b2b6f79d-8b07-48d1-bb98-31babebc41c0: 'Feature Name' # Feature Name
+    b2bae718-683c-47ba-90e0-444daf17a404: 'Text Content' # Text Content
+    b3b99a90-df30-4eff-9158-cf8a977d65ac: Testimonial # Testimonial
+    b3cc111c-f6c8-45b3-9c2e-fc3633840f77: 'Emphasized Content Banner' # Emphasized Content Banner
+    b3eff42f-970a-4d56-b873-a196d75a54d8: 'Call To Action' # Call To Action
+    b4cd8e37-ae3b-45f5-a650-7f566e9cb397: 'CTA Heading (User)' # CTA Heading (User)
+    b4f4c146-4572-4c72-aac1-19bbc09c66a3: 'Background Colour' # Background Colour
+    b6b04d30-2900-4630-89d9-3f8ce2a88904: Olina # Olina
+    b8ba4488-3ef7-4910-b137-7734e13e06e8: Links # Links
+    b54c2a1f-5a79-44f3-a660-a9810bdeb94d: Intro # Intro
+    b58b753c-d44b-4f17-9895-3819a449c7d3: Images # Images
+    b59af940-0ca2-40b5-805d-5338b4fb121d: Dummy # Dummy
+    b96aae3b-24e1-430a-aa86-5f1e786952ef: Heading # Heading
+    b133c338-be49-4180-8cdc-981503c2c3cb: Heading # Heading
+    b605d205-931b-4547-b3e3-88ddd32e2f79: 'Content Cards' # Content Cards
+    b667cf4e-8b2f-4552-8a24-f4ac16cb0ca1: 'Feature Columns' # Feature Columns
+    b870d9ba-46d8-4e90-8019-9f37c6404ce9: Cart # Cart
+    b1278ec9-ff48-423c-904d-004e14b365c8: 'Primary Button' # Primary Button
+    b8809ba2-e4bd-4090-b158-163ed119f3f8: Color # Color
+    b9038da0-0346-422d-8c0e-7e24f3d5d788: 'Product Images' # Product Images
+    b8911486-8ae8-4424-b035-45df1177b1af: 'Sign In Heading' # Sign In Heading
+    b9085870-974f-46ef-b23f-4cb4711311df: Delay # Delay
+    ba4b9e39-1fff-47a1-8e90-f6b25e15b6d9: Button # Button
+    bb39b16a-a6c2-40b5-80c7-6cfb41617f17: 'Register Text' # Register Text
+    bbc23cb0-80e6-4ae6-ba38-1a6a0b8452f9: Heading # Heading
+    bc0137a9-693d-4a0a-ae68-fe27587b69d3: Heading # Heading
+    bc221107-1140-417d-ba48-36e020971b37: Intro # Intro
+    bd78ffe9-245f-47ec-8d0f-dd60bb9880b2: 'Le Heading ' # Le Heading 
+    beeaffbd-fd1e-454b-9338-3d5efa1db18f: 'Banner Image' # Banner Image
+    bf308fef-36f6-4995-a4d9-964868129564: 'CTA Text (Guest)' # CTA Text (Guest)
+    c1a5628a-24cc-4897-b102-35c43bb65676: 'Button Style' # Button Style
+    c2ba9be4-065f-42b3-a293-377ac52af252: Heading # Heading
+    c3b7225f-7be0-4b53-b91d-5184a97f3e62: Heading # Heading
+    c3f2bc96-b4d9-42f4-968e-149de97d6715: Ingredient # Ingredient
+    c3f2eb96-80e7-4395-b9bf-db4775fb4bb9: Button # Button
+    c7c1b838-2ca2-4f13-968b-5746790b612f: 'Read Length' # Read Length
+    c8b0755e-8212-4a0a-9b4d-97401085e0e7: 'Checkout Heading' # Checkout Heading
+    c9d8b3cd-bb6b-494f-83d9-486eb34a6c68: Relations # Relations
+    c9f8a280-0c30-494c-80eb-db78eb439064: 'Content Modules' # Content Modules
+    c24bdb5a-97f3-4caf-8026-28968b8af8bc: 'Video File Secondary' # Video File Secondary
+    c59f0e4b-c89a-405f-9488-0c6967311d94: Footer # Footer
+    c347aeca-4123-4ad9-bb2d-f7d4a0d9330d: Position # Position
+    c891defc-3193-420a-b10e-27d29170c1af: Benefits # Benefits
+    c8160e92-5f1d-47c6-a195-3eb3eb0dc21b: Module # Module
+    c9268dbc-3781-4caf-97a1-ef7fa4bd491e: Distance # Distance
+    ca24fc01-d22d-4780-bd35-fa4e3a5762cf: Navigation # Navigation
+    ca961b5c-b391-465b-b037-e4b2ce254647: 'Continue As Guest' # Continue As Guest
+    cb1c65e5-7a86-4fb2-96af-21fbf6f68b19: Module # Module
+    cb1d21d3-07ae-44ee-9c3e-150ed740c3b5: Module # Module
+    cb9a476e-06da-4ac9-a6ca-3259c1af5204: Module # Module
+    cc3c87ad-e702-4696-8203-32a9bd68ebf4: 'Checkout Register Text' # Checkout Register Text
+    cde2b277-5300-412f-86b3-a6cfa218a0c2: Heading # Heading
+    ce61f3eb-3ebf-4f8f-9f9e-90e59acd15bb: Testimonials # Testimonials
+    ceaebd43-e55a-4cc7-8826-2975bcb52741: 'Link Style' # Link Style
+    cef1cfe9-9f65-46a6-945b-69b7471c2fec: 'Videos External' # Videos External
+    cfaf61af-023f-4a7f-bceb-c91f9475c5c5: 'Card Button Text' # Card Button Text
+    cff5175b-c824-4032-857b-dc0b56b75239: Header # Header
+    d1d877d6-8695-4cbb-8eda-fa0a9e729c90: Author # Author
+    d1e13260-47b3-45e3-9b1f-ab576109538f: Quantity # Quantity
+    d3bfabb5-8866-4800-b96c-5f27d67a7676: 'Checkout Step' # Checkout Step
+    d3ddbcd6-d0c0-4ac7-b91d-d6aaff726aa0: 'Foreground Media' # Foreground Media
+    d4b86a43-1de0-4002-b815-54c7bebd8616: Categories # Categories
+    d5a89382-5ce0-4361-a919-0b7d8dbed8df: 'CTA Heading (User)' # CTA Heading (User)
+    d8a63210-0e3f-48af-91d1-70ff10481f33: Decoration # Decoration
+    d9a5f216-dd10-4cf4-bb42-65349635d31e: Heading # Heading
+    d13a5842-ff11-40f9-bfac-61f4a8503003: 'Call To Action' # Call To Action
+    d26dd5d9-0611-4ceb-b48b-cac3efe0d790: 'UI Icon' # UI Icon
+    d33fafba-76c8-485a-b227-af98ef3e2858: 'Product Reviews' # Product Reviews
+    d38dd7f6-5fb4-4952-8afe-daec2d3137c6: 'Subscription Redirect' # Subscription Redirect
+    d282b573-5ee0-4f68-a292-246258a832c5: 'Text Content' # Text Content
+    d618d804-8392-4226-9b61-04e3547bdd4d: 'Dismiss Button' # Dismiss Button
+    d5297ddf-69b3-43c8-bcf7-2a3204ef3ff1: Image # Image
+    d469588b-e6db-45ee-ab98-f56eec0588bd: Module # Module
+    da006a4b-5e05-4d6e-9801-5e381b6a0926: Content # Content
+    da016506-9b96-43e4-9e38-d4c30ec3294c: Olina # Olina
+    da5d8cd3-25fa-4cb7-8d0d-3c3f8d63de90: 'Background Media' # Background Media
+    db611318-a807-435d-8e9a-40a059d79429: 'Product Benefits' # Product Benefits
+    dbd38305-efbf-44e4-b014-611692891afe: Question # Question
+    dc4a67b4-9feb-4c57-9842-a380ed874be1: Cards # Cards
+    dc482aee-0478-47f2-9485-dc35708791ba: Heading # Heading
+    dd1f4ee3-01b6-483d-8a02-e59a572fe32d: Years # Years
+    ddd46274-9f58-4c91-a2ac-00c79a1e21c5: Module # Module
+    deb0eaea-6515-4222-b231-7b7a06a5f78e: Heading # Heading
+    df64ba32-0a2a-494c-a582-df86a3d32aed: 'Entry Cards' # Entry Cards
+    e0c426b0-c5af-4df5-8bf7-a41fee220d0d: Image # Image
+    e03ea0e0-ec72-4d4c-894e-2cddaea27c76: 'Customer Order History' # Customer Order History
+    e1ff205b-fdee-4eee-aa1e-ca9e3f6038e0: Checkout # Checkout
+    e6b43f4b-4361-46f8-bdb6-e636dc2ec74f: 'Checkout Register Success Message' # Checkout Register Success Message
+    e6e973fd-1a99-4768-8658-ef17b6d082ae: 'On Hold' # On Hold
+    e23b20ac-dfa5-4bcc-867e-fb5965cfc1b1: Image # Image
+    e45d60f9-6bb1-4f38-8e88-322a944a0cbc: Order # Order
+    e45e7b4a-4e30-4f9a-9716-f30d83235d8a: 'Customer Profile' # Customer Profile
+    e54d5633-67e4-4147-ac0a-daecea3240dc: Review # Review
+    e72ca196-48c3-45ca-8552-544b72ee7500: Checked # Checked
+    e90d0415-a93d-444d-80bb-836c952c6cc9: Button # Button
+    e95ae3c6-337a-4822-8597-a81e0d94bbae: 'Social Media' # Social Media
+    e315fee9-fa4f-481d-bef1-222244b4575c: 'Product Reviews' # Product Reviews
+    e12607d1-b6e4-4d30-bf2a-2b3e527e1dd1: 'No Order Text' # No Order Text
+    e892298c-0e56-492b-b94d-134ff89c90ae: 'Payment Icons' # Payment Icons
+    ea57d790-907e-495c-9ae4-5b5e50286c5e: Module # Module
+    ecd65890-72fc-43da-8a3d-cec8071aa949: 'Checkout Shipping' # Checkout Shipping
+    eda1e649-2560-4f3c-a930-e908d5b7620f: 'Legal Navigation' # Legal Navigation
+    edaa0c85-b635-4e56-8d15-f1fb9329654d: Citation # Citation
+    ee136226-f084-4115-ad7e-e47a619f7fc3: 'AvaTax Customer Usage Type' # AvaTax Customer Usage Type
+    f03d9d6a-5f48-4b8a-9ba5-1e60629a8e6f: 'Primary Navigation' # Primary Navigation
+    f0814832-8091-484e-a92d-3845677d2eb8: 'Content Editor' # Content Editor
+    f1d98f11-d7e8-462c-aba7-f05a073afb6a: 'Deep Dive' # Deep Dive
+    f1edeeef-d864-44f5-b590-ff14fb420062: Module # Module
+    f1f1ffc6-b86c-414b-ab39-d213b7efe85e: Modules # Modules
+    f2c0ddd1-a1fe-4017-adef-ebf9b23e04b5: Benefits # Benefits
+    f4dbc0e0-ec94-43ee-aceb-2cccb841f080: Backfill # Backfill
+    f5c9ae05-6879-4996-9abb-0518808f911f: 'Video File MP4' # Video File MP4
+    f6a3f864-12b4-4003-8481-e6d2e6c9cb7e: Module # Module
+    f7b31e70-1186-4058-aedb-0f579872cd6c: Buttons # Buttons
+    f9fbdc01-3eb1-4caf-8dd4-288175d4e836: 'Profile Modules' # Profile Modules
+    f56ecfa0-a299-435d-990f-8c14c9d90ebb: Sections # Sections
+    f71e349e-30cf-4877-aaa1-d699d000bb4e: 'Call To Action' # Call To Action
+    f94ef620-73da-4c8a-a57b-a45a1fc6a717: Probiotics # Probiotics
+    f197da5a-a88b-49ec-ad29-5677e27c00aa: Common # Common
+    f291e594-fd4b-4413-a8c1-371a3ca1b43e: 'Review thank you message' # Review thank you message
+    f490b34b-f814-4b57-ac4e-4e226f58ca3b: Benefits # Benefits
+    f2267e9b-e469-4050-9b31-7d7a3df64cb4: 'Text Content' # Text Content
+    f2715ff7-2733-43d7-9fe7-d47f41b3661f: Default # Default
+    f5534be7-e8ed-4cd9-9931-f8a429ce7d33: Description # Description
+    f7305df5-4d77-4192-8dfe-1a079611873e: 'Select measurement unit' # Select measurement unit
+    f31872cd-b1be-4ade-b2c1-8569aff63e33: 'Parallax Images' # Parallax Images
+    f526959b-e0bb-4a75-943f-9c5cf4d525c9: Link # Link
+    faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6: Categories # Categories
+    fac4faa8-0918-419a-8862-0991f76c5f31: Module # Module
+    fb6d2d4e-4217-4dfa-953d-3d606f96b896: Content # Content
+    fbda6ed7-9b3e-4fc8-84a0-f2727488b5d2: 'Comparison Chart' # Comparison Chart
+    fd978f15-5a6f-48c0-aa76-d32303deadab: 'Feature Column' # Feature Column
+    fdc4069e-dad1-420d-aaf6-66f0c54a7602: 'Benefit Icon' # Benefit Icon
+    fdd2cca2-b684-442d-af3f-e73d045daf1d: Sections # Sections
+    feaaa8da-968c-487d-9afd-744bbb3fd9ee: 'Checkout Subscription' # Checkout Subscription
+plugins:
+  avatax:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+    settings:
+      accountId: $AVA_ID
+      certCaptureClientId: null
+      certCapturePassword: null
+      certCaptureUsername: null
+      companyCode: $AVA_CODE
+      debug: '1'
+      defaultDiscountCode: OD010000
+      defaultShippingCode: FR
+      defaultTaxCode: PF050700
+      enableAddressValidation: '1'
+      enableCommitting: '1'
+      enablePartialRefunds: '1'
+      enableTaxCalculation: '1'
+      environment: production
+      licenseKey: $AVA_KEY
+      sandboxAccountId: $AVA_ID
+      sandboxCompanyCode: $AVA_CODE
+      sandboxLicenseKey: $AVA_KEY
+      shipFromCity: Bolingbrook
+      shipFromCountry: 'United States'
+      shipFromName: 'ShipBob Warehouse'
+      shipFromState: Illinois
+      shipFromStreet1: '460 Gibraltar Dr'
+      shipFromStreet2: 'STE 200'
+      shipFromStreet3: ''
+      shipFromZipCode: '60440'
+  colour-swatches:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.4.3
+  commerce:
+    edition: pro
+    enabled: true
+    licenseKey: 9YMKC5INDGMB0T675F6234GL
+    schemaVersion: 4.2.3
+    settings:
+      activeCartDuration: 3600
+      allowCheckoutWithoutPayment: false
+      allowEmptyCartOnCheckout: false
+      allowPartialPaymentOnCheckout: false
+      autoSetCartShippingMethodOption: false
+      autoSetNewCartAddresses: true
+      autoSetPaymentSource: false
+      cartVariable: cart
+      defaultView: commerce/orders
+      dimensionUnits: mm
+      emailSenderAddress: null
+      emailSenderAddressPlaceholder: null
+      emailSenderName: null
+      emailSenderNamePlaceholder: null
+      freeOrderPaymentStrategy: complete
+      gatewayPostRedirectTemplate: ''
+      loadCartRedirectUrl: null
+      minimumTotalPriceStrategy: shipping
+      orderReferenceFormat: '{{number[:7]}}'
+      paymentCurrency: null
+      pdfAllowRemoteImages: false
+      pdfPaperOrientation: portrait
+      pdfPaperSize: letter
+      purgeInactiveCarts: true
+      purgeInactiveCartsDuration: 7776000
+      requireBillingAddressAtCheckout: false
+      requireShippingAddressAtCheckout: false
+      requireShippingMethodSelectionAtCheckout: false
+      showEditUserCommerceTab: true
+      updateBillingDetailsUrl: ''
+      updateCartSearchIndexes: true
+      useBillingAddressForTax: false
+      validateBusinessTaxIdAsVatId: false
+      validateCartCustomFieldsOnSubmission: false
+      weightUnits: g
+  commerce-authorize:
+    edition: standard
+    enabled: true
+    licenseKey: MQE82F9QZDXRQTZO0QZEXAZQ
+    schemaVersion: 1.0.0
+  cp-css:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+    settings:
+      additionalCss: ''
+      cacheBusting: true
+      cssFile: ui/cp/dev.css
+  freeform:
+    edition: pro
+    enabled: true
+    licenseKey: 7TAW7JT6273LUEKXXP76RNKB
+    schemaVersion: 4.2.6
+    settings:
+      ajaxByDefault: '1'
+      alertNotificationRecipients: ''
+      allowFileTemplateEdit: '1'
+      autoScroll: '1'
+      autoScrollToErrors: '1'
+      badgeType: all
+      blockedEmails: ''
+      blockedEmailsError: 'Invalid Email Address'
+      blockedIpAddresses: ''
+      blockedKeywords: ''
+      blockedKeywordsError: 'Invalid Entry Data'
+      bypassSpamCheckOnLoggedInUsers: ''
+      clientDigestFrequency: 1
+      clientDigestRecipients: ''
+      customErrorMessage: ''
+      customHoneypotName: ''
+      defaultTemplates: ''
+      defaultView: dashboard
+      digestFrequency: 1
+      digestOnlyOnProduction: false
+      digestRecipients: ''
+      displayFeed: true
+      emailTemplateDefault: files
+      emailTemplateDirectory: _email/
+      emailTemplateStorageType: files
+      exportHandlesAsNames: ''
+      exportLabels: ''
+      fieldDisplayOrder: name
+      fillWithGet: ''
+      footerScripts: false
+      formFieldShowOnlyAllowedForms: ''
+      formSubmitDisable: '1'
+      formSubmitExpiration: ''
+      formTemplateDirectory: form/freeform/templates
+      formattingTemplate: _form.twig
+      freeformHoneypot: '1'
+      freeformHoneypotEnhancement: '1'
+      hideBannerDemo: ''
+      hideBannerOldFreeform: false
+      minimumSubmitTime: ''
+      pluginName: Forms
+      purgableSpamAgeInDays: '0'
+      purgableSubmissionAgeInDays: '0'
+      purgableUnfinalizedAssetAgeInMinutes: 180
+      recaptchaBehaviour: display_error
+      recaptchaEnabled: false
+      recaptchaErrorMessage: 'Please verify that you are not a robot.'
+      recaptchaKey: null
+      recaptchaLazyLoad: false
+      recaptchaMinScore: 0.5
+      recaptchaSecret: null
+      recaptchaSize: normal
+      recaptchaTheme: light
+      recaptchaType: v2_checkbox
+      rememberPageSubmitOrder: '1'
+      removeNewlines: ''
+      renderFormHtmlInCpViews: '1'
+      salesforce_client_id: null
+      salesforce_client_secret: null
+      salesforce_password: null
+      salesforce_username: null
+      saveFormSessionLimit: '10'
+      saveFormTtl: '30'
+      scriptInsertLocation: footer
+      scriptInsertType: pointers
+      sessionContext: payload
+      sessionContextCount: '100'
+      sessionContextSecret: ''
+      sessionContextTimeToLiveMinutes: '180'
+      sessionEntryMaxCount: 50
+      sessionEntryTTL: 10800
+      showErrorsForBlockedEmails: ''
+      showErrorsForBlockedKeywords: ''
+      showTutorial: ''
+      spamFolderEnabled: '1'
+      spamProtectionBehaviour: simulate_success
+      submissionThrottlingCount: ''
+      submissionThrottlingTimeFrame: m
+      successTemplateDirectory: form/freeform/success
+      twigInHtml: '1'
+      twigInHtmlIsolatedMode: '1'
+      updateSearchIndexes: '1'
+  matrixmate:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  minify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  navigation:
+    edition: standard
+    enabled: true
+    licenseKey: SYLQ4KL5PFXAV82EN9DUZHLY
+    schemaVersion: 2.0.7
+  password-policy:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      cases: true
+      forcePasswordReset: false
+      forcePasswordResetDays: 90
+      maxLength: 20
+      minLength: 8
+      numbers: true
+      showStrengthIndicator: true
+      symbols: true
+  poptin:
+    client_id: ''
+    edition: standard
+    enabled: true
+    login_url: ''
+    pixel_url: 'https://cdn.popt.in'
+    poptin_url: 'https://app.popt.in'
+    schemaVersion: 1.0.0
+    token: ''
+    user_id: ''
+  porter:
+    edition: standard
+    enabled: true
+    licenseKey: OD8DTOXMHLD6OHGTLR1EKDJW
+    schemaVersion: 1.0.0
+    settings:
+      deactivateAccount: '1'
+      deactivateAccountConfirmationEmail: '1'
+      deactivateAccountDeleteDays: ''
+      deactivateAccountRedirect: /
+      deleteAccount: '1'
+      deleteAccountConfirmationEmail: '1'
+      deleteAccountConfirmationField: email
+      deleteAccountConfirmationKeyword: DELETE
+      deleteAccountConfirmationType: confirmationTypeField
+      deleteAccountRedirect: /
+      deleteAccountTransfer: null
+      emailBurners: ''
+      emailsBurnersVerifierApiKey: ''
+      magicLink: ''
+      magicLinkControlPanel: ''
+      magicLinkExpirySeconds: '300'
+      magicLinkFrontEnd: ''
+      magicLinkRedirect: /
+      passwordForcePolicy: ''
+      passwordForcePolicyMax: '128'
+      passwordForcePolicyMin: '8'
+      passwordForcePolicyRules: ''
+  section-and-product-type:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.3
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: OEPFLGA0U8Q3IKD2ORIUJS6H
+    schemaVersion: 3.0.12
+  servd-asset-storage:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+    settings:
+      adjustFeedmeLogs: ''
+      assetsEnvironment: ''
+      assetsEnvironmentOverwrite: ''
+      cacheClearMode: full
+      clearCachesOnSave: always
+      disableDynamic: ''
+      disableTransforms: ''
+      fsMaps:
+        __assoc__:
+          -
+            - images
+            - none
+          -
+            - review
+            - none
+          -
+            - transforms
+            - none
+          -
+            - user
+            - none
+          -
+            - videoFiles
+            - none
+          -
+            - videos
+            - none
+      fsMapsEnabled: ''
+      imageAutoConversion: webp
+      injectCors: ''
+      projectSlug: $SERVD_PROJECT_SLUG
+      securityKey: $SERVD_SEC_KEY
+      suppressWarnings: ''
+      useLocalVolumes: false
+  super-table:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+  typedlinkfield:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  typogrify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  vizy:
+    edition: standard
+    enabled: true
+    licenseKey: SWF0LSMN2XCX7T4O252TMWDG
+    schemaVersion: 0.9.0
+    settings:
+      iconsPath: '@webroot/ui/cp/block-icons'
+  webhooks:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.4.0
+system:
+  edition: pro
+  live: true
+  name: Olina
+  retryDuration: null
+  schemaVersion: 4.5.3.0
+  timeZone: America/New_York

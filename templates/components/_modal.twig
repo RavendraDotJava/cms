@@ -1,0 +1,58 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'id' : 'modal-component',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div class="c-modal fixed inset-0 z-50 hidden" x-comp="modal" x-data="modal({id:'{{ settings.id }}'})" x-show="$store.modal.show" x-trap="$store.modal.show" x-bind:aria-hidden="!$store.modal.show" @keydown="keyPress($event)"
+  x-transition:enter="c-modal-enter"
+  x-transition:enter-start="c-modal-enter-start"
+  x-transition:enter-end="c-modal-enter-end"
+  x-transition:leave="c-modal-leave"
+  x-transition:leave-start="c-modal-leave-start"
+  x-transition:leave-end="c-modal-leave-end">
+  {# Global container
+   # This tag is meant as a general container, which can be given classes to properly position the modal
+   # window itself. #}
+  <div class="w-full h-full bg-overlay fixed inset-0 z-0" tabindex="-1">
+
+    <div class="relative z-10 flex flex-col w-full h-full justify-center items-center p-p20">
+      <div id="{{ settings.id }}" class="c-modal-box w-full relative overflow-y-auto transition-all"
+        :class="modalClass(true)"
+        :tabindex="($store.modal.show) ? '-1' : false"
+        :aria-labelledby="showHeading() ? '{{ settings.id }}-title' : false"
+        :aria-label="getLabel()"
+        @focus="activate()"
+        aria-role="dialog"
+        x-ref="dialog">
+        <template x-if="showHeading()">
+          <header>
+            <h2 id="{{ settings.id }}-title" class="pt-p32 px-p32 text-h5" x-ref="heading" x-text="$store.modal.heading"></h2>
+          </header>
+        </template>
+        <template x-if="$store.modal.content" id="modal-content">
+          <div class="c-content p-p32" tabindex="-1" x-ref="content"></div>
+        </template>
+        <button class="absolute z-20 overflow-hidden top-p10 right-p10 p-p16 bg-white text-basalt rounded-full group hover:bg-basalt hover:text-white focus:bg-basalt focus:text-white transition-colors" @click="closeModal()">
+          {{ helpers.icon('close', 'h-p30 w-p30 transition-all fill-basalt group-hover:fill-white ') }}
+          <span class="hidden" type="button">Close</span>
+        </button>
+        <button type="button" x-show="$store.modal.transcript" class="text-btn text-white uppercase tracking-widest px-p8 py-p16" @click="showTranscript($event)" x-text="$store.modal.showTranscript ? '{{ 'Hide Transcript'|t }}' : '{{ 'Show Transcript'|t }}'">Show Transcript</button>
+      </div>
+      <div class="relative -top-ms text-segment w-full max-w-p768 mx-auto overflow-auto px-sm" :class="modalClass()"  x-ref="transcript">
+        <div x-show="$store.modal.showTranscript" x-collapse.duration.700ms>
+          <div class="py-p32 mq768:px-p32" id="modal-transcript" tabindex="0"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  {# Backdrop #}
+</div>

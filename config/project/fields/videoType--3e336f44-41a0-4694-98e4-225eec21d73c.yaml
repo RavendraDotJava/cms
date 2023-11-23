@@ -1,0 +1,45 @@
+columnSuffix: ezobxnsx
+contentColumnType: string
+fieldGroup: 057f05bc-e4bf-4c08-94e8-1e40cc56bea7 # Media
+handle: videoType
+instructions: 'Use this field to define the type of video.'
+name: 'Video Type'
+searchable: false
+settings:
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - YouTube
+        -
+          - value
+          - youtube
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Vimeo
+        -
+          - value
+          - vimeo
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - File
+        -
+          - value
+          - file
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

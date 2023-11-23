@@ -1,0 +1,27 @@
+defaultPlacement: end
+enableVersioning: false
+handle: checkout
+name: Checkout
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  da016506-9b96-43e4-9e38-d4c30ec3294c: # Olina
+    enabledByDefault: true
+    hasUrls: true
+    template: checkout/_checkout.twig
+    uriFormat: '{parent.uri}/{slug}'
+structure:
+  maxLevels: 2
+  uid: 4f8eb9ec-ab1a-470d-afa0-f92adebb20db
+type: structure

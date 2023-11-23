@@ -1,0 +1,323 @@
+field: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+fieldLayouts:
+  88073554-aa04-465e-8303-a3a31677f65e:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 5e2692b0-61e2-409b-901c-828603000c58 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b006d229-598c-47e6-9f19-d95509cea44c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6ccac5c7-7a82-4b97-a889-8d1b6fff11ec # Text Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f21fdad4-2d84-491d-b3db-edbcec0dccd1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 4cbea96f-2640-4363-b9c8-913606b7fa45 # Image
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a3d915cc-64ce-4d7c-bf43-f972da371a05
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 69101e0e-f3bf-4fd4-9e69-cb06f7b4c9af # Column Headings
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ef9a7506-36df-4b14-87a1-78feeb60901f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 4c6ba5dd-7eca-49fc-9f60-b4943c7676a9 # Features
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7487207a-81fd-49ed-bf19-2979affc2d32
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: cb9a476e-06da-4ac9-a6ca-3259c1af5204 # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 10513390-fbc0-40d6-8253-c9479787d7d2
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 501cd4c2-18a0-4cc3-980e-4c28ced9f61b
+        userCondition: null
+fields:
+  4c6ba5dd-7eca-49fc-9f60-b4943c7676a9: # Features
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: features
+    instructions: 'Use this field to add a feature row to this module.'
+    name: Features
+    searchable: false
+    settings:
+      blockTypeFields: 0
+      changedFieldIndicator: 300130829
+      columns:
+        __assoc__:
+          -
+            - b2b6f79d-8b07-48d1-bb98-31babebc41c0 # Feature Name
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - b667cf4e-8b2f-4552-8a24-f4ac16cb0ca1 # Feature Columns
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_13_features}}'
+      fieldLayout: matrix
+      maxRows: null
+      minRows: null
+      propagationKeyFormat: null
+      propagationMethod: all
+      selectionLabel: null
+      staticField: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\supertable\fields\SuperTableField
+  4cbea96f-2640-4363-b9c8-913606b7fa45: # Image
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: 'Use this field add an image above the comparison chart.'
+    name: Image
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds: null
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: false
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add an image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources:
+        - 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  5e2692b0-61e2-409b-901c-828603000c58: # Heading
+    columnSuffix: jygawias
+    contentColumnType: string
+    fieldGroup: null
+    handle: heading
+    instructions: "Use this field to add a heading to this module.\r\n\r\nTo highlight a particular piece of the heading text, wrap the targeted words in single asterisk (*). For example: this is a *highlighted* heading.\r\n\r\nThis field also allows you to set the heading level. Please use this feature with caution and ensure proper document structure, as improper document structures are an accessibility concern."
+    name: Heading
+    searchable: true
+    settings:
+      defaults:
+        __assoc__:
+          -
+            - levels
+            -
+              __assoc__:
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+          -
+            - sizing
+            -
+              __assoc__:
+                -
+                  - default
+                  - Default
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+                -
+                  - h5
+                  - H5
+      heading: ''
+      levelDefault: h2
+      levels:
+        - h2
+        - h3
+        - h4
+      sizing:
+        - h1
+        - h2
+        - h3
+        - h4
+      sizingDefault: h2
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Heading
+  6ccac5c7-7a82-4b97-a889-8d1b6fff11ec: # Text Content
+    columnSuffix: harodkej
+    contentColumnType: text
+    fieldGroup: null
+    handle: textContent
+    instructions: 'Use this field to add the main content of this module.'
+    name: 'Text Content'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  69101e0e-f3bf-4fd4-9e69-cb06f7b4c9af: # Column Headings
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: columnHeadings
+    instructions: 'Use this field to define the column headings for the comparison chart.'
+    name: 'Column Headings'
+    searchable: true
+    settings:
+      blockTypeFields: 0
+      changedFieldIndicator: 1616388933
+      columns:
+        __assoc__:
+          -
+            - 49f2d177-25ef-412a-b1d6-ddc3c1610e32 # Column Name
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 88786e95-61bb-4d87-8c2b-aa72f850c936 # Column Colour
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_13_columnheadings}}'
+      fieldLayout: table
+      maxRows: null
+      minRows: null
+      propagationKeyFormat: null
+      propagationMethod: all
+      selectionLabel: 'Add a column'
+      staticField: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\supertable\fields\SuperTableField
+  cb9a476e-06da-4ac9-a6ca-3259c1af5204: # Module
+    columnSuffix: sbxgflxn
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: light
+      decorations: ''
+      decorationsDefault: ''
+      independentPadding: ''
+      moduleId: ''
+      overflow: ''
+      padding:
+        - none
+        - small
+        - medium
+        - large
+      paddingDefault: medium
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+handle: comparisonChart
+name: 'Comparison Chart'
+sortOrder: 15

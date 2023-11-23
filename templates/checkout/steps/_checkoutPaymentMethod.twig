@@ -1,0 +1,57 @@
+{% extends 'checkout/_layout.twig' %}
+
+{% import 'partials/_macros' as helpers %}
+
+{% block mainContent %}
+
+  {% set redirectUrl = '' %}
+  {% set hasSubscription = false %}
+
+  {# Check cart for items that have subscriptions #}
+  {% for item in cart.lineItems %}
+    {% set subscriptionEntry = item.purchasable.subscription.one ?? null %}
+
+    {# If there are any set hasSubscription to true #}
+    {% if subscriptionEntry %}
+      {% set hasSubscription = true %}
+    {% endif %}
+  {% endfor %}
+
+  {# Set redirect URL #}
+  {% if hasSubscription and entry.subscriptionRedirect.one is not null %}
+    {% set redirectUrl = entry.subscriptionRedirect.one.uri %}
+  {% elseif entry.formSubmissionRedirect.one is not null %}
+    {% set redirectUrl = entry.formSubmissionRedirect.one.uri %}
+  {% endif %}
+
+  {# Check payment gateways #}
+  {% set gateways = craft.commerce.gateways.allCustomerEnabledGateways %}
+
+  {# If there is only one, redicrect to payment #}
+  {% if gateways|length <= 1 %}
+    {% redirect redirectUrl ~ '?gatewayId=' ~ gateways|first.id %}
+  {% endif %}
+
+  {% include 'components/_checkoutIntro' with { 'settings': {
+      'heading': entry.checkoutHeading,
+      'textContent': entry.checkoutText,
+      'step': entry.checkoutStep,
+  }} %}
+
+  {% include 'form/forms/_checkoutPaymentMethod.twig' with {'settings': {
+    'id': 'checkoutFormPaymentMethod',
+    'redirectUrl': redirectUrl,
+    'successMessage': entry.formSuccessMessage ? entry.formSuccessMessage,
+  }} %}
+{% endblock %}
+
+{% block sidebar %}
+  {% include "components/_orderSummary.twig" with {"settings": {
+    'showShippingAddress': true,
+    'showBillingAddress': true,
+    'showShippingMethod': true,
+    'buttonText': entry.formSubmitButtonText,
+    'buttonFor': 'checkoutFormPaymentMethod',
+  }}%}
+  <!-- Template: {{ _self }}.twig -->
+{% endblock %}

@@ -1,0 +1,22 @@
+"use strict";
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(self["webpackChunkcraft_boilerplate"] = self["webpackChunkcraft_boilerplate"] || []).push([["tabs-js"],{
+
+/***/ "./src/js/components/tabs.js":
+/*!***********************************!*\
+  !*** ./src/js/components/tabs.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cTabs\": () => (/* binding */ cTabs)\n/* harmony export */ });\nfunction cTabs(ini) {\n  return {\n    render: false,\n    active: ini.default ? ini.default : 1,\n    default: ini.default ? ini.default : 1,\n    total: ini.total,\n    response: false,\n    respond: ini.mq && ini.respond ? ini.respond : false,\n    mq: ini.mq && ini.respond ? ini.mq : '',\n    init: function init() {\n      console.log(this.mq);\n      this.onResize(); // Set initial ARIA states for accessible control\n\n      for (var x = 1; x <= this.total; x++) {\n        if (x === this.default) {\n          this.$refs['tab-' + x].setAttribute('aria-selected', true);\n          this.$refs['panel-' + x].setAttribute('aria-hidden', false);\n        } else {\n          this.$refs['tab-' + x].setAttribute('aria-selected', false);\n          this.$refs['panel-' + x].setAttribute('aria-hidden', true);\n        }\n      }\n    },\n    isTabbed: function isTabbed() {\n      return this.render;\n    },\n    showTab: function showTab(index) {\n      var render = this.render;\n\n      if (render) {\n        if (this.active === Number(index)) {\n          this.$refs['panel-' + index].setAttribute('aria-hidden', false);\n          return true;\n        } else {\n          this.$refs['panel-' + index].setAttribute('aria-hidden', true);\n          return false;\n        }\n      } else {\n        this.$refs['panel-' + index].setAttribute('aria-hidden', false);\n        return true;\n      }\n    },\n    tabClick: function tabClick(e) {\n      // Get the button itself\n      var $btn = e.target; // Quick check in case there are nested elements in the tab, such as an icon.\n\n      if (!$btn.classList.contains('.c-tab')) {\n        $btn = $btn.closest('.c-tab');\n      } // Set the index.\n\n\n      var index = Number($btn.getAttribute('data-index')),\n          height = this.$refs['panel-' + this.active].offsetHeight;\n      this.$refs['window'].style.height = height + 'px';\n      this.$refs['tab-' + this.active].setAttribute('aria-selected', false);\n      this.$refs['panel-' + this.active].setAttribute('aria-hidden', true);\n      this.active = index;\n      this.$refs['tab-' + index].setAttribute('aria-selected', true);\n      this.$refs['panel-' + index].setAttribute('aria-hidden', false);\n\n      var _this = this;\n\n      setTimeout(function () {\n        height = _this.$refs['panel-' + index].offsetHeight;\n        _this.$refs['window'].style.height = height + 'px';\n      }, 300);\n    },\n    onRender: function onRender() {\n      var respond = this.response;\n\n      if (this.respond === 'hide' && !respond) {\n        this.render = false;\n      } else if (this.respond === 'show' && respond) {\n        this.render = false;\n      } else {\n        this.render = true;\n      }\n    },\n    onResize: function onResize(e) {\n      if (this.mq) {\n        this.response = this.$breakpoint(this.mq);\n      }\n\n      this.onRender();\n\n      if (this.render) {\n        var height = this.$refs['panel-' + this.active].offsetHeight;\n        this.$refs['window'].style.height = height + 'px';\n      } else {\n        this.$refs['window'].style.height = '';\n      }\n    }\n  };\n}\n\n\n\n//# sourceURL=webpack://craft-boilerplate/./src/js/components/tabs.js?");
+
+/***/ })
+
+}]);

@@ -1,0 +1,37 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'buttonText' : '',
+  'icon' : '',
+  'confirmMessage': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set defaultConfirm = 'Deactivating your account results in you not being able to sign in. Are you sure you want to continue?'|t %}
+
+{% set confirmMessage = settings.confirmMessage is not empty ? settings.confirmMessage : defaultConfirm %}
+
+{% if currentUser and craft.porter.settings.deactivateAccount %}
+
+    {% include 'components/_button.twig'|siteInclude with { settings: {
+      'text'  : settings.buttonText is not empty ? settings.buttonText : 'Deactivate Account'|t,
+      'href'  : actionUrl('porter/deactivate-account'),
+      'type'  : 'link',
+      'style' : 'arrow',
+      'icon'  : settings.icon is not empty ? settings.icon : 'edit',
+      'iconAlign': 'left',
+      'atts': {
+        'onclick': "return confirm('" ~ confirmMessage ~ "');",
+      }
+    }} %}
+
+    {# <a href="{{ actionUrl('porter/deactivate-account') }}" class="{{ component('btn', 'arrow', '') }}" onclick="return confirm('{{ 'Deactivating your account results in you not being able to sign in. Are you sure you want to continue?'|t }}')">
+      {{ 'Deactivate Account'|t }}
+    </a> #}
+
+{% endif %}

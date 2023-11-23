@@ -1,0 +1,161 @@
+field: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+fieldLayouts:
+  2e6d5b40-8399-408d-8100-1b05f43b6628:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 1d9dbb85-1646-450d-9921-7f7a7e557fd1 # Initial Alignment
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 733e1953-7907-4e4a-a2e8-1f205759ff26
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 56a15819-e4ce-4601-acb9-c045865e6752 # Highlights
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b521de4b-183a-40af-8c5f-6411cbacd1b0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f6a3f864-12b4-4003-8481-e6d2e6c9cb7e # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c9558f4b-5366-469a-b4a8-7564438d8410
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: cfe0a10c-3c72-4ecf-ad0b-8b5febeb7f4b
+        userCondition: null
+fields:
+  1d9dbb85-1646-450d-9921-7f7a7e557fd1: # Initial Alignment
+    columnSuffix: null
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: initialAlignment
+    instructions: "Use this field to define the alignment of the content relative to the media within the first highlights. Subsequent highlight blocks will then alternate alignment based on this initial setting.\r\n\r\n**Note**: This alignment option applies to wider viewports. On narrow viewports (such as mobile devices), standard alignment applies."
+    name: 'Initial Alignment'
+    searchable: false
+    settings:
+      default: false
+      offLabel: Right
+      onLabel: Left
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  56a15819-e4ce-4601-acb9-c045865e6752: # Highlights
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: highlights
+    instructions: 'Use this field to add the individual highlights to this module.'
+    name: Highlights
+    searchable: false
+    settings:
+      blockTypeFields: 0
+      changedFieldIndicator: 1710834641
+      columns:
+        __assoc__:
+          -
+            - 052027f5-bdb7-4f68-974a-88be9b601711 # Heading
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 18708076-c578-48ca-a5db-24780aae91c2 # Content
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - a7731437-e0e8-40cf-829d-4e4308466deb # Button
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 4cd70106-1bf0-4138-bdf1-9bd0cd20cc2a # Background Media
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - d3ddbcd6-d0c0-4ac7-b91d-d6aaff726aa0 # Foreground Media
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 201326a0-d266-456a-a7f8-843366230841 # Radiant Circles
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_12_highlights}}'
+      fieldLayout: matrix
+      maxRows: null
+      minRows: null
+      propagationKeyFormat: null
+      propagationMethod: all
+      selectionLabel: 'Add Highlight'
+      staticField: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\supertable\fields\SuperTableField
+  f6a3f864-12b4-4003-8481-e6d2e6c9cb7e: # Module
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: light
+      decorations: ''
+      decorationsDefault: ''
+      independentPadding: ''
+      moduleId: ''
+      overflow:
+        - hidden
+        - visible
+      padding:
+        - none
+        - small
+        - medium
+        - large
+      paddingDefault: large
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+handle: emphasizedContent
+name: 'Emphasized Content Banner'
+sortOrder: 1

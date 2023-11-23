@@ -1,0 +1,175 @@
+field: 9f869ddb-d881-4c45-be88-4d34eedcf43d # Product CTA
+fieldLayouts:
+  fb17a6c8-e8f6-412d-ad87-3df0ee45db9c:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 2b0c3b53-a004-4b4e-aaa9-bbb32d0b0cdd # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3aa234f1-937e-46bb-8f54-b6e83892b232
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 580d90ea-4899-46fe-8e51-415012c3b3ba # Text Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0b9eb575-b308-44b8-abe5-5133fea124aa
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 65169690-fb6f-4b2f-b6f2-2a5c60f26b02 # Button Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 86c59a73-0fec-46d4-b761-28a527d7cc9c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: d1e13260-47b3-45e3-9b1f-ab576109538f # Quantity
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9880c44c-cc99-4921-af53-25d81818254a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 580bff42-c9e1-4561-af45-9212aea26d63 # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b0026eb8-90aa-409d-9df6-02e13cde137c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: cfe19caa-c27f-458c-9bb1-6732effb2abf
+        userCondition: null
+fields:
+  2b0c3b53-a004-4b4e-aaa9-bbb32d0b0cdd: # Heading
+    columnSuffix: bwdsccmg
+    contentColumnType: text
+    fieldGroup: null
+    handle: heading
+    instructions: null
+    name: Heading
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  580bff42-c9e1-4561-af45-9212aea26d63: # Module
+    columnSuffix: wqoxvjjm
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: null
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+      backgroundsDefault: light
+      decorations: ''
+      decorationsDefault: ''
+      independentPadding: '1'
+      moduleId: ''
+      padding:
+        - none
+        - small
+        - medium
+        - large
+      paddingDefault: medium
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+  580d90ea-4899-46fe-8e51-415012c3b3ba: # Text Content
+    columnSuffix: hoshjdvl
+    contentColumnType: text
+    fieldGroup: null
+    handle: textContent
+    instructions: null
+    name: 'Text Content'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 2
+      multiline: true
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  65169690-fb6f-4b2f-b6f2-2a5c60f26b02: # Button Text
+    columnSuffix: qfyrvmxy
+    contentColumnType: string(200)
+    fieldGroup: null
+    handle: buttonText
+    instructions: null
+    name: 'Button Text'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 50
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: 'Add to cart'
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  d1e13260-47b3-45e3-9b1f-ab576109538f: # Quantity
+    columnSuffix: paymlevz
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: quantity
+    instructions: 'Use this option to toggle the display of the quantity field.'
+    name: Quantity
+    searchable: false
+    settings:
+      default: false
+      offLabel: Hide
+      onLabel: Show
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+handle: productCta
+name: 'Product CTA'
+sortOrder: 1

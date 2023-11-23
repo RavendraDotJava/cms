@@ -1,0 +1,19 @@
+columnSuffix: rozouynl
+contentColumnType: string(880)
+fieldGroup: 3f0bc8e2-2e90-4b58-be74-00243d9b4a9e # SEO
+handle: description
+instructions: "Use this field to add a brief description of the page. The value of this field will be used as the default value for SEO configuration. It will also be the default for any content cards or on-site search results related to this entry.\r\n\r\n**Max Length:** 220 characters."
+name: Description
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: 220
+  code: false
+  columnType: null
+  initialRows: 2
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

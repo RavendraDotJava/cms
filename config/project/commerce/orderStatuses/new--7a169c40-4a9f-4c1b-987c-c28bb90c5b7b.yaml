@@ -1,0 +1,6 @@
+color: orange
+default: true
+description: ''
+handle: new
+name: New
+sortOrder: 99

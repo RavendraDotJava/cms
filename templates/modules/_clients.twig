@@ -1,0 +1,55 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'content' : '',
+	'clients' : false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set count = settings.clients.all()|length %}
+
+<div class="{{ component('moduleWidth', settings.config.handle) }}">
+
+  <div class="flex justify-between items-start">
+    {% if settings.heading is not empty %}
+      {{ settings.heading.set({
+          class: 'max-w-lg text-h2 pr-p64 w-1/3',
+      }) }}
+    {% endif %}				
+
+    {% if settings.content %}
+      <div class="c-content text-lg w-2/3">
+        {{ settings.content }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if settings.clients is not empty %}
+    
+    <div class="flex flex-wrap mq640:flex-nowrap items-center mq768:-mx-p16">
+
+    {% for client in settings.clients.all() %}
+
+      <div class="w-1/2 mq640:w-auto px-p24 mt-p24">
+        {% include 'components/_client.twig' with { settings: { 
+          'client': client,
+          'greyscale' : true,
+          'class' : '',
+          'format' : 'normal',
+        }} %}	
+      </div>		
+
+    {% endfor %}
+
+    </div>
+
+  {% endif %}
+
+</div>
+

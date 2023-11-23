@@ -1,0 +1,63 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * CCFields module for Craft CMS
+ *
+ * Instructions Field Settings
+ * This is the template that appears when configuring a new instance of this field.
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2021 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   CCFieldsModule
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+<div class="settings-wrap">
+
+{{ forms.checkboxGroupField({
+	id: 'heading-levels',
+	label: 'Heading Levels',
+	instructions: 'Select the background options that should be available for use in this module.'|t,
+	name: "levels",
+	values: levelsOptions,	
+  options: levels,
+	})
+}}
+
+{{ forms.radioGroupField({
+	id: 'heading-levels-default',
+	label: 'Heading Level Default',
+	instructions: 'Select the background options that should be available for use in this module.'|t,
+	name: "levelDefault",
+	value: levelDefault,
+  options: levels,
+	})
+}}
+
+{{ forms.checkboxGroupField({
+	id: 'heading-sizing',
+	label: 'Heading Sizing',
+	instructions: 'Select the background options that should be available for use in this module.'|t,
+	name: "sizing",
+	values: sizingOptions,	
+  options: sizing,
+	})
+}}
+
+{{ forms.radioGroupField({
+	id: 'heading-sizing-default',
+	label: 'Heading Sizing Default',
+	instructions: 'Select the background options that should be available for use in this module.'|t,
+	name: "sizingDefault",
+	value: sizingDefault,
+  options: sizing,
+	})
+}}
+
+<span class="btn-reset btn" data-name="backgroundsDefault" onclick="resetModuleSettings(event)">Reset</span>
+
+</div>

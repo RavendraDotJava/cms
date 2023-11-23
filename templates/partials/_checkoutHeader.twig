@@ -1,0 +1,12 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set settings = getPageHeaderSettings(entry) %}
+
+{% if settings.backgroundMedia is not empty or header.heroImage is not empty %}
+  <div class="absolute inset-0 bg-black opacity-20 z-10"></div>
+  {% include 'components/_image.twig'|siteInclude with { settings: {
+    'image' : settings.backgroundMedia is not empty ? settings.backgroundMedia : header.heroImage.one,
+    'format' : 'hero',
+    'imageClass': 'absolute w-full h-full object-cover object-top inset-0'
+  }} %}
+{% endif %}

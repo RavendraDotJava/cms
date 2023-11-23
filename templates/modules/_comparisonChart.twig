@@ -1,0 +1,164 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'textContent' : '',
+  'image': '',
+  'columnHeadings': '',
+  'features': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.image is not empty %}
+  {% set hasImage = true %}
+{% else %}
+  {% set hasImage = false %}
+{% endif %}
+
+
+<div class="{{ component('moduleWidth', settings.config.handle, '') }}" x-comp="comparisonChart" x-data="comparisonChart({ mq: 'mq912', selectedOptions: [0, 1] })" @resize.window="onResize()" x-ref="container">
+
+  <div class="mq768:flex">
+    {% if settings.heading is not empty or settings.textContent is not empty %}
+    <div class="mq768:w-1/2 mb-p50 {{ hasImage ? 'mq768:pr-p50' : '' }}">
+      {% if settings.heading is not empty %}
+        {{ settings.heading.set({
+            class: component('introHeading', '', 'mb-p20'),
+        }) }}
+      {% endif %}
+
+      {% if settings.textContent is not empty %}
+        <div class="c-content">
+          <p>{{ settings.textContent }}</p>
+        </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if settings.image is not empty %}
+      {# {{ settings.image }} #}
+      {% include 'components/_image.twig'|siteInclude with { settings: {
+        'image' : settings.image.one,
+        'format' : 'fit',
+        'class': 'text-center mb-p50 mq768:w-1/2 mq768:pl-p50',
+        'imageClass': 'mx-auto',
+      }} %}
+    {% endif %}
+  </div>
+
+  {% if settings.columnHeadings is not empty %}
+
+    {# Get the headings #}
+    {% set headings = settings.columnHeadings.all() %}
+
+    {# Count the headings #}
+    {% set headingCount = headings|length %}
+
+    {# Set grid class based on number of headings #}
+    {% set gridCols = 'grid-cols-' ~ headingCount %}
+
+    {# Set width for the row labels #}
+    {% set rowLabelW = 'w-p192 mq1024:w-p340' %}
+
+    <template x-if="largeLayout">
+      {# Headings #}
+      <div class="flex">
+        <div class="{{ rowLabelW }}">{# Empty div for space #}</div>
+        <div class="flex-1 grid gap-p20 {{ gridCols }}">
+          {% for heading in headings %}
+            {% set headingBg = heading.columnColour.color[0].background %}
+            <div class="px-p16 py-p20 mq1280:py-p50 rounded-t-lg text-bd mq1024:text-h5 text-white font-medium text-center flex items-center justify-center {{ headingBg }}">{{ heading.columnName }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </template>
+  {% endif %}
+
+  <template x-if="!largeLayout">
+    <div class="flex gap-p16 mb-p30" x-ref="cols">
+
+      {% for heading in headings[:2] %}
+        {% include 'components/_comparisonHeading.twig' with { 'settings': {
+           'headingText': heading.columnName,
+           'headingBg': heading.columnColour.color[0].background,
+           'index': loop.index0,
+        }} %}
+      {% endfor %}
+    </div>
+  </template>
+
+  {% if settings.features is not empty and settings.columnHeadings is not empty %}
+    {% set features = settings.features.all() %}
+
+    {# Features #}
+    <div x-ref="rows">
+      {% for feature in features %}
+        <template x-if="largeLayout">
+          <div class="border-b border-dashed border-terracotta flex">
+            {# Feature Name #}
+            <div class="text-bd mq1024:text-h5 py-p16 font-normal {{ rowLabelW }}">{{ feature.featureName }}</div>
+
+            {% if feature.featureColumns is not empty %}
+              <div class="flex-1 grid gap-p20 {{ gridCols }}">
+
+              {% for column in feature.featureColumns  %}
+                {# Only display the same number of columns as there are heading columns #}
+                {% if loop.index <= headingCount %}
+                  <div class="py-p16 px-p20 flex items-center justify-center bg-off-white border-x border-x-terracotta">
+                    {% if column.checked %}
+                      <span class="w-p20 h-p20 bg-terracotta rounded-full"></span>
+                    {% endif %}
+                    {% if column.columnText is not empty %}
+                      <span class="mq1024:text-lg text-center">{{ column.columnText }}</span>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+              {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </template>
+
+        <template x-if="!largeLayout">
+          <div class="bg-off-white border border-terracotta py-p30 mq640:p-p30 rounded mb-p10 relative">
+            <div class="font-normal text-lg text-center mb-p20">{{ feature.featureName }}</div>
+            <div class="flex relative">
+            {% for column in feature.featureColumns %}
+              {% set i = loop.index0 %}
+              <div class="py-p30 px-p12 w-1/2 text-center {{ i == 0 ? 'order-1' : i == 1 ? 'order-2' : '' }}" x-show="selectedOptions.includes({{ i }})" data-column="{{ i }}">
+                {% if column.checked %}
+                  <span class="w-p20 h-p20 bg-terracotta rounded-full inline-block"></span>
+                {% endif %}
+                {% if column.columnText is not empty %}
+                  <span class="text-basalt text-tn mq480:text-sm">{{ column.columnText|widont }}</span>
+                {% endif %}
+                <div class="border-r border-dashed border-terracotta absolute inset-y-0 left-1/2"></div>
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+        </template>
+      {% endfor %}
+    </div>
+
+
+      {# Bottom piece #}
+      <template x-if="largeLayout">
+        <div class="flex">
+          <div class="{{ rowLabelW }}"></div>
+          <div class="flex-1 grid gap-p20 {{ gridCols }}">
+            {% for item in headings %}
+              <div class="rounded-b-lg bg-off-white border-x border-b border-x-terracotta border-b-terracotta h-p32 mq1024:h-p50"></div>
+            {% endfor %}
+          </div>
+        </div>
+      </template>
+  {% endif %}
+
+</div>

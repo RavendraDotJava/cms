@@ -1,0 +1,56 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+    'id': '',
+    'label': '',
+    'required': false,
+    'defaultOptionText': 'Select'|t,
+    'selected': false,
+    'options': [],
+    'xref': false,
+    'onChange': false,
+    'class': component('input', 'select', ''),
+    'multiple': false,
+    'optionKey': false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+<div class="{{ component('formItem', false, '') }}">
+  <label class="text-basalt font-normal text-lg mb-p10 block" for="{{ settings.id }}">
+    {{ settings.label }}{{ settings.required ? '*' }}
+  </label>
+  <div class="relative">
+    {% tag 'select' with {
+      id: settings.id,
+      name: settings.id,
+      class: settings.multiple ? component('input', 'selectMulti', '') : settings.class,
+      'x-ref': settings.xref ? settings.xref : false,
+      '@change': settings.onChange ? settings.onChange : false,
+      'multiple': settings.multiple,
+    } %}
+    {{ tag('option', {
+      value: '',
+      disabled: true,
+      selected: settings.selected,
+      text: settings.defaultOptionText ~ '...'
+    }) }}
+    {% for key, option in settings.options %}
+
+      {% set optionValue = (settings.selected ?: '') %}
+
+      {{ tag('option', {
+          value: settings.optionKey ? key : option,
+          selected: key == optionValue,
+          text: option,
+      }) }}
+    {% endfor %}
+    {% endtag %}
+    {% if not settings.multiple %}
+      {{ helpers.icon('chevron-down', 'h-p14 w-p14 fill-terracotta absolute top-1/2 -translate-y-1/2 right-p24') }}
+    {% endif %}
+  </div>
+</div>

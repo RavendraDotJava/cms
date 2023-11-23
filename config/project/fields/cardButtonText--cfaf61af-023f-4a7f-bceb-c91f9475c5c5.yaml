@@ -1,0 +1,19 @@
+columnSuffix: raekpyle
+contentColumnType: string(200)
+fieldGroup: f197da5a-a88b-49ec-ad29-5677e27c00aa # Common
+handle: cardButtonText
+instructions: 'Use this field to change the "Learn more" button text that appears on card displays for this entry.'
+name: 'Card Button Text'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 50
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

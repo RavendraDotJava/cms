@@ -1,0 +1,79 @@
+{% extends "_layouts/cp" %}
+{% set title = "SEO"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+    <p class="large">This documentation page reviews some of the key tools that support the various SEO requirements of the website. It is not a guide to SEO best practices. Instead, this documetation will address the following topics:</p>
+    <div class="contents">
+      <ul>
+        <li><a href="#description">Description</a></li>
+        <li><a href="#globalseo">Global SEO</a></li>
+        <li><a href="#contentseo">Content SEO</a></li>
+        <li><a href="#seooverrides">SEO Overrides</a></li>
+        <li><a href="#sitesettings">Site Settings</a></li>
+        <li><a href="#socialmedia">Social Media</a></li>
+      </ul>
+    </div> 
+    <p>Most of the SEO settings discussed here are powered by a plugin called SEOmatic. This is a very feature-rich plugin; this documentation will only cover some key functionality below. Please refer to the <a href="https://nystudio107.com/docs/seomatic/" target="_blank">SEOmatic documentation</a> for more information on the full breadth of its functionality.</p>
+    <div class="readable"><blockquote class="note"><b>Note:</b> Some of the configurations in SEOmatic can be complex and may require custom development.</blockquote></div> 
+    </section>
+    <section id="description">
+    <h2>Description</h2>
+
+    <p>The description field is a custom field that exists for most entries. It can be found under the <span class="highlight">SEO</span> on entrys and its purpose is to provide a means of assigning a simple description to the entry. Based on the <a href="#contentseo">Content SEO</a> configuration, this field gets applied as the general SEO description value (unless an override is provided). </p> 
+
+    <p>Additionally, the description field's value is the default text shown on the site's internal search results and content cards that link to specific entries. In instances where the description field is empty, the system will attempt to use content from the <span class="highlight">Intro Paragraph</span> field instead.</p>
+    </section>
+    <section id="globalseo">
+    <h2>Global SEO</h2>
+
+    <p>As implied by its name, Global SEO provides a means of defining global SEO values for the entire site. The values in this section help control formatting or provide fallbacks for Content SEO. The settings page can be accessed by clicking on <span class="highlight">SEOmatic &rsaquo; Global SEO</span> through he main admin navigation bar.</p>
+
+    <p>Of particular note are the following values under the General tab:</p>
+
+    <ul>
+      <li><span class="highlight">Main Entity of Page</span> - Define the entity type for the site</li>
+      <li><span class="highlight">SEO Title Source</span> - Defines a global title value for the site. For the most part, this shouldn't get used often, as individual entries will have their own title.</li>
+      <li><span class="highlight">Site Name Position</span> - Defines whether the site name should appear before or after the page title (or be suppressed entirely). The general recommendation is to use the "after" option.</li>
+      <li><span class="highlight">SEO Description Source</span> - Defines a default description used if an entry doesn't have custom description content defined.</li>
+      <li><span class="highlight">SEO Keywords Source</span> - Defines a default set of keywords used if an entry doesn't have custom keywords defined.</li>
+      <li><span class="highlight">SEO Image Source</span> - Defines a default SEO image used if an entry doesn't have a custom image defined.</li>
+      <li><span class="highlight">SEO Image Description</span> - Defines a description for the SEO Image Source.</li>
+    </ul>
+    <p>The Global SEO settings page also provides more advanced features for customizing Twitter Cards and Facebook posts and customizing key informational .txt files. 
+    </section>
+    <section id="contentseo">
+    <h2>Content SEO</h2>
+    <p>The Content SEO settings provide a somewhat more granular degree of control. It allows us to configure SEO values for each section on the site. The settings page can be accessed by clicking on <span class="highlight">SEOmatic &rsaquo; Content SEO</span> through he main admin navigation bar. This settings page will present a listing of all sections with public-facing URLs.</p>
+    {{ getDocumentationImage('seo-content.png') }}
+    <p>To configure settings for a specific section, click on its name. This will take us to a page that is very similar to the <a href="#globalseo">Global SEO</a> General settings page. It contains many of the same SEO values but with some different options. Instead of the static fields seen in the Global settings, the Content SEO options can be configured to pull their values from specific fields of an entry.</p>
+
+    <p>All sections are already configured to generate SEO values based on entry content and should not need to be changed.</p>
+    </section>
+    <section id="seooverrides">
+    <h2>SEO Overrides</h2>
+
+    <p>While the <a href="#globalseo">Content SEO</a> settings provide key indicators and rules for automatically generating SEO data for a given entry, there may be situations where it makes sense to provide custom overrides. For entries that allow for custom configuration of the SEO values, changes can be implemented using the <span class="highlight">{{ docSeoName() }}</span> field</p>
+    {{ docSeoFields() }}
+    </section>
+    <section id="sitesettings">
+    <h2>Site Settings</h2>
+
+    <p>The Site Settings tab provides a means for more extensive self-identification to search engines, social media and apps. It provides structured data that can appear as Rich Snippets on Google (though filling out this data does not guarantee that such a result).</p>
+    </section>
+    <section id="socialmedia">
+    <h2>Social Media</h2>
+    <p>The Social Media settings tab (located under Site Settings) allows for configuring social media profiles that relate to the website. Additionally, it provides a means of adding verification codes for common properties such as Facebook, Google, Bing and Pinterest.</p>
+    <p>The Social Media section is also used to configure social media profiles Same As URLs. You can add as many profiles as you want here. Doing so will generate custom metadata associating the website with these social properties. Providing values for any of the following values will also place an icon link into the footer on the front-end:</p>
+    {{ docSocialProfiles() }}
+    </section>
+  </div>
+{% endblock %}

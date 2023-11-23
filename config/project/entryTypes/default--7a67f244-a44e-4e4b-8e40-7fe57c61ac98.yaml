@@ -1,0 +1,55 @@
+fieldLayouts:
+  5de65841-4980-4903-92cd-79c98889bb94:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: 'Enter a name for this ingredient.'
+            label: 'Ingredient Name'
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 961dd43d-9f5b-42bd-a31c-2732c6ba698f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f5534be7-e8ed-4cd9-9931-f8a429ce7d33 # Description
+            instructions: 'Use this field to add a brief description of the ingredient.'
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9adf8957-6935-40ff-97a6-4be230e76455
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 7b97535e-23b2-4da6-9f3c-0b3857b34639
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Default
+section: c3f2bc96-b4d9-42f4-968e-149de97d6715 # Ingredient
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

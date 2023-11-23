@@ -1,0 +1,77 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'content' : '',
+  'bannerImage': '',
+  'backgroundColorBottom': '',
+	'button'  : false,
+  'cta': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.backgroundColorBottom == 'Light' %}
+  {% set bgBottom = 'bg-salt' %}
+{% elseif settings.backgroundColorBottom == 'White' %}
+  {% set bgBottom = 'bg-white' %}
+{% else %}
+  {% set bgBottom = 'bg-salt' %}
+{% endif %}
+
+<div class="{{ component('moduleWidth', settings.config.handle) }}">
+  {% if settings.content is not empty or settings.heading is not empty %}
+    {% include 'components/_intro.twig' with { 'settings': {
+      'heading': settings.heading,
+      'intro': settings.content,
+      'type': settings.config.handle,
+    }} %}
+  {% endif %}
+</div>
+{% if settings.bannerImage is not empty %}
+  <div class="relative z-1 -mx-p24 mq768:-mx-p48 h-p1000">
+    <div class="absolute z-2 inset-x-0 top-0 -rotate-180">
+      {% include 'svg/_brushTop.twig' with {
+        'settings': {
+          'background': settings.config.background,
+        }
+      } %}
+    </div>
+    {% include 'components/_image.twig'|siteInclude with { settings: {
+      'image' : settings.bannerImage.one,
+      'format' : 'hero',
+      'class': 'absolute inset-0',
+      'imageClass': 'w-full h-full object-cover',
+    }} %}
+  </div>
+  <div class="-mx-p24 mq768:-mx-p48 absolute inset-x-0 h-1/2 z-0 {{ bgBottom }}"></div>
+{% endif %}
+
+<div class="{{ component('moduleWidth', settings.config.handle, settings.bannerImage is not empty ? '-mt-p230') }}">
+  {% if settings.cta is not empty %}
+    {# The selected CTA entry #}
+    {% set cta = settings.cta.one %}
+    {# The callToAction field on the CTA entry #}
+    {% set ctaContent = cta.callToAction %}
+    <div x-comp="gsapGlobal" x-data="gsapGlobal()" x-init="gsapFadeIn()" x-ref="scrollTrigger" class="relative z-20">
+      {% include 'components/_callToAction' with { 'settings': {
+         'cta': cta,
+         'ctaContent': ctaContent,
+      }} %}
+    </div>
+  {% endif %}
+  {% if settings.button.url is not empty %}
+    <div class="mt-p32 text-center z-30 relative">
+      {% include 'components/_button.twig'|siteInclude with { settings: {
+        'text'  : settings.button.text,
+        'href'  : settings.button.url,
+        'type'  : 'link',
+        'style' : settings.config.btnType,
+      }} %}
+    </div>
+  {% endif %}
+</div>

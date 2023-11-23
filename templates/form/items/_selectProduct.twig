@@ -1,0 +1,88 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'id': '',
+  'value': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<fieldset x-data="{ selected: '{{ settings.value }}', showOptions: false }" x-init="console.log(selected)" class="pb-p20 border-terracotta border-b">
+
+  <div x-show="showOptions" x-transition.opacity x-cloak class="bg-overlay-light absolute inset-0 z-30"></div>
+
+  {# {{ settings.value }} #}
+
+  <select x-bind:value="selected" name="{{ settings.id }}" id="{{ settings.id }}" class="hidden">
+    {% for option in settings.options %}
+      <option x-bind:selected="selected == '{{ option.value }}'" value="{{ option.value }}">{{ option.label }}</option>
+    {% endfor %}
+  </select>
+
+  <div class="mq768:flex items-center">
+    <div class="pr-p32 relative">
+      {% for option in settings.options %}
+        {% set productOption = craft.products().slug(option.value).one() %}
+        {% set productImage = productOption.productImages.one() %}
+        {% if productImage %}
+          {% set thumb = {
+            mode: 'fit',
+            width: 130,
+            height: 130,
+            quality: 75,
+            position: 'top-center'
+          } %}
+
+          <div x-show="selected == '{{ option.value }}'" class="flex items-center" x-cloak>
+            <div class="mb-p32 mq480:mb-none mq768:mr-p32 text-center flex items-center justify-center"><img src="{{ productImage.getUrl(thumb) }}" class="mx-auto"></div>
+            <p class="text-h5 font-normal">{{ productOption }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <button type="button" class="text-lg font-normal flex items-center ml-auto group hover:underline" @click="showOptions = true">
+      {{ 'Choose another product'|t }}
+      {{ helpers.icon('chevron-down', 'w-p16 hp16 fill-basalt ml-p10 transition-all group-hover:translate-y-p4') }}
+    </button>
+  </div>
+  <div class="relative w-full">
+    <div class="p-p40 bg-white rounded-2xl max-w-md absolute right-0 top-0 z-40 shadow-card-lg" x-show="showOptions" x-transition x-cloak @click.outside="showOptions = false">
+      {% for key, option in settings.options %}
+        {% set productOption = craft.products().slug(option.value).one() %}
+        {% set productImage = productOption.productImages.one() %}
+
+        <label class="flex items-center cursor-pointer border-b border-b-terracotta group transition-colors hover:bg-off-white" for="{{ option.value }}">
+
+          <input type="radio" id="{{ option.value }}" name="{{ settings.id }}" value="{{ productOption.slug }}" class="hidden" x-on:change="selected = $el.id, showOptions = false">
+
+          {# Product Image #}
+          {% if productImage %}
+            {% set thumb = {
+              mode: 'fit',
+              width: 90,
+              height: 100,
+              quality: 75,
+              position: 'top-center'
+            } %}
+            <div class="mb-p32 mq480:mb-none mq768:mr-p16 text-center flex items-center justify-center"><img src="{{ productImage.getUrl(thumb) }}" class="mx-auto"></div>
+          {% endif %}
+          <div>
+            <p class="text-h5 font-normal">{{ productOption }}</p>
+          </div>
+          <div class="ml-auto px-p16 transition-all group-hover:translate-x-p8">
+            {{ helpers.icon('chevron-right', 'w-p14 h-p14') }}
+          </div>
+        </label>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+</fieldset>
+

@@ -1,0 +1,39 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * CCFields module for Craft CMS 3.x
+ *
+ * Instructions Field Input
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2021 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   CCFieldsModule
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% set active = (value is not empty) %}
+{% set iconPath = icon_path() %}
+
+<div class="cc-icon-picker">
+  <div class="cc-icon-picker__wrap">
+
+  {% for icon in options %}
+
+    {% if active %}
+    <button class="cc-icon-btn js-{{ icon == value ? 'active' : 'inactive' }}" data-icon-id="{{ icon }}">
+    {% else %}
+    <button class="cc-icon-btn" data-icon-id="{{ icon }}">
+    {% endif %}
+      <svg role="presentation" class="cc-icon-btn__icon"><use xlink:href="{{ iconPath }}?#icon-{{ icon }}"></use></svg>
+    </button>
+  {% endfor %}
+
+  </div>
+
+  <button class="cc-icon-clear" title="Delete" role="button"{{ active ? '' : ' style="display: none"' }}>Clear <span class="delete icon"></span></button>
+  <input type="hidden" class="cc-icon-field" id="{{ id }}" name="{{ name }}" value="{{ value }}">
+</div>

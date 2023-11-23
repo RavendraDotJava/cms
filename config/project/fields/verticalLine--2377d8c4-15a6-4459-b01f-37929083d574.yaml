@@ -1,0 +1,14 @@
+columnSuffix: dghawqxp
+contentColumnType: boolean
+fieldGroup: 1901e8d3-2a7e-47ef-94ec-a27c6f4346e2 # Header
+handle: verticalLine
+instructions: "The vertical white line animation will act as a clickable anchor link that will automatically scroll the page to the main content section.\r\nUse this field to toggle its display in the header."
+name: 'Vertical Line'
+searchable: false
+settings:
+  default: false
+  offLabel: null
+  onLabel: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

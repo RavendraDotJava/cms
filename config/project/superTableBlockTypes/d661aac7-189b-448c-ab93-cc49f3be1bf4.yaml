@@ -1,0 +1,73 @@
+changedFieldIndicator: null
+field: 31e07f6a-2ea1-473b-ae35-665cf67e6b48 # Icon List
+fieldLayouts:
+  57b83752-b03b-45d8-ac36-db907880f731:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 721a4c78-f881-41e4-8774-2f09b50cd977 # Icon
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1ecd04cc-25dc-40e4-9322-b36a99520deb
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 9990e566-d2c4-40c0-ae2c-e4b3815379e6 # Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 507b7a5e-e5fc-404f-9f34-6b9355ef07ed
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 76402351-93cb-4c50-96e8-ecd6717cabe8
+        userCondition: null
+fields:
+  721a4c78-f881-41e4-8774-2f09b50cd977: # Icon
+    columnSuffix: hluxkadh
+    contentColumnType: string
+    fieldGroup: null
+    handle: icon
+    instructions: null
+    name: Icon
+    searchable: false
+    settings:
+      sets:
+        - UI-profile
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Icon
+  9990e566-d2c4-40c0-ae2c-e4b3815379e6: # Text
+    columnSuffix: hkjiatqs
+    contentColumnType: text
+    fieldGroup: null
+    handle: text
+    instructions: null
+    name: Text
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: '*'
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      initialRows: 7
+      manualConfig: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      trimEmptyParagraphs: true
+      vizyConfig: Simple.json
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\vizy\fields\VizyField

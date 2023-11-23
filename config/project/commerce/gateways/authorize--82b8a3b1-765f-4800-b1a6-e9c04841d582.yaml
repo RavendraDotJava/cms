@@ -1,0 +1,20 @@
+handle: authorize
+isFrontendEnabled: '1'
+name: Authorize
+paymentType: purchase
+settings:
+  acceptJS: ''
+  apiLoginId: $AUTH_API_LOGIN_ID
+  developerMode: ''
+  disableAcceptData: '1'
+  insertForm: '1'
+  paymentButton: Pay
+  plans: null
+  publicKey: $AUTH_PUB_CLIENT_KEY
+  savePaymentMethods: ''
+  savedCardPrefix: ''
+  sendCartInfo: false
+  transactionKey: $AUTH_TRANS_KEY
+  voidRefunds: ''
+sortOrder: 99
+type: digitalpros\commerce\authorize\gateways\Gateway

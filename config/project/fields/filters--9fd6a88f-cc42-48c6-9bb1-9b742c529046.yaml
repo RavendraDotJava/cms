@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 5766805a-9191-425e-b67b-3af732ab84d1 # Feeds
+handle: filters
+instructions: 'Use this field to add filters to the feed.'
+name: Filters
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_filters}}'
+  maxBlocks: null
+  minBlocks: null
+  propagationKeyFormat: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

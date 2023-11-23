@@ -1,0 +1,31 @@
+{% extends craft.app.request.isAjax ? "_ajax" : "_layout" %}
+
+{% import 'partials/_macros' as helpers %}
+
+{# AJAX Request #}
+{% block ajax %}
+  {# Include a different AJAX template here #}
+{% endblock %}
+
+
+{# Regular Request #}
+{% block content %}
+<div class="{{ component('modulePadding', 'checkout', 'pt-p50') }}">
+  <div class="{{ component('moduleWidth', '', 'relative h-full pt-headerSm mq768:pt-headerLg') }}">
+    <div class="{{ component('roundedCard', 'checkoutPage', 'mq912:flex relative z-20') }}">
+      {% block fullContent %}
+        <section class="mq912:w-7/12">
+          {% block mainContent %}
+          {# Main Content #}
+          {% endblock %}
+        </section>
+        <section class="mq912:w-5/12 mq912:pl-p48 mq768:sticky mq768:top-p20 z-10 mq768:mb-auto">
+          {% block sidebar %}
+          {# Sidebar Content #}
+          {% endblock sidebar %}
+        </section>
+      {% endblock fullContent %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

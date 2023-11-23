@@ -1,0 +1,19 @@
+columnSuffix: oedpknvn
+contentColumnType: string(600)
+fieldGroup: 0166bfae-8627-47ea-9ab1-c9cc949d3ee5 # Product
+handle: productDescriptionBrief
+instructions: 'Enter a brief description of this product.'
+name: 'Product Description - Brief'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: 150
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

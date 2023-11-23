@@ -1,0 +1,217 @@
+field: 302601d7-0282-4c3c-8abb-1ef1d4c2d410 # Ingredients List
+fieldLayouts:
+  92c2142f-0d7b-4df0-88c3-386ca954ea95:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 570cf309-122f-4a68-8eb6-0a9e52f7b434 # Ingredients
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 60043314-c842-434f-beb7-e5c02770c55b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 665f563e-4cd6-4cd1-a76b-0a35e892a7a1 # Decoration
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4a890dfe-dc68-4670-91be-5146c2f681e7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1fe652bb-c976-4de7-a2e4-6c5f907afda8 # Notes
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 81b4e702-dfff-4c89-9407-3a4c1d38977b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: ddd46274-9f58-4c91-a2ac-00c79a1e21c5 # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: acbd5696-6dcb-4e74-b334-4ae6c6cfaaae
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 07c2dec2-a683-476d-a9d3-be95e9024088
+        userCondition: null
+fields:
+  1fe652bb-c976-4de7-a2e4-6c5f907afda8: # Notes
+    columnSuffix: xghirvyn
+    contentColumnType: text
+    fieldGroup: null
+    handle: notes
+    instructions: 'Use this field to enter additional notes at the bottom of the ingredients list.'
+    name: Notes
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      initialRows: 7
+      manualConfig: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      trimEmptyParagraphs: true
+      vizyConfig: Simple.json
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\vizy\fields\VizyField
+  570cf309-122f-4a68-8eb6-0a9e52f7b434: # Ingredients
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: ingredients
+    instructions: null
+    name: Ingredients
+    searchable: true
+    settings:
+      blockTypeFields: 0
+      changedFieldIndicator: 1935232731
+      columns:
+        __assoc__:
+          -
+            - a72b2027-755d-4aeb-805b-63ee764f76cc # Ingredient
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 94cd2b39-c53c-465d-b3ba-3ca493faea54 # Product
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 3cc6b0fd-cdf1-4336-997b-8ead86698e1f # Quantity
+            -
+              __assoc__:
+                -
+                  - width
+                  - 120px
+          -
+            - f7305df5-4d77-4192-8dfe-1a079611873e # Select measurement unit
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_7_ingredients}}'
+      fieldLayout: row
+      maxRows: null
+      minRows: null
+      propagationKeyFormat: null
+      propagationMethod: all
+      selectionLabel: 'Add an ingredient'
+      staticField: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\supertable\fields\SuperTableField
+  665f563e-4cd6-4cd1-a76b-0a35e892a7a1: # Decoration
+    columnSuffix: zliswzwf
+    contentColumnType: string
+    fieldGroup: null
+    handle: decoration
+    instructions: 'Select a decoration for the ingredients list.'
+    name: Decoration
+    searchable: false
+    settings:
+      newLabelFormat: '{{ label }}'
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - None
+            -
+              - value
+              - none
+        -
+          __assoc__:
+            -
+              - label
+              - 'Diagonal Brush Top Left'
+            -
+              - value
+              - diagonalBrushTL
+        -
+          __assoc__:
+            -
+              - label
+              - 'Diagonal Brush Bottom Left'
+            -
+              - value
+              - diagonalBrushBL
+        -
+          __assoc__:
+            -
+              - label
+              - 'Brush Right'
+            -
+              - value
+              - horizontalBrush
+        -
+          __assoc__:
+            -
+              - label
+              - 'Brush Bottom'
+            -
+              - value
+              - verticalBrush
+      sourceGlobal: ctaDecorations
+      sourceLabelHandle: label
+      sourceValueHandle: value
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\PresetDropdown
+  ddd46274-9f58-4c91-a2ac-00c79a1e21c5: # Module
+    columnSuffix: ctyqtvjq
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: white
+      decorations: ''
+      decorationsDefault: ''
+      independentPadding: ''
+      moduleId: ''
+      padding: ''
+      paddingDefault: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+handle: ingredientsList
+name: 'Ingredients List'
+sortOrder: 1

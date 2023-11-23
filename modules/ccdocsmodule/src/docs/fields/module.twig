@@ -1,0 +1,37 @@
+{% extends "_layouts/cp" %}
+{% set title = "Field: Module"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+  {
+    label: 'Fields'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/fields/'),
+  }  
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+      <p>The module field is a custom field type used to manage individual modules as they get added to pages. Depending on the specific module, it should contain some combination of the following sub-fields:
+      <ul>
+        <li>ID field</li>
+        <li>Background</li>
+        <li>Decoration</li>
+      </ul>
+      <p>The field should always appear at the end of a module's field set, and in the interest of minimizing the input screen, it is collapsed by default. To access the module field options, click the Module Settings toggle.</p>
+      <h3>ID Field</h3>
+      <p>This field is the simple text box that appears in every module's settings. We can use this field to add a custom ID for the module, allowing for hash jumplinks. For example, if we created a module with the id of `mymodule` on a page with the slug of `test-page`, we could then use the following to jump directly to that module:</p>
+      <ul>
+        <li><span class="highlight">{{ siteUrl }}test-page/#mymodule</span></li>
+      </ul>
+      <p>This can be useful for creating on-page jump links or for linking to specific sections from other pages or external sources.</p>
+      <h3>Background</h3>
+      <p>A number of modules can be deployed with different background colours. The background dropdown allows us to select from the available colours for that given module.</p>
+      <h3>Decoration</h3>
+      <p>Likewise, several modules also include the option for various decorations. The decoration dropdown allows us to select the decoration options available for that given module.</p>    
+    </section>
+  </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: a952bf2b-b44b-4581-bf77-5a1b7d885121 # User
+handle: addAddress
+instructions: 'Use this field to link to the entry to add a new address.'
+name: 'Add Address'
+searchable: false
+settings:
+  allowCustomText: true
+  allowTarget: false
+  autoNoReferrer: false
+  customTextMaxLength: 50
+  customTextRequired: false
+  defaultLinkName: entry
+  defaultText: 'Add and address'
+  enableAllLinkTypes: false
+  enableAriaLabel: false
+  enableElementCache: false
+  enableTitle: false
+  typeSettings:
+    asset:
+      allowCrossSiteLink: false
+      allowCustomQuery: false
+      enabled: false
+      sources: '*'
+    category:
+      allowCrossSiteLink: false
+      allowCustomQuery: false
+      enabled: false
+      sources: '*'
+    craftCommerce-product:
+      allowCrossSiteLink: false
+      allowCustomQuery: false
+      enabled: false
+      sources: '*'
+    custom:
+      allowAliases: false
+      disableValidation: false
+      enabled: false
+    email:
+      allowAliases: false
+      disableValidation: false
+      enabled: false
+    entry:
+      allowCrossSiteLink: false
+      allowCustomQuery: false
+      enabled: true
+      sources:
+        - 'section:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+    site:
+      enabled: false
+      sites: '*'
+    tel:
+      allowAliases: false
+      disableValidation: false
+      enabled: false
+    url:
+      allowAliases: false
+      disableValidation: false
+      enabled: false
+    user:
+      allowCrossSiteLink: false
+      allowCustomQuery: false
+      enabled: false
+      sources: '*'
+translationKeyFormat: null
+translationMethod: none
+type: lenz\linkfield\fields\LinkField

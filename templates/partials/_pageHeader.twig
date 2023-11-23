@@ -1,0 +1,151 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set settings = getPageHeaderSettings(entry) %}
+
+{{ wfBreak() }}
+
+{% set style = settings.pageHeaderStyle %}
+
+{% if style == 'seamless' %}
+  {% set seamless = true %}
+{% else %}
+  {% set seamless = false %}
+{% endif %}
+
+{% if settings.verticalLine %}
+  {% set displayVerticalLine = true %}
+{% else %}
+  {% set displayVerticalLine = false %}
+{% endif %}
+
+{% if settings.pageHeaderPadding == 'large' and not displayVerticalLine %}
+  {% set headerPadding = 'pb-headerSm pb-headerLg' %}
+{% elseif settings.pageHeaderPadding == 'small' or displayVerticalLine %}
+  {% set headerPadding = 'pb-none' %}
+{% else %}
+  {% set headerPadding = 'pb-headerSm pb-headerLg' %}
+{% endif %}
+
+<div x-comp="pageHeader" x-data="pageHeader()">
+
+  <div class="absolute inset-0 bg-white z-50 transition-opacity" x-init="pageHeaderLoader()"></div>
+
+  {# Trigger #}
+  <div x-ref="bgMedia" class="absolute inset-0 h-full w-full -z-0 pointer-events-none"></div>
+  {# EndTrigger #}
+
+  {% if settings.backgroundMedia is not empty  %}
+    {% if seamless %}
+      <div class="absolute w-full h-auto inset-x-0 top-0 overflow-x-clip" x-init="gsapSeamless()">
+        <div class="absolute inset-0 bg-seamless-gradient z-2 -mb-p2"></div>
+        {% if settings.backgroundMedia.videoFile is not empty %}
+          {% include 'components/_videoBackground.twig' with { 'settings': {
+            'videoPrimary': settings.backgroundMedia.videoFile.one.url,
+            'videoSecondary': settings.backgroundMedia.videoFileSecondary is not empty ? settings.backgroundMedia.videoFileSecondary.one.url : '',
+            'videoWidth': '1920',
+            'videoHeight': '1080',
+            'classes': 'max-w-none mq1024:min-w-full mq1920:w-full relative mq1024:relative z-1 left-1/2 -translate-x-1/2',
+            'atts': {
+              'x-init': 'gsapImgBg()'
+            }
+          }} %}
+        {% else %}
+          <div x-init="gsapImgBg()">
+            {% include 'components/_image.twig'|siteInclude with { settings: {
+              'image' : settings.backgroundMedia,
+              'format' : 'heroFit',
+              'imageClass': 'max-w-none mq1280:max-w-full w-full relative mq1280:relative z-1 left-1/2 -translate-x-1/2'
+            }} %}
+          </div>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="w-full h-full absolute inset-0" x-init="gsapBorderPanel()">
+        <div class="absolute inset-0 bg-black opacity-20 z-20 pointer-events-none" x-init="gsapOverlay()"></div>
+        {% if settings.backgroundMedia.videoFile is not empty %}
+          <video width="1920" height="1080" class="absolute w-full h-full object-cover inset-0 z-2" playsinline autoplay muted loop x-init="gsapImgBg()">
+            {% if settings.backgroundMedia.videoFileSecondary is not empty %}
+              <source src="{{ settings.backgroundMedia.videoFileSecondary.one.url }}" type="video/webm">
+            {% endif %}
+            <source src="{{ settings.backgroundMedia.videoFile.one.url }}" type="video/mp4">
+          </video>
+        {% else %}
+          <div x-init="gsapImgBg()" class="h-full w-full pointer-events-none">
+            {% include 'components/_image.twig'|siteInclude with { settings: {
+              'image' : settings.backgroundMedia,
+              'format' : 'hero',
+              'class': 'h-full w-full absolute inset-0',
+              'imageClass': 'absolute w-full h-full object-cover inset-0 z-10'
+            }} %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endif %}
+
+  <section class="c-page-header overflow-hidden pt-headerSm mq768:pt-headerLg relative {{ headerPadding }}" x-ref="pageHeaderWrap">
+
+    {# Content Layer
+    # All header content should be included on this layer, which is set #}
+    <div class="{{ component('modulePadding', settings.module, '') }}">
+
+    <div x-init="gsapRevealText()" class="relative z-30">
+      <div class="{{ component('headerWrap', settings.mode, 'mq768:flex flex-center relative z-20') }}" x-init="gsapTextLoad()">
+
+        <div class="mq768:order-1 w-full {{ settings.headerTextColor ? settings.headerTextColor.color[0].text : 'text-white' }}">
+
+          {# Page Heading #}
+          {% if settings.heading != '' %}
+            {% set headingArgs = {
+              class: 'font-medium text-p40 mq1024:text-p70 text-center drop-shadow-2xl',
+            }%}
+            {% if hasProp(settings.heading, 'heading') %}
+              {{ settings.heading.set(headingArgs) }}
+            {% else %}
+              {{ get_heading(settings.heading, headingArgs)|raw }}
+            {% endif %}
+          {% endif %}
+
+          {# Intro #}
+          {% if settings.intro is not empty %}
+            <div class="c-content text-lg max-w-p768 my-p24 mx-auto text-center overflow-hidden">
+              {{ settings.intro|raw }}
+            </div>
+          {% endif %}
+
+          {% if settings.button is not empty %}
+            <div class="mt-p50 flex flex-col mq768:flex-row justify-center mq768:max-w-3xl mx-auto">
+              {% for button in settings.buttons %}
+                {% include 'components/_button.twig'|siteInclude with { settings: {
+                  'text'  : button.button.text,
+                  'href'  : button.button.url,
+                  'type'  : 'link',
+                  'style' : button.buttonStyle,
+                  'class' : 'mx-p8 mb-p16 mq768:mb-none last:mb-none'
+                }} %}
+              {% endfor %}
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  {% if displayVerticalLine %}
+  <div class="text-center pb-p50 relative z-30 block" x-init="gsapLineContainer()">
+    <a class="mx-auto inline-block px-p40 group" href="#main-content">
+      <span class="w-p2 h-p160 mx-auto bg-white inline-block opacity-0 scale-y-0 origin-top group-hover:bg-off-white" x-init="gsapLine()"></span>
+    </a>
+  </div>
+  {% endif %}
+</div>
+
+{% if settings.backgroundMedia is not empty %}
+  {% if settings.backgroundMedia.mediaLocation is not empty %}
+    <div class="{{ component('mediaLocation', false, 'hidden mq1024:visible') }}">
+      {{ helpers.icon('pin', 'w-p18 h-p18 fill-white mr-p8') }}
+      {{ settings.backgroundMedia.mediaLocation }}
+    </div>
+  {% endif %}
+{% endif %}

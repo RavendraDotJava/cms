@@ -1,0 +1,24 @@
+defaultPlacement: end
+enableVersioning: true
+handle: callToAction
+name: 'Call to Action'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Content Preview'
+      -
+        - urlFormat
+        - '/_preview/cta/{{canonicalId}}/{{id}}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  da016506-9b96-43e4-9e38-d4c30ec3294c: # Olina
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: channel

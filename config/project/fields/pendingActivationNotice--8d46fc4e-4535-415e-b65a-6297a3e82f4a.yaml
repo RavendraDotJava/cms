@@ -1,0 +1,19 @@
+columnSuffix: bejjgnde
+contentColumnType: text
+fieldGroup: a952bf2b-b44b-4581-bf77-5a1b7d885121 # User
+handle: pendingActivationNotice
+instructions: 'Use this field to enter the notice text to display to a user when they attempt to log into an account that is pending activation.'
+name: 'Pending Activation Notice'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: 'Your account has not yet been verified. Please check your email for an activation link.'
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

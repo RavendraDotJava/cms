@@ -1,0 +1,234 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'plan' : '',
+  'redirectUrl': null,
+  'successMessage': 'Subscription started.'|t,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set billingAddress = craft.addresses.id(cart.billingAddressId).one() ?? null %}
+
+<form method="post" action="" id="paymentForm" name="subscriptionForm" onsubmit="sendPaymentDataToAnet(this, false);">
+  {{ csrfInput() }}
+  {{ actionInput('commerce/subscriptions/subscribe') }}
+  {{ redirectInput(settings.redirectUrl) }}
+  {{ successMessageInput(settings.successMessage) }}
+  {{ hiddenInput('planUid', settings.plan.uid|hash) }}
+  {{ hiddenInput('paymentForm[authorizeSubscriptions][email]', cart.email ?? null) }}
+  {{ hiddenInput('paymentForm[authorizeSubscriptions][phone]', '000-000-0000') }}
+  {{ hiddenInput('paymentForm[authorizeSubscriptions][address]', billingAddress ? billingAddress.addressLine1 ~ ' ' ~ billingAddress.addressLine2 : '') }}
+  {{ hiddenInput('paymentForm[authorizeSubscriptions][city]', billingAddress ? billingAddress.locality : '') }}
+  {{ hiddenInput('paymentForm[authorizeSubscriptions][state]', billingAddress ? billingAddress.addressLine1 ~ ' ' ~ billingAddress.addressLine2 : '') }}
+  {{ hiddenInput('paymentForm[authorizeSubscriptions][postalCode]', billingAddress ? billingAddress.postalCode : '') }}
+  {{ hiddenInput('paymentForm[authorizeSubscriptions][country]', billingAddress ? billingAddress.countryCode : '') }}
+
+    <div class="gateway-payment-form mt-p50">
+
+      <div class="mq640:flex mq640:-mx-p16">
+        <div class="mq640:mx-p16 flex-1">
+          {% include 'form/items/_input' with { 'settings': {
+            'type': 'text',
+            'name': 'paymentForm[authorizeSubscriptions][firstName]',
+            'label': 'First Name'|t,
+            'atts': {
+              'placeholder': 'First Name'|t,
+              'required': true,
+              'class': component('input', 'large', ''),
+              'x-bind:value': 'paymentFormFirstName'
+            }
+          }} %}
+        </div>
+
+        <div class="mq640:mx-p16 flex-1">
+          {% include 'form/items/_input' with { 'settings': {
+            'type': 'text',
+            'name': 'paymentForm[authorizeSubscriptions][lastName]',
+            'label': 'Last Name'|t,
+            'atts': {
+              'placeholder': 'Last Name'|t,
+              'required': true,
+              'class': component('input', 'large', ''),
+              'x-bind:value': 'paymentFormLastName'
+            }
+          }} %}
+        </div>
+      </div>
+
+      {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'name': 'paymentForm[authorizeSubscriptions][number]',
+        'id': 'number',
+        'label': 'Card Number'|t,
+        'value': '',
+        'atts': {
+          'placeholder': 'Card Number'|t,
+          'required': true,
+          'class': component('input', 'large', ''),
+          'x-bind:value': 'paymentFormNumber'
+        }
+      }} %}
+
+
+      <div class="mq640:flex">
+
+        <div class="mq640:mr-p16">
+          <label class="{{ component('label', false, '') }}" for="month">{{ "Expiry" }}</label>
+          <div class="flex ">
+            {% include 'form/items/_input' with { 'settings': {
+              'type': 'text',
+              'name': 'paymentForm[authorizeSubscriptions][month]',
+              'id': 'month',
+              'value': '',
+              'atts': {
+                'placeholder': 'MM'|t,
+                'required': true,
+                'maxlength': 2,
+                'class': component('input', 'numberLg', ''),
+                'x-bind:value': 'paymentFormExpMonth'
+              }
+            }} %}
+
+            {% include 'form/items/_input' with { 'settings': {
+              'type': 'text',
+              'name': 'paymentForm[authorizeSubscriptions][year]',
+              'id': 'year',
+              'value': '',
+              'atts': {
+                'placeholder': 'YYYY'|t,
+                'required': true,
+                'maxlength': 4,
+                'class': component('input', 'numberLg', 'mx-p16'),
+                'x-bind:value': 'paymentFormExpYear'
+              }
+            }} %}
+          </div>
+        </div>
+
+        {% include 'form/items/_input' with { 'settings': {
+          'type': 'text',
+          'name': 'paymentForm[authorizeSubscriptions][cvv]',
+          'id': 'cvv',
+          'label': 'CVV'|t,
+          'atts': {
+            'placeholder': 'CVV'|t,
+            'required': true,
+            'maxlength': 4,
+            'class': component('input', 'numberLg', ''),
+            'x-bind:value': 'paymentFormCvv'
+          }
+        }} %}
+      </div>
+
+      {# {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'name': 'paymentForm[authorizeSubscriptions][email]',
+        'id': 'email',
+        'label': 'Email'|t,
+        'value': cart.email ?? null,
+        'atts': {
+          'placeholder': 'Email'|t,
+          'required': true,
+          'class': component('input', '', ''),
+        }
+      }} %} #}
+
+      {# {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'name': 'paymentForm[authorizeSubscriptions][phone]',
+        'id': 'phone',
+        'label': 'phone'|t,
+        'value': '000-000-0000',
+        'atts': {
+          'placeholder': 'phone'|t,
+          'required': false,
+          'class': component('input', '', ''),
+        }
+      }} %} #}
+
+      {# {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'name': 'paymentForm[authorizeSubscriptions][address]',
+        'id': 'address',
+        'label': 'address'|t,
+        'value': billingAddress ? billingAddress.addressLine1 ~ ', ' ~ billingAddress.addressLine2 : '',
+        'atts': {
+          'placeholder': 'address'|t,
+          'required': true,
+          'class': component('input', '', ''),
+        }
+      }} %} #}
+
+      {# {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'name': 'paymentForm[authorizeSubscriptions][city]',
+        'id': 'city',
+        'label': 'city'|t,
+        'value': billingAddress ? billingAddress.locality : '',
+        'atts': {
+          'placeholder': 'city'|t,
+          'required': true,
+          'class': component('input', '', ''),
+        }
+      }} %} #}
+
+
+      {# {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'name': 'paymentForm[authorizeSubscriptions][state]',
+        'id': 'state',
+        'label': 'state'|t,
+        'value': billingAddress ? billingAddress.administrativeArea : '',
+        'atts': {
+          'placeholder': 'state'|t,
+          'required': true,
+          'class': component('input', '', ''),
+        }
+      }} %} #}
+
+      {# {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'name': 'paymentForm[authorizeSubscriptions][postalCode]',
+        'id': 'postalCode',
+        'label': 'postalCode'|t,
+        'value': billingAddress ? billingAddress.postalCode : '',
+        'atts': {
+          'placeholder': 'postalCode'|t,
+          'required': true,
+          'class': component('input', '', ''),
+        }
+      }} %} #}
+
+      {# {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'name': 'paymentForm[authorizeSubscriptions][country]',
+        'id': 'country',
+        'label': 'country'|t,
+        'value': billingAddress ? billingAddress.countryCode : '',
+        'atts': {
+          'placeholder': 'country'|t,
+          'required': true,
+          'class': component('input', '', ''),
+        }
+      }} %} #}
+
+
+      <input id="token" name="paymentForm[authorizeSubscriptions][token]" type="hidden">
+      <input id="tokenDescriptor" name="paymentForm[authorizeSubscriptions][tokenDescriptor]" type="hidden">
+
+      {# {% namespace settings.plan.gateway.handle|commercePaymentFormNamespace %} #}
+      <div class="hidden">
+        {{ settings.plan.gateway.getPaymentFormHtml({})|raw }}
+      </div>
+      {# {% endnamespace %} #}
+
+      {# {{ cart.gateway.getPaymentFormHtml({})|raw }} #}
+
+      {# <button onclick="event.preventDefault(); " id="paymentForm-authorizeSubscriptions-authorizeSubmit" name="paymentForm[authorizeSubscriptions][authorizeSubmit]" class="{{ component('button', false, '') }}">{{ "Submit"|t }}</button> #}
+    </div>
+</form>

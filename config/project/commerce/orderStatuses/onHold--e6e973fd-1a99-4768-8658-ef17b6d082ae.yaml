@@ -1,0 +1,6 @@
+color: yellow
+default: false
+description: 'Order is on hold.'
+handle: onHold
+name: 'On Hold'
+sortOrder: 99

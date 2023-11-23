@@ -1,0 +1,103 @@
+fieldLayouts:
+  0c618afa-060b-448b-b895-86422b17300d:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: db0bf6c0-06df-4790-a1c5-e665724d2c6f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1262417d-adab-4273-9f2b-02709eae6778 # Site Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a98fa0ee-953a-4780-b4f9-a2ab4d8ef5ba
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 00727e79-cbc2-4589-ba34-4d58fac1a35b # Page Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 35304b69-4550-49a7-bba5-c47f3b6c2c85
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: 'Header Background'
+            type: craft\fieldlayoutelements\Heading
+            uid: e8ff1da1-a46f-43bd-9acc-6fafac6b1588
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b77035a8-1df8-4b63-b8fb-787a26e10efb
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 408f9206-b18c-4e63-afce-467879d12184
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 6ef1d25b-ab04-4063-88e3-110f404e5949 # Empty Cart Message
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e4315925-c438-4a70-88a6-ecd386e4b808
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Empty Cart'
+        uid: c52363c2-1268-42db-b010-d4146504afc0
+        userCondition: null
+handle: cart
+hasTitleField: false
+name: Cart
+section: 11863599-23c6-4281-8741-0d261a077350 # Cart
+sortOrder: 1
+titleFormat: '{section.name|raw}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

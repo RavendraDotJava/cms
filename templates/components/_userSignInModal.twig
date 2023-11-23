@@ -1,0 +1,63 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'visible' : 'signIn',
+  'id': 'modalId-registerSignIn',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if not currentUser %}
+
+<template id="{{- settings.id -}}">
+  <div class="relative" x-data="{ visible: '{{- settings.visible -}}' }" x-init="visible = '{{- settings.visible -}}'">
+
+    <template id="signIn" x-if="visible == 'signIn'" >
+      <div class="{{ component('roundedCard', 'form', 'w-full') }}" x-data="{ show: false }" x-init="$nextTick(() => { show = true })" x-show="show" x-transition>
+        <h2 class="mb-p32">{{ userGlobal.signInHeading }}</h2>
+        <p class="mb-p32">{{ userGlobal.signInText|nl2br }}</p>
+        {% include 'form/forms/_sign-in' with {
+          redirectUrl: '/customer-profile',
+        } %}
+        <button type="button" class="block mt-p50 font-medium text-lg hover:underline focus:underline" @click="visible = 'register'">{{- "Don't have an account?"|t -}}</button>
+      </div>
+    </template>
+
+    <template id="register" x-if="visible == 'register'">
+      <div class="{{ component('roundedCard', 'form', 'w-full') }}" x-data="{ show: false }" x-init="$nextTick(() => { show = true })" x-show="show" x-transition>
+        <h2 class="mb-p32">{{ userGlobal.registerHeading }}</h2>
+        <p class="mb-p32">{{ userGlobal.registerText|nl2br }}</p>
+        {% include 'form/forms/_register' with { 'settings': {
+          'redirectUrl': userGlobal.registrationRedirect is not empty ? userGlobal.registrationRedirect.one.uri : '',
+        }} %}
+        <button type="button" class="block mt-p50 font-medium text-lg hover:underline focus:underline" x-on:click="visible = 'signIn'">{{- "Already have an account?"|t -}}</button>
+      </div>
+    </template>
+
+    <template id="forgotPW" x-if="visible == 'forgotPW'">
+      <div class="{{ component('roundedCard', 'form', 'w-full') }}" x-data="{ show: false }" x-init="$nextTick(() => { show = true })" x-show="show" x-transition>
+
+        {% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Sign In',
+          'type'  : 'button',
+          'style' : 'arrow',
+          'class' : 'mr-p8 mb-p20',
+          'icon'  : 'arrow-left',
+          'iconAlign' : 'left',
+          'atts': {
+            '@click': "visible = 'signIn'",
+            'type': 'button'
+          }
+        }} %}
+        <h2 class="mb-p32">{{ userGlobal.forgotPasswordHeading is not empty ? userGlobal.forgotPasswordHeading : 'Forgotten Password'|t }}</h2>
+        <p class="mb-p32">{{ userGlobal.forgotPasswordText }}</p>
+        {% include 'form/forms/_forgotPassword' %}
+      </div>
+    </template>
+  </div>
+</template>
+{% endif %}

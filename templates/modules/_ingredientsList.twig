@@ -1,0 +1,83 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'ingredientsList' : '',
+  'decoration': '',
+  'notes': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set spacingClass = 'pl-none' %}
+
+{% if settings.decoration == 'diagonalBrushBL' or settings.decoration == 'diagonalBrushTL' %}
+  {% set spacingClass = 'mq768:pl-p230 mq1024:pl-p160' %}
+{% endif %}
+
+{% set cardContent %}
+
+  {% if settings.ingredientsList is not empty %}
+    {% set ingredients = settings.ingredientsList.all() %}
+
+    <div class="relative z-20 {{ spacingClass }}">
+      <div class="flex items-center">
+        <h3 class="text-left font-normal mb-p30 text-p26 mq1024:text-h3">{{ 'Ingredient List'|t }}</h3>
+        <h3 class="hidden mq768:inline-block text-p26 mq1024:text-h3 text-right font-normal mb-p30 ml-auto">{{ 'Quantity'|t }}</h3>
+      </div>
+      <ul>
+      {% for ingredient in ingredients %}
+        {% set qty = ingredient.quantity %}
+        {% set unit = ingredient.measurementUnit %}
+        {% set isPlural = qty > 1 ? true : false %}
+        {% set ingredientName = ingredient.product.one ? ingredient.product.one : ingredient.ingredient.one ? ingredient.ingredient.one %}
+        {% set isProduct = ingredient.product.one ? true : false %}
+        <li>
+          <div class="text-bd mq480:text-lg mq768:text-h5 mq768:flex {{ isProduct ? 'mb-p12' : 'mb-p20' }}">
+            <label class="mq768:pr-p32 flex mq768:inline-block mb-p8 mq768:mb-none">
+              <input type="checkbox" value="0" class="{{ component('checkbox', '', 'shrink-0 grow-0') }}">
+              <span class="cursor-pointer flex-1">{{ ingredientName }}</span>
+            </label>
+            <div class="ml-p40 mq768:ml-auto mq768:whitespace-nowrap">
+              <span class="font-normal mr-p8 mq768:hidden">{{ "Qty:"|t }}</span>
+              <span>{{ qty }}</span>
+              {% if unit != 'none' %}
+                <span class="ml-p8 text-right {{ unit == 'l' ? 'uppercase' }}">{{ unit }}{{ isPlural ? 's' }}</span>
+              {% endif %}
+            </div>
+          </div>
+          {% if isProduct %}
+            {% set product = ingredient.product.one %}
+            {% set productVariants = product.getVariants() %}
+            {% include 'components/_addToCart' with { 'settings': {
+              'product': product,
+              'productVariants': productVariants,
+              'buttonStyle': 'small-terracotta',
+              'buttonClasses': 'mb-p20 ml-p40',
+            }} %}
+          {% endif %}
+        </li>
+      {% endfor %}
+      </ul>
+      {% if settings.notes is not empty %}
+        <div class="text-sm">{{ settings.notes }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endset %}
+
+{% for row in settings.config %}
+  {{ row }}
+{% endfor %}
+
+<div class="{{ component('moduleWidth', settings.config.handle, '-translate-y-p50') }}">
+  {% include "components/_cardLarge" with { settings: {
+    'decoration': settings.decoration,
+    'showDecoration': true,
+    'showDivider': false,
+    'cardContent': cardContent,
+  }}%}
+</div>

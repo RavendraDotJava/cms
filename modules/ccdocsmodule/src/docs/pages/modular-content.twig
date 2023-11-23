@@ -1,0 +1,41 @@
+{% extends "_layouts/cp" %}
+{% set title = "Modular Content"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <p class="large">Traditional workflows for building websites have generally approached the task from the position of individual page templates. Many content management systems (CMS) actively reinforce this approach, relying on specific page templates to frame and display content on the front-end. This approach has some legitimate benefits, especially with pages requiring a concrete structure, such as a login page.</p>
+    <p>Unfortunately, a rigidly templated approach can also lead to an inflexible site that limits how we can deploy content. This is especially true for marketing-style pages, where content requirements often vary significantly from page to page. A site's About page probably shouldn't have the same structure as the Contact or Careers pages.</p>
+    <p>This is where a modular approach can be hugely beneficial.</p>
+    <p>A "module" refers to a self-contained content block. Generally speaking, this is more than just a single paragraph of text or a single image (though that can certainly be the case). Instead, modules would include things like:</p>
+    <ul>
+      <li>A text and media module, which could combine a heading, a paragraph of text, a link and an image or video</li>
+      <li>A series of content cards used to highlight key benefits of a product or service</li>
+      <li>A call to action, which may contain a heading, a paragraph of text and a link</li>
+    </ul>
+    <p>By dividing and organizing content into these distinct blocks, we empower editors to add, edit, remove, and re-order modules as required. When properly executed, the result is a website where content dictates layout and structure, as opposed to the inverse (as is often the case with purely template-driven websites).</p>
+    <p>Here are two examples of pages built using different modules:</p>
+
+    {{ getDocumentationImage('modular-pages.png') }}
+
+    <p>It's also worth noting that all instances of the same module don't necessarily need to have the exact same layout. Configuration options within the module can allow for customizations on things like:</p>
+    <ul>
+      <li>alignment</li>
+      <li>background colour</li>
+      <li>decorative elements</li>
+    </ul>
+    <p>These types of configuration options provide even more control for customizing the appearance of pages. Here is an example of the same module with different configuration options:</p>
+
+    {{ getDocumentationImage('modular-variants.png') }}
+
+    <p>Finally, the modular approach also makes maintenance a dream. Because modules exist as a single entity, updates, fixes, and enhancements can be applied once, with the changes cascading across the entire site. Even better, we can deploy new modules, making them available for immediate use without impacting the structure of any existing pages.</p>
+    <p>Ultimately, the modular approach allows you to build beautiful pages that showcase valuable, user-centric content rather than trying to shoehorn that content into rigid and inflexible templates.</p>
+    <p>For more information on the specific modules available for this site, please refer to the <a href="{{ getAdminUrl() }}documentation/sections">Sections &amp; Entries</a> documentation.</p>
+  </div>
+{% endblock %}

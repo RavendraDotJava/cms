@@ -1,0 +1,67 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'content' : '',
+	'media'   : false,
+	'button'  : false,
+	'invert'  : false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div class="{{ component('moduleWidth', settings.config.handle) }}">
+
+	<div class="mq768:flex flex-center">
+
+		<div class="mq768:w-1/2 {{ settings.invert ? 'mq768:order-1 mq768:pr-p64' : 'mq768:order-2 mq768:pl-p64' }}">
+		{% if isVideo(settings.media) %}
+			{% include 'components/_video.twig'|siteInclude with { settings: {
+				'video' : settings.media,
+				'format' : 'square'  
+      }} %}
+		{% else %}
+			{% include 'components/_image.twig'|siteInclude with { settings: {
+				'image' : settings.media,
+				'format' : 'square'  
+      }} %}		
+		{% endif %}
+		</div>
+
+		<div class="mq768:w-1/2 {{ settings.invert ? 'mq768:order-2' : 'mq768:order-1' }}">
+
+			{% if settings.heading is not empty %}
+				{{ settings.heading.set(
+					{ 
+						class: 'font-light'
+					}
+				) }}
+			{% endif %}
+
+			{% if settings.content %}
+				<div class="c-content mt-p32">
+					{{ settings.content }}
+				</div>
+			{% endif %}
+
+			{% if settings.button.url is not empty %}
+      <div class="mt-p32">
+				{% include 'components/_button.twig'|siteInclude with { settings: { 
+					'text'  : settings.button.text,
+					'href'  : settings.button.url,
+					'type'  : 'link',
+					'style' : settings.config.btnType
+				}} %}
+      </div> 
+			{% endif %}   			
+
+		</div>
+
+	</div>
+
+</div>
+

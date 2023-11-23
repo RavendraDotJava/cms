@@ -1,0 +1,29 @@
+/* --------------------------------- *
+ * BUTTON
+ * --------------------------------- */
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto blue;
+}
+
+// Mobile Nav Button
+.c-btn-menu {
+	.bar1, .bar2, .bar3 {
+		transition: position .3s ease, transform .3s ease, opacity .3s ease;
+	}
+  &[aria-expanded=true] {
+		.bar1 {
+			transform: rotate(45deg);
+		}
+		.bar2 {
+			left: 50%;
+			right: 50%;
+			opacity: 0;
+			width: 0;
+		}
+		.bar3 {
+			transform: rotate(-45deg);
+		}
+	}
+}

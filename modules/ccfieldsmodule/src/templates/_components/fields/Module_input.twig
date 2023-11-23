@@ -1,0 +1,130 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * CCFields module for Craft CMS 3.x
+ *
+ * Instructions Field Input
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2021 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   CCFieldsModule
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+<a class="fieldtoggle collapsed" data-target="types-craft-fields-PlainText-advanced">{{ 'Module Settings'|t }}</a>
+<div id="types-craft-fields-PlainText-advanced" class="hidden">
+{{ forms.text({
+  id : id,
+  class : 'nicetext text idmask',
+  name : name ~ "[moduleId]",
+  value :(value['moduleId'] is defined) ? value['moduleId'] : '',
+  maxlength : 48,
+  showCharsLeft : true,
+  describedBy: id ~ '-moduleId-instructions',
+  placeholder: 'Custom ID'
+}) }}
+
+{% set noPadding = true %}
+{% if backgrounds is not empty or padding is not empty or decorations or overflow is not empty %}
+
+<div class="module-settings" id="{{ id }}-set">
+  <div class="module-settings__wrap">
+  {% if backgrounds is not empty %}
+    <div class="module-settings__option">
+    {{ forms.selectField({
+        id: id ~ '-backgrounds',
+        name: name ~ "[backgrounds]",
+        label: 'Background',
+        value: (value['backgrounds'] is defined) ? value['backgrounds'] : backgroundDefault,
+        options: backgrounds,
+        instructions: 'Use this field to set the module background.'
+      })
+    }}
+    </div>
+  {% endif %}
+
+  {% if padding is not empty %}
+    {% set noPadding = false %}
+    {% if independentPadding %}
+      <div class="module-settings__option">
+      {{ forms.selectField({
+          id: id ~ '-padding',
+          name: name ~ "[padding]",
+          label: 'Padding - Top',
+          value: (value['padding'] is defined) ? value['padding'] : paddingdDefault,
+          options: padding,
+          instructions: 'Use this field to set the module’s top padding.'
+        })
+      }}
+      </div>
+      <div class="module-settings__option">
+      {{ forms.selectField({
+          id: id ~ '-paddingBottom',
+          name: name ~ "[paddingBottom]",
+          label: 'Padding - Bottom',
+          value: (value['paddingBottom'] is defined) ? value['paddingBottom'] : paddingdDefault,
+          options: padding,
+          instructions: 'Use this field to set the module’s bottom padding.'
+        })
+      }}
+      </div>
+    {% else %}
+      <div class="module-settings__option">
+      {{ forms.selectField({
+          id: id ~ '-padding',
+          name: name ~ "[padding]",
+          label: 'Padding',
+          value: (value['padding'] is defined) ? value['padding'] : paddingdDefault,
+          options: padding,
+          instructions: 'Use this field to set the module’s top and bottom padding.'
+        })
+      }}
+      </div>
+    {% endif %}
+  {% endif %}
+
+  {% if decorations is not empty %}
+    <div class="module-settings__option">
+    {{ forms.selectField({
+        id: id ~ '-decorations',
+        name: name ~ "[decorations]",
+        label: 'Decorations',
+        value: (value['decorations'] is defined) ? value['decorations'] : '',
+        options: decorations,
+        instructions: 'Use this field to set the module background decoration.'
+      })
+    }}
+    </div>
+  {% endif %}
+
+  {% if overflow is not empty %}
+    <div class="module-settings__option">
+    {{ forms.selectField({
+        id: id ~ '-overflow',
+        name: name ~ "[overflow]",
+        label: 'Overflow',
+        value: (value['overflow'] is defined) ? value['overflow'] : '',
+        options: overflow,
+        instructions: 'Select the overflow for this module. Contents extending beyond the module container can be hidden or visible.'
+      })
+    }}
+    </div>
+  {% endif %}
+
+  </div>
+</div>
+{% endif %}
+{% if noPadding %}
+  {{ forms.hidden({
+      id: id ~ '-padding',
+      name: name ~ "[padding]",
+      value: paddingdDefault,
+    })
+  }}
+{% endif %}
+</div>
+

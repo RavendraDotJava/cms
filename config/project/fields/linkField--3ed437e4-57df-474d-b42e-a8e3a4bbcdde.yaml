@@ -1,0 +1,73 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: f197da5a-a88b-49ec-ad29-5677e27c00aa # Common
+handle: linkField
+instructions: null
+name: Link
+searchable: false
+settings:
+  allowCustomText: true
+  allowTarget: false
+  autoNoReferrer: false
+  customTextMaxLength: 0
+  customTextRequired: false
+  defaultLinkName: entry
+  defaultText: ''
+  enableAllLinkTypes: false
+  enableAriaLabel: false
+  enableElementCache: false
+  enableTitle: false
+  typeSettings:
+    asset:
+      allowCrossSiteLink: false
+      allowCustomQuery: false
+      enabled: false
+      sources: '*'
+    category:
+      allowCrossSiteLink: false
+      allowCustomQuery: false
+      enabled: false
+      sources: '*'
+    craftCommerce-product:
+      allowCrossSiteLink: false
+      allowCustomQuery: false
+      enabled: true
+      sources: '*'
+    custom:
+      allowAliases: false
+      disableValidation: false
+      enabled: false
+    email:
+      allowAliases: false
+      disableValidation: false
+      enabled: true
+    entry:
+      allowCrossSiteLink: false
+      allowCustomQuery: false
+      enabled: true
+      sources:
+        - singles
+        - 'section:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+        - 'section:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+        - 'section:a8188730-d041-4b1c-91c1-19fba1e60b19' # Checkout
+        - 'section:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+        - 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+    site:
+      enabled: false
+      sites: '*'
+    tel:
+      allowAliases: false
+      disableValidation: false
+      enabled: true
+    url:
+      allowAliases: false
+      disableValidation: false
+      enabled: true
+    user:
+      allowCrossSiteLink: false
+      allowCustomQuery: false
+      enabled: false
+      sources: '*'
+translationKeyFormat: null
+translationMethod: none
+type: lenz\linkfield\fields\LinkField

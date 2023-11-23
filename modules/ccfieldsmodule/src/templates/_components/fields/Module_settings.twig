@@ -1,0 +1,91 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * CCFields module for Craft CMS
+ *
+ * Instructions Field Settings
+ * This is the template that appears when configuring a new instance of this field.
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2021 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   CCFieldsModule
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+<div class="settings-wrap">
+
+{{ forms.checkboxGroupField({
+	id: 'module-backgrounds',
+	label: 'Backgrounds',
+	instructions: 'Select the background options that should be available for use in this module.'|t,
+	name: "backgrounds",
+	values: backgroundValues,
+  options: backgrounds,
+	})
+}}
+
+{{ forms.radioGroupField({
+	id: 'module-backgrounds-default',
+	label: 'Background Default',
+	instructions: 'Select the background options that should be available for use in this module.'|t,
+	name: "backgroundsDefault",
+	value: backgroundDefault,
+  options: backgrounds,
+	})
+}}
+
+{{ forms.checkboxGroupField({
+	id: 'module-padding',
+	label: 'Padding',
+	instructions: 'Select the padding options that should be available for use in this module.'|t,
+	name: "padding",
+	values: paddingValues,
+  options: padding,
+	})
+}}
+
+{{ forms.radioGroupField({
+	id: 'module-padding-default',
+	label: 'Padding Default',
+	instructions: 'Select the background options that should be available for use in this module.'|t,
+	name: "paddingDefault",
+	value: paddingDefault,
+  options: padding,
+	})
+}}
+
+{{ forms.checkboxGroupField({
+  id: 'module-overflow',
+  label: 'Overflow',
+  instructions: 'Select the overflow options for this module.'|t,
+  name: "overflow",
+  values: overflowValues,
+  options: overflow,
+  })
+}}
+
+{{ forms.lightswitchField({
+    id: 'module-independentPadding',
+    label: 'Independent Padding'|t('app'),
+  	instructions: 'Activate this to allow for conrolling top and bottom padding independently on this module.'|t,
+    name: 'independentPadding',
+    on: independentPadding,
+}) }}
+
+{{ forms.checkboxGroupField({
+	id: 'module-decorations',
+	label: 'Decorations',
+	instructions: 'Select the decorations options that should be available for use in this module.'|t,
+	name: "decorations",
+	values: decorationsValues,
+  options: decorations,
+	})
+}}
+
+<span class="btn-reset btn" data-name="backgroundsDefault" onclick="resetModuleSettings(event)">Reset</span>
+
+</div>

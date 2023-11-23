@@ -1,0 +1,16 @@
+{% extends "_layout" %}
+
+{% import 'partials/_macros' as helpers %}
+
+{# Regular Request #}
+{% block content %}
+
+  {# CTA #}
+  {% include 'partials/_modules.twig' with { settings: {
+    'modules' : product.productCta,
+  }} %}
+
+  {% include 'partials/_modules.twig' with { settings: {
+    'modules' : product.contentModules,
+  }} %}
+{% endblock %}

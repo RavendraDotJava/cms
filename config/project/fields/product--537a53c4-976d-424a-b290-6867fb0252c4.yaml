@@ -1,0 +1,24 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 0166bfae-8627-47ea-9ab1-c9cc949d3ee5 # Product
+handle: product
+instructions: null
+name: Product
+searchable: true
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showSiteMenu: true
+  sources:
+    - 'productType:f94ef620-73da-4c8a-a57b-a45a1fc6a717' # Probiotics
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\commerce\fields\Products

@@ -1,0 +1,85 @@
+tabs:
+  -
+    elementCondition: null
+    elements:
+      -
+        elementCondition: null
+        heading: Tracking
+        type: craft\fieldlayoutelements\Heading
+        uid: a7c502f1-55c5-4db7-9048-fcd2ee9b1611
+        userCondition: null
+      -
+        elementCondition: null
+        fieldUid: 43426cb9-9bbf-4a3a-8187-3dc134393bc2 # Order Tracking Number
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: df61cf81-c293-4642-a579-7b255643b9e2
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 7321572e-5780-45f9-9d82-b341995d4579 # Order Tracking Url
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 2d19e3bb-2eec-4d7a-b54e-c45187063c4b
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 85947e8f-7d37-4af5-832f-7295156e218b # Order Tracking Carrier
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 220f3846-1df0-4e6b-a7fa-847f0d54607b
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        heading: 'Status Details'
+        type: craft\fieldlayoutelements\Heading
+        uid: 73485ded-362b-4b83-81c8-594d596be83d
+        userCondition: null
+      -
+        elementCondition: null
+        fieldUid: 1a3cdcab-623b-4b11-ade7-52a84d584457 # Order Status Details
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 39e13e12-ddc3-4e26-a62f-3593c1d51428
+        userCondition: null
+        warning: null
+        width: 100
+    name: Status/Tracking
+    uid: c6ba8c33-bad9-4da2-ba25-c5060a562a26
+    userCondition: null
+  -
+    elementCondition: null
+    elements:
+      -
+        elementCondition: null
+        fieldUid: 8ad90ace-d354-45e9-8697-5bd45e0a42a8 # Save Order Address
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: b44d7410-f11d-4946-841b-b90e560a8d3d
+        userCondition: null
+        warning: null
+        width: 100
+    name: Addresses
+    uid: ec986e65-7afe-4a3a-bea8-274748a52a6e
+    userCondition: null

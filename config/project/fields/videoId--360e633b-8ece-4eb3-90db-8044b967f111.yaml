@@ -1,0 +1,19 @@
+columnSuffix: nfdjwksr
+contentColumnType: text
+fieldGroup: 057f05bc-e4bf-4c08-94e8-1e40cc56bea7 # Media
+handle: videoId
+instructions: 'Enter the video ID for this video.'
+name: 'Video ID'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

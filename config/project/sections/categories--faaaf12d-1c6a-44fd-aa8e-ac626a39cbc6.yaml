@@ -1,0 +1,24 @@
+defaultPlacement: end
+enableVersioning: true
+handle: categories
+name: Categories
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  da016506-9b96-43e4-9e38-d4c30ec3294c: # Olina
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: channel

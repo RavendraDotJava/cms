@@ -1,0 +1,44 @@
+columnSuffix: dcwlxcim
+contentColumnType: string
+fieldGroup: 27cf3d3f-bc27-4c28-95c9-84ebd15857c4 # Cart
+handle: emptyCartMessage
+instructions: 'Use this field to provide a message to show to a user who lands on the cart page with no products in their cart.'
+name: 'Empty Cart Message'
+searchable: false
+settings:
+  blockTypeFields: 0
+  changedFieldIndicator: 2143126668
+  columns:
+    __assoc__:
+      -
+        - 9b19d4b2-7974-4dcf-ae48-cba502ffa4f5 # Heading
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 6fcc16ea-71a9-42cc-84ca-3c3c24a0a418 # Text Content
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - e90d0415-a93d-444d-80bb-836c952c6cc9 # Button
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+  contentTable: '{{%stc_emptycartmessage}}'
+  fieldLayout: matrix
+  maxRows: 1
+  minRows: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  selectionLabel: null
+  staticField: null
+translationKeyFormat: null
+translationMethod: none
+type: verbb\supertable\fields\SuperTableField

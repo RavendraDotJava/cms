@@ -1,0 +1,383 @@
+field: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+fieldLayouts:
+  0efd5b91-a09c-4c2c-9594-9dd2177a51aa:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: b96aae3b-24e1-430a-aa86-5f1e786952ef # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 55404103-c231-4f93-8c94-bcb6cbf8dba5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: da006a4b-5e05-4d6e-9801-5e381b6a0926 # Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0371df75-59c8-4a38-891f-1678cc24db0d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: d13a5842-ff11-40f9-bfac-61f4a8503003 # Call To Action
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 66b474d8-13ab-4334-b905-792daf04a469
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: ad354585-7430-4d9c-b1fd-cd0e9c539839 # Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0161b774-42c3-4865-8f87-6252504e0d11
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: beeaffbd-fd1e-454b-9338-3d5efa1db18f # Banner Image
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8da0f72f-fe36-4f29-a274-ef4f83d0c84d
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 1177ac9f-0c02-49a6-b6a6-917ac4375789 # Background Color (Bottom)
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 88b57c75-c575-48bb-a8bf-bad865c16a9b
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 2a652de9-4dba-40b0-a94e-17e6450e2362 # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bd891d31-7ae4-4015-9175-c7f7c1754b3c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: e37f5b50-2265-4ef8-bfa6-a4dd70598cd8
+        userCondition: null
+fields:
+  2a652de9-4dba-40b0-a94e-17e6450e2362: # Module
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: light
+      decorations: ''
+      decorationsDefault: ''
+      independentPadding: ''
+      moduleId: ''
+      overflow: ''
+      padding:
+        - none
+        - small
+        - medium
+        - large
+      paddingDefault: medium
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+  1177ac9f-0c02-49a6-b6a6-917ac4375789: # Background Color (Bottom)
+    columnSuffix: apecvoks
+    contentColumnType: text
+    fieldGroup: null
+    handle: backgroundColorBottom
+    instructions: "Use this field to change the background color at the bottom of the module.\r\n\r\n*This option only applies when a Banner Image has been set.*"
+    name: 'Background Color (Bottom)'
+    searchable: false
+    settings:
+      default: null
+      palette: 'Olina Backgrounds'
+      setRandom: false
+      useConfigFile: true
+    translationKeyFormat: null
+    translationMethod: none
+    type: percipiolondon\colourswatches\fields\ColourSwatches
+  ad354585-7430-4d9c-b1fd-cd0e9c539839: # Button
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: button
+    instructions: 'Use this field to add a button below the selected Call To Action entry.'
+    name: Button
+    searchable: false
+    settings:
+      allowCustomText: true
+      allowTarget: false
+      autoNoReferrer: false
+      customTextMaxLength: 0
+      customTextRequired: false
+      defaultLinkName: entry
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        asset:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        category:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        craftCommerce-product:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: true
+          sources: '*'
+        custom:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        email:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        entry:
+          allowCrossSiteLink: false
+          allowCustomQuery: true
+          enabled: true
+          sources:
+            - singles
+            - 'section:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+            - 'section:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+            - 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+        site:
+          enabled: false
+          sites: '*'
+        tel:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        url:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        user:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField
+  b96aae3b-24e1-430a-aa86-5f1e786952ef: # Heading
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: heading
+    instructions: "Use this field to add a heading to this module.\r\n\r\nTo highlight a particular piece of the heading text, wrap the targeted words in single asterisk (`*`). For example: `this is a *highlighted* heading`.\r\n\r\nThis field also allows you to set the heading level. _Please use this feature with caution and ensure proper document structure,_ as improper document structures are an accessibility concern. "
+    name: Heading
+    searchable: true
+    settings:
+      defaults:
+        __assoc__:
+          -
+            - levels
+            -
+              __assoc__:
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+          -
+            - sizing
+            -
+              __assoc__:
+                -
+                  - default
+                  - Default
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+                -
+                  - h5
+                  - H5
+      heading: ''
+      levelDefault: h2
+      levels:
+        - h2
+        - h3
+        - h4
+      sizing:
+        - h1
+        - h2
+        - h3
+        - h4
+      sizingDefault: h2
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Heading
+  beeaffbd-fd1e-454b-9338-3d5efa1db18f: # Banner Image
+    columnSuffix: axtxaupu
+    contentColumnType: string
+    fieldGroup: null
+    handle: bannerImage
+    instructions: "Use this field to add an optional banner image to the module. \r\n\r\nThis will display above the selected Call To Action entry."
+    name: 'Banner Image'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds: null
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: false
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add a banner image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources:
+        - 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  d13a5842-ff11-40f9-bfac-61f4a8503003: # Call To Action
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: callToAction
+    instructions: 'Use this field to create or select an existing Call To Action entry.'
+    name: 'Call To Action'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Entry
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\entries\EntryCondition
+      selectionLabel: 'Add a CTA'
+      showSiteMenu: true
+      sources:
+        - 'section:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  da006a4b-5e05-4d6e-9801-5e381b6a0926: # Content
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: contentText
+    instructions: 'Use this field to add introductory content for this module.'
+    name: Content
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 2
+      multiline: true
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: callToAction
+name: 'Call to Action'
+sortOrder: 7

@@ -1,0 +1,47 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'content' : '',
+	'questions' : false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div class="{{ component('moduleWidth', settings.config.handle) }}">
+
+  <div>
+
+    {% include 'components/_intro.twig' with { settings: {
+      'heading' : settings.heading,
+      'intro'   : settings.content,
+      'type'    : settings.config.handle,
+    }} %}
+
+    {% if settings.questions is not empty %}
+
+      <ul class="w-full">
+
+      {% for question in settings.questions.all() %}
+
+        {% include 'components/_accordion.twig'|siteInclude with { settings: {
+          'id' : settings.config.id ~ '-' ~ loop.index,
+          'trigger' : question.question,
+          'content' : question.answer|markdown,
+          'bg': settings.config.background,
+        }} %}
+
+      {% endfor %}
+
+      </ul>
+
+    {% endif %}
+
+  </div>
+
+</div>
+

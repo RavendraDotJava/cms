@@ -1,0 +1,42 @@
+{% extends 'checkout/_layout.twig' %}
+
+{% import 'partials/_macros' as helpers %}
+
+{% block mainContent %}
+
+  {% include 'components/_checkoutIntro' with { 'settings': {
+      'heading': entry.checkoutHeading,
+      'textContent': entry.checkoutText,
+      'step': entry.checkoutStep,
+  }} %}
+
+  {% for item in cart.lineItems %}
+    {% set subscriptionEntry = item.purchasable.subscription.one ?? null %}
+
+    {% if subscriptionEntry %}
+
+      {% include "cart/_cartItem.twig" with { 'settings': {
+        'showQty': false,
+      }}%}
+
+      {% set plan = craft.commerce.getPlans().getPlansByInformationEntryId(subscriptionEntry.id)|first %}
+
+      {% include 'form/forms/_checkoutSubscriptionPayment.twig' with { 'settings': {
+          'redirectUrl': entry.formSubmissionRedirect.one is not null ? entry.formSubmissionRedirect.one.uri,
+          'successMessage': entry.formSuccessMessage ? entry.formSuccessMessage,
+          'plan': plan,
+      }} %}
+    {% endif %}
+  {% endfor %}
+{% endblock mainContent %}
+
+{% block sidebar %}
+  {% include "components/_orderSummary.twig" with {"settings": {
+    'showShippingAddress': true,
+    'showBillingAddress': true,
+    'showShippingMethod': true,
+    'buttonText': entry.formSubmitButtonText,
+    'buttonFor': 'paymentForm',
+  }}%}
+  <!-- Template: {{ _self }}.twig -->
+{% endblock sidebar %}

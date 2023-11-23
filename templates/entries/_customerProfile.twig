@@ -1,0 +1,15 @@
+{% extends craft.app.request.isAjax ? "_ajax" : "_layout" %}
+
+{% import 'partials/_macros' as helpers %}
+
+{% block content %}
+<div class="pt-headerSm mq768:pt-headerLg relative z-20">
+  <section class="{{ component('modulePadding', false, 'c-container pt-p50') }}">
+    <div class="{{ component('moduleWidth', false, '') }}">
+      <div class="{{ component('roundedCard', 'checkoutPage', '') }}">
+        {% include ('entries/customerProfile/_' ~ entry.type.handle ~ '.twig')|siteInclude %}
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

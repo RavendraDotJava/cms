@@ -1,0 +1,22 @@
+columnSuffix: bctwchvy
+contentColumnType: text
+fieldGroup: e54d5633-67e4-4147-ac0a-daecea3240dc # Review
+handle: ctaTextUser
+instructions: 'Use this field to enter the CTA text for a logged in user.'
+name: 'CTA Text (User)'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  initialRows: 2
+  manualConfig: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  trimEmptyParagraphs: true
+  vizyConfig: Standard.json
+translationKeyFormat: null
+translationMethod: none
+type: verbb\vizy\fields\VizyField

@@ -1,0 +1,164 @@
+changedFieldIndicator: null
+field: f7b31e70-1186-4058-aedb-0f579872cd6c # Buttons
+fieldLayouts:
+  8a999412-13a0-41c2-bbc1-d1ad57bf93b9:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: c3f2eb96-80e7-4395-b9bf-db4775fb4bb9 # Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a06a18d0-74b2-4bbb-af2a-3261337352b5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b03ddbec-637d-4a46-bab0-032178db88eb # Button Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 02d2ba1a-2c37-4418-92dd-183f69b2e004
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 5f38c411-aa95-476e-8ecf-4846ec7217d5
+        userCondition: null
+fields:
+  b03ddbec-637d-4a46-bab0-032178db88eb: # Button Style
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: buttonStyle
+    instructions: null
+    name: 'Button Style'
+    searchable: false
+    settings:
+      newLabelFormat: '{{ label }}'
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Primary
+            -
+              - value
+              - primary
+        -
+          __assoc__:
+            -
+              - label
+              - Secondary
+            -
+              - value
+              - secondary
+        -
+          __assoc__:
+            -
+              - label
+              - Terracotta
+            -
+              - value
+              - terracotta
+        -
+          __assoc__:
+            -
+              - label
+              - White
+            -
+              - value
+              - white
+        -
+          __assoc__:
+            -
+              - label
+              - Large
+            -
+              - value
+              - large
+      sourceGlobal: buttonStyle
+      sourceLabelHandle: label
+      sourceValueHandle: value
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\PresetDropdown
+  c3f2eb96-80e7-4395-b9bf-db4775fb4bb9: # Button
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: button
+    instructions: 'Use this field to define the button behaviour.'
+    name: Button
+    searchable: false
+    settings:
+      allowCustomText: true
+      allowTarget: false
+      autoNoReferrer: false
+      customTextMaxLength: 0
+      customTextRequired: false
+      defaultLinkName: entry
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        asset:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        category:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        craftCommerce-product:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: true
+          sources: '*'
+        custom:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        email:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        entry:
+          allowCrossSiteLink: false
+          allowCustomQuery: true
+          enabled: true
+          sources:
+            - 'section:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+            - 'section:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+            - 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+        site:
+          enabled: false
+          sites: '*'
+        tel:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        url:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        user:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField

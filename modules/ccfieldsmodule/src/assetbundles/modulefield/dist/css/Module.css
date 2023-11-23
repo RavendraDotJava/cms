@@ -1,0 +1,59 @@
+/**
+ * CCFields module for Craft CMS
+ *
+ * Instructions Field CSS
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2021 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   CCFieldsModule
+ * @since     1.0.0
+ */
+
+.module-settings {
+  margin-top: 24px;
+  border: 1px solid rgba(0, 0, 20, 0.1);
+}
+
+.module-settings__wrap {
+  display: flex;
+}
+
+.module-settings__option {
+  padding: 15px;
+  border-left: 1px solid rgba(0, 0, 20, 0.1);
+  flex-grow: 1;
+}
+
+.module-settings__option:first-child {
+  border-left: none;
+}
+
+.lp-editor .module-settings__wrap {
+  display: block;
+}
+.lp-editor .module-settings__option {
+  border-left: none;
+  border-top: 1px solid rgba(0, 0, 20, 0.1)
+}
+
+.lp-editor .module-settings__option:first-child {
+  border-top: none;
+}
+
+@media only screen and (max-width: 1199px) {
+
+  .module-settings__wrap {
+    display: block;
+  }
+  
+  .module-settings__option {
+    border-left: none;
+    border-top: 1px solid rgba(0, 0, 20, 0.1)
+  }
+  
+  .module-settings__option:first-child {
+    border-top: none;
+  }
+
+}

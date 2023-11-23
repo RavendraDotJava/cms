@@ -1,0 +1,104 @@
+changedFieldIndicator: 341334114
+field: 43843b6e-2f8b-4c1c-a050-01c2ab9a4b7d # Details List
+fieldLayouts:
+  b6fd8da4-8a2b-4d83-a9d5-55e43b2b2c5d:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 24373304-1d32-48e1-a53c-549809c2fe67 # Colour
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 99edb55b-7590-4306-8c67-9179a75d9a9c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: dc482aee-0478-47f2-9485-dc35708791ba # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: eeac6bf9-2df7-456b-ad82-7ce0d13eaf9a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 2991178e-2167-4790-8e89-53e12fdab154 # Text Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e4ea64e2-91a2-4d04-b545-e142a03fc229
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: af830f2a-063d-499b-b547-8f6f79248633
+        userCondition: null
+fields:
+  2991178e-2167-4790-8e89-53e12fdab154: # Text Content
+    columnSuffix: null
+    contentColumnType: string(960)
+    fieldGroup: null
+    handle: textContent
+    instructions: null
+    name: 'Text Content'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 240
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  24373304-1d32-48e1-a53c-549809c2fe67: # Colour
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: colour
+    instructions: 'Select a colour for the circle decoration.'
+    name: Colour
+    searchable: false
+    settings:
+      default: null
+      palette: Olina
+      setRandom: false
+      useConfigFile: true
+    translationKeyFormat: null
+    translationMethod: none
+    type: percipiolondon\colourswatches\fields\ColourSwatches
+  dc482aee-0478-47f2-9485-dc35708791ba: # Heading
+    columnSuffix: null
+    contentColumnType: string(600)
+    fieldGroup: null
+    handle: heading
+    instructions: null
+    name: Heading
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 150
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText

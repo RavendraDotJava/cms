@@ -1,0 +1,86 @@
+columnSuffix: anchijwq
+contentColumnType: text
+fieldGroup: e54d5633-67e4-4147-ac0a-daecea3240dc # Review
+handle: reviewThankYou
+instructions: null
+name: 'Review thank you message'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  fieldData:
+    -
+      __assoc__:
+        -
+          - id
+          - group-LoJyZ39gUk
+        -
+          - name
+          - Buttons
+        -
+          - blockTypes
+          -
+            -
+              __assoc__:
+                0:
+                  - id
+                  - type-hHtVBuFSAp
+                1:
+                  - name
+                  - Content
+                2:
+                  - handle
+                  - content
+                3:
+                  - icon
+                  -
+                    __assoc__:
+                      -
+                        - label
+                        - 'Block Button'
+                      -
+                        - value
+                        - block-button
+                5:
+                  - enabled
+                  - true
+                6:
+                  - layoutUid
+                  - 2f0ee705-d39e-4a56-8213-cbafb0453d75
+                7:
+                  - layoutConfig
+                  -
+                    __assoc__:
+                      -
+                        - tabs
+                        -
+                          -
+                            __assoc__:
+                              0:
+                                - name
+                                - Content
+                              1:
+                                - uid
+                                - fa526f13-2745-4410-89bc-6a60ed28154a
+                              4:
+                                - elements
+                                -
+                                  -
+                                    __assoc__:
+                                      0: [type, craft\fieldlayoutelements\CustomField]
+                                      5: [required, false]
+                                      6: [width, 100]
+                                      7: [uid, a44e9eb1-dc52-4e40-9705-8b1da24d1b91]
+                                      10: [fieldUid, f7b31e70-1186-4058-aedb-0f579872cd6c] # Buttons
+  initialRows: 7
+  manualConfig: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  trimEmptyParagraphs: true
+  vizyConfig: Standard.json
+translationKeyFormat: null
+translationMethod: none
+type: verbb\vizy\fields\VizyField

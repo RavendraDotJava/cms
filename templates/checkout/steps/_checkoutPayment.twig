@@ -1,0 +1,32 @@
+{% extends 'checkout/_layout.twig' %}
+
+{% import 'partials/_macros' as helpers %}
+
+{% block mainContent %}
+
+  {% if not cart.gateway %}
+    {% redirect 'checkout/payment-method' %}
+  {% endif %}
+
+  {% include 'components/_checkoutIntro' with { 'settings': {
+      'heading': entry.checkoutHeading,
+      'textContent': entry.checkoutText,
+      'step': entry.checkoutStep,
+  }} %}
+
+  {% include 'form/forms/_checkoutPayment.twig' with {'settings': {
+    'redirectUrl': entry.formSubmissionRedirect.one is not null ? entry.formSubmissionRedirect.one.uri,
+  }}%}
+
+{% endblock %}
+
+{% block sidebar %}
+  {% include "components/_orderSummary.twig" with {"settings": {
+    'showShippingAddress': true,
+    'showBillingAddress': true,
+    'showShippingMethod': true,
+    'buttonText': entry.formSubmitButtonText,
+    'buttonFor': 'paymentForm',
+  }}%}
+  <!-- Template: {{ _self }}.twig -->
+{% endblock %}

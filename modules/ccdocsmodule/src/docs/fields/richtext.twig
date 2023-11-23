@@ -1,0 +1,28 @@
+{% extends "_layouts/cp" %}
+{% set title = "Field: Rich Text"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+  {
+    label: 'Fields'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/fields/'),
+  }  
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+      <p>Another common pattern is the use of a Rich Text field (also called a Content Well), which allows for formatting of text and—in certain cases—the inclusion of additional blocks of content. In order to achieve this, we are leveraging a Craft plugin called Vizy.</p>
+      <p>By default, these Rich Text fields appear as a simple content editor. In many cases, they function in exactly this way: allowing content editors to apply certain basic formatting, such as bolding and italicising text, or adding links. However, in other context, it is possible to add custom "blocks" to the editor. To do this add a carriage return after a paragraph. Doing so will cause a plus (+) icon to appear, as shown here (all text in the following screenshots is auto-generated placeholder text).
+      {{ getDocumentationImage('field-richtext-base.png') }}
+      <p>Clicking the icon will open a simple contextual window containing all the available blocks:</p>
+      {{ getDocumentationImage('field-richtext-blocks.png') }}
+      <p>Click the desire block to add it to the Rich Text editor. Blocks appear as a series of fields, which can be filled out appropriately. In some cases, additional Rich Text fields may be included. Typically, these do not contain additional block options.</p>
+      {{ getDocumentationImage('field-richtext-block-added.png') }}
+      <p>When the content is rendered on an entry's page, the block will be rendered using a custom template in the exact position it was included within the Rich Text editor. As with modules in the Matrix field, these blocks can be draged, deleted and collapsed. Unlike modules, this <em>cannot</em> be collapsed by simply clicking the header bar. Instead, you must click on the seetings icon and click <span class="highlight">Collapse</span> (or <span class="highlight">Expand</span> to reveal the fields again).</p>
+    </section>
+  </div>
+{% endblock %}

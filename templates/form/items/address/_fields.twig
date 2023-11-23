@@ -1,0 +1,157 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set addressFieldLayout = craft.app.getAddresses().getLayout() %}
+{% set addressCustomFields = addressFieldLayout.getCustomFields()|filter(f => className(f) == 'craft\\fields\\PlainText') %}
+{# @var address \craft\elements\Address #}
+{% set addressName = addressName is defined ? addressName : '' %}
+{% set showLabelField = showLabelField is defined ? showLabelField : false %}
+{# Define a simple a Twig macro for outputting validation errors and making template less redundant #}
+{% macro displayErrors(address, fieldName) %}
+  {% if address and address.getErrors(fieldName) %}
+    <div class="text-error text-sm mt-p8">{{ address.getErrors(fieldName)|join }}</div>
+  {% endif %}
+{% endmacro %}
+
+{# Country #}
+{% set countries = craft.commerce.store.store.getCountriesList() %}
+{% set countryCode = address.countryCode ?? null %}
+
+{# Address Label #}
+{% if showLabelField %}
+  {% include 'form/items/_input' with { 'settings': {
+      'type': 'text',
+      'id': 'title',
+      'name': 'title',
+      'label': 'Address Label (Work, School, etc.)'|t,
+      'value': address.title ?? '',
+      'atts': {
+        'placeholder': 'Address Label'|t,
+        'required': true,
+        'class': component('input', 'large', ''),
+      }
+  }} %}
+  {{ _self.displayErrors(address, 'title') }}
+{% endif %}
+
+{#
+{% include 'form/items/_input' with { 'settings': {
+    'type': 'text',
+    'id': 'lastName',
+    'name': 'lastName',
+    'label': 'Last Name'|t,
+    'value': address.fullName ?? '',
+    'atts': {
+      'placeholder': 'Last name'|t,
+      'required': true,
+      'class': component('input', 'large', ''),
+    }
+}} %}
+{{ _self.displayErrors(address, 'fullName') }} #}
+
+{% include 'form/items/_input' with { 'settings': {
+    'type': 'text',
+    'id': 'fullName',
+    'name': 'fullName',
+    'label': 'Full Name'|t,
+    'value': address.fullName ?? '',
+    'atts': {
+      'placeholder': 'Full name'|t,
+      'required': false,
+      'class': component('input', 'large', ''),
+    }
+}} %}
+{{ _self.displayErrors(address, 'fullName') }}
+
+
+{% include "form/items/_select" with {'settings': {
+    'id': 'countryCode',
+    'label': 'Country'|t,
+    'required': true,
+    'defaultOptionText': 'Select Country'|t,
+    'options': countries,
+    'selected': countryCode is empty,
+    'xref': 'countryCode',
+    'onChange': 'countryChange()',
+    'optionKey': true,
+}}%}
+{{ _self.displayErrors(address, 'countryCode') }}
+
+<div x-cloak x-collapse x-show="countryCode != ''">
+  {# Address Line 1 #}
+  {% include 'form/items/_input' with { 'settings': {
+      'type': 'text',
+      'id': 'addressLine1',
+      'label': 'Address Line 1'|t,
+      'value': address.addressLine1 ?? '',
+      'atts': {
+        'required': true,
+        'placeholder': 'Address Line 1'|t,
+        'class': component('input', 'large', ''),
+      }
+  }} %}
+  {{ _self.displayErrors(address, 'addressLine1') }}
+
+  {# Address Line 2 #}
+  {% include 'form/items/_input' with { 'settings': {
+      'type': 'text',
+      'id': 'addressLine2',
+      'label': 'Address Line 2'|t,
+      'value': address.addressLine2 ?? '',
+      'atts': {
+        'placeholder': 'Address Line 2'|t,
+        'required': false,
+        'class': component('input', 'large', ''),
+      }
+  }} %}
+  {{ _self.displayErrors(address, 'addressLine2') }}
+
+  {# City #}
+  {% include 'form/items/_input' with { 'settings': {
+      'type': 'text',
+      'id': 'locality',
+      'label': 'City/Locality'|t,
+      'value': address.locality ?? '',
+      'atts': {
+        'placeholder': 'City/Locality'|t,
+        'required': true,
+        'class': component('input', 'large', ''),
+      }
+  }} %}
+  {{ _self.displayErrors(address, 'locality') }}
+
+  <div class="mq768:grid grid-cols-2 gap-p16">
+    {# State/Province #}
+    {# Get the available administrative areas that are set in the store settings #}
+    {% set administrativeAreas = craft.commerce.store.getStore().getAdministrativeAreasListByCountryCode() %}
+
+      {% for countryCode, areas in administrativeAreas %}
+        <div x-cloak x-show="countryCode === '{{ countryCode }}'">
+        {% include "form/items/_select" with {'settings': {
+          'id': 'administrativeArea',
+          'label': 'State/Province'|t,
+          'selected': address.administrativeArea ?? false,
+          'required': true,
+          'defaultOptionText': 'Select state/province'|t,
+          'options': areas,
+        }}%}
+      </div>
+    {% endfor %}
+    {{ _self.displayErrors(address, 'administrativeArea') }}
+
+    {# Postal Code #}
+    {% include 'form/items/_input' with { 'settings': {
+      'type': 'text',
+      'id': 'postalCode',
+      'label': 'Postal Code'|t,
+      'value': address.postalCode ?? '',
+      'atts': {
+        'required': true,
+        'placeholder': '12345'|t,
+        'class': component('input', 'large', ''),
+      }
+    }} %}
+    {{ _self.displayErrors(address, 'postalCode') }}
+  </div>
+</div>
+
+{{ hiddenInput('shippingAddressId', '') }}

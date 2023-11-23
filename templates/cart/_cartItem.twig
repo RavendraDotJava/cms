@@ -1,0 +1,199 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'showQty' : true,
+  'textContent' : '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set image = item.purchasable.productImages.one() ?? null %}
+
+{# Fallback on product image if there is no variant image set #}
+{% if not image|length %}
+  {% set image = item.purchasable.product.productImages.one() ?? null %}
+{% endif %}
+
+{% set subscription = item.purchasable.subscription.one ?? null %}
+
+<div class="rounded-2xl bg-salt p-p30 mb-p24" x-cloak x-comp="gsapGlobal" x-data="gsapGlobal()" x-init="gsapFadeIn()" x-ref="scrollTrigger">
+
+    <div class="flex flex-col items-center mq768:items-start justify-center mq768:flex-row">
+
+      {# Product Image #}
+      {% if image %}
+        {% set thumb = {
+          mode: 'fit',
+          width: 140,
+          height: 140,
+          quality: 75,
+          position: 'top-center'
+        } %}
+        <a class="mb-p32 mq480:mb-none mq768:mr-p32 w-p160 text-center flex items-center justify-center transition-opacity hover:opacity-90 focus:opacity-90" href="{{ item.purchasable.url }}"><img src="{{ image.getUrl(thumb) }}" class="mx-auto"></a>
+      {% endif %}
+
+    <div class="flex-1 relative text-center mq768:text-left">
+
+      {# Product title #}
+      <div class="mq768:flex">
+        <h3 class="font-normal text-p20 mq480:text-p26 mb-p10 {{ item.hasErrors() ? 'text-error' }}">
+          <a href="{{ item.purchasable.url }}" class="hover:underline focus:underline">{{- item.description -}}</a>
+        </h3>
+
+        {# Discount #}
+        {% if not cart.hasErrors() and item.adjustments|length %}
+          {% for adjustment in item.adjustments %}
+          {# {{ dump(item.adjustments[0].type) }} #}
+            {% if adjustment.type == 'discount' %}
+              <div class="ml-auto hidden mq768:block">
+                <span class="{{ component('categoryTag', 'dark', 'ml-p8 whitespace-nowrap') }}">{{ adjustment.type|title }}: {{ adjustment.amountAsCurrency }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="text-sm">{{ item.sku }}</div>
+
+      {% if not cart.hasErrors() %}
+        <div class="mq768:flex justify-center mq768:justify-start">
+          <div class="text-sm font-normal">
+            {% if item.onSale %}
+              <del class="mr-p8">{{- item.priceAsCurrency -}}</del> {{- item.salePriceAsCurrency -}}
+            {% else %}
+              {{- item.priceAsCurrency -}}
+            {% endif %}
+          </div>
+
+          {# Sales #}
+          {% set itemSales = item.snapshot.sales ?? [] %}
+          {% if itemSales|length %}
+            <div class="flex items-center mt-p10 mq768:mt-none">
+              {% for sale in itemSales %}
+                <div class="{{ component('categoryTag', 'dark', 'mx-auto mq768:ml-p8') }}">{{ sale.name }}: {{ item.saleAmountAsCurrency }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if subscription %}
+          <div class="flex items-start mt-p10">
+            {{ helpers.icon('refresh', 'w-p16 h-p16 fill-terracotta mr-p8 mt-p4') }}
+            <span class="text-sm font-normal">{{ subscription }}</span>
+          </div>
+        {% endif %}
+
+
+      {% endif %}
+
+      {% if not cart.hasErrors() and item.adjustments|length %}
+
+        <div x-data="{ showAdjustments: false }">
+          <div class="my-p12">
+            <button type="button" class="text-sm flex items-center justify-center mq768:justify-start mx-auto mq768:mx-none hover:underline focus:underline focus:outline-0" x-on:click="showAdjustments = ! showAdjustments" x-bind:class="showAdjustments ? 'underline' : ''">
+              <span class="origin-center transition-all h-auto flex items-center" x-bind:class="showAdjustments ? 'rotate-90 fill-basalt' : 'text-terracotta'">{{ helpers.icon('triangle-in-circle', 'w-p14 h-p14 fill-current') }}</span>
+              <span class="ml-p8">{{ "View Adjustments"|t }}</span>
+            </button>
+          </div>
+
+          <div class="border-t border-terracotta py-p16 mt-p10" x-cloak x-collapse x-show="showAdjustments">
+
+            <div class="flex items-center w-full justify-end mb-p10" title="{{ item.subtotal }}">
+              <div class="text-lg font-normal pr-p8">{{ 'Subtotal'|t }}:</div>
+              <div class="w-p128 text-right text-lg font-normal">{{ item.subtotalAsCurrency }}</div>
+            </div>
+            {% for adjustment in item.adjustments %}
+              <div class="flex items-end w-full justify-end mb-p10">
+                <div class="pr-p8 text-sm text-right">
+                  <strong class="text-lg font-normal capitalize">{{ adjustment.type }}</strong><br>
+                  {{ adjustment.name }}
+                  {% if adjustment.isEstimated %}
+                    <i>{{ 'Estimated'|t }}</i>
+                  {% endif %}<br>
+                  <span class="text-sm">{{ adjustment.description }}</span>
+                </div>
+                <div class="w-p128 text-right text-sm">
+                  <span title="{{ adjustment.amount }}">{{ ' ' ~ adjustment.amountAsCurrency }}</span>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+
+      {% set hasDonationAmount = item.options.donationAmount is defined %}
+      <div class="mq768:flex">
+        {% if hasDonationAmount %}
+          <div>
+            <label for="lineitem-donationAmount-{{ item.id }}">{{- 'Donation Amount'|t -}}</label>
+            {{ input('text', 'lineItems[' ~ item.id ~ '][options][donationAmount]', item.options.donationAmount, {
+              id: 'lineitem-donationAmount-' ~ item.id,
+              class: [
+                  'px-p16',
+                  'py-p8',
+                  'border',
+                  'border-terracotta',
+                  'rounded',
+                  'w-p64'
+              ],
+              }) }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="mq768:flex mq768:items-end mq768:flex-wrap w-full mt-p12">
+        <div class="{{ hasDonationAmount ? ' hidden' : '' }}">
+          {% if settings.showQty %}
+            <label class="mr-p8 text-lg font-normal">{{ "Quantity"|t }}</label>
+            <div class="mt-p10" x-comp="quantity" x-data="quantity({ qty: {{ item.qty }} })">
+
+              <div class="flex items-center justify-center mq768:justify-start">
+                {# Deacrease Quantity #}
+                <button type="button" class="rounded-full w-p40 h-p40 bg-white flex items-center justify-center transition-colors hover:bg-terracotta focus:bg-terracotta" @click="decrement()">
+                  <span class="sr-only">{{ "Decrease quantity"|t }}</span>
+                  <span class="font-normal">-</span>
+                </button>
+
+                {# Quantity Input #}
+                <div class="w-p40 text-center">
+                  <input type="number" name="{{ 'lineItems[' ~ item.id ~ '][qty]' }}" value="{{ item.qty }}" x-ref="qty" class="{{ component('input', 'quantity', 'remove-arrows') }}">
+                </div>
+
+                {# Increase Quantity #}
+                <button type="button" class="rounded-full w-p40 h-p40 bg-white flex items-center justify-center transition-colors hover:bg-terracotta focus:bg-terracotta" @click="increment()">
+                  <span class="sr-only">{{ "Increase quantity"|t }}</span>
+                  <span class="font-normal">+</span>
+                </button>
+              </div>
+
+              <button type="submit" x-cloak x-show="changed" x-transition class="{{ component('button', 'small-terracotta', 'mt-p10') }}">
+                <span x-show="qty >= 1">{{ "Update"|t }}</span>
+                <span x-show="qty == 0">{{ "Remove"|t }}</span>
+              </button>
+            </div>
+          {% endif %}
+        </div>
+
+        {# Discount #}
+        {% if not cart.hasErrors() and item.adjustments|length %}
+          {% for adjustment in item.adjustments %}
+            {% if adjustment.type == 'discount' %}
+              <div class="ml-auto mq768:hidden">
+                <span class="{{ component('categoryTag', 'dark', 'ml-p8 whitespace-nowrap') }}">{{ adjustment.type|title }}: {{ adjustment.amountAsCurrency }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        <div class="flex justify-center mq768:justify-start mt-p16 mq768:ml-auto mq768:pl-p16">
+          <div class="text-h5 font-normal pr-p8">{{ 'Price'|t }}:</div>
+          <div class="text-h5 text-right font-normal">{{ item.totalAsCurrency }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

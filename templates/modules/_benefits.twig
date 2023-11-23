@@ -1,0 +1,108 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'content' : '',
+  'bgMedia': '',
+  'fgMedia': '',
+  'radiantCircles': false,
+	'benefits' : false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set headingTag = 'h2' %}
+
+<div class="{{ component('moduleWidth', settings.config.handle, '') }}">
+
+  <div class="mq1024:flex items-center">
+
+    <div class="mq1024:w-1/2 shrink-0 relative z-10">
+      {% include 'components/_intro.twig' with { settings: {
+        'heading' : settings.heading,
+        'intro'   : settings.content,
+        'type'    : settings.config.handle,
+      }} %}
+
+      {% if settings.benefits %}
+        {% include 'components/_cardList.twig' with { settings: {
+          'cards': settings.benefits,
+          'classes': 'mq1024:mt-p100',
+          'cardClasses': settings.config.background == 'white' ? 'shadow-card-sm' : 'shadow-none',
+        }} %}
+      {% endif %}
+    </div>
+
+    <div class="text-center mq1024:w-1/2 mq1024:pl-p64 shrink-0">
+
+      {% if settings.fgMedia is not empty or settings.bgMedia is not empty %}
+        <div class="relative z-0" x-comp="gsapGlobal" x-data="gsapGlobal()" x-init="gsapFadeIn()" x-ref="scrollTrigger">
+
+          {% if settings.radiantCircles %}
+            <div x-comp="gsapGlobal" x-data="gsapGlobal" x-init="radiantCircles()" class="absolute inset-0 flex items-center justify-center z-1">
+              {% include 'svg/_radiantCircles' with { 'settings': {
+                  'classes': 'opacity-50 mq1024:w-p1300 mq1024:h-p1300 origin-center absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2',
+              }} %}
+            </div>
+          {% endif %}
+
+          <div class="inline-block mx-auto relative z-1 h-full" data-gsap="bg-media">
+            {% if isVideo(settings.bgMedia.one()) %}
+              <div class="inline-block rounded-full overflow-hidden relative">
+
+                {% include 'components/_image.twig'|siteInclude with { settings: {
+                  'image' : settings.bgMedia.one(),
+                  'format' : 'square',
+                  'class': 'inline-block w-full rounded-full overflow-hidden',
+                }} %}
+
+                {% include 'components/_videoBackground.twig' with { 'settings': {
+                  'videoWidth': '600',
+                  'videoHeight': '600',
+                  'videoPrimary': settings.bgMedia.one ? settings.bgMedia.one.videoFile.one.url : '',
+                  'videoSecondary': settings.bgMedia.one.videoFileSecondary.one ? settings.bgMedia.one.videoFileSecondary.one.url : '',
+                  'classes': 'absolute z-10 inset-y-0 left-1/2 -translate-x-1/2 object-cover h-full',
+                  'atts': '',
+                }} %}
+              </div>
+            {% else %}
+              {% include 'components/_image.twig'|siteInclude with { settings: {
+                'image' : settings.bgMedia.one(),
+                'format' : 'square',
+                'class': 'inline-block w-auto rounded-full overflow-hidden',
+              }} %}
+            {% endif %}
+          </div>
+
+          <div class="absolute inset-0 flex items-center justify-center" data-gsap="fg-media">
+
+            <div class="inline-block relative z-20 w-full">
+              {% if isVideo(settings.fgMedia.one()) %}
+                {% include 'components/_video.twig'|siteInclude with { settings: {
+                  'video' : settings.fgMedia.one(),
+                  'format' : 'fit',
+                  'class': 'inline-block',
+                }} %}
+              {% else %}
+                {% include 'components/_image.twig'|siteInclude with { settings: {
+                  'image' : settings.fgMedia.one(),
+                  'format' : 'fit',
+                  'class': 'inline-block',
+                }} %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      {% endif %}
+    </div>
+
+  </div>
+
+
+</div>
+

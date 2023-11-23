@@ -1,0 +1,50 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 1901e8d3-2a7e-47ef-94ec-a27c6f4346e2 # Header
+handle: heroImage
+instructions: 'Use this field to select the image that should appear in the page header for this entry.'
+name: 'Hero Image'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds:
+    - image
+  branchLimit: null
+  defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  defaultUploadLocationSubpath: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  previewMode: full
+  restrictFiles: true
+  restrictLocation: false
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  restrictedLocationSubpath: null
+  selectionCondition:
+    __assoc__:
+      -
+        - elementType
+        - craft\elements\Asset
+      -
+        - fieldContext
+        - global
+      -
+        - class
+        - craft\elements\conditions\assets\AssetCondition
+  selectionLabel: 'Add an image'
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources:
+    - 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+    - 'volume:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: large
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

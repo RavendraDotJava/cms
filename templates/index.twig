@@ -1,0 +1,33 @@
+{% extends craft.app.request.isAjax ? "_ajax" : "_layout" %}
+
+{% import 'partials/_macros' as helpers %}
+
+{# AJAX Request #}
+{% block ajax %}
+	{# Include a different AJAX template here #}
+{% endblock %}
+
+{# Regular Request #}
+{% block content %}
+
+	{# Cache without params #}
+	{% if entry is defined and entry.slug == '__home__' %}
+		{% set cacheKey = 'homepage' %}
+	{% else %}
+		{% set cacheKey = (craft.app.request.pageNum > 1) ? craft.app.request.pathInfo ~ '/page/' ~ craft.app.request.pageNum : craft.app.request.pathInfo %}
+	{% endif %}
+	{% cache globally using key cacheKey unless craft.app.request.queryStringWithoutPath is not empty %}{% apply spaceless %}
+
+	{# Sample Content #}
+	<div class="c-container max-w-p1280 px-p24">
+		<div class="c-content my-p64 mx-auto max-w-p768">
+			<h1 class="mb-p32">Welcome to Craft&amp;Crew’s boilerplate</h1>
+			<p>This is intended as a simple "jumping off" point for starting a new Craft build. It includes some basic initial configuration, along with some standard components and modules that are commonly used across most site builds.</p>
+			<p>You can also review the <a href="/styleguide/">styleguide</a> and <a href="/styleguide/components/">components</a> page to review some of the styles and components that are included in the boilderplate.</p>
+			<p>This particular template, <code>index.twig</code> can either be deleted (if the homepage will be part of a section) or re-purposed for use with a single.</p>
+		</div>
+	</div>
+
+	{% endapply %}{% endcache %}
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'id' : '',
+  'slides' : [],
+	'autoplay' : false,
+	'speed' : 10,
+	'ctrlStyle' : 'primary',
+  'showTimer': false,
+  'showControls': false,
+  'showDots': true,
+} %}
+
+{% set slideDefaults = {
+	'id' : '',
+	'heading' : '',
+	'content' : '',
+	'button' : false,
+	'image' : false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div x-comp="sliderSimple" x-data="sliderSimple({})" class="relative self-start group pb-p64 mq480:pb-none">
+  <button type="button" x-ref="previous" class="{{ component('sliderButton', false, 'left-0') }}">
+    <span class="sr-only">{{ "Previous"|t }}</span>
+    {{ helpers.icon('arrow-left', 'w-p32 h-p32 fill-terracotta group-hover:fill-basalt transition-colors') }}
+  </button>
+	<ul x-ref="slides" class="peer">
+		{% for slide in settings.slides %}
+			{% set slide = slideDefaults|merge(slide) %}
+			<li class="text-center">
+					{% include 'components/_image.twig'|siteInclude with { settings: {
+						'image' : slide.image,
+						'format' : 'fit',
+            'class': 'inline-block mx-auto'
+					}} %}
+			</li>
+		{% endfor %}
+	</ul>
+  <button type="button" x-ref="next" class="{{ component('sliderButton', false, 'right-0') }}">
+    <span class="sr-only">{{ "Next"|t }}</span>
+    {{ helpers.icon('arrow-right', 'w-p32 h-p32 fill-terracotta group-hover:fill-basalt transition-colors') }}
+  </button>
+</div>

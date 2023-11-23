@@ -1,0 +1,107 @@
+
+{% import 'partials/_macros' as helpers %}
+
+{% set user = currentUser %}
+
+{% set flashNotice = craft.app.session.getFlash('notice') %}
+{% set flashError = craft.app.session.getFlash('error') %}
+
+{% if flashNotice or flashError %}
+<div x-comp="flashNotice" x-data="flashNotice({ showError: {{ flashError ? 'true' : 'false' }}, showNotice: {{ flashNotice ? 'true' : 'false' }} })" class="fixed top-0 inset-x-p16 z-70">
+
+  {% if flashNotice %}
+    <div class="{{ component('flashNotice', false, 'flex items-start') }}" x-show="showNotice" x-transition>
+      {{ helpers.icon('bell', 'w-p24 h-p24 fill-terracotta mr-p16')  }}{{ flashNotice ?? 'Test flash notice' }}
+    </div>
+  {% endif %}
+
+  {% if flashError %}
+    <div class="{{ component('flashNotice', false, 'flex items-start') }}" x-show="showError" x-transition>
+      {{ helpers.icon('notification', 'w-p32 h-p32 fill-terracotta mr-p16')  }}
+      <div>
+        <strong>{{ flashError ?? 'Test flash error' }}</strong>
+        {% if cart and cart.errors|length %}
+          <ul>
+            {% for attribute, errors in cart.errors %}
+              {% if attribute == "lineItems.0.qty" %}
+                {% for key, error in errors %}
+                  <li>Product is not available</li>
+                {% endfor %}
+              {% else %}
+                {% for key, error in errors %}
+                  <li>{{ attribute }}:
+                    {{ error }}</li>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if user and user.errors|length %}
+          <ul>
+            {% for attribute, errors in user.errors %}
+                {% for key, error in errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endif %}
+
+
+
+{# {{ dump(cart.getErrors()) }} #}
+
+{% if cart and cart.hasNotices() %}
+<div class="fixed top-0 inset-x-p16 z-60">
+  <div class="{{ component('flashNotice', false, '') }}">
+    <div class="flex items-center">
+      {{ helpers.icon('cart', 'w-p32 h-p32 fill-terracotta mr-p16')  }}<span class="font-normal">{{ 'Cart Notices'|t }}</span>
+    </div>
+    {% set entriesByType = cart.getNotices()|group('type') %}
+    <ul class="my-p20">
+      {% for type, notices in entriesByType %}
+        {% for notice in notices %}
+          <li class="" data-type="{{ notice.type }}" data-attribute="{{ notice.attribute }}" data-message="{{ notice.message }}">
+            {{- notice -}}
+          </li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+    <form method="post">
+      {{ actionInput('commerce/cart/update-cart') }}
+      {{ successMessageInput('Notices dismissed') }}
+      {{ hiddenInput('clearNotices') }}
+      {{ csrfInput() }}
+      {{ tag('button', {
+        type: 'submit',
+        class: component('button', 'small', ''),
+        text: 'Dismiss'|t
+      }) }}
+    </form>
+  </div>
+</div>
+{% endif %}
+
+{# {% if cart and cart.errors|length %}
+  <div class="bg-red-500 text-white">
+    <div class="c-container mx-auto px-6 py-4">
+      {% for attribute, errors in cart.errors %}
+        {% if loop.first %}
+          <ul>
+          {% endif %}
+          {% for key, error in errors %}
+            <li>{{ attribute }}:
+              {{ error }}</li>
+          {% endfor %}
+          {% if loop.last %}
+          </ul>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %} #}

@@ -1,0 +1,481 @@
+{% extends craft.app.request.isAjax ? "_ajax" : "_layout" %}
+
+{% import 'partials/_macros' as helpers %}
+
+{% if getenv('ENVIRONMENT') == 'production' %}
+	{% exit 404 %}
+{% endif %}
+
+{# AJAX Request #}
+{% block ajax %}
+	{# Include a different AJAX template here #}
+{% endblock %}
+
+{# Regular Request #}
+{% block content %}
+
+  <script>
+    window.sampleData = function() {
+      return {
+        todos: [],
+        load: function(){
+          fetch('/api/sample/todos')
+            .then(response => response.json())
+            .then(data => this.todos = data.data);
+        }
+      }
+    }
+  </script>
+
+  {% set sampleData = sampleApiCall(2) %}
+  {# {% set dummyImage = dummyImage('@picsum/1002') %} #}
+
+  {% set sampleContent %}
+    <p>Lorem ipsum dolor sit amet, <a href="#">{{ 'consectetur adipiscing elit% desec dola mescalius%'|srstring|raw }}</a>. Duis convallis vestibulum tellus, vitae lobortis quam bibendum quis. Maecenas lectus neque, tincidunt ut dignissim non, lacinia nec nisi. Integer porta ante ut sapien rutrum aliquam interdum a felis. <a href="#">Nulla auctor vestibulum enim</a>, et luctus risus interdum eu. Quisque id arcu ultricies turpis posuere varius vitae varius quam. Nam non rhoncus eros. Proin posuere fringilla placerat. Nullam fermentum odio quis neque dapibus ornare. Sed pellentesque eros vel nisl efficitur cursus. Proin dictum velit in aliquam aliquet.</p>
+    <ul>
+      <li>Sed laoreet lacus eu metus consequat, in vehicula est volutpat</li>
+      <li>Nullam laoreet libero tellus, ut dignissim leo luctus eu</li>
+      <li>Nulla ac urna et lacus auctor ornare in eu nisi</li>
+      <li>Pellentesque neque arcu, scelerisque id ligula at, hendrerit porta felis</li>
+      <li>Aenean feugiat dapibus dolor, pulvinar vulputate orci vehicula sed</li>
+      <li>Suspendisse non sem nisi</li>
+      <li>In quis odio ex</li>
+      <li>Donec porta sodales blandit</li>
+    </ul>
+    {% endset %}
+    {% set sampleContent2 %}
+    <p>Vivamus lobortis tellus est, condimentum congue sapien facilisis et. In finibus ornare metus, id convallis purus egestas vitae. Duis et aliquet turpis, et molestie sapien. Nullam ornare, quam nec lacinia tincidunt, mauris diam feugiat quam, ac iaculis lectus purus at odio. Fusce molestie facilisis arcu, et volutpat urna aliquet eget. Mauris mi risus, luctus a iaculis sit amet, laoreet vel est. Sed suscipit ultrices mauris, nec aliquam justo suscipit at. Ut est enim, maximus quis suscipit eu, efficitur et ligula. Praesent et feugiat diam. Nunc turpis nunc, tincidunt non metus quis, maximus mattis diam.</p>
+    <ol>
+      <li>Etiam auctor justo at turpis efficitur, quis lacinia tellus imperdiet</li>
+      <li>Maecenas eget fringilla dui, ut posuere eros</li>
+      <li>Proin cursus finibus congue</li>
+      <li>Donec finibus sagittis massa, eget lacinia lectus euismod non</li>
+      <li>Aliquam ligula lacus, varius at metus id, consectetur lacinia enim</li>
+      <li>Duis id pulvinar odio, eu luctus leo</li>
+      <li>Fusce eu velit aliquam enim mollis vehicula in et risus</li>
+      <li>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos</li>
+      <li>Maecenas tellus massa, maximus in fermentum ut, pulvinar non arcu</li>
+      <li>Cras ultricies consectetur placerat</li>
+      <li>Vivamus in posuere magna</li>
+      <li>Etiam sit amet orci justo</li>
+      <li>Maecenas rutrum, lacus tempus dignissim efficitur, tellus sapien bibendum metus, at dictum nisi tellus cursus erat</li>
+      <li>Aenean elementum sollicitudin ultrices</li>
+      <li>Vestibulum eu felis ac augue dignissim fermentum</li>
+      <li>Curabitur lacinia quis risus vitae tincidunt</li>
+    </ol>
+    <p>Mauris iaculis ac tellus eu fermentum. Fusce eget leo nec enim imperdiet hendrerit ut vitae ante. Sed ornare metus sit amet est viverra vestibulum. Praesent fringilla convallis est ut imperdiet. Ut vitae diam a enim finibus tristique. Cras sollicitudin bibendum felis, eget bibendum est vulputate nec. In sollicitudin tempus ultricies. Quisque ornare nunc eget commodo aliquet. Vivamus ac dapibus quam, eget egestas libero.</p>
+  {% endset %}
+
+	<div class="max-w-p1280 mx-auto">
+
+	<div class="c-container px-p24 mt-p64">
+		<div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">Buttons</p><hr class="block border-rule flex-1"></div>
+		<div class="ml-none">
+			<p class="mb-p8 text-sm text-type">Primary Button</p>
+			<div class="flex mt-p32 mb-p64">
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'External link',
+          'href'  : 'https://craftandcrew.ca/',
+          'type'  : 'link',
+        }} %}</div>
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Query string button',
+          'type'  : 'button',
+          'atts'  : {
+            'x-data' : true,
+            '@click' : 'let par=window.getParam(\'param\');if(par){alert(par);}else{alert(\'par is not set\');}'
+          }
+        }} %}</div>
+				<div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Disabled button',
+          'type'  : 'button',
+          'disabled' : true,
+        }} %}</div>
+			</div>
+			<p class="mb-p8 text-sm text-type">Secondary Button</p>
+			<div class="flex mt-p32 mb-p64">
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Jump link',
+          'href'  : '#faqs',
+          'style' : 'secondary',
+          'type'  : 'link',
+        }} %}</div>
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Modal button',
+          'type'  : 'button',
+          'style' : 'secondary',
+          'atts'  : {
+            'x-data' : true,
+            '@click' : 'cModalTrigger($event, \'sampleContent\')'
+          }
+        }} %}</div>
+				<div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Disabled button',
+          'style' : 'secondary',
+          'type'  : 'button',
+          'disabled' : true,
+        }} %}</div>
+      </div>
+      <p class="mb-p8 text-sm text-type">Media Buttons</p>
+			<div class="flex mt-p32 mb-p64">
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Video link',
+          'href'  : 'https://www.youtube.com/watch?v=d9NF2edxy-M',
+          'style' : 'primary',
+          'type'  : 'link',
+          'video' : 'd9NF2edxy-M',
+        }} %}</div>
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Image link',
+          'href'  : 'https://picsum.photos/id/13/1200/600',
+          'style' : 'secondary',
+          'type'  : 'link',
+          'image' : true,
+          'params'  : {
+            'width' : '1200',
+            'height' : '600',
+            'alt' : 'A sample photo from picsum for testing purposes'
+          }
+        }} %}</div>
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Image caption link',
+          'href'  : 'https://picsum.photos/id//1002/1200/600',
+          'style' : 'secondary',
+          'type'  : 'link',
+          'image' : true,
+          'atts'  : {
+            'data-caption' : 'This is a simple caption',
+          },
+          'params'  : {
+            'width' : '1200',
+            'height' : '600',
+            'alt' : 'A sample photo from picsum for testing purposes'
+          }
+        }} %}</div>
+			</div>
+      <p class="mb-p8 text-sm text-type">Iconn Buttons</p>
+			<div class="flex mt-p32 mb-p64">
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Icon Left',
+          'href'  : 'https://craftandcrew.ca/',
+          'style' : 'primary',
+          'icon'  : 'arrow-left',
+          'iconAlign' : 'left',
+        }} %}</div>
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Icon Right',
+          'href'  : 'https://craftandcrew.ca/',
+          'style' : 'secondary',
+          'icon'  : 'arrow-right',
+        }} %}</div>
+			</div>
+      <p class="mb-p8 text-sm text-type">Arrow Buttons</p>
+			<div class="flex mt-p32 mb-p64">
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Icon Left',
+          'href'  : 'https://craftandcrew.ca/',
+          'style' : 'arrow',
+          'icon'  : 'arrow-left',
+          'iconAlign' : 'left',
+        }} %}</div>
+        <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Icon Right',
+          'href'  : 'https://craftandcrew.ca/',
+          'style' : 'arrow',
+          'icon'  : 'arrow-right',
+        }} %}</div>
+			</div>
+		</div>
+    <div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">Tooltips</p><hr class="block border-rule flex-1"></div>
+    <div class="mb-p32">
+      <p class="flex items-center"><span id="tooltip-example" class="font-medium">Text to be described</span>
+        {% include 'components/_tooltip.twig' with { settings: {
+          'text' : 'This is the simple content that appears within the tooltip',
+          'id' : 'tooltip-example-tooltip',
+          'describes' : 'tooltip-example'
+        }} %}
+      </p>
+    </div>
+    <div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">Videos</p><hr class="block border-rule flex-1"></div>
+    <div class="mb-p32">
+      <div class="mb-p16">
+      {% include 'components/_video.twig'|siteInclude with { settings: {
+        'video' : '@picsum:146',
+        'class' : 'inline-block mb-p24 ',
+      }} %}
+      </div>
+    </div>
+    <div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">Images</p><hr class="block border-rule flex-1"></div>
+    <div class="mb-p32">
+      <p class="mb-p8 text-sm text-type">Card</p>
+      <div class="mb-p16">
+        {% include 'components/_image.twig'|siteInclude with { settings: {
+          'image' : '@picsum:190',
+          'class' : 'inline-block',
+          'format' : 'card'
+        }} %}
+        {% include 'components/_image.twig'|siteInclude with { settings: {
+          'image' : '@picsum:191',
+          'class' : 'inline-block',
+          'format' : 'card'
+        }} %}
+        {% include 'components/_image.twig'|siteInclude with { settings: {
+          'image' : '@picsum:192',
+          'class' : 'inline-block',
+          'format' : 'card'
+        }} %}
+      </div>
+      <p class="mb-p8 text-sm text-type">Square</p>
+      <div class="mb-p16">
+        {% include 'components/_image.twig'|siteInclude with { settings: {
+          'image' : '@picsum:200',
+          'class' : 'inline-block',
+          'format' : 'square'
+        }} %}
+        {% include 'components/_image.twig'|siteInclude with { settings: {
+          'image' : '@picsum:201',
+          'class' : 'inline-block',
+          'format' : 'square',
+          'button'  : {
+            'text' : 'Sample Link',
+            'url' : 'https://craftandcrew.ca/'
+          },
+        }} %}
+      </div>
+      <p class="mb-p8 text-sm text-type">Standard</p>
+      <div class="mb-p16">
+        {% include 'components/_image.twig'|siteInclude with { settings: {
+          'image' : '@picsum:326',
+          'class' : 'mb-p24',
+        }} %}
+      </div>
+      <p class="mb-p8 text-sm text-type">Hero</p>
+      <div class="mb-p16">
+        {% include 'components/_image.twig'|siteInclude with { settings: {
+          'image' : '@picsum:400',
+          'class' : 'mb-p24',
+          'format' : 'hero'
+        }} %}
+      </div>
+    </div>
+    <div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">Cards</p><hr class="block border-rule flex-1"></div>
+    <div>
+      <div class="mq768:flex mq768:flex-wrap mq1024:flex-nowrap mq768:-mx-p16 mb-p32">
+        {% include 'components/_card.twig'|siteInclude with { settings: {
+          'heading' : 'Sample Card',
+          'text'  : 'Duis convallis vestibulum tellus, vitae lobortis quam bibendum quis. Maecenas lectus neque, tincidunt ut dignissim non, lacinia nec nisi.',
+          'image' : '@picsum:450',
+          'button'  : {
+            'text' : 'Sample Link',
+            'url' : 'https://craftandcrew.ca/'
+          },
+          'tag' : 'Category'
+        }} %}
+        {% include 'components/_card.twig'|siteInclude with { settings: {
+          'heading' : 'Sample Card',
+          'text'  : 'Duis convallis vestibulum tellus, vitae lobortis quam bibendum quis. Maecenas lectus neque, tincidunt ut dignissim non, lacinia nec nisi. Maecenas lectus neque, tincidunt ut dignissim non, lacinia nec nisi.',
+          'image' : '@picsum:452',
+          'button'  : {
+            'text' : 'Sample Link',
+            'url' : 'https://craftandcrew.ca/'
+          },
+          'tag' : 'Category'
+        }} %}
+        {% include 'components/_card.twig'|siteInclude with { settings: {
+          'heading' : 'Sample Card',
+          'text'  : 'Duis convallis vestibulum tellus, vitae lobortis quam bibendum quis. Maecenas lectus neque, tincidunt ut dignissim non, lacinia nec nisi.',
+          'image' : '@vidsum:454',
+          'button'  : {
+            'text' : 'Sample Link %with screenreader content%',
+            'url' : 'https://craftandcrew.ca/'
+          },
+          'tag' : 'Category'
+        }} %}
+      </div>
+    </div>
+    <div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">Tabs</p><hr class="block border-rule flex-1"></div>
+		<div class="flex mt-p32 mb-p64 p-p24">
+			<ul class="w-full">
+      {% include 'components/_slider.twig'|siteInclude with { settings: {
+        'id' : 'tabs2',
+        'autoplay' : true,
+        'speed' : 7,
+        'slides' : [
+          {
+            'slideId' : 'slide1',
+            'heading' : 'A title for the first slide to be used',
+            'content' : 'Duis convallis vestibulum tellus, vitae lobortis quam bibendum quis. Maecenas lectus neque, tincidunt ut dignissim non, lacinia nec nisi.',
+            'buttonText' : 'Read the Article',
+            'buttonLink' : '#',
+            'image' : '@picsum:464',
+            'alt' : 'Duis convallis vestibulum tellus',
+          },
+          {
+            'slideId' : 'slide2',
+            'heading' : 'A title for the first slide to be used',
+            'content' : 'Duis convallis vestibulum tellus, vitae lobortis quam bibendum quis. Maecenas lectus neque, tincidunt ut dignissim non, lacinia nec nisi.',
+            'buttonText' : 'Read the Article',
+            'buttonLink' : '#',
+            'image' : '@picsum:466',
+            'alt' : 'Duis convallis vestibulum tellus',
+          },
+          {
+            'slideId' : 'slide3',
+            'heading' : 'A title for the first slide to be used',
+            'content' : 'Duis convallis vestibulum tellus, vitae lobortis quam bibendum quis. Maecenas lectus neque, tincidunt ut dignissim non, lacinia nec nisi.',
+            'buttonText' : 'Read the Article',
+            'buttonLink' : '#',
+            'image' : '@picsum:468',
+            'alt' : 'Duis convallis vestibulum tellus',
+          },
+        ]
+        }} %}
+      </ul>
+		</div>
+
+    <div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">Tabs</p><hr class="block border-rule flex-1"></div>
+		<div class="flex mt-p32 mb-p64">
+			<ul class="w-full">
+      {% include 'components/_tabs.twig'|siteInclude with { settings: {
+        'id' : 'tabs1',
+        'tabs' : [
+          {
+            'tabId' : 'firsttab',
+            'tab' : 'Tab',
+            'content' : '<p>This is a sample tab component. It also supports the ability to hide/show the content based on a defined media query.</p>' ~ sampleContent,
+          },
+          {
+            'tabId' : 'secondtab',
+            'tab' : 'Second Tab',
+            'content' : sampleContent2,
+          },
+        ]
+        }} %}
+      </ul>
+		</div>
+
+		<div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">Accordions</p><hr class="block border-rule flex-1"></div>
+		<div class="mt-p32 mb-p64 p-p24 mq768:px-none" id="faqs">
+      <p class="mb-p8 text-sm text-type">Standard Accordions</p>
+			<ul class="w-full mb-p64">
+      {% include 'components/_accordion.twig'|siteInclude with { settings: {
+        'id' : 'question1',
+        'trigger' : 'What is your name?',
+        'content' : sampleContent,
+        }} %}
+      {% include 'components/_accordion.twig'|siteInclude with { settings: {
+        'id' : 'question2',
+        'trigger' : 'What is your your favourite colour?',
+        'content' : sampleContent2,
+        }} %}
+      </ul>
+      <p class="mb-p8 text-sm text-type">Show Accordions (Reveal on Breakpoint)</p>
+			<ul class="w-full">
+      {% include 'components/_accordion.twig'|siteInclude with { settings: {
+        'id' : 'question1',
+        'trigger' : 'Show me at 768px',
+        'content' : 'The window is 768 pixels or wider',
+        'respond' : 'show',
+        'mq' : 'mq768',
+        }} %}
+      {% include 'components/_accordion.twig'|siteInclude with { settings: {
+        'id' : 'question2',
+        'trigger' : 'Show me at 1024px',
+        'content' : 'The window is 1024 pixels or wider',
+        'respond' : 'show',
+        'mq' : 'mq1024',
+        }} %}
+      </ul>
+      <p class="mb-p8 text-sm text-type">Hide Accordions (Reveal on Breakpoint)</p>
+			<ul class="w-full">
+      {% include 'components/_accordion.twig'|siteInclude with { settings: {
+        'id' : 'question1',
+        'trigger' : 'Hide me at 768px',
+        'content' : 'The window is less than 768 pixels',
+        'respond' : 'hide',
+        'mq' : 'mq768',
+        }} %}
+      {% include 'components/_accordion.twig'|siteInclude with { settings: {
+        'id' : 'question2',
+        'trigger' : 'Hide me at 1024px',
+        'content' : 'The window is less than 1024 pixels',
+        'respond' : 'hide',
+        'mq' : 'mq1024',
+        }} %}
+      </ul>
+		</div>
+
+		<div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">UI Line Icons</p><hr class="block border-rule flex-1"></div>
+		<div class="ml-none flex flex-wrap mt-p32 mb-p64 max-w-p512">
+			<span class="mx-p8">{{ getIcon('arrow-right', 'icon', 'fill-brand w-p32 h-p32') }}</span>
+			<span class="mx-p8">{{ getIcon('arrow-left', 'icon', 'fill-brand w-p32 h-p32') }}</span>
+			<span class="mx-p8">{{ getIcon('checkmark', 'icon', 'fill-brand w-p32 h-p32') }}</span>
+			<span class="mx-p8">{{ getIcon('plus', 'icon', 'fill-brand w-p32 h-p32') }}</span>
+			<span class="mx-p8">{{ getIcon('cross', 'icon', 'fill-brand w-p32 h-p32') }}</span>
+			<span class="mx-p8">{{ getIcon('minus', 'icon', 'fill-brand w-p32 h-p32') }}</span>
+			<span class="mx-p8">{{ getIcon('search', 'icon', 'fill-brand w-p32 h-p32') }}</span>
+		</div>
+
+		<div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">Social Media Icons</p><hr class="block border-rule flex-1"></div>
+		<div class="ml-none flex flex-wrap mt-p32 mb-p64 max-w-p512">
+			<span class="mx-p8">{{ getIcon('facebook', 'icon', 'stroke-none fill-black w-p32 h-p32') }}</span>
+			<span class="mx-p8">{{ getIcon('instagram', 'icon', 'stroke-none fill-black w-p32 h-p32') }}</span>
+			<span class="mx-p8">{{ getIcon('twitter', 'icon', 'stroke-none fill-black w-p32 h-p32') }}</span>
+			<span class="mx-p8">{{ getIcon('linkedin', 'icon', 'stroke-none fill-black w-p32 h-p32') }}</span>
+			<span class="mx-p8">{{ getIcon('slideshare', 'icon', 'stroke-none fill-black w-p32 h-p32') }}</span>
+		</div>
+
+    <div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p8">Dynamic Data Pattern</p><hr class="block border-rule flex-1"></div>
+    <div class="flex mt-p32 mb-p64 py-p24">
+      <div>
+        <div class="c-content mb-p32">
+          <p>This is a simple test for using sample data, and is intended mostly as an example rather than an active component. Instead, it is meant to demonstrate a few different patterns
+             for building interaction with the existing tools.</p>
+          <p>The button below is part of an inline apline component built specifically for this page. Clicking the button triggers one of the sample API endpoints in the <code class="text-brand">ccapimodule</code>
+             CraftCMS module, and demonstrates a simple example of using the <code class="text-brand">fetch()</code> function to make requests from our custom API endpoints.</p>
+          <p>The component’s HTML also demonstrates how to effectively transition in items using the <code class="text-brand">x-for</code> and <code class="text-brand">x-intersect</code> directives
+             (the later being a first-party plugin that we have activated via npm and our <code class="text-brand">scripts.js</code> file.)
+        </div>
+        <div x-data="sampleData()">
+          <div class="mb-p32">
+            <ul>
+              <template x-for="(todo, index) in todos">
+                <li x-data="{ shown:false }" x-intersect="shown = true">
+                  <span class="block p-p24 mq768:p-p32 bg-white mb-p24 shadow-md" x-show="shown" x-transition.duration.1000ms :style="'transition-delay: ' + (.1 * index) + 's'">
+                    <h2 class="h3 font-medium block text-brand mb-p16" x-html="todo.title"></h2>
+                    <span x-html="todo.body"></span>
+                  </span>
+                </li>
+              </template>
+            </ul>
+          </div>
+          <div class="mr-p32">{% include 'components/_button.twig'|siteInclude with { settings: {
+            'text'  : 'Load Dynamic Data',
+            'type'  : 'button',
+            'style' : 'primary',
+            'atts'  : {
+              'x-data' : true,
+              '@click' : 'load($event)'
+            }
+          }} %}</div>
+        </div>
+      </div>
+    </div>
+	</div>
+
+  <div id="sampleContent" class="hidden"  data-title="{{ 'Sample Modal Content'|t }}">
+    <div class="p-p32">
+      <div class="c-content">
+      {{ sampleContent|raw }}
+      </div>
+      <ul class="w-full">
+        {% include 'components/_accordion.twig'|siteInclude with { settings: {
+        'id' : 'question1',
+        'trigger' : 'What is your name?',
+        'content' : sampleContent,
+        }} %}
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

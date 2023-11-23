@@ -1,0 +1,40 @@
+{% extends "_layouts/cp" %}
+{% set title = "Video Training"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+      <p class="large">The videos in this training series provide a general introduction to Craft CMS and cover some of the core functionalities that apply to all sites built on the platform.</p>
+      <div class="readable"><blockquote class="note"><b>Note:</b> The purpose of these videos is to provide a foundational understanding of Craft CMS at a <em>general level</em>, not the specifics of the <span class="highlight">{{ siteName }}</span> website. The videos contained here featured a striped down, basic instance of Craft using sample content.</blockquote></div>      
+    </section>
+    <section>
+      <h2>Introduction to Craft CMS</h2>
+      <p>Welcome to our introduction to Craft Video. In this video, we'll take a quick initial look at CraftCMS to get you familiar with the login process and the initial view.</p>
+      <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/1055623bfe7641de808fa9e6bf536742?sid=67a34b0c-37b4-460e-8229-650ad3b686ef" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+    </section>
+    <section>
+      <h2>Global Sets</h2>
+      <p>In this video, we'll explain the concept of globals, how to access them, and their general usage.</p>
+      <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/728bb7193562448db235643d3e4c6804?sid=d102da34-9a9e-4383-9aee-8ae5b8f78022" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+    </section> 
+    <section>
+      <h2>Assets</h2>
+      <p>In this video, we'll take a quick initial look at CraftCMS to get you familiar with the login process and the initial view.</p>
+      <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/60d6ac51ae9a4399bab667d7cad460ed?sid=86ac2950-c650-4a4b-88ea-3a1b334c6112" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+    </section>
+    <section>
+      <h2>Entries</h2>
+      <p>In this video, we'll cover the concept of entries within Craft CMS, including what they are and how they're organized.</p>
+      <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/415b20e727624aaa91cce9856d437b6e?sid=cce0aa9c-230f-4cd5-b321-92f7ea083a6d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+      <p>In this video, we'll look at a single entry within CraftCMS, and provide an overview of the general functionality that is common to all entries, regardless of their structure or purpose.</p>
+      <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/4fa4e34717044633bd1630819fe148d0?sid=37b6552f-4dab-4332-be69-f1749e334c4b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+    </section>           
+  </div>
+{% endblock %}

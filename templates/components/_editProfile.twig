@@ -1,0 +1,85 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+    'redirectUrl': null,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% macro errorList(errors) %}
+    {% if errors %}
+        {{ ul(errors, { class: 'text-sm text-error mt-p8' }) }}
+    {% endif %}
+{% endmacro %}
+
+{% from _self import errorList %}
+
+{% if currentUser %}
+  {% set user = currentUser %}
+  <form method="post" action="" accept-charset="UTF-8" class="p-p32 rounded shadow-md max-w-p512 mx-auto">
+      {{ csrfInput() }}
+      {{ actionInput('users/save-user') }}
+      {{ redirectInput(redirectUrl ?? '') }}
+
+      <h1 class="mb-p16 text-h2">{{- 'Register'|t -}}</h1>
+      <div class="mb-p16">
+          {% include 'form/items/_input' with { 'settings': {
+              'type': 'text',
+              'id': 'username',
+              'label': 'Username'|t,
+              'value': currentUser.username,
+              'atts': {
+                'required': true,
+                'placeholder': 'Username'|t,
+              }
+          }} %}
+          {% if user is defined %}
+              {{ errorList(user.getErrors('username')) }}
+          {% endif %}
+        wtf
+      </div>
+      <div class="mb-p16">
+          {% include 'form/items/_input' with { 'settings': {
+              'type': 'email',
+              'id': 'email',
+              'label': 'Email'|t,
+              'value': user.email ?? cart.email ?? null,
+              'atts': {
+                'required': true,
+                'placeholder': 'email@site.com'|t,
+              }
+          }} %}
+          {% if user is defined %}
+              {{ errorList(user.getErrors('email')) }}
+          {% endif %}
+      </div>
+      <div class="mb-p16">
+          {% include 'form/items/_input' with { 'settings': {
+              'type': 'password',
+              'id': 'password',
+              'label': 'Password'|t,
+              'value': null,
+              'atts': {
+                'placeholder': 'Password'|t,
+                'required': true,
+              }
+          }} %}
+          {% if user is defined %}
+              {{ errorList(user.getErrors('password')) }}
+          {% endif %}
+      </div>
+
+      <div class="flex items-center justify-between">
+
+          {{ tag('button', {
+              type: 'submit',
+              class: 'c-btn',
+              text: 'Save'|t
+          }) }}
+      </div>
+  </form>
+{% endif %}

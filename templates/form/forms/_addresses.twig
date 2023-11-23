@@ -1,0 +1,95 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'id' : 'formAddress',
+  'successMessage': 'Addresses selected.'|t,
+  'redirectUrl': null,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set addresses = currentUser ? currentUser.getAddresses() : [] %}
+
+<form method="post" action="" x-comp="address" x-data="address({ billingSame: 1, newAddress: true })" id="{{ settings.id }}">
+  {{ csrfInput() }}
+  {{ actionInput('commerce/cart/update-cart') }}
+  {{ successMessageInput(settings.successMessage) }}
+  {{ redirectInput(settings.redirectUrl) }}
+
+  {# Catch the email for guest users #}
+  {% if not cart.email %}
+    {% include 'form/items/_input' with { 'settings': {
+      'type': 'email',
+      'id': 'email',
+      'label': 'Email'|t,
+      'value': cart.email,
+      'atts': {
+        'required': true,
+        'placeholder': 'email@site.com'|t,
+      }
+    }} %}
+  {% endif %}
+
+  {% include "form/items/address/_fieldset" with {'settings': {
+    title: 'Shipping Address'|t,
+    name: 'shippingAddress',
+    primaryIdName: 'primaryShippingAddressId',
+    sourceIdName: 'sourceShippingAddressId',
+  }} %}
+
+  {{ hiddenInput('billingAddressSameAsShipping', 0) }}
+
+  {% if currentUser %}
+    <div class="my-p50">
+      {{ input('checkbox', 'makePrimaryShippingAddress', 0, {
+        'id': 'makePrimaryShippingAddress',
+        'class': component('checkbox', false, '')
+      }) }}
+      <label for="makePrimaryShippingAddress" class="cursor-pointer text-h5">{{ 'Make this my default shipping address'|t }}</label>
+    </div>
+  {% endif %}
+
+  <div class="pt-p50 my-p32 border-t border-terracotta">
+    {{ input('checkbox', 'billingAddressSameAsShipping', 1, {
+      'id': 'billingAddressSameAsShipping',
+      'checked': true,
+      'x-ref': 'billingSame',
+      '@change': 'billingSameAsShippingChange()',
+      'class': component('checkbox', false, '')
+    }) }}
+    <label for="billingAddressSameAsShipping" class="cursor-pointer text-h5">{{ "Use same address for billing"|t }}</label>
+  </div>
+
+  <div x-ref="billingAddress" x-cloak x-collapse x-show="billingSame === false">
+    {% include "form/items/address/_fieldset" with {'settings': {
+      title: 'Billing Address'|t,
+      name: 'billingAddress',
+      primaryIdName: 'primaryBillingAddressId',
+      sourceIdName: 'sourceBillingAddressId',
+    }} %}
+
+    {% if currentUser %}
+    <div class="my-p50">
+      {{ input('checkbox', 'makePrimaryBillingAddress', 0, {
+        'id': 'makePrimaryBillingAddress',
+        'class': component('checkbox', false, '')
+      }) }}
+      <label for="makePrimaryBillingAddress" class="cursor-pointer text-h5">{{ 'Make this my default billing address'|t }}</label>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-p32 flex justify-end">
+    {{ tag('button', {
+      type: 'submit',
+      class: component('button', 'primary', 'hidden'),
+      text: 'Confirm addresses'|t,
+      id: 'submit-form'
+    }) }}
+  </div>
+
+</form>

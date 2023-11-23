@@ -1,0 +1,22 @@
+<div class="my-p32 max-w-4xl">
+  {% if isVideo(media.one()) %}
+    {% include 'components/_video.twig'|siteInclude with { settings: {
+      'video' : media.one(),
+      'class' : 'mb-p24',
+      'rounded' : 'full',
+    }} %}
+  {% else %}
+    {% include 'components/_image.twig'|siteInclude with { settings: {
+      'image' : media.one(),
+      'class' : 'inline-block',
+      'format' : 'standard',
+      'rounded' : 'full',
+      'imageClass': 'rounded-2xl overflow-hidden',
+      'figure' : description is not empty ? {
+        'class' : 'inline-block',
+        'captionClass' : 'flex justify-start text-sm',
+        'caption' : description
+      }
+    }} %}
+  {% endif %}
+</div>

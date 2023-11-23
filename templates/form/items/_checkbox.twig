@@ -1,0 +1,26 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'id': '',
+  'checked': false,
+  'value':  settings.checked ? 1 : 0,
+  'xref': false,
+  'onChange': false,
+  'labelClass': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<label class="{{ component('label', false, '') }}">
+  {{ input('checkbox', settings.id, settings.value, {
+    id: settings.id,
+    checked: settings.checked,
+    'x-ref': settings.xref ? settings.xref : false,
+    '@change': settings.onChange ? settings.onChange : false,
+  }) }}
+  {{ settings.label }}
+</label>

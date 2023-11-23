@@ -1,0 +1,187 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'successMessage' : '',
+  'redirectUrl': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if cart.gatewayId or cart.paymentSourceId %}
+
+  {% if paymentForm is defined %}
+    {% for key, errors in paymentForm.getErrors() %}
+      {% for error in errors %}
+        {% if loop.first %}
+          <ul>
+          {% endif %}
+          <li class="text-red-600">
+            <strong>{{ key }}</strong>
+            {{ error }}</li>
+          {% if loop.last %}
+          </ul>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+
+  {# {{ cart.number }} #}
+
+  <form id="paymentForm" method="post" action="">
+    {{ csrfInput() }}
+    {{ actionInput('commerce/payments/pay') }}
+    {{ redirectInput(siteUrl(settings.redirectUrl, {
+      number: cart.number,
+      success: 'true'
+    })) }}
+    {{ successMessageInput(settings.successMessage) }}
+    {{ hiddenInput('cancelUrl', siteUrl('checkout/payment')|hash) }}
+    {{ hiddenInput('orderEmail', cart.email) }}
+    {{ hiddenInput('number', cart.number) }}
+
+    {% if cart.gatewayId %}
+      {{ hiddenInput('gatewayId', cart.gatewayId) }}
+      {% set params = {} %}
+
+      {% if className(cart.gateway) == 'craft\\commerce\\paypalcheckout\\gateways\\Gateway' %}
+        {% set params = { currency: cart.paymentCurrency } %}
+      {% endif %}
+
+      <div class="gateway-payment-form mt-p50">
+
+        <div class="mq640:flex mq640:-mx-p16">
+          <div class="mq640:mx-p16 flex-1">
+            {% include 'form/items/_input' with { 'settings': {
+              'type': 'text',
+              'name': 'paymentForm[authorize][firstName]"',
+              'label': 'First Name'|t,
+              'value': '',
+              'atts': {
+                'placeholder': 'First Name'|t,
+                'required': true,
+                'class': component('input', 'large', ''),
+              }
+            }} %}
+          </div>
+
+          <div class="mq640:mx-p16 flex-1">
+            {% include 'form/items/_input' with { 'settings': {
+              'type': 'text',
+              'name': 'paymentForm[authorize][lastName]"',
+              'label': 'Last Name'|t,
+              'value': '',
+              'atts': {
+                'placeholder': 'Last Name'|t,
+                'required': true,
+                'class': component('input', 'large', ''),
+              }
+            }} %}
+          </div>
+        </div>
+
+
+
+        {% include 'form/items/_input' with { 'settings': {
+          'type': 'text',
+          'name': 'paymentForm[authorize][number]',
+          'id': 'paymentForm-authorize-number',
+          'label': 'Card Number'|t,
+          'value': '',
+          'atts': {
+            'placeholder': 'Card Number'|t,
+            'required': true,
+            'class': component('input', 'large', ''),
+          }
+        }} %}
+
+
+        <div class="mq640:flex">
+
+          <div class="mq640:mr-p16">
+            <label class="{{ component('label', false, '') }}" for="paymentForm-authorize-month">{{ "Expiry" }}</label>
+            <div class="flex ">
+              {% include 'form/items/_input' with { 'settings': {
+                'type': 'text',
+                'name': 'paymentForm[authorize][month]',
+                'id': 'paymentForm-authorize-month',
+                'value': '',
+                'atts': {
+                  'placeholder': 'MM'|t,
+                  'required': true,
+                  'maxlength': 2,
+                  'class': component('input', 'numberLg', ''),
+                }
+              }} %}
+
+              {% include 'form/items/_input' with { 'settings': {
+                'type': 'text',
+                'name': 'paymentForm[authorize][year]',
+                'id': 'paymentForm-authorize-year',
+                'value': '',
+                'atts': {
+                  'placeholder': 'YYYY'|t,
+                  'required': true,
+                  'maxlength': 4,
+                  'class': component('input', 'numberLg', 'mx-p16'),
+                }
+              }} %}
+            </div>
+          </div>
+
+          {% include 'form/items/_input' with { 'settings': {
+            'type': 'text',
+            'name': 'paymentForm[authorize][cvv]',
+            'id': 'paymentForm-authorize-cvv',
+            'label': 'CVV'|t,
+            'atts': {
+              'placeholder': 'CVV'|t,
+              'required': true,
+              'maxlength': 4,
+              'class': component('input', 'numberLg', ''),
+            }
+          }} %}
+        </div>
+
+        <button id="paymentForm-authorize-submit" name="paymentForm[authorize][submit]" class="{{ component('button', false, 'hidden') }}">{{ "Submit"|t }}</button>
+      </div>
+
+      {% if cart.gateway.supportsPaymentSources() and currentUser %}
+        <div class="checkbox">
+          <label>
+            {{ input('checkbox', 'savePaymentSource', 1, {
+              class: ['inline-block', 'mr-1']
+            }) }}
+            {{ 'Save card for future purchases'|t }}
+          </label>
+        </div>
+      {% endif %}
+    {% else %}
+      {{ cart.gateway.getPaymentConfirmationFormHtml({})|raw }}
+    {% endif %}
+    {# {% set user = cart.email ? craft.users.email(cart.email).one() : null %}
+    {% if not user or not user.getIsCredentialed() %}
+      <div class="my-p16">
+        <label for="registerUserOnOrderComplete">
+          {{ hiddenInput('registerUserOnOrderComplete', true) }}
+          {{ input('checkbox', 'registerUserOnOrderComplete', 1, {
+                id: 'registerUserOnOrderComplete',
+                checked: true,
+              }) }}
+          {{ 'Create an account'|t }}
+        </label>
+      </div>
+    {% endif %} #}
+
+    {% if className(cart.gateway) not in ['craft\\commerce\\paypalcheckout\\gateways\\Gateway',] %}
+      {# {{ tag('button', {
+          type: 'submit',
+          class: component('button', 'primary', ''),
+          text: 'Pay'|t
+      }) }} #}
+    {% endif %}
+  </form>
+{% endif %}

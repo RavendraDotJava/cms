@@ -1,0 +1,19 @@
+columnSuffix: tvliirne
+contentColumnType: text
+fieldGroup: 057f05bc-e4bf-4c08-94e8-1e40cc56bea7 # Media
+handle: videoTranscript
+instructions: "Use this field to add the transcript that accompanies this video.\r\n\r\n**Accessibility Note:** Transcripts can be an accessibility feature. For more details on this, please refer to the [Accessibility Documentation](/admin/documentation/accessibility)."
+name: 'Video Transcript'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

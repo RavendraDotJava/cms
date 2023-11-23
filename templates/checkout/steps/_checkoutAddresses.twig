@@ -1,0 +1,29 @@
+{% extends 'checkout/_layout.twig' %}
+
+{% import 'partials/_macros' as helpers %}
+
+{% if currentUser %}
+  {% requireLogin %}
+{% endif %}
+
+
+{% block mainContent %}
+  {% include 'components/_checkoutIntro' with { 'settings': {
+      'heading': entry.checkoutHeading,
+      'textContent': entry.checkoutText,
+      'step': entry.checkoutStep,
+  }} %}
+  {% include "form/forms/_addresses.twig" with { 'settings': {
+    'id': 'checkoutFormAddress',
+    'redirectUrl': entry.formSubmissionRedirect.one is not null ? entry.formSubmissionRedirect.one.uri,
+    'successMessage': entry.formSuccessMessage ? entry.formSuccessMessage,
+  }}%}
+{% endblock %}
+{% block sidebar %}
+  {% include 'components/_orderSummary.twig' with { 'settings': {
+    'buttonText': entry.formSubmitButtonText,
+    'buttonFor': 'checkoutFormAddress',
+  }} %}
+  <!-- Template: {{ _self }}.twig -->
+{% endblock %}
+

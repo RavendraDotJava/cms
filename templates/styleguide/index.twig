@@ -1,0 +1,118 @@
+{% extends craft.app.request.isAjax ? "_ajax" : "_layout" %}
+
+{% import 'partials/_macros' as helpers %}
+
+{% if getenv('ENVIRONMENT') == 'production' %}
+	{% exit 404 %}
+{% endif %}
+
+{# AJAX Request #}
+{% block ajax %}
+	{# Include a different AJAX template here #}
+{% endblock %}
+
+{% set fontTitle = '[Title Font Name]' %}
+{% set baseTitle = '[Font Name]' %}
+
+{# Regular Request #}
+{% block content %}
+
+	<div class="max-w-p1024 mx-auto">
+
+	<div class="container mt-p64">
+		<div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p24">Title Typography</p><hr class="block border-rule flex-1"></div>
+		<div class="ml-p32">
+			<div class="mb-p24">
+				<p class="mb-p8 text-sm text-type">H1 - Bold - 48pt {{ fontTitle }}</p>
+				<h1>Grow your business with smarter conversations</h1>
+			</div>
+			<div class="mb-p24">
+				<p class="mb-p8 text-sm text-type">H2 - Bold - 36pt {{ fontTitle }}</p>
+				<h2>Grow your business with smarter conversations</h2>
+			</div>
+			<div class="mb-p24">
+				<p class="mb-p8 text-sm text-type">H3 - Bold - 30pt {{ fontTitle }}</p>
+				<h3>Grow your business with smarter conversations</h3>
+			</div>
+			<div class="mb-p24">
+				<p class="mb-p8 text-sm text-type">H4 - Bold - 24pt {{ fontTitle }}</p>
+				<h4>Grow your business with smarter conversations</h4>
+			</div>
+			<div class="mb-p24">
+				<p class="mb-p8 text-sm text-type">H5 - Bold - 20pt {{ fontTitle }}</p>
+				<h5>Grow your business with smarter conversations</h5>
+			</div>
+		</div>
+		<div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p24">Body Typography</p><hr class="block border-rule flex-1"></div>
+		<div class="ml-p32">
+			<div class="mb-p24">
+				<p class="mb-p8 text-sm text-type">Large Body - Regular - 18pt {{ baseTitle }}</p>
+				<p class="text-lg">Grow your business with smarter conversations</p>
+			</div>
+			<div class="mb-p24">
+				<p class="mb-p8 text-sm text-type">Body - Regular - 16pt {{ baseTitle }}</p>
+				<p class="text-bd">Grow your business with smarter conversations</p>
+			</div>
+			<div class="mb-p24">
+				<p class="mb-p8 text-sm text-type">Small Body - Regular - 14pt {{ baseTitle }}</p>
+				<p class="text-sm">Grow your business with smarter conversations</p>
+			</div>
+		</div>
+		<div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p24">Other Typography</p><hr class="block border-rule flex-1"></div>
+		<div class="ml-p32 max-w-p768">
+			<div class="c-content mt-p24 mb-p64">
+				<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Duis convallis vestibulum tellus, vitae lobortis quam bibendum quis. Maecenas lectus neque, tincidunt ut dignissim non, lacinia nec nisi. Integer porta ante ut sapien rutrum aliquam interdum a felis. <a href="#">Nulla auctor vestibulum enim</a>, et luctus risus interdum eu. Quisque id arcu ultricies turpis posuere varius vitae varius quam. Nam non rhoncus eros. Proin posuere fringilla placerat. Nullam fermentum odio quis neque dapibus ornare. Sed pellentesque eros vel nisl efficitur cursus. Proin dictum velit in aliquam aliquet.</p>
+				<ul>
+					<li>Sed laoreet lacus eu metus consequat, in vehicula est volutpat</li>
+					<li>Nullam laoreet libero tellus, ut dignissim leo luctus eu</li>
+					<li>Nulla ac urna et lacus auctor ornare in eu nisi</li>
+					<li>Pellentesque neque arcu, scelerisque id ligula at, hendrerit porta felis</li>
+					<li>Aenean feugiat dapibus dolor, pulvinar vulputate orci vehicula sed</li>
+					<li>Suspendisse non sem nisi</li>
+					<li>In quis odio ex</li>
+					<li>Donec porta sodales blandit</li>
+				</ul>
+				<p>Vivamus lobortis tellus est, condimentum congue sapien facilisis et. In finibus ornare metus, id convallis purus egestas vitae. Duis et aliquet turpis, et molestie sapien. Nullam ornare, quam nec lacinia tincidunt, mauris diam feugiat quam, ac iaculis lectus purus at odio. Fusce molestie facilisis arcu, et volutpat urna aliquet eget. Mauris mi risus, luctus a iaculis sit amet, laoreet vel est. Sed suscipit ultrices mauris, nec aliquam justo suscipit at. Ut est enim, maximus quis suscipit eu, efficitur et ligula. Praesent et feugiat diam. Nunc turpis nunc, tincidunt non metus quis, maximus mattis diam.</p>
+				<ol>
+					<li>Etiam auctor justo at turpis efficitur, quis lacinia tellus imperdiet</li>
+					<li>Maecenas eget fringilla dui, ut posuere eros</li>
+					<li>Proin cursus finibus congue</li>
+					<li>Donec finibus sagittis massa, eget lacinia lectus euismod non</li>
+					<li>Aliquam ligula lacus, varius at metus id, consectetur lacinia enim</li>
+					<li>Duis id pulvinar odio, eu luctus leo</li>
+					<li>Fusce eu velit aliquam enim mollis vehicula in et risus</li>
+					<li>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos</li>
+					<li>Maecenas tellus massa, maximus in fermentum ut, pulvinar non arcu</li>
+					<li>Cras ultricies consectetur placerat</li>
+					<li>Vivamus in posuere magna</li>
+					<li>Etiam sit amet orci justo</li>
+					<li>Maecenas rutrum, lacus tempus dignissim efficitur, tellus sapien bibendum metus, at dictum nisi tellus cursus erat</li>
+					<li>Aenean elementum sollicitudin ultrices</li>
+					<li>Vestibulum eu felis ac augue dignissim fermentum</li>
+					<li>Curabitur lacinia quis risus vitae tincidunt</li>
+				</ol>
+				<p>Mauris iaculis ac tellus eu fermentum. Fusce eget leo nec enim imperdiet hendrerit ut vitae ante. Sed ornare metus sit amet est viverra vestibulum. Praesent fringilla convallis est ut imperdiet. Ut vitae diam a enim finibus tristique. Cras sollicitudin bibendum felis, eget bibendum est vulputate nec. In sollicitudin tempus ultricies. Quisque ornare nunc eget commodo aliquet. Vivamus ac dapibus quam, eget egestas libero.</p>
+			</div>
+		</div>
+		<div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p24">Primary Colours</p><hr class="block border-rule flex-1"></div>
+		<div class="ml-p32">
+			<div class="flex flex-wrap mt-p24 mb-p64">
+				<div class="mr-p32"><span class="block mb-p24 w-p128 h-p128 bg-brand shadow-md"></span>#00955 - Brand</div>
+				<div class="mr-p32"><span class="block mb-p24 w-p128 h-p128 bg-accent shadow-md"></span>#00955 - Accent</div>
+				<div class="mr-p32"><span class="block mb-p24 w-p128 h-p128 bg-black shadow-md"></span>#00955 - Black</div>
+				<div class="mr-p32"><span class="block mb-p24 w-p128 h-p128 bg-white shadow-md"></span>#00955 - White</div>
+			</div>
+		</div>
+		<div class="flex flex-1 items-center mb-p24"><p class="text-sky uppercase mr-p24">UI Colours</p><hr class="block border-rule flex-1"></div>
+		<div class="ml-p32">
+			<div class="flex flex-wrap mt-p24 mb-p64">
+				<div class="mr-p32"><span class="block mb-p24 w-p128 h-p128 bg-type shadow-md"></span>#00955 - Type</div>
+				<div class="mr-p32"><span class="block mb-p24 w-p128 h-p128 bg-rule shadow-md"></span>#00955 - Accent</div>
+				<div class="mr-p32"><span class="block mb-p24 w-p128 h-p128 bg-bar shadow-md"></span>#00955 - Black</div>
+				<div class="mr-p32"><span class="block mb-p24 w-p128 h-p128 bg-control shadow-md"></span>#00955 - White</div>
+				<div class="mr-p32"><span class="block mb-p24 w-p128 h-p128 bg-overlay shadow-md"></span>#00955 - Overlay</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

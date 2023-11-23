@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: f1f1ffc6-b86c-414b-ab39-d213b7efe85e # Modules
+handle: contentModules
+instructions: 'Use this field to build this entry''s content by adding and combining the available module blocks. '
+name: 'Content Modules'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_contentmodules}}'
+  maxBlocks: null
+  minBlocks: null
+  propagationKeyFormat: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

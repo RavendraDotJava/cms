@@ -1,0 +1,99 @@
+/* --------------------------------- *
+ * MIXINS.SCSS                       *
+ * --------------------------------- */
+
+// -----------------------------------------------------[ MEDIA QUERIES ]
+@mixin mq($breakpoint) {
+  
+  $query: map-get($media-queries, $breakpoint);
+
+  // If no query was found, just output a custom query. An empty query means it
+  // was mapped empty (and used for grids), otherwise it's a mapped query.
+  @if ($query == null) {
+
+    @media #{$breakpoint} {
+      @content;
+    }
+
+  } @else if ($query == '') {
+
+    @content;
+
+  } @else {
+
+    @media #{$query} {
+      @content;
+    }
+
+  }
+
+}
+
+// -----------------------------------------------------[ HOVER / ACTIVE / FOCUS STATE ]
+@mixin interact($self: false) {
+    @if $self {
+        &,
+        &:focus,
+        &:hover,
+        &:active {
+            @content;
+        }
+    } @else {
+        &:focus,
+        &:hover,
+        &:active {
+            @content;
+        }
+    }
+}
+
+// -----------------------------------------------------[ TRANSITIONS ]
+@mixin transition($name, $properties: '') {
+
+  $transition: map-get($transitions, $name);
+
+  // If no transition was found, 
+  // just output a custom transition.
+  @if ($transition) {
+
+    transition: #{$transition};
+
+  } @else {
+
+    transition: #{$name};
+
+  }
+
+  // If properties were specified, 
+  // output them as the transition properties.
+  @if ($properties != '') {
+
+    transition-property: #{$properties};
+
+  }
+
+}
+
+// -----------------------------------------------------[ CLEARFIX ]
+@mixin clearfix() {
+    & {
+        *zoom: 1;
+    }
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+// -----------------------------------------------------[ HIDDEN ]
+@mixin hidden() {
+  position: absolute; 
+  overflow: hidden; 
+  clip: rect(0 0 0 0); 
+  height: 1px; width: 1px; 
+  margin: -1px; padding: 0; border: 0; 
+}

@@ -1,0 +1,171 @@
+changedFieldIndicator: 1114663255
+field: a761c7d6-6827-4eb0-999d-173f8ad256af # Alert Banner
+fieldLayouts:
+  5b478058-39c4-4213-9501-5a6130f1a334:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 0d4bc536-f7c2-4bc8-8efa-fb7c5b30e699 # Alert Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6db65295-cfbb-4c4a-bfb5-b497641afc75
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: d618d804-8392-4226-9b61-04e3547bdd4d # Dismiss Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5acf51f8-afc8-444b-9a0c-3ad29223f7d4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b9085870-974f-46ef-b23f-4cb4711311df # Delay
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ba03f679-90b4-4724-9836-ef321018ec3f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 2c1d5586-a028-4226-8102-387a312d3aa7 # Cookie Expiry
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c8d2c765-039d-441d-b8aa-a0c28c648be6
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 7dde3bd6-c56c-403c-91ed-aab3e0b37b69 # Display
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ecffd6bd-49a9-42da-ae6d-396016119166
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 4509e160-f1ec-4213-927c-221eb9458c0b
+        userCondition: null
+fields:
+  0d4bc536-f7c2-4bc8-8efa-fb7c5b30e699: # Alert Text
+    columnSuffix: yoqmrtpp
+    contentColumnType: text
+    fieldGroup: null
+    handle: alertText
+    instructions: 'Use this field to enter the text to display in the alert banner.'
+    name: 'Alert Text'
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      initialRows: 2
+      manualConfig: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      trimEmptyParagraphs: true
+      vizyConfig: Simple.json
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\vizy\fields\VizyField
+  2c1d5586-a028-4226-8102-387a312d3aa7: # Cookie Expiry
+    columnSuffix: szcnftvs
+    contentColumnType: text
+    fieldGroup: null
+    handle: cookieExpiry
+    instructions: "Enter the number of days the cookie should be saved for after the user submit the banner.\r\nAfter the cookie expires, the banner will display again. The default is 365 days."
+    name: 'Cookie Expiry'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: '365'
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  7dde3bd6-c56c-403c-91ed-aab3e0b37b69: # Display
+    columnSuffix: wzlxqtua
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: display
+    instructions: 'Use this field to toggle the display of the consent banner.'
+    name: Display
+    searchable: false
+    settings:
+      default: true
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  b9085870-974f-46ef-b23f-4cb4711311df: # Delay
+    columnSuffix: wccchrgm
+    contentColumnType: integer(10)
+    fieldGroup: null
+    handle: delay
+    instructions: 'Enter a time in seconds that it should take for this alert to display.'
+    name: Delay
+    searchable: false
+    settings:
+      decimals: 0
+      defaultValue: 0
+      max: null
+      min: 0
+      prefix: null
+      previewCurrency: null
+      previewFormat: decimal
+      size: 3
+      suffix: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  d618d804-8392-4226-9b61-04e3547bdd4d: # Dismiss Button
+    columnSuffix: lcnonwuy
+    contentColumnType: string(100)
+    fieldGroup: null
+    handle: dismissButton
+    instructions: 'Use this field to change the text for the consent banner dismiss button.'
+    name: 'Dismiss Button'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: 25
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: Dismiss
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText

@@ -1,0 +1,149 @@
+{% extends craft.app.request.isAjax ? "_ajax" : "_layout" %}
+
+{% import 'partials/_macros' as helpers %}
+
+{# AJAX Request #}
+{% block ajax %}
+  {# Include a different AJAX template here #}
+{% endblock %}
+
+{# Regular Request #}
+{% block content %}
+<div class="bg-salt pt-headerSm mq768:pt-headerLg">
+  <div class="relative z-20">
+    <section class="{{ component('modulePadding', false, 'c-container pt-p50') }}">
+      <div class="{{ component('moduleWidth', false, '') }}">
+       <div class="{{ component('roundedCard', 'checkoutPage', '') }}">
+          {% if cart.lineItems|length %}
+            <form method="post" action="">
+              {{ csrfInput() }}
+              {{ actionInput('commerce/cart/update-cart') }}
+              {{ successMessageInput('Cart updated.'|t) }}
+
+              <div class="mq1024:flex">
+                <div class="mq1024:w-7/12">
+                  <h1 class="mb-p40">{{ entry.title }}</h1>
+
+                  {# Cart Items #}
+                  <div>
+                    {% for item in cart.lineItems %}
+                      {# Cart Item #}
+                      {% include "cart/_cartItem.twig" %}
+                    {% endfor %}
+                  </div>
+
+                  {# Cart Items Total #}
+                  {% if not cart.hasErrors() %}
+                    <div class="hidden mq1024:flex items-center w-full justify-end pt-p16 pr-p24" title="{{ cart.itemSubTotal }}">
+                      <div class="text-lg font-normal pr-p8">{{ 'Items Total'|t }}:</div>
+                      <div class="w-p128 text-right font-medium text-h5">{{ cart.itemTotalAsCurrency }}</div>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="mq1024:w-5/12 mq1024:pl-p48 mt-p50">
+
+                  <h2 class="text-p35 font-normal mb-p50">{{ 'Order Summary'|t }}</h2>
+
+                  {# Coupon Code #}
+                  <div class="{{ component('summaryItem', false, '') }}">
+                    <h2 class="font-normal text-p26 mb-p24">{{ "Add a coupon"|t }}</h2>
+                    <div class="relative">
+                      {{ input('text', 'couponCode', cart.couponCode, {
+                          width: 11,
+                          class: component('input', 'medium', 'pr-p128'),
+                          placeholder: 'Coupon Code'|t,
+                      }) }}
+                      <div class="absolute right-p6 top-1/2 -translate-y-1/2">
+                        <button type="submit" class="{{ component('button', 'small', '') }}">{{- 'Apply'|t -}}</button>
+                      </div>
+                    </div>
+                    {% if cart.getFirstError('couponCode') %}
+                      <div class="text-error">{{ cart.getFirstError('couponCode') }}</div>
+                    {% endif %}
+                  </div>
+
+                  {# Order Adjustments #}
+                  {% if not cart.hasErrors() and cart.orderAdjustments|length %}
+                    <div class="{{ component('summaryItem', false, '') }}">
+                      <h3 class="text-basalt border-b border-terracotta block pb-p8 mb-p16 text-h5">{{- 'Order Adjustments'|t -}}</h3>
+                      {% for adjustment in cart.orderAdjustments %}
+                        <strong class="text-lg uppercase">{{ adjustment.type }}</strong>
+                        <div class="flex items-end w-full justify-end">
+                          <div class="text-lg pr-p8 flex-1">
+                            {{ adjustment.name }}
+                            {% if adjustment.isEstimated %}
+                              <i class="text-grey-dark">{{ 'Estimated' }}</i>
+                            {% endif %}<br>
+                            {{ adjustment.description }}
+                          </div>
+                          <div class="w-p128 text-right text-lg">
+                            <span title="{{ adjustment.amount }}">{{ adjustment.amountAsCurrency }}</span>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                  {# Adjustment Totals #}
+                  <div class="{{ component('summaryItem', false, '') }}">
+
+                    {% if not cart.hasErrors() %}
+
+                      <div class="text-h4 mb-p12 font-normal">{{- 'Shipping'|t -}}: {{ cart.getTotalShippingCost()|commerceCurrency(cart.currency) }}</div>
+                      <div class="text-lg mb-p12">{{- 'Total Tax'|t -}}: {{ cart.getTotalTax()|commerceCurrency(cart.currency) }}</div>
+                      <div class="text-lg mb-p12">{{- 'Total Tax (inc)'|t -}}: {{ cart.getTotalTaxIncluded()|commerceCurrency(cart.currency) }}</div>
+                      {% if cart.getTotalDiscount() != 0 %}
+                        <div class="text-lg mb-p12">{{- 'Total Discount'|t -}}: {{ cart.getTotalDiscount()|commerceCurrency(cart.currency) }}</div>
+                      {% endif %}
+
+                    {% endif %}
+                  </div>
+
+                  {% if not cart.hasErrors() %}
+                    <div class="{{ component('summaryItem', false, '') }}">
+                      <div class="text-h3 font-normal">{{ "Total"|t }}: {{ cart.totalPriceAsCurrency }}</div>
+                    </div>
+                  {% endif %}
+
+                  {{ redirectInput('/cart') }}
+
+                  {% if not cart.hasErrors() %}
+                    <a href="{{ url('/checkout') }}" class="{{ component('button', 'primary', 'w-full') }}">{{- 'Checkout'|t -}}</a>
+                  {% endif %}
+                </div>
+              </form>
+          {% else %}
+            {% if entry.emptyCartMessage is not empty %}
+              <div class="pb-p100">
+                {% set emptyCartMessage = entry.emptyCartMessage %}
+                {% include 'components/_intro.twig' with { 'settings': {
+                  'heading': emptyCartMessage.heading,
+                  'intro': emptyCartMessage.textContent,
+                  'type': false,
+                }} %}
+
+                {% if emptyCartMessage.button is not empty %}
+                  {% set buttons = emptyCartMessage.button %}
+                  <div class="text-center">
+                    {% for button in buttons %}
+                      {% include 'components/_button.twig'|siteInclude with { settings: {
+                        'text'  : button.buttonLink.text,
+                        'href'  : button.buttonLink.url,
+                        'type'  : 'primary',
+                        'style' : button.buttonStyle,
+                        'class' : 'mx-p8 mb-p16 mq768:mb-none last:mb-none first:ml-none'
+                      }} %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+{% endblock %}

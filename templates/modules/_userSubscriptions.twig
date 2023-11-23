@@ -1,0 +1,27 @@
+{# Create a subscription query with the 'user' parameter #}
+  {% set mySubscriptionQuery = craft.subscriptions()
+    .user(currentUser) %}
+
+  {# Fetch the subscriptions #}
+  {% set subscriptions = mySubscriptionQuery.all() %}
+
+  {# Display the subscriptions #}
+  {% for subscription in subscriptions %}
+
+    <article>
+      <h3><a href="{{ subscription.url }}">{{ subscription.name }}</a></h3>
+      <div><strong>{{ 'Status'|t }}:</strong> {{ subscription.status }}</div>
+      <div><strong>{{ 'Next Payment'|t }}:</strong> {{ subscription.nextPaymentDate|date('Y m d') }}</div>
+      <div><strong>{{ 'Expires'|t }}:</strong> {{ subscription.dateExpired|date('Y m d') }}</div>
+      <a href="{{ subscription.url }}">Learn more</a>
+    </article>
+  {% endfor %}
+
+{% endapply %}{% endcache %}
+
+{% set paymentSources = craft.commerce.paymentSources.getAllPaymentSourcesByCustomerId(currentUser.id ?? null) %}
+{% set paymentSources = paymentSources ?? [] %}
+
+{% for source in paymentSources %}
+  {{ source.description }}
+{% endfor %}

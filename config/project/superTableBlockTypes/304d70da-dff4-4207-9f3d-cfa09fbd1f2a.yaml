@@ -1,0 +1,311 @@
+changedFieldIndicator: 103724939
+field: 56a15819-e4ce-4601-acb9-c045865e6752 # Highlights
+fieldLayouts:
+  6565c83b-4053-4b08-a400-9de171f77632:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 052027f5-bdb7-4f68-974a-88be9b601711 # Heading
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 610f504a-3d70-425e-869c-d02d0e263388
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 18708076-c578-48ca-a5db-24780aae91c2 # Content
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: df5bc1a2-99ed-4fac-82fc-b1dba89a0152
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: a7731437-e0e8-40cf-829d-4e4308466deb # Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7ee01fb2-8e98-46d0-8ffd-eb91dc45db88
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 4cd70106-1bf0-4138-bdf1-9bd0cd20cc2a # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dd4b0318-175e-46dc-9385-f89f2890f98d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: d3ddbcd6-d0c0-4ac7-b91d-d6aaff726aa0 # Foreground Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bf9287e4-48a8-4689-8bda-22db8f4d64c0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 201326a0-d266-456a-a7f8-843366230841 # Radiant Circles
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 772fe864-26d2-4f35-a566-dd8e8fd05b2d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 3a5c2b0c-cbe8-41b8-b310-68940dc24581
+        userCondition: null
+fields:
+  4cd70106-1bf0-4138-bdf1-9bd0cd20cc2a: # Background Media
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: bgMedia
+    instructions: "Use this field to define the background media to be rendered in this highlight. This will appear below the foreground media.\r\nThis field allows selections from the following asset volumes:\r\n\r\n* Images\r\n* Video"
+    name: 'Background Media'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add background media'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources:
+        - 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+        - 'volume:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  052027f5-bdb7-4f68-974a-88be9b601711: # Heading
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: heading
+    instructions: "Use this field to add a heading to this module.\r\n\r\nTo highlight a particular piece of the heading text, wrap the targeted words in single asterisk (`*`). For example: `this is a *highlighted* heading`.\r\n\r\nThis field also allows you to set the heading level. _Please use this feature with caution and ensure proper document structure,_ as improper document structures are an accessibility concern. "
+    name: Heading
+    searchable: true
+    settings:
+      defaults:
+        __assoc__:
+          -
+            - levels
+            -
+              __assoc__:
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+          -
+            - sizing
+            -
+              __assoc__:
+                -
+                  - default
+                  - Default
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+                -
+                  - h5
+                  - H5
+      heading: ''
+      levelDefault: h2
+      levels:
+        - h2
+        - h3
+        - h4
+      sizing:
+        - h1
+        - h2
+        - h3
+        - h4
+      sizingDefault: h2
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Heading
+  201326a0-d266-456a-a7f8-843366230841: # Radiant Circles
+    columnSuffix: null
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: radiantCircles
+    instructions: 'Use this field to toggle the display of the radiant circles decoration.'
+    name: 'Radiant Circles'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  18708076-c578-48ca-a5db-24780aae91c2: # Content
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: contentText
+    instructions: 'Use this field to add the main content for this highlight.'
+    name: Content
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      blockTypeBehaviour: click
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      editorMode: combined
+      initialRows: 7
+      manualConfig: ''
+      maxBlocks: null
+      minBlocks: null
+      pasteAsPlainText: false
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      trimEmptyParagraphs: true
+      vizyConfig: Simple.json
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\vizy\fields\VizyField
+  a7731437-e0e8-40cf-829d-4e4308466deb: # Button
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: button
+    instructions: 'Use this field to define the optional button for this highlight.'
+    name: Button
+    searchable: false
+    settings:
+      contentTable: '{{%matrixcontent_button}}'
+      maxBlocks: 1
+      minBlocks: null
+      propagationKeyFormat: null
+      propagationMethod: all
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  d3ddbcd6-d0c0-4ac7-b91d-d6aaff726aa0: # Foreground Media
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: fgMedia
+    instructions: "Use this field to define the foreground media to be rendered in this highlight. This will appear above the background media.\r\nThis field allows selections from the following asset volumes:\r\n\r\n* Images"
+    name: 'Foreground Media'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: false
+      allowedKinds:
+        - image
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add foreground media'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources:
+        - 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+        - 'volume:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets

@@ -1,0 +1,67 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: c59f0e4b-c89a-405f-9488-0c6967311d94 # Footer
+handle: paymentIcons
+instructions: 'Use this field to add payment method icons to the site footer.'
+name: 'Payment Icons'
+searchable: false
+settings:
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Visa
+        -
+          - value
+          - visa
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Mastercard
+        -
+          - value
+          - mastercard
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Discover
+        -
+          - value
+          - discover
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'American Express'
+        -
+          - value
+          - amex
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - JCB
+        -
+          - value
+          - jcb
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Checkboxes

@@ -1,0 +1,6 @@
+color: green
+default: false
+description: 'Order has been shipped.'
+handle: delivered
+name: Delivered
+sortOrder: 99

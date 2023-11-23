@@ -1,0 +1,8 @@
+.fx, [x-fx-cloak] {
+  @apply opacity-0;
+  transition: opacity .3s ease, transform .3s ease;
+  transform: translate3d(0, 0, 0);
+  &.fx-in {
+    @apply opacity-100;
+  }
+}

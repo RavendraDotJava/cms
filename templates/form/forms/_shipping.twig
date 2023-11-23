@@ -1,0 +1,46 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'redirectUrl': null,
+  'successMessage': 'Shipping option updated.'|t,
+  'id': 'formShipping'
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<form method="post" id="{{ settings.id }}">
+  {{ csrfInput() }}
+  {{ actionInput('commerce/cart/update-cart') }}
+  {{ redirectInput(settings.redirectUrl) }}
+  {{ successMessageInput(settings.successMessage) }}
+
+  {% for handle, method in cart.availableShippingMethodOptions %}
+    <label class="{{ component('roundedCard', 'checkoutAddresses', 'mb-p16 cursor-pointer') }}">
+      <div class="flex justify-start items-start">
+        <div class="pr-p8">
+          {{ input('radio', 'shippingMethodHandle', handle, {
+          checked: handle == cart.shippingMethodHandle,
+          class: component('checkbox', 'dark', 'mt-p10'),
+        }) }}
+        </div>
+        <div>
+          <strong class="text-h3">{{ method.name }}</strong><br>
+          <span class="text-lg font-normal">{{ method.getPrice()|commerceCurrency(cart.currency) }}</span>
+        </div>
+      </div>
+    </label>
+  {% endfor %}
+
+  <span class="flash">{{ cart.getErrors('shippingMethod')|join }}</span>
+
+  {{ tag('button', {
+    type: 'submit',
+    class: component('button', 'primary', 'hidden'),
+    text: 'Select shipping method'|t,
+    id: 'submit-form'
+  }) }}
+</form>

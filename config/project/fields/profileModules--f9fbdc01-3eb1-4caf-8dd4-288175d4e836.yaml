@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: a952bf2b-b44b-4581-bf77-5a1b7d885121 # User
+handle: profileModules
+instructions: null
+name: 'Profile Modules'
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_profilemodules}}'
+  maxBlocks: null
+  minBlocks: null
+  propagationKeyFormat: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

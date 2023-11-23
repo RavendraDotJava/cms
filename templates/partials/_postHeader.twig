@@ -1,0 +1,101 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set settings = getPageHeaderSettings(entry) %}
+
+{{ wfBreak() }}
+
+{% set style = settings.pageHeaderStyle %}
+
+{% if style == 'seamless' %}
+  {% set seamless = true %}
+{% else %}
+  {% set seamless = false %}
+{% endif %}
+
+{% if settings.backgroundMedia is not empty  %}
+  {% if seamless %}
+    <div class="absolute w-full h-auto inset-x-0 top-0 z-1">
+      <div class="absolute inset-0 bg-seamless-gradient z-2"></div>
+      {% include 'components/_image.twig'|siteInclude with { settings: {
+        'image' : settings.backgroundMedia,
+        'format' : 'heroFit',
+        'imageClass': 'w-full h-auto'
+      }} %}
+    </div>
+  {% else %}
+    <div class="absolute inset-0 bg-black opacity-20 z-10"></div>
+    {% include 'components/_image.twig'|siteInclude with { settings: {
+      'image' : settings.backgroundMedia,
+      'format' : 'hero',
+      'imageClass': 'absolute w-full h-full object-cover inset-0'
+    }} %}
+  {% endif %}
+{% endif %}
+
+
+<section class="c-page-header text-white pt-headerSm mq768:pt-headerLg overflow-hidden">
+
+  {# Content Layer
+   # All header content should be included on this layer, which is set #}
+  <div class="{{ component('modulePadding', 'postHeader', 'text-basalt bg-salt') }}">
+
+      {# {{ entry.section.handle }} #}
+    <div class="{{ component('headerWrap', entry.section.handle, 'mq768:flex flex-center relative z-20') }}">
+
+      {% if settings.heroImage is not empty %}
+      <div class="mb-p50 mq768:mb-none mq768:w-p450 relative z-0 mq768:mr-p50 mq1280:mr-p80">
+
+        {% if settings.radiantCircles %}
+          <div x-comp="gsapGlobal" x-data="gsapGlobal" x-init="radiantCircles()" class="absolute inset-0 flex items-center justify-center z-1">
+            {% include 'svg/_radiantCircles' with { 'settings': {
+                'classes': 'opacity-50 mq1024:w-p1000 mq1024:h-p1000 origin-center absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2',
+            }} %}
+          </div>
+        {% endif %}
+
+        <div class="w-full flex items-center justify-center">
+            {% include 'components/_image.twig'|siteInclude with { settings: {
+              'image' : settings.heroImage,
+              'format' : 'square',
+              'class': 'inline-block w-auto rounded-full overflow-hidden',
+            }} %}
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="mq768:w-1/2 relative z-10">
+
+          {# Page Heading #}
+          {% if settings.heading != '' %}
+            {% set headingArgs = {
+              class: 'font-normal text-p40 mq1024:text-p60 text-left mb-p20'
+            }%}
+            {% if hasProp(settings.heading, 'heading') %}
+              {{ settings.heading.set(headingArgs) }}
+            {% else %}
+              {{ get_heading(settings.heading, headingArgs)|raw }}
+            {% endif %}
+          {% endif %}
+
+          {% if settings.postAuthor is not empty %}
+            <div class="mb-p20">
+              {% include 'components/_postAuthor' with { 'settings': {
+                 'author': settings.postAuthor.one,
+              }} %}
+            </div>
+          {% endif %}
+
+          {% if settings.categories is not empty %}
+            <div class="mb-p20">
+              {% for category in settings.categories %}
+                <span class="{{ component('categoryTag', 'light') }}">{{ category }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% if settings.description is not empty %}
+            <div class="c-content"><p>{{ settings.description }}</p></div>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

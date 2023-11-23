@@ -1,0 +1,159 @@
+field: a7731437-e0e8-40cf-829d-4e4308466deb # Button
+fieldLayouts:
+  ca8839f5-b374-4f58-ad6f-f96d327e4ed8:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 50919027-53da-4a78-abc8-a1b673fb2638 # Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 979b0b0a-fb00-4c76-902e-58ffb4658cfb
+            userCondition: null
+            warning: null
+            width: 75
+          -
+            elementCondition: null
+            fieldUid: c1a5628a-24cc-4897-b102-35c43bb65676 # Button Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e6b5e59e-83ea-4bbe-9831-755fc77dc87d
+            userCondition: null
+            warning: null
+            width: 25
+        name: Content
+        uid: 596b79cc-acb0-4bc7-ab41-b0561e896eb0
+        userCondition: null
+fields:
+  50919027-53da-4a78-abc8-a1b673fb2638: # Button
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: button
+    instructions: null
+    name: Button
+    searchable: false
+    settings:
+      allowCustomText: true
+      allowTarget: false
+      autoNoReferrer: false
+      customTextMaxLength: 0
+      customTextRequired: false
+      defaultLinkName: entry
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        asset:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        category:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        craftCommerce-product:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: true
+          sources: '*'
+        custom:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        email:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        entry:
+          allowCrossSiteLink: false
+          allowCustomQuery: true
+          enabled: true
+          sources:
+            - singles
+            - 'section:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+            - 'section:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+            - 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+        site:
+          enabled: false
+          sites: '*'
+        tel:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        url:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        user:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField
+  c1a5628a-24cc-4897-b102-35c43bb65676: # Button Style
+    columnSuffix: rqpibmsi
+    contentColumnType: string
+    fieldGroup: null
+    handle: buttonStyle
+    instructions: null
+    name: 'Button Style'
+    searchable: false
+    settings:
+      newLabelFormat: '{{ label }}'
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Primary
+            -
+              - value
+              - primary
+        -
+          __assoc__:
+            -
+              - label
+              - Secondary
+            -
+              - value
+              - secondary
+        -
+          __assoc__:
+            -
+              - label
+              - Terracotta
+            -
+              - value
+              - terracotta
+        -
+          __assoc__:
+            -
+              - label
+              - White
+            -
+              - value
+              - white
+      sourceGlobal: buttonStyleLimited
+      sourceLabelHandle: label
+      sourceValueHandle: value
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\PresetDropdown
+handle: button
+name: Button
+sortOrder: 1

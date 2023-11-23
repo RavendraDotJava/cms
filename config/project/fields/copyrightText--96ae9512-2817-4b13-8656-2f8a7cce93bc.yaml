@@ -1,0 +1,19 @@
+columnSuffix: fcgdwvey
+contentColumnType: text
+fieldGroup: c59f0e4b-c89a-405f-9488-0c6967311d94 # Footer
+handle: copyrightText
+instructions: 'Use this field to add the copyright text to the footer.'
+name: 'Copyright Text'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

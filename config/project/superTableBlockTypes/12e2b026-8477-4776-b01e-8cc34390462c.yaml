@@ -1,0 +1,218 @@
+changedFieldIndicator: 2057845606
+field: f31872cd-b1be-4ade-b2c1-8569aff63e33 # Parallax Images
+fieldLayouts:
+  f3cfe5ed-99f2-4e61-92e7-4bf7a8cdc1b7:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: d5297ddf-69b3-43c8-bcf7-2a3204ef3ff1 # Image
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b47c75b0-e225-474a-8342-149add2f4e0a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: c9268dbc-3781-4caf-97a1-ef7fa4bd491e # Distance
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 88972076-ffcc-453c-999f-7c3df996e877
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: c347aeca-4123-4ad9-bb2d-f7d4a0d9330d # Position
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 93b67500-cf9a-482b-959d-af49eeb3bc8b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 179e21b3-8a63-43cd-9d63-07398f90c5e5
+        userCondition: null
+fields:
+  c347aeca-4123-4ad9-bb2d-f7d4a0d9330d: # Position
+    columnSuffix: yklwutxh
+    contentColumnType: string
+    fieldGroup: null
+    handle: position
+    instructions: 'Use this field to control the horizontal position of this image. Offset values may not be visible on all screen sizes as they are outside of the layout container.'
+    name: Position
+    searchable: false
+    settings:
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Offset Left'
+            -
+              - value
+              - offsetLeft
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Middle
+            -
+              - value
+              - middle
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Right
+            -
+              - value
+              - right
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Offset Right'
+            -
+              - value
+              - offsetRight
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  c9268dbc-3781-4caf-97a1-ef7fa4bd491e: # Distance
+    columnSuffix: pmodjgpq
+    contentColumnType: string
+    fieldGroup: null
+    handle: distance
+    instructions: 'Use this field to control the depth of field of this image. This will affect the blur, drop shadow, and the speed of the parallax effect.'
+    name: Distance
+    searchable: false
+    settings:
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Foreground
+            -
+              - value
+              - foreground
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Middle
+            -
+              - value
+              - middle
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Background
+            -
+              - value
+              - background
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  d5297ddf-69b3-43c8-bcf7-2a3204ef3ff1: # Image
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: 'The image must be a transparent PNG file.'
+    name: Image
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      defaultUploadLocationSubpath: Parallax
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+          -
+            - conditionRules
+            -
+              -
+                __assoc__:
+                  -
+                    - class
+                    - craft\elements\conditions\assets\FilenameConditionRule
+                  -
+                    - uid
+                    - 98195625-b950-4790-9728-a89f69d41206
+                  -
+                    - operator
+                    - ew
+                  -
+                    - value
+                    - .png
+      selectionLabel: 'Add an image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources:
+        - 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets

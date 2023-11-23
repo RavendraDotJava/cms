@@ -1,0 +1,26 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'content' : '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.config.background == 'light' %}
+  {% set classes = 'c-content bg-white p-p32 mq1024:p-p40 mq768:shadow-card-lg mq768:rounded-2xl -mx-p20 mq480:-mx-p24 mq768:mx-none ' %}
+{% else %}
+  {% set classes = 'c-content' %}
+{% endif %}
+
+<div class="{{ component('moduleWidth', settings.config.handle) }}">
+
+	<div class="{{ classes }}">
+		{{ settings.content }}
+	</div>
+
+</div>
+

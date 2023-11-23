@@ -1,0 +1,217 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'headingLevel': 'h2',
+  'headingClass': 'text-p26 font-medium',
+  'textContent': '',
+  'price': '',
+  'sale': false,
+  'salePrice': '',
+  'url': '',
+  'variants': [],
+  'availableForPurchase': true,
+  'defaultVariant': '',
+  'classes': '',
+  'product': '',
+  'mode': 'salt',
+  'buttonText': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.product is not empty %}
+  {% set product = settings.product %}
+  {% set productVariants = product.getVariants() %}
+{% endif %}
+
+{% if settings.mode == 'salt' %}
+  {% set classes = 'hover:shadow-card-lg focus:shadow-card-lg '  %}
+{% elseif settings.mode == 'white' %}
+  {% set classes = 'shadow-card-lg hover:shadow-card-lg-hover focus:shadow-card-lg-hover' %}
+{% else %}
+  {% set classes = 'hover:shadow-card-lg focus:shadow-card-lg ' %}
+{% endif %}
+
+<article class="bg-white flex flex-col h-full w-full mx-auto transition-all duration-500 rounded-2xl max-w-p448 {{ classes }}">
+  <a href="{{ settings.url }}" class="h-full rounded-t-2xl overflow-hidden ">
+
+    {% include 'components/_image.twig'|siteInclude with { settings: {
+      'image' : settings.image,
+      'format' : 'fit',
+      'class': 'relative block w-full h-p260',
+      'imageClass': 'absolute inset-y-0 inset-x-1/2 -translate-x-1/2 object-contain object-center w-auto h-full px-p32 pt-p32'
+    }} %}
+
+    <div class="p-p32 text-center">
+      {% if settings.heading is not empty %}
+        {{ tag(settings.headingLevel, {
+          text: settings.heading,
+          class: settings.headingClass,
+        }) }}
+      {% endif %}
+
+      {% if product.defaultVariant.onSale %}
+        <div class="text-sm">
+          <s class="text-type">{{ product.defaultVariant.priceAsCurrency }}</s>
+          <span class="ml-p8 bg-kilohana text-tn px-p12 py-p3 font-medium text-white rounded-full">{{ "SALE"|t }}</span>
+        </div>
+        <div class="font-normal text-h5 mb-p16 block">{{ product.defaultVariant.salePriceAsCurrency }}</div>
+      {% else %}
+        <span class="font-normal text-h5 mb-p16 block">{{ product.defaultVariant.priceAsCurrency }}</span>
+      {% endif %}
+
+      {% if settings.textContent is not empty %}
+        <p class="text-type">{{ settings.textContent|raw }}</p>
+      {% endif %}
+
+      <div class="flex items-center justify-center mt-p30">
+
+        {% include 'components/_button' with { 'settings': {
+            'text'  : settings.buttonText is not empty ? settings.buttonText : 'Learn more'|t,
+            'type'  : 'button',
+            'style' : 'arrow',
+            'disabled' : false,
+            'params' : false,
+            'icon'  : 'triangle-in-circle',
+            'iconAlign' : 'left',
+            'iconReact': false,
+          }} %}
+      </div>
+    </div>
+  </a>
+
+  {% include 'components/_addToCart' with { 'settings': {
+    'product': product,
+    'productVariants': productVariants,
+    'buttonStyle': 'terracotta',
+    'buttonClasses': 'mx-auto w-full rounded-none rounded-b-2xl',
+  }} %}
+
+
+  {# {% if productVariants|length > 1 %}
+    <div id="{{ modalId }}" class="hidden">
+      <div class="px-p40 py-p64">
+        <h3>{{ "Purchase"|t }} {{ product.title }}</h3>
+        <p>{{ product.productDescriptionBrief }}</p>
+        <form method="post" class="mt-p16">
+          {{ csrfInput() }}
+          {{ actionInput('commerce/cart/update-cart') }}
+
+          {{ successMessageInput('{product} added to cart.'|t({
+            product: settings.product
+          })) }}
+
+          {% tag 'select' with {
+            name: 'purchasableId',
+            class: [
+              'px-p16',
+              'py-p8',
+              'border',
+              'border-rule',
+              'rounded',
+              'mb-p16',
+            ]}%}
+            {% for variant in productVariants %}
+              {{ tag('option', {
+                value: variant.id,
+                text: variant.title ~ ' - ' ~ variant.salePriceAsCurrency,
+              }) }}
+            {% endfor %}
+          {% endtag %}
+
+          <div class="mt-p20">
+            {% if product.availableForPurchase %}
+              {% include 'components/_button.twig'|siteInclude with { settings: {
+                'text'  : 'Add to cart'|t,
+                'type'  : 'button',
+                'style' : 'terracotta',
+                'icon': 'cart-alt',
+                'iconAlign' : 'right',
+                'atts'  : {
+                  'type' : 'submit',
+                }
+              }} %}
+            {% else %}
+              {% include 'components/_button.twig'|siteInclude with { settings: {
+                'text'  : 'Unavailable'|t,
+                'type'  : 'button',
+                'style' : 'terracotta',
+                'icon': 'cart-alt',
+                'iconAlign' : 'left',
+                'class': 'disabled',
+                'atts'  : {
+                  'type' : 'submit',
+                  'disabled': '',
+                }
+              }} %}
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="text-center mt-auto">
+      {% include 'components/_button.twig'|siteInclude with { settings: {
+        'text'  : 'Add to cart'|t,
+        'type'  : 'button',
+        'style' : 'terracotta',
+        'class': 'mx-auto w-full rounded-none',
+        'icon': 'cart-alt',
+        'iconAlign' : 'left',
+        'atts'  : {
+          'x-data' : true,
+          '@click' : "cModalTrigger($event, '" ~ modalId ~ "')"
+        }
+      }} %}
+    </div>
+
+  {% else %}
+    <form method="post" class="mt-auto">
+      {{ csrfInput() }}
+      {{ actionInput('commerce/cart/update-cart') }}
+      {{ successMessageInput('{product} added to cart.'|t({
+        product: settings.heading
+      })) }}
+
+      {{ hiddenInput('purchasableId', product.defaultVariant.id) }}
+
+      <div class="text-center mt-auto">
+        {% if settings.availableForPurchase %}
+
+          {% include 'components/_button.twig'|siteInclude with { settings: {
+            'text'  : 'Add to cart'|t,
+            'type'  : 'button',
+            'style' : 'terracotta',
+            'class': 'mx-auto w-full rounded-none',
+            'icon': 'cart-alt',
+            'iconAlign' : 'left',
+            'atts'  : {
+              'type' : 'submit',
+            }
+          }} %}
+
+
+        {% else %}
+
+          {% include 'components/_button.twig'|siteInclude with { settings: {
+            'text'  : 'Unavailable'|t,
+            'type'  : 'button',
+            'style' : 'terracotta',
+            'class': 'mx-auto w-full rounded-none disabled',
+            'icon': 'cart-alt',
+            'iconAlign' : 'left',
+            'atts'  : {
+              'type' : 'submit',
+              'disabled': '',
+            }
+          }} %}
+        {% endif %}
+      </div>
+
+    </form>
+  {% endif %} #}
+</article>

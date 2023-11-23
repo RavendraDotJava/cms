@@ -1,0 +1,58 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'client': false,
+  'greyscale' : false,
+  'class' : '',
+  'format' : 'normal',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set class = settings.class %}
+{% if settings.greyscale %}
+  {% set class = ' grayscale' %}
+{% endif %}
+
+{% switch settings.client.logoSize %}
+  {% case 'clientSquare' %}
+    {% set clientTransform = {
+      height: 65,
+      quality: 100,
+      position: 'center-center',
+      mode: 'fit',
+    } %}
+  {% case 'clientWide' %}
+    {% set clientTransform = {
+      width: 150,
+      quality: 100,
+      position: 'center-center',
+      mode: 'fit',
+    } %}    
+  {% default %}
+    {% set clientTransform = {
+      width: 110,
+      quality: 100,
+      position: 'center-center',
+      mode: 'fit',
+    } %}
+{% endswitch %}
+
+{% if getenv('WIREFRAME_MODE') == 'true' %}
+  <img class="c-img" src="/helpers/wireframe-image/210/80" loading="lazy" alt="Wireframe Logo" width="320" height="160">
+{% else %}
+{% do settings.client.setTransform(clientTransform) %}
+  {{ tag('img', {
+    class: class is not empty ? class|trim : false,
+    src: settings.client.url,
+    width: settings.client.width,
+    height: settings.client.height,
+    srcset: settings.client.getSrcset(['1x', '1.5x']),
+    alt: settings.client.alt,
+    loading: 'lazy'
+  }) }}
+{% endif %}

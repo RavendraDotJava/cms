@@ -1,0 +1,38 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'videoPrimary': '',
+  'videoSecondary': '',
+  'videoWidth': '1600',
+  'videoHeight': '900',
+  'classes': '',
+  'atts': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set atts = "" %}
+
+{% if settings.atts is not empty %}
+  {% for att, val in settings.atts %}
+    {% if val is not iterable and val is not same as(false) %}
+      {% set atts = atts ~ " " ~ att %}
+      {% if val is not same as(true) %}
+        {% set atts = atts ~ '=' ~ val %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if settings.videoPrimary is not empty %}
+  <video width="{{ settings.videoWidth }}" height="{{ settings.videoHeight }}" class="{{ settings.classes }}" playsinline autoplay muted loop {{ settings.atts is not empty ? atts : '' }}>
+    {% if settings.videoSecondary is not empty %}
+      <source src="{{ settings.videoSecondary }}" type="video/webm">
+    {% endif %}
+    <source src="{{ settings.videoPrimary }}" type="video/mp4">
+  </video>
+{% endif %}

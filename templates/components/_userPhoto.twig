@@ -1,0 +1,39 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'classes' : 'w-p256 h-p256',
+  'imgSize': 300,
+  'spacing': '',
+  'fontSize': '',
+  'id': 'user-photo',
+  'userAccount': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.userAccount is not empty %}
+  {% set userAccount = settings.userAccount %}
+{% else %}
+  {% set userAccount = currentUser %}
+{% endif %}
+
+{% if userAccount.photo is not empty %}
+  {{ userAccount.photo.getImg({width: settings.imgSize, height: settings.imgSize})|attr({
+    id: settings.id,
+    alt: userAccount.friendlyName,
+    class: 'rounded-full inline-block ' ~ settings.classes,
+  }) }}
+{% else %}
+  {% if userAccount.fullName is not empty %}
+    {% set firstInitial = userAccount.fullName[:1] %}
+  {% else %}
+    {% set firstInitial = userAccount.username[:1] %}
+  {% endif %}
+  <span class="bg-salt rounded-full inline-flex items-center justify-center font-bold text-terracotta uppercase {{ settings.classes }}">
+    <span class="{{ settings.fontSize }}">{{ firstInitial }}</span>
+  </span>
+{% endif %}

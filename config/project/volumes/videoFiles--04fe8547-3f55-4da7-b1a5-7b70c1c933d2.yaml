@@ -1,0 +1,102 @@
+fieldLayouts:
+  24f66a07-e847-494e-a204-fe094ec0951e:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 8e019d71-676a-49d9-9363-ddae6f9ca19c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            attribute: alt
+            class: null
+            cols: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: true
+            required: false
+            rows: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AltField
+            uid: da5c988e-e076-4039-9ac3-50f9a19c0708
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f5c9ae05-6879-4996-9abb-0518808f911f # Video File MP4
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8ee5159e-fcc6-4d12-95b5-d3fe82c2d88d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: c24bdb5a-97f3-4caf-8026-28968b8af8bc # Video File Secondary
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9aca84f5-4105-4094-b231-936a32a2f962
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1cd4213c-748a-4b0c-8e49-5d01457b3efa # Media Location
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 63d4fd4c-6dc0-4f5c-8b85-b657c6d88766
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 91fabb43-9d6a-4541-bb67-071adaec65bc
+        userCondition: null
+fs: videoFiles
+handle: videoFiles
+name: 'Video Files'
+sortOrder: 4
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: video-files

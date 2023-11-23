@@ -1,0 +1,27 @@
+{# {% set paymentSources = paymentSources ?? [] %} #}
+{% set availableGateways = availableGateways ?? [] %}
+
+{# {% if paymentSources|length %}
+  {% for source in paymentSources %}
+    {% include 'form/items/_radioListItem' with { 'settings': {
+      'id': 'paymentSourceId',
+      'checked': false,
+      'value': source.id == cart.paymentSourceId,
+      'label': source.description,
+      'description': '',
+    }} %}
+  {% endfor %}
+{% endif %} #}
+
+{# {% if availableGateways|length > 1 %}
+<h3>Payment Gateways</h3> #}
+{% for gatewayId, gatewayName in availableGateways %}
+  {% include 'form/items/_radioListItem' with { 'settings': {
+    'id': 'gatewayId',
+    'checked': gatewayId == cart.gatewayId,
+    'value':  gatewayId,
+    'label': gatewayName,
+    'description': 'Payment gateway'|t,
+  }} %}
+{% endfor %}
+{# {% endif %} #}

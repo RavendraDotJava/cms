@@ -1,0 +1,18 @@
+<div class="pt-headerSm mq768:pt-headerLg relative z-20">
+  <section class="{{ component('modulePadding', false, 'c-container pt-p50') }}">
+    <div class="{{ component('moduleWidth', false, '') }}">
+      <div class="{{ component('roundedCard', 'checkoutPage', '') }}">
+        <h1 class="max-w-p960 mx-auto mb-p40">{{ entry.title }}</h1>
+        {% if entry.contentWell is not empty %}
+          {% include 'modules/_contentWell' with { 'settings': {
+             'content': entry.contentWell,
+             'config': {
+               'background': 'white',
+               'handle': 'contentWell'
+             }
+          }} %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,19 @@
+columnSuffix: ueectsuk
+contentColumnType: text
+fieldGroup: 6f4fa5af-dc3c-425b-9183-f24f31360424 # Checkout
+handle: formSuccessMessage
+instructions: 'Use this field to enter alert text when the form has been successfully submitted.'
+name: 'Form Success Message'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

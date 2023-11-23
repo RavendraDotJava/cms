@@ -1,0 +1,43 @@
+fieldLayouts:
+  b218e6eb-b357-4f0d-9cd5-cd7affcd3f5c:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: 'Enter a brief description of this subscription plan.'
+            label: 'Plan Details'
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 568c682b-df5a-49d5-bc6b-6f5fb2cabed6
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2612b0e1-d8eb-474e-ad20-bfb174d376f4
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Default
+section: 601faa45-0a91-48f9-8a35-9e2e4967cdc2 # Subscription Plan Details
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

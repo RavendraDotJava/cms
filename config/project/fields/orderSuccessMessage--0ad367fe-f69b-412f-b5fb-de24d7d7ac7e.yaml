@@ -1,0 +1,19 @@
+columnSuffix: idthmsef
+contentColumnType: text
+fieldGroup: e45d60f9-6bb1-4f38-8e88-322a944a0cbc # Order
+handle: orderSuccessMessage
+instructions: 'Enter a message to display to the user on their order once it has completed.'
+name: 'Order Success Message'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

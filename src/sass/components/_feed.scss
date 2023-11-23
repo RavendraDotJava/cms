@@ -1,0 +1,22 @@
+.c-feed {
+  &.js-show {
+    > div {
+      @apply opacity-100 translate-y-none;
+    }
+  }
+  &.js-hide {
+    > div {
+      @apply opacity-0 translate-y-p24;
+      transition: opacity .3s ease, transform .3s ease;
+    }
+  }
+  > div {
+    transition: opacity .7s ease, transform .7s ease;
+  }
+}
+
+.c-feed-window {
+  opacity: 1;
+  &[x-cloak] { opacity: 0;}
+}
+

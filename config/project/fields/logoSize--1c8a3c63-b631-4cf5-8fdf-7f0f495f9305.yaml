@@ -1,0 +1,40 @@
+columnSuffix: jffitfyt
+contentColumnType: string
+fieldGroup: 057f05bc-e4bf-4c08-94e8-1e40cc56bea7 # Media
+handle: logoSize
+instructions: "Use this field to define the size of the logo. This helps control the relative size of the outputted logo on the front end. options include:\r\n\r\n* Normal - Standard output\r\n* Wide - Applies a maximum width and generally shrinks the height\r\n* Square - Applies a higher height, so that the logo does not appear too small relative to `Normal` and `Wide` logos."
+name: 'Logo Size'
+searchable: false
+settings:
+  newLabelFormat: '{{ label }}'
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Normal
+        -
+          - value
+          - client
+    -
+      __assoc__:
+        -
+          - label
+          - Wide
+        -
+          - value
+          - clientWide
+    -
+      __assoc__:
+        -
+          - label
+          - Square
+        -
+          - value
+          - clientSquare
+  sourceGlobal: logosize
+  sourceLabelHandle: label
+  sourceValueHandle: value
+translationKeyFormat: null
+translationMethod: none
+type: modules\ccfieldsmodule\fields\PresetDropdown

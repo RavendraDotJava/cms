@@ -1,0 +1,263 @@
+description: ''
+handle: contentEditor
+name: 'Content Editor'
+permissions:
+  - accesscp
+  - accesscpwhensystemisoff
+  - accessplugin-commerce
+  - accessplugin-freeform
+  - accessplugin-navigation
+  - accessplugin-seomatic
+  - accesssitewhensystemisoff
+  - administrateusers
+  - 'assignusergroup:643fb2ea-358b-41de-91b8-31bfc8aff225' # Customer
+  - 'assignusergroup:f0814832-8091-484e-a92d-3845677d2eb8' # Content Editor
+  - assignuserpermissions
+  - commerce-capturepayment
+  - commerce-creatediscounts
+  - 'commerce-createproducts:f94ef620-73da-4c8a-a57b-a45a1fc6a717' # Probiotics
+  - commerce-createsales
+  - commerce-deletediscounts
+  - commerce-deleteorders
+  - 'commerce-deleteproducts:f94ef620-73da-4c8a-a57b-a45a1fc6a717' # Probiotics
+  - commerce-deletesales
+  - commerce-editdiscounts
+  - commerce-editorders
+  - 'commerce-editproducttype:f94ef620-73da-4c8a-a57b-a45a1fc6a717' # Probiotics
+  - commerce-editsales
+  - commerce-manageorders
+  - commerce-managepromotions
+  - commerce-manageshipping
+  - commerce-managestoresettings
+  - commerce-managesubscriptions
+  - commerce-managetaxes
+  - commerce-refundpayment
+  - 'createentries:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+  - 'createentries:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+  - 'createentries:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+  - 'createentries:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+  - 'createentries:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+  - 'createentries:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+  - 'createentries:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+  - 'createentries:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+  - 'createentries:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+  - 'createfolders:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'createfolders:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'createfolders:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'createfolders:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - 'deleteassets:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'deleteassets:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'deleteassets:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'deleteassets:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - 'deleteentries:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+  - 'deleteentries:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+  - 'deleteentries:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+  - 'deleteentries:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+  - 'deleteentries:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+  - 'deleteentries:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+  - 'deleteentries:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+  - 'deleteentries:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+  - 'deleteentries:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+  - 'deletepeerassets:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'deletepeerassets:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'deletepeerassets:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'deletepeerassets:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - 'deletepeerentries:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+  - 'deletepeerentries:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+  - 'deletepeerentries:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+  - 'deletepeerentries:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+  - 'deletepeerentries:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+  - 'deletepeerentries:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+  - 'deletepeerentries:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+  - 'deletepeerentries:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+  - 'deletepeerentries:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+  - 'deletepeerentrydrafts:11863599-23c6-4281-8741-0d261a077350' # Cart
+  - 'deletepeerentrydrafts:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+  - 'deletepeerentrydrafts:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+  - 'deletepeerentrydrafts:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+  - 'deletepeerentrydrafts:53184d2b-0953-4653-9a07-e1fa10be2878' # Order
+  - 'deletepeerentrydrafts:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+  - 'deletepeerentrydrafts:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+  - 'deletepeerentrydrafts:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+  - 'deletepeerentrydrafts:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+  - 'deletepeerentrydrafts:a8188730-d041-4b1c-91c1-19fba1e60b19' # Checkout
+  - 'deletepeerentrydrafts:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+  - 'deletepeerentrydrafts:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+  - 'deletepeerentrydrafts:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+  - 'editglobalset:042b953d-385e-4544-997f-3b43dcf291e6' # 404
+  - 'editglobalset:704dc5e6-fe1e-49d1-8448-62f2212f1f50' # User
+  - 'editglobalset:7393bf74-9e83-4ef1-8823-f28edb7540e7' # Footer
+  - 'editglobalset:a156c240-6097-49df-b9de-7e7ad7b50f39' # Alerts
+  - 'editglobalset:cff5175b-c824-4032-857b-dc0b56b75239' # Header
+  - 'editglobalset:e95ae3c6-337a-4822-8597-a81e0d94bbae' # Social Media
+  - 'editimages:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'editimages:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'editimages:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'editimages:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - 'editpeerimages:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'editpeerimages:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'editpeerimages:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'editpeerimages:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - editusers
+  - freeform-dashboardaccess
+  - freeform-fieldsaccess
+  - freeform-fieldsmanage
+  - freeform-formsaccess
+  - freeform-formscreate
+  - freeform-formsdelete
+  - freeform-formsmanage
+  - freeform-notificationsaccess
+  - freeform-submissionsaccess
+  - freeform-submissionsmanage
+  - freeform-submissionsread
+  - impersonateusers
+  - moderateusers
+  - 'navigation-deletenav:81990103-16c8-43ef-a13e-bf5474a6914c' # User Navigation
+  - 'navigation-deletenav:99dee7d9-ceb3-4397-935b-5a1fdc6b7bd6' # Footer Navigation
+  - 'navigation-deletenav:eda1e649-2560-4f3c-a930-e908d5b7620f' # Legal Navigation
+  - 'navigation-deletenav:f03d9d6a-5f48-4b8a-9ba5-1e60629a8e6f' # Primary Navigation
+  - 'navigation-editnav:81990103-16c8-43ef-a13e-bf5474a6914c' # User Navigation
+  - 'navigation-editnav:99dee7d9-ceb3-4397-935b-5a1fdc6b7bd6' # Footer Navigation
+  - 'navigation-editnav:eda1e649-2560-4f3c-a930-e908d5b7620f' # Legal Navigation
+  - 'navigation-editnav:f03d9d6a-5f48-4b8a-9ba5-1e60629a8e6f' # Primary Navigation
+  - 'navigation-managenav:81990103-16c8-43ef-a13e-bf5474a6914c' # User Navigation
+  - 'navigation-managenav:99dee7d9-ceb3-4397-935b-5a1fdc6b7bd6' # Footer Navigation
+  - 'navigation-managenav:eda1e649-2560-4f3c-a930-e908d5b7620f' # Legal Navigation
+  - 'navigation-managenav:f03d9d6a-5f48-4b8a-9ba5-1e60629a8e6f' # Primary Navigation
+  - registerusers
+  - 'replacefiles:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'replacefiles:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'replacefiles:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'replacefiles:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - 'replacepeerfiles:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'replacepeerfiles:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'replacepeerfiles:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'replacepeerfiles:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - 'saveassets:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'saveassets:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'saveassets:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'saveassets:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - 'saveentries:11863599-23c6-4281-8741-0d261a077350' # Cart
+  - 'saveentries:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+  - 'saveentries:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+  - 'saveentries:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+  - 'saveentries:53184d2b-0953-4653-9a07-e1fa10be2878' # Order
+  - 'saveentries:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+  - 'saveentries:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+  - 'saveentries:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+  - 'saveentries:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+  - 'saveentries:a8188730-d041-4b1c-91c1-19fba1e60b19' # Checkout
+  - 'saveentries:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+  - 'saveentries:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+  - 'saveentries:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+  - 'savepeerassets:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'savepeerassets:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'savepeerassets:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'savepeerassets:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - 'savepeerentries:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+  - 'savepeerentries:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+  - 'savepeerentries:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+  - 'savepeerentries:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+  - 'savepeerentries:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+  - 'savepeerentries:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+  - 'savepeerentries:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+  - 'savepeerentries:a8188730-d041-4b1c-91c1-19fba1e60b19' # Checkout
+  - 'savepeerentries:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+  - 'savepeerentries:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+  - 'savepeerentries:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+  - 'savepeerentrydrafts:11863599-23c6-4281-8741-0d261a077350' # Cart
+  - 'savepeerentrydrafts:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+  - 'savepeerentrydrafts:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+  - 'savepeerentrydrafts:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+  - 'savepeerentrydrafts:53184d2b-0953-4653-9a07-e1fa10be2878' # Order
+  - 'savepeerentrydrafts:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+  - 'savepeerentrydrafts:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+  - 'savepeerentrydrafts:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+  - 'savepeerentrydrafts:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+  - 'savepeerentrydrafts:a8188730-d041-4b1c-91c1-19fba1e60b19' # Checkout
+  - 'savepeerentrydrafts:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+  - 'savepeerentrydrafts:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+  - 'savepeerentrydrafts:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+  - 'seomatic:content-meta'
+  - 'seomatic:content-meta:facebook'
+  - 'seomatic:content-meta:general'
+  - 'seomatic:content-meta:sitemap'
+  - 'seomatic:content-meta:twitter'
+  - 'seomatic:dashboard'
+  - 'seomatic:global-meta'
+  - 'seomatic:global-meta:ads'
+  - 'seomatic:global-meta:facebook'
+  - 'seomatic:global-meta:general'
+  - 'seomatic:global-meta:humans'
+  - 'seomatic:global-meta:robots'
+  - 'seomatic:global-meta:security'
+  - 'seomatic:global-meta:twitter'
+  - 'seomatic:plugin-settings'
+  - 'seomatic:site-settings'
+  - 'seomatic:site-settings:creator'
+  - 'seomatic:site-settings:identity'
+  - 'seomatic:site-settings:miscellaneous'
+  - 'seomatic:site-settings:sitemap'
+  - 'seomatic:site-settings:social'
+  - 'seomatic:tracking-scripts'
+  - 'seomatic:tracking-scripts:facebookpixel'
+  - 'seomatic:tracking-scripts:fathom'
+  - 'seomatic:tracking-scripts:googleanalytics'
+  - 'seomatic:tracking-scripts:googletagmanager'
+  - 'seomatic:tracking-scripts:gtag'
+  - 'seomatic:tracking-scripts:hubspot'
+  - 'seomatic:tracking-scripts:linkedininsight'
+  - 'seomatic:tracking-scripts:matomo'
+  - 'seomatic:tracking-scripts:pinteresttag'
+  - 'seomatic:tracking-scripts:plausible'
+  - 'utility:asset-indexes'
+  - 'utility:clear-caches'
+  - 'utility:db-backup'
+  - 'utility:php-info'
+  - 'utility:system-messages'
+  - 'utility:system-report'
+  - 'viewassets:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'viewassets:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'viewassets:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'viewassets:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - 'viewentries:11863599-23c6-4281-8741-0d261a077350' # Cart
+  - 'viewentries:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+  - 'viewentries:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+  - 'viewentries:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+  - 'viewentries:53184d2b-0953-4653-9a07-e1fa10be2878' # Order
+  - 'viewentries:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+  - 'viewentries:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+  - 'viewentries:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+  - 'viewentries:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+  - 'viewentries:a8188730-d041-4b1c-91c1-19fba1e60b19' # Checkout
+  - 'viewentries:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+  - 'viewentries:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+  - 'viewentries:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+  - 'viewpeerassets:04fe8547-3f55-4da7-b1a5-7b70c1c933d2' # Video Files
+  - 'viewpeerassets:15453f3c-bbed-40a1-b82f-9dca388f6180' # User
+  - 'viewpeerassets:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+  - 'viewpeerassets:cef1cfe9-9f65-46a6-945b-69b7471c2fec' # Videos External
+  - 'viewpeerentries:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+  - 'viewpeerentries:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+  - 'viewpeerentries:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+  - 'viewpeerentries:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+  - 'viewpeerentries:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+  - 'viewpeerentries:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+  - 'viewpeerentries:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+  - 'viewpeerentries:a8188730-d041-4b1c-91c1-19fba1e60b19' # Checkout
+  - 'viewpeerentries:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+  - 'viewpeerentries:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+  - 'viewpeerentries:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+  - 'viewpeerentrydrafts:11863599-23c6-4281-8741-0d261a077350' # Cart
+  - 'viewpeerentrydrafts:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+  - 'viewpeerentrydrafts:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+  - 'viewpeerentrydrafts:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+  - 'viewpeerentrydrafts:53184d2b-0953-4653-9a07-e1fa10be2878' # Order
+  - 'viewpeerentrydrafts:601faa45-0a91-48f9-8a35-9e2e4967cdc2' # Subscription Plan Details
+  - 'viewpeerentrydrafts:6bd0980e-c683-4a78-ba64-fc76ce40b40f' # Call to Action
+  - 'viewpeerentrydrafts:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+  - 'viewpeerentrydrafts:8299bb27-529a-4aed-b5f2-083007df3e2c' # Author
+  - 'viewpeerentrydrafts:a8188730-d041-4b1c-91c1-19fba1e60b19' # Checkout
+  - 'viewpeerentrydrafts:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+  - 'viewpeerentrydrafts:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+  - 'viewpeerentrydrafts:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories

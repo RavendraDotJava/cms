@@ -1,0 +1,19 @@
+columnSuffix: abojmpem
+contentColumnType: text
+fieldGroup: 6f4fa5af-dc3c-425b-9183-f24f31360424 # Checkout
+handle: checkoutStep
+instructions: null
+name: 'Checkout Step'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: 'Step 1 of 1'
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

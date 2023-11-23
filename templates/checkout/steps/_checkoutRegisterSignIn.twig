@@ -1,0 +1,110 @@
+{% extends "checkout/_layout.twig" %}
+
+{% if entry.currentUserRedirect %}
+  {% set currentUserRedirect = entry.currentUserRedirect.one.url %}
+{% else %}
+  {% set currentUserRedirect = '/' %}
+{% endif %}
+
+{% if currentUser and not craft.app.request.isPreview %}
+  {% redirect currentUserRedirect %}
+{% endif %}
+
+{% if cart is not defined %}
+  {% set cart = craft.commerce.carts.cart %}
+{% endif %}
+
+{% if entry.noEmailRedirect %}
+  {% set noEmailRedirect = entry.noEmailRedirect.one.uri %}
+{% else %}
+  {% set noEmailRedirect = null %}
+{% endif %}
+
+{% if not cart.email %}
+  {% redirect noEmailRedirect %}
+{% endif %}
+
+{% set userExistsButCantLogin = craft.users
+  .email(cart.email ?? 'NULL')
+  .status(['locked','suspended','pending'])
+  .one() %}
+
+{% if userExistsButCantLogin and not craft.app.request.isPreview %}
+  {% redirect currentUserRedirect %}
+{% endif %}
+
+{% set userExists = craft.users.email(cart.email ?? 'NULL').one() %}
+
+{% if entry.formSubmissionRedirect %}
+  {% set formSubmissionRedirect = entry.formSubmissionRedirect.one.uri %}
+{% else %}
+  {% set formSubmissionRedirect = null %}
+{% endif %}
+
+{% if userExists and userExists.getIsCredentialed() %}
+  {% set showSignIn = true %}
+{% else %}
+  {% set showSignIn = false %}
+{% endif %}
+
+{% block mainContent %}
+
+  {% if showSignIn %}
+
+    {% include 'components/_checkoutIntro' with { 'settings': {
+        'heading': entry.checkoutHeading,
+        'textContent': entry.checkoutText,
+        'step': entry.checkoutStep,
+    }} %}
+
+    {% include 'form/forms/_sign-in' with {
+      redirectUrl : formSubmissionRedirect,
+      settings: {
+        buttonClass: 'hidden',
+        id: 'checkoutFormSignIn',
+        showForgotPw: false,
+      }
+    } %}
+
+    <div class="mt-p32">
+      <button type="button" class="inline-block  hover:underline focus:underline" x-data @click="cModalTrigger($event, 'modalId-forgotPassword')">{{- 'Forgot your password?'|t -}}</button>
+    </div>
+
+      {% include 'components/_userSignInModal' with { 'settings': {
+         'id': 'modalId-forgotPassword',
+         'visible': 'forgotPW'
+      }} %}
+
+  {% else %}
+
+    {% include 'components/_checkoutIntro' with { 'settings': {
+        'heading': entry.checkoutRegisterHeading,
+        'textContent': entry.checkoutRegisterText,
+        'step': entry.checkoutStep,
+    }} %}
+
+    {% include 'form/forms/_register' with {
+      redirectUrl : formSubmissionRedirect,
+      settings: {
+        buttonClass: 'hidden',
+        id: 'checkoutFormRegister',
+      }
+    } %}
+
+    {% if entry.continueAsGuest %}
+      <div class="mt-p16 text-right">
+        <a href="{{ url(formSubmissionRedirect) }}" class="text-sm hover:underline">{{ entry.continueAsGuest }} &rarr;</a>
+      </div>
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+  {% include "components/_orderSummary.twig" with {
+    settings: {
+      buttonText: showSignIn ? entry.formSubmitButtonText : entry.checkoutRegisterSubmitButtonText,
+      buttonFor: showSignIn ? 'checkoutFormSignIn' : 'checkoutFormRegister',
+    }
+  } %}
+<!-- Template: {{ _self }}.twig -->
+{% endblock sidebar %}

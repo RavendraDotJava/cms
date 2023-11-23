@@ -1,0 +1,23 @@
+// This file can contain CSS classes that we do not want to have
+// Removed by PurgeCSS. Place each class on its own line. The contents
+// here are only used as reference in the build process. It is not actively
+// included in output.
+
+font-display
+text-display
+h-p48
+bg-bark
+bg-ryegrass
+bg-palenka
+bg-kilohana
+bg-hanana
+bg-mana
+bg-eleu
+grid-cols-1
+grid-cols-2
+grid-cols-3
+grid-cols-4
+grid-cols-5
+grid-cols-6
+grid-cols-7
+grid-cols-8

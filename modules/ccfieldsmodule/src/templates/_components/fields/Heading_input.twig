@@ -1,0 +1,66 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * CCFields module for Craft CMS 3.x
+ *
+ * Instructions Field Input
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2021 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   CCFieldsModule
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+<div class="heading-field">
+  <div class="heading-segment">
+    {{ forms.text({
+      id : id,
+      name : name ~ "[heading]",
+      value :(value['heading'] is defined) ? value['heading'] : '',
+      showCharsLeft : true,
+      describedBy: id ~ '-heading-instructions',
+    }) }}
+  </div>
+  {% if levelsOptions is not empty %}
+    <div class="select-segment">
+      {{ forms.selectField({
+          id: id ~ '-levels',
+          name: name ~ "[levels]",
+          label: 'Level',
+          value: (value['levels'] is defined) ? value['levels'] : levelDefault,
+          options: levelsOptions,
+        })
+      }}
+    </div>
+  {% else %}
+    {{ forms.hidden({
+        id: id ~ '-levels',
+        name: name ~ "[levels]",
+        value: levelDefault,
+      })
+    }}      
+  {% endif %}
+  {% if sizingOptions is not empty %}
+    <div class="select-segment">
+      {{ forms.selectField({
+          id: id ~ '-sizing',
+          name: name ~ "[sizing]",
+          label: 'Sizing',
+          value: (value['sizing'] is defined) ? value['sizing'] : levelDefault,
+          options: sizingOptions,
+        })
+      }}
+    </div>
+  {% else %}
+    {{ forms.hidden({
+        id: id ~ '-sizing',
+        name: name ~ "[sizing]",
+        value: '',
+      })
+    }}    
+  {% endif %}
+</div>

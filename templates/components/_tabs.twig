@@ -1,0 +1,50 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'id' : '',
+  'tabs' : [],
+  'respond' : 'none',
+  'mq' : '',	
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div x-comp="tabs" x-data="tabs({total : {{ settings.tabs|length }}, respond:'{{ settings.respond }}', mq: '{{ settings.mq }}' })" @resize.window="onResize()">
+
+		<ul class="mq768:flex border-b border-rule mb-p24 overflow-hidden pt-p24" role="tablist" x-show="isTabbed()">
+		{% for tab in settings.tabs %}
+			{% set tabId = (tab.tabId is empty) ? 'tab-' ~ loop.index : 'tab-' ~ tab.tabId %}
+			{% set panelId = (tab.tabId is empty) ? 'panel-' ~ loop.index : tab.tabId %}
+			<li class="flex-1 mx-p8">
+				<button id="{{ tabId }}" class="c-tab h-full text-lg text-center text-granite lg:text-lg block w-full uppercase lg:normal-case alize px-p8 py-p24 border-t-2 border-transparent relative top-2" role="tab" aria-selected="false" aria-controls="{{ panelId }}" x-ref="tab-{{ loop.index }}" @click="tabClick($event)" data-index="{{ loop.index }}"><span>{{ tab.tab }}</span></button>
+			</li>
+		{% endfor %}
+		</ul>
+		<div class="c-tab-window relative overflow-hidden" x-ref="window">
+		{% for tab in settings.tabs %}
+		{% set tabId = (tab.tabId is empty) ? 'tab-' ~ loop.index : 'tab-' ~ tab.tabId %}
+		{% set panelId = (tab.tabId is empty) ? 'panel-' ~ loop.index : tab.tabId %}
+		<div id="{{ panelId }}" class="c-panel py-p24 mq768:p-p32" role="tabpanel" aria-labelledby="{{ tabId }}" aria-hidden="false" x-ref="panel-{{ loop.index }}" x-show="showTab({{ loop.index }})"
+			x-transition:enter="c-panel-enter"
+			x-transition:enter-start="c-panel-enter-start"
+			x-transition:enter-end="c-panel-enter-end"
+			x-transition:leave="c-panel-leave"
+			x-transition:leave-start="c-panel-leave-start"
+			x-transition:leave-end="c-panel-leave-end" >
+			<div x-show="!isTabbed()">
+				{{ get_heading(tab.tab, {
+					'class' : 'text-h4 mb-p24'
+				})|raw }}					
+			</div>
+      <div class="c-content">
+        {{ tab.content|raw }}
+      </div>
+		</div>
+		{% endfor %}
+		</div>
+
+	</div>

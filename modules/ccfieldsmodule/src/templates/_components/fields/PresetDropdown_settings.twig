@@ -1,0 +1,28 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Dynamic Dropdowns plugin for Craft CMS
+ *
+ * DynamicDropdown Field Settings
+ *
+ * @author    Soshal
+ * @copyright Copyright (c) 2018 Soshal
+ * @link      https://soshal.ca
+ * @package   DynamicDropdowns
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+<p>Preset Dropdowns are populated using preset collections of data, as configured within the general.php config file. Below, you can choose your source to pull from for this dropdown.</p>
+
+{{ forms.selectField({
+	id: 'sourceGlobal',
+	label: 'Source Global',
+	instructions: 'Choose the preset collection field that will be used to populate this Dropdown.'|t,
+	name: 'sourceGlobal',
+	value: sourceGlobal,
+	options: globals
+	})
+}}

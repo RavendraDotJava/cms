@@ -1,0 +1,118 @@
+{% extends "_layouts/cp" %}
+{% set title = "Sections & Entries"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+    <p class="large">Entries house the vast majority of the website’s content. Most of the time, content editors will be working in this section.</p>
+    <div class="contents">
+      <ul>
+        <li><a href="#common-elements">Common Elements</a></li>
+        <li><a href="#live-preview">Live Preview</a></li>
+        <li><a href="#sections">Sections</a></li>
+      </ul>
+    </div>
+    </section>
+    <section id="common-elements">
+    <h2>Common Elements</h2>
+    <p>Entries are specific units of content that exist on the site. These would include units of content that have specific URLs, such as pages, blog posts, news etc., as well units of content that do not have their one URLs such as categories, which are used strictly for the purposes of organization.</p>
+    <p>Specific types of entries (called Sections) are covered below. There are, however, certain common elements that are common across all entries.<p>
+    {{ getDocumentationImage('pages-common-elements.png') }}
+    <p>To break down these options:</p>
+    <ul>
+      <li><span class="highlight">Entry Type</span> - the entry type within the section. This option only appears for sections that have more than one entry type.</li>
+      <li><span class="highlight">Slug</span> - the unique identifier for the page, the slug is also a key component of the URL.
+        <ul>
+          <li>For example a page with the slug <span class="highlight">"my-page"</span> would have a URL of:
+            <ul>
+              <li><span class="highlight">{{ siteUrl }}my-page/</span></li>
+            </ul>
+          </li>  
+          <li>A child page with the slug of <span class="highlight">"child-page"</span> would have a URL of:
+            <ul>
+              <li><span class="highlight">{{ siteUrl }}my-page/child-page/</span></li>
+            </ul>
+          </li>
+          <li>Certain types of entries will have slightly different URL formats, with key URL components hard-coded. For example, a policy with the slug of <span class="highlight">"my-policy"</span> would have a URL of:
+            <ul>
+              <li><span class="highlight">{{ siteUrl }}policies/my-policy/</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><span class="highlight">Parent</span> - For pages that are part of a Structure (see Sections), this field allows for the selection of a parent entry.</li>
+      <li><span class="highlight">Author</span> - The system user associated with the entry. Generally, this is whoever originally added the entry, but it can be changed if necessary.</li>
+      <li><span class="highlight">Post Date</span> - The post date associated with the entry. Most relevant on Blog and News items, which are ordered according to this property on the front-end.</li>
+      <li><span class="highlight">Expiry Date</span> - The optional expiry date, which defines the date at which an entry should be expired.</li>
+      <li><span class="highlight">Enabled/Disabled</span> - A simple toggle that defines whether or not a particular entry should be available on the front end. This can be configured on a per-site basis.</li>
+    </ul>
+    <p>In addition to these fields, there are some common UI control elements.</p>
+    {{ getDocumentationImage('pages-common-elements-2.png') }}
+    <p>To break down these additional options:</p>
+    <ul>
+      <li><span class="highlight">Site</span> - Appears at the top left, beside the page name (or “Create new entry” when adding a new page). This dropdown allows you to select the desired version of the page.</li>
+      <li><span class="highlight">Preview</span> - Clicking this will enter into Live Preview mode for sections that have a public-facing URL. Live Preview mode allows you to see a version of what the page will look like as you add content (see below for more information on Live Preview).</li>
+      <li><span class="highlight">View</span> - Allows editors to view the active page. If the page has not been published, this will generate a temporary URL. When viewing a draft, this button produces a URL with a preview token that can be shared with others, allowing them to preview the draft content. This preview is valid for 24 hours.</li>
+      <li><span class="highlight">Create a Draft</span> - Clicking this button will create a new draft of this entry. This allows content editors to work on a new version of the entry without publishing new content. When editing a draft this button changes to <span class="highlight">Apply Draft</span>.</li>
+      <li><span class="highlight">Save/Save Draft</span> - This button either saves the active entry (if it is already published), or saves a draft if the page is not yet published.</li>
+    </ul>
+    <p>In order to duplicate an existing entry:</p>
+    <ul>
+      <li>Navigate to the listing of entries;</li>
+      <li>Select the checkbox beside the entry you want to duplicate;</li>
+      <li>Click on the gear dropdown at the top of the page, and select <span class="highlight">"Duplicate"</span>.</li>
+    </ul>
+    <p>This will create an exact duplicate of the page, usually adding <span class="highlight">'-2'</span> to the slug, which will likely need to change.
+    </section>
+    <section id="live-preview">
+    <h2>Live Preview</h2>
+    <p>It’s worth taking a moment to talk about Live Preview. This is one of Craft’s most appealing features, as it allows content editors to view their pages in “real-time” as they build them out. The Live Preview will look something like this:</p>
+    {{ getDocumentationImage('pages-live-preview.png', 'A screenshot showing live preview mode') }}    
+    <p>Just a couple of notes:</p>
+    <ul>
+      <li>Initializing live preview generates a temporary draft of the page within the database, which is then used to populate the appropriate template in the preview.</li>
+      <li>Because Live Preview loads the page alongside a separate panel used for content entry, the breakpoint is narrower than the standard window. This may cause a smaller breakpoint to be displayed when working on certain screens, causing the page to render at more of a “tablet” view.</li>
+    </ul>
+    </section>
+    <section id="sections">
+    <h2>Sections</h2>
+    <p>Entries themselves are organized into distinct groupings called sections. Each section has a specific role within the site’s overall information architecture. There are a number of different types of sections, which fall into one of two categories:</p>
+    <ul>
+      <li><span class="highlight">Single</span> - A single is, as implied by its name, a single entry within the CMS. It cannot be replicated and is generally used for a very specific purpose. At the time of writing, we are not currently using any singles.</li>
+      <li><span class="highlight">Channel</span> - A channel is a stream of entries that share a common purpose from a content perspective (such as news items), but which are structurally independent of each other. They are generally displayed in the backend in date order, and displayed in some custom order on the front-end.</li>
+      <li><span class="highlight">Structure</span> - A structure is a set of entries that requires a specific structure and/or order, often including the capability of defining child/parent relationships between entries. Pages are a prime example of a structure.</li>
+    </ul>
+    <p>Additionally, it should be noted that some sections include entries with their own public-facing URLs, while others are simply containers for content that gets pulled into other entries on the front-end.</p>
+    {{ docSections() }}
+    {# <ul>
+      <li><span class="list-section">Pages</span>
+        <ul>
+          <li><a href="{{ getAdminUrl() }}documentation/sections-pages">Pages</a> (Structure, URL) - This section is used for the site's primary content pages. It contains three different entry types.
+            <ul>
+              <li><a href="{{ getAdminUrl() }}documentation/sections-pages-page">Modular Page</a> - This entry type is the primary page entry type, which will be used for the majority of pages. It features the full module set, along with the ability to define a "landing page" mode (which changes the header layout).</li>
+              <li><a href="{{ getAdminUrl() }}documentation/sections-pages-page-feed">Feed Page</a> - This is a custom entry type specifically to be used for feed pages.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><span class="list-section">Resources</span>
+        <ul>
+          <li><a href="{{ getAdminUrl() }}documentation/sections-blog">Blog</a> (Channel, URL) - This section is used for the site's blog posts, and includes the full module set for building content.</li>
+        </ul>
+      </li>
+      <li><span class="list-section">Taxonomies</span>
+        <ul>
+          <li><a href="{{ getAdminUrl() }}documentation/sections-categories">Categories</a> (Channel, no URL)</li>
+        </ul>
+      </li>
+    </ul> #}
+    </section>
+  </div>
+{% endblock %}

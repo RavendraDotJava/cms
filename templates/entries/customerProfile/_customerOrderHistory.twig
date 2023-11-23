@@ -1,0 +1,28 @@
+{% import 'partials/_macros' as helpers %}
+
+{% if not currentUser %}
+    {% exit 404 %}
+{% endif %}
+
+{% if not entry.linkField.isEmpty() %}
+  {% include 'components/_button.twig'|siteInclude with { settings: {
+    'text'  : entry.linkField.text,
+    'type'  : 'link',
+    'href'  : entry.linkField.url,
+    'style' : 'arrow',
+    'class' : 'mr-p8 mb-p50',
+    'icon'  : 'triangle-in-circle-left',
+    'iconAlign' : 'left',
+  }} %}
+{% endif %}
+
+{% if currentUser %}
+  <h1 class="text-p35 font-normal">{{ entry.title }}</h1>
+  {% include 'modules/_userOrders.twig' with { 'settings': {
+    'heading': 'Your Recent Orders'|t,
+    'limit': '4',
+    'noOrderText': entry.noOrderText,
+    'orderUrl': entry.orderEntry.one is not null ? entry.orderEntry.one.uri,
+  }} %}
+{% endif %}
+

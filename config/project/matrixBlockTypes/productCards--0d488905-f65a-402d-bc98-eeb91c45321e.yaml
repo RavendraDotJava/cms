@@ -1,0 +1,326 @@
+field: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+fieldLayouts:
+  99e8b7fe-6df0-4990-9c12-fcc486805b34:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 9e3d69b9-fdb5-4534-8275-3f621255e9a6 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9ded391c-2df3-48ef-9fe4-d8676015f7c1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b54c2a1f-5a79-44f3-a660-a9810bdeb94d # Intro
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0bc51e42-1b27-4031-99b3-0f5a494360a2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 0532bdd7-cc30-4009-a614-c9112330df4c # Cards Per Row
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 215c3586-b232-47cb-a293-21ec86a0677d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 3fb4418d-4565-47d4-8f02-0088c97eb53e # Cards
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cba495c6-be4a-40eb-981c-93c9209ac00a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 9dbbcc68-4ce5-4a97-b35f-7712e536c0cd # Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 329a16af-5c3b-4a20-bf56-6be2485cf455
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 4f370f67-c4f8-4523-b748-0fccd96841e3 # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e87a7dd7-6447-45a6-8207-32c5c72f9fe7
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 6c83a1c6-eb97-4d5e-a89d-2e71dcff4281
+        userCondition: null
+fields:
+  3fb4418d-4565-47d4-8f02-0088c97eb53e: # Cards
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: cards
+    instructions: 'Use this field to select products to display in this module.'
+    name: Cards
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      selectionLabel: null
+      showSiteMenu: true
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\commerce\fields\Products
+  4f370f67-c4f8-4523-b748-0fccd96841e3: # Module
+    columnSuffix: hkvddrsy
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: light
+      decorations: ''
+      decorationsDefault: ''
+      independentPadding: '1'
+      moduleId: ''
+      overflow: ''
+      padding:
+        - none
+        - small
+        - medium
+        - large
+      paddingDefault: medium
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+  9dbbcc68-4ce5-4a97-b35f-7712e536c0cd: # Button
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: button
+    instructions: 'Use this field to define the optional button for this module.'
+    name: Button
+    searchable: true
+    settings:
+      allowCustomText: true
+      allowTarget: false
+      autoNoReferrer: false
+      customTextMaxLength: 0
+      customTextRequired: false
+      defaultLinkName: entry
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        asset:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        category:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        craftCommerce-product:
+          allowCrossSiteLink: false
+          allowCustomQuery: true
+          enabled: true
+          sources: '*'
+        custom:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        email:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        entry:
+          allowCrossSiteLink: false
+          allowCustomQuery: true
+          enabled: true
+          sources:
+            - 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+        site:
+          enabled: false
+          sites: '*'
+        tel:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        url:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        user:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField
+  9e3d69b9-fdb5-4534-8275-3f621255e9a6: # Heading
+    columnSuffix: hhgvtntn
+    contentColumnType: string
+    fieldGroup: null
+    handle: heading
+    instructions: "Use this field to add a heading to this module.\r\n\r\nTo highlight a particular piece of the heading text, wrap the targeted words in single asterisk (`*`). For example: `this is a *highlighted* heading`.\r\n\r\nThis field also allows you to set the heading level. _Please use this feature with caution and ensure proper document structure,_ as improper document structures are an accessibility concern. "
+    name: Heading
+    searchable: false
+    settings:
+      defaults:
+        __assoc__:
+          -
+            - levels
+            -
+              __assoc__:
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+          -
+            - sizing
+            -
+              __assoc__:
+                -
+                  - default
+                  - Default
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+                -
+                  - h5
+                  - H5
+      heading: ''
+      levelDefault: h2
+      levels:
+        - h2
+        - h3
+        - h4
+      sizing:
+        - h1
+        - h2
+        - h3
+        - h4
+      sizingDefault: h2
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Heading
+  0532bdd7-cc30-4009-a614-c9112330df4c: # Cards Per Row
+    columnSuffix: cuxqkmhu
+    contentColumnType: string
+    fieldGroup: null
+    handle: cardsPerRow
+    instructions: 'Select the number of cards that should appear in each row on large screens'
+    name: 'Cards Per Row'
+    searchable: false
+    settings:
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - '3'
+            -
+              - value
+              - '3'
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - '4'
+            -
+              - value
+              - '4'
+            -
+              - default
+              - '1'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  b54c2a1f-5a79-44f3-a660-a9810bdeb94d: # Intro
+    columnSuffix: mgxnrrwo
+    contentColumnType: string(960)
+    fieldGroup: null
+    handle: intro
+    instructions: 'Use this field to add introductory content for this module.'
+    name: Intro
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 240
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: productCards
+name: 'Product Cards'
+sortOrder: 10

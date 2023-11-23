@@ -1,0 +1,27 @@
+defaultPlacement: end
+enableVersioning: true
+handle: customerProfile
+name: 'Customer Profile'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  da016506-9b96-43e4-9e38-d4c30ec3294c: # Olina
+    enabledByDefault: true
+    hasUrls: true
+    template: entries/_customerProfile.twig
+    uriFormat: '{parent.uri}/{slug}'
+structure:
+  maxLevels: null
+  uid: f7166d3b-8451-4b22-aaf3-ba873ff07092
+type: structure

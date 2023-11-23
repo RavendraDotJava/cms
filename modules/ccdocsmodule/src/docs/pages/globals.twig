@@ -1,0 +1,36 @@
+{% extends "_layouts/cp" %}
+{% set title = "Globals"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+    <p class="large"><span class="highlight">Globals</span> are controls and pieces of content that are not tied to a specific entry. They can include many of the same types of <a href="{{ getAdminUrl() }}documentation/fields">fields</a> as entry-based content, but focus on content tied to a specific section. </p>
+    <div class="contents">
+      <ul>
+        <li><a href="#footerSet">Footer</a></li>
+        <li><a href="#notFound">404</a></li>
+      </ul>
+    </div>
+    </section>
+    <section id="footerSet">
+      <h2>Footer</h2>
+      <p>This Globals set is used to define content and elements that appear in the global footer.</p>
+      <p>Fields in this set include:</p>
+      {{ globalDoc('footer', false, 'h3') }}
+    </section>
+    <section id="notFound">
+      <h2>404</h2>
+      <p>The 404 global set allows us to define content that appears on the 404 page, which is shown when a user attempts to reach a page that does not exist. Because the no entry is present, this content needs to be defined outside of any entries.</p>
+      <p>The <span class="highlight">Search</span> tab also includes the ability to define heading and content to support the search from on the 404 page.</p>
+      <p>Fields in this set include:</p>
+      {{ globalDoc('notFound', false, 'h3') }}
+    </section>            
+  </div>
+{% endblock %}

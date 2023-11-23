@@ -1,0 +1,48 @@
+{% extends "_layouts/cp" %}
+{% set title = "Navigation"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+    <p class="large">Navigation on the website is built in two distinct ways. These include Global Navigations, which are navigation menus than can be edited via the Navigation section (described below), and Functional Navigation, which are navigation items tied to specific strategic functional elements which should always be present on the site.</p>
+    <div class="contents">
+      <ul>
+        <li><a href="#globalNav">Global Navigation</a></li>
+      </ul>
+    </div>
+    </section>
+    <section id="globalNav">
+      <h2>Global Navigation</h2>
+      <p>Global Navigation includes all areas of navigation that appear globally across every site. These include:</p>
+      <ul>
+        <li><span class="highlight">Primary Navigation</span> - This is the main navigation menu that appears in the header, and typically contains links to the key sectional pages.</li>
+        <li><span class="highlight">Footer Navigation</span> - This is the various navigation options that appear in the footer. This is the one area of navigation that is designed to have child items within the navigation, which is used to form "groupings" within the navigation.</li>        
+        <li><span class="highlight">Legal Navigation</span> - This is the smaller navigation options that appear at the end of the footer, beside the copyright notice. This navigation is typically used for one or two legal items such as a Privacy Policy or Terms of Service page.</li>        
+      </ul>
+      <p>Each of these three areas of navigation are controlled via the Navigation option in the Craft sidebar. This admin section is powered by a plugin that is aptly named Navigation.</p>
+      <p>Once you blick on this option, you will be presented with a listing of available navigations, as shown here:</p>
+      {{ getDocumentationImage('navigation-listing.png') }}
+      <p>Select the desired navigation by clicking its name. This will present you with the existing navigation structure. You can re-order items by hovering over the nav item and clicking the four dots. You can also click on the settings icon (gear) to edit the properties of the navigation item.</p>
+      {{ getDocumentationImage('navigation-example.png') }}
+      <p>To add a new item to the existing navigation, there are three options in the right sidebar:</p>
+      <ul>
+        <li><span class="highlight">Entries</span> - This allows you to select a specific entry to link to. This is the most common form of navigation.</li>
+        <li><span class="highlight">Passive</span> - This presents a navigation item that <em>does not link anywhere</em>. This can be useful in some navigation structures, but is unlikely to be required on this site.</li>
+        <li><span class="highlight">Custom URL</span> - This allows you to add a custom URL, usually to an extrenal site. In some instances, it may also link to pages that are not associated with a given entry.</li>        
+      </ul>
+      <p>In all cases, you are presented with the option to define the parent item for navigations that allow for multiple levels of navigation. You can also define whether the navigation item should open in a new window. Usually, this will not be appropriate.</p>
+      {{ getDocumentationImage('navigation-entry.png') }}
+      <p>For the Custom URL option, you will need to add both the URL <em>and</em> the text to appear in the navigation.</p>
+      {{ getDocumentationImage('navigation-custom.png') }}
+      <p>For entry-based navigation items, the navigation text will default to the name of the entry. However, this can still be adjusted by modifying the settings of the navigation item and changing the <span class="highlight">Title</span> field. You also have the option of disabling the navigation item, of adding a URL Suffix (generally used for query string variables), or even adding custom classes. These advanced features should be used with caution.</p>
+      <div class="readable"><blockquote class="note"><b>Note:</b> One thing to be very aware of is that, while the Navigation plugin provides a robust set of functionality simplifies the creation and development of navigation menus, it uses an auto-save function whenever changes are made. For this reason, it's generally advisable to limit navigation changes to non-peak hours whenever possible.</blockquote></div>
+    </section>
+  </div>
+{% endblock %}

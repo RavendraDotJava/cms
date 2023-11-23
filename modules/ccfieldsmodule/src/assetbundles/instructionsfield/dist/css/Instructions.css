@@ -1,0 +1,55 @@
+/**
+ * CCFields module for Craft CMS
+ *
+ * Instructions Field CSS
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2021 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   CCFieldsModule
+ * @since     1.0.0
+ */
+
+ div[data-type="modules\\ccfieldsmodule\\fields\\Instructions"] .heading label {
+   font-size: 0;
+   height: 0;
+   opacity: 0;
+   overflow: hidden;
+ } 
+
+ div[data-type="modules\\ccfieldsmodule\\fields\\Instructions"] .instructions p {
+   font-size: 1rem;
+   line-height: 1.6em;
+   margin-top: 1em!important;
+   border-bottom: 1px solid #e4edf6;
+   padding-bottom: 1em; 
+   padding-top: 1em;
+   position: relative;
+ } 
+ 
+div[data-type="modules\\ccfieldsmodule\\fields\\Instructions"] .instructions p::before {
+   content: 'i';
+   position: absolute;
+   top: -.65rem;
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid #596673;
+   padding: .125rem;
+   font-size: .75em;
+   line-height: .85em;
+   height: .85rem;
+   width: .85rem;
+   border-radius: 1rem;
+   margin-right: .5em;
+
+ } 
+
+ div[data-type="modules\\ccfieldsmodule\\fields\\Instructions"] .instructions p::after {
+   content: '';
+   position: absolute;
+   top: 0;
+   right: 0;
+   left: 2rem;
+   border-bottom: 1px solid #e4edf6;
+ } 

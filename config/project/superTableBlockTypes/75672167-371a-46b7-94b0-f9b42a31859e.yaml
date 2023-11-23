@@ -1,0 +1,92 @@
+changedFieldIndicator: null
+field: 58b621fe-f59f-4396-9e39-122f0ee45c29 # Product Benefits
+fieldLayouts:
+  b91fdeb0-b0f9-4337-9a5c-9e382f467baa:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: a02d3097-5172-475d-959c-89e19f15760b # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ad35c2bf-c266-4bc0-8a09-5a9f4f20626e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 0f245ff3-7c7c-412c-ab9d-1957c74c445c # Benefits
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e6288a27-781b-4624-aed3-81b1c5249372
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2381f3d8-0f7b-47b3-93ea-cc689d7e2b89
+        userCondition: null
+fields:
+  0f245ff3-7c7c-412c-ab9d-1957c74c445c: # Benefits
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: benefits
+    instructions: null
+    name: Benefits
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Entry
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\entries\EntryCondition
+      selectionLabel: 'Add a benefit'
+      showSiteMenu: true
+      sources:
+        - 'section:db611318-a807-435d-8e9a-40a059d79429' # Product Benefits
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  a02d3097-5172-475d-959c-89e19f15760b: # Heading
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: heading
+    instructions: null
+    name: Heading
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText

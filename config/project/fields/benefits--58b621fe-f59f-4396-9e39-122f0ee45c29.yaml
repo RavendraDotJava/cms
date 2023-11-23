@@ -1,0 +1,37 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 0166bfae-8627-47ea-9ab1-c9cc949d3ee5 # Product
+handle: benefits
+instructions: null
+name: 'Product Benefits'
+searchable: true
+settings:
+  blockTypeFields: 0
+  changedFieldIndicator: 1896507214
+  columns:
+    __assoc__:
+      -
+        - a02d3097-5172-475d-959c-89e19f15760b # Heading
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 0f245ff3-7c7c-412c-ab9d-1957c74c445c # Benefits
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+  contentTable: '{{%stc_benefits}}'
+  fieldLayout: matrix
+  maxRows: null
+  minRows: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  selectionLabel: 'Add a benefit'
+  staticField: true
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

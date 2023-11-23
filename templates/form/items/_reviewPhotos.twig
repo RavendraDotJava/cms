@@ -1,0 +1,62 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'name' : '',
+  'label' : '',
+  'instructions': '',
+  'photos': [],
+  'required': false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div class="mq768:flex">
+  <label for="{{ settings.name }}" class="{{ component('label', false, '') }}">{{ settings.label }}{{ settings.required ? '*' : '' }}</label>
+  {% if settings.instructions is not empty %}
+    <p class="mb-p10 mq768:mb-none mq768:ml-p10">{{ settings.instructions }}</p>
+  {% endif %}
+</div>
+
+<div class="flex flex-wrap">
+
+  {# Current User Photo #}
+  {% if currentUser %}
+    {% set photoId = 'userPhoto-' ~ currentUser.username %}
+    <label for="{{ photoId }}" class="cursor-pointer m-p10 group">
+      <input type="radio" id="{{ photoId }}" name="reviewPhotos" value="{{ currentUser ? currentUser.photo is not empty ? currentUser.photo.url : 'none.jpeg' }}" class="hidden peer" @change="{{ currentUser.photo ? 'onClick()' : false }}" checked>
+      {% include 'components/_userPhoto' with { 'settings': {
+        'imgSize': 80,
+        'classes' : 'transition-all opacity-80 rounded-full border border-terracotta peer-checked:border-black peer-checked:opacity-100 group-hover:border-black min-w-p80 min-h-p80',
+      }} %}
+    </label>
+  {% endif %}
+
+  {# Global Photos #}
+  {% if settings.photos|length %}
+    {% for photo in settings.photos %}
+      {% set thumb = {
+        mode: 'crop',
+        width: 80,
+        height: 80,
+        quality: 75,
+        position: 'center-center'
+      } %}
+
+      <label for="{{ photo.value }}" class="cursor-pointer m-p10 group">
+        {% set reviewPhoto = craft.assets().id(photo.value).one() %}
+        <input type="radio" id="{{ photo.value }}" name="reviewPhotos" value="{{ photo.value }}" class="hidden peer" {{ not currentUser ? loop.index == 1 ? 'checked' }}>
+        <img src="{{ reviewPhoto.getUrl(thumb) }}"
+        width="{{ reviewPhoto.getWidth(thumb) }}"
+        height="{{ reviewPhoto.getHeight(thumb) }}"
+        alt="{{ 'Profile Image ' ~ loop.index }}"
+        class="transition-all opacity-80 rounded-full border border-terracotta peer-checked:border-black peer-checked:opacity-100 group-hover:border-black" />
+      </label>
+    {% endfor %}
+  {% endif %}
+</div>
+
+

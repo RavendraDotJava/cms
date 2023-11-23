@@ -1,0 +1,147 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'productVariants' : '',
+  'product' : '',
+  'buttonStyle': 'primary',
+  'buttonClasses': '',
+  'buttonIconAlign': 'left',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set modalId = 'modalId-' ~ random() %}
+
+{% if settings.productVariants|length > 1 %}
+  <div id="{{ modalId }}" class="hidden">
+    <div class="px-p40 py-p64">
+      <h3 class="mb-p20">{{ "Purchase"|t }} {{ settings.product.title }}</h3>
+      <div class="c-content mb-p20">
+        <p>{{ settings.product.productDescriptionBrief }}</p>
+      </div>
+      <form method="post" class="mt-p16">
+        {{ csrfInput() }}
+        {{ actionInput('commerce/cart/update-cart') }}
+
+        {{ successMessageInput('{product} added to cart.'|t({
+          product: settings.product
+        })) }}
+
+
+        <div class="relative">
+          {{ helpers.icon('chevron-down', 'w-p14 h-auto absolute right-p16 top-1/2 -translate-y-1/2') }}
+          {% tag 'select' with {
+            name: 'purchasableId',
+            class: [
+              'appearance-none',
+              'px-p30',
+              'py-p16',
+              'border',
+              'border-terracotta',
+              'bg-white',
+              'rounded-full',
+              'w-full',
+            ]}%}
+            {% for variant in settings.productVariants %}
+              {{ tag('option', {
+                value: variant.id,
+                text: variant.title ~ ' - ' ~ variant.salePriceAsCurrency,
+              }) }}
+            {% endfor %}
+          {% endtag %}
+        </div>
+
+        <div class="mt-p20">
+          {% if settings.product.availableForPurchase %}
+            {% include 'components/_button.twig'|siteInclude with { settings: {
+              'text'  : 'Add to cart'|t,
+              'type'  : 'button',
+              'style' : settings.buttonStyle,
+              'icon': 'cart-alt',
+              'iconAlign' : settings.buttonIconAlign,
+              'atts'  : {
+                'type' : 'submit',
+              }
+            }} %}
+          {% else %}
+            {% include 'components/_button.twig'|siteInclude with { settings: {
+              'text'  : 'Unavailable'|t,
+              'type'  : 'button',
+              'style' : settings.buttonStyle,
+              'icon': 'cart-alt',
+              'iconAlign' : settings.buttonIconAlign,
+              'class': 'disabled',
+              'atts'  : {
+                'type' : 'submit',
+                'disabled': '',
+              }
+            }} %}
+          {% endif %}
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="">
+    {% include 'components/_button.twig'|siteInclude with { settings: {
+      'text'  : 'Add to cart'|t,
+      'type'  : 'button',
+      'style' : settings.buttonStyle,
+      'class': settings.buttonClasses,
+      'icon': 'cart-alt',
+      'iconAlign' : settings.buttonIconAlign,
+      'atts'  : {
+        'x-data' : true,
+        '@click' : "cModalTrigger($event, '" ~ modalId ~ "')"
+      }
+    }} %}
+  </div>
+
+{% else %}
+  <form method="post" class="mt-auto">
+    {{ csrfInput() }}
+    {{ actionInput('commerce/cart/update-cart') }}
+    {{ successMessageInput('{product} added to cart.'|t({
+      product: settings.product
+    })) }}
+
+    {{ hiddenInput('purchasableId', settings.product.defaultVariant.id) }}
+
+    <div class="">
+      {% if settings.product.availableForPurchase %}
+
+        {% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Add to cart'|t,
+          'type'  : 'button',
+          'style' : settings.buttonStyle,
+          'class': settings.buttonClasses,
+          'icon': 'cart-alt',
+          'iconAlign' : settings.buttonIconAlign,
+          'atts'  : {
+            'type' : 'submit',
+          }
+        }} %}
+
+
+      {% else %}
+
+        {% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Unavailable'|t,
+          'type'  : 'button',
+          'style' : settings.buttonStyle,
+          'class': settings.buttonClasses,
+          'icon': 'cart-alt',
+          'iconAlign' : settings.buttonIconAlign,
+          'atts'  : {
+            'type' : 'submit',
+            'disabled': '',
+          }
+        }} %}
+      {% endif %}
+    </div>
+
+  </form>
+{% endif %}

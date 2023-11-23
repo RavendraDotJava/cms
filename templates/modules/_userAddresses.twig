@@ -1,0 +1,106 @@
+{% set defaults = {
+  'heading': '',
+  'limit': '4',
+  'itemsPerRow': '4',
+  'selectable': true,
+  'showDelete': true,
+  'name': '',
+  'primaryIdName': '',
+  'sourceIdName': '',
+  'primaryBillingAddressId': null,
+  'primaryShippingAddressId': null,
+  'noAddressText': '',
+  'addAddress': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set primaryBillingAddressId = settings.primaryBillingAddressId ?? null %}
+{% set primaryShippingAddressId = settings.primaryShippingAddressId ?? null %}
+
+{% set addresses = currentUser ? currentUser.addresses : [] %}
+
+
+{% if addresses|length %}
+  <h1 class="">{{ settings.heading }}</h1>
+  <div class="mt-p40">
+    {% for address in addresses %}
+
+      <div class="{{ component('roundedCard', 'checkoutAddresses', 'mb-p16 relative') }}">
+        {% set editUrl =  (userGlobal.editAddress ? userGlobal.editAddress.one.uri : '') ~ '?addressId=' ~ address.id ~ '&redirect=' ~ craft.app.request.fullPath %}
+
+        {% tag settings.selectable ? 'label' : 'div' with {
+          class: settings.selectable ? 'block cursor-pointer' : '',
+          data: {
+            'address-id': address.id,
+            'for': settings.name ~ 'Id',
+          },
+          '@change': settings.selectable ? 'onSelect()'
+        } %}
+
+        <div class="mq640:flex mb-p20">
+          {% if settings.selectable %}
+            {{ input('radio', settings.name ~ 'Id', address.id, {
+              checked: (attribute(cart, settings.sourceIdName) == address.id) or (not attribute(cart, settings.sourceIdName) and address.id == attribute(_context, settings.primaryIdName)),
+              class: component('checkbox', 'dark', 'mt-p2')
+            }) }}
+          {% endif %}
+          <h3 class="text-p26 mq912:text-p30 font-normal mt-p20 mq640:mt-none">{{ address.title }}</h3>
+          <div>
+            <a href="{{ url(editUrl) }}" class="{{ component('basicLink', false, '') }}">{{- 'Edit'|t -}}</a>
+            {% if settings.showDelete and not settings.selectable %}
+              <form method="post" action="" class="inline-block">
+                {{ csrfInput() }}
+                {{ actionInput('users/delete-address') }}
+                {{ hiddenInput('addressId', address.id) }}
+                {{ tag('button', {
+                  type: 'submit',
+                  class: component('basicLink', false, ''),
+                  text: 'Delete'|t
+                }) }}
+              </form>
+            {% endif %}
+          </div>
+        </div>
+        {% if primaryBillingAddressId == address.id or primaryShippingAddressId == address.id %}
+          <div class="text-bd font-normal mb-p20">
+            {% if primaryBillingAddressId == address.id and not primaryShippingAddressId == address.id %}
+              <div title="{{ 'Primary billing address'|t }}">💳 {{ 'Primary billing address'|t }}</div>
+            {% endif %}
+            {% if primaryShippingAddressId == address.id and not primaryBillingAddressId == address.id %}
+              <div title="{{ 'Primary shipping address'|t }}">📦 {{ 'Primary shipping address'|t }}</div>
+            {% endif %}
+            {% if primaryShippingAddressId == address.id and primaryBillingAddressId == address.id %}
+              <div title="{{ 'Primary shipping/billing address'|t }}">📦 {{ 'Primary shipping/billing address'|t }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="text-lg font-normal leading-lg">{{ address|address }}</div>
+        {% endtag %}
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="c-content mt-p40">
+    {% if settings.noAddressText is not empty %}
+      {{ settings.noAddressText }}
+    {% else %}
+      <p>{{ "You do not have any saved addresses."|t }}</p>
+    {% endif %}
+  </div>
+{% endif %}
+<div>
+  {% if settings.addAddress is not empty %}
+    {% include 'components/_button.twig'|siteInclude with { settings: {
+      'text'  : settings.addAddress.text is not empty ? settings.addAddress.text : 'Add an address'|t,
+      'href'  : settings.addAddress.url,
+      'type'  : 'link',
+      'style' : 'terracotta',
+      'class' : ''
+    }} %}
+  {% endif %}
+</div>

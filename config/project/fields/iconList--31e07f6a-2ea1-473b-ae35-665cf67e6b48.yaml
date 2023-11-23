@@ -1,0 +1,37 @@
+columnSuffix: xoylkfal
+contentColumnType: string
+fieldGroup: f197da5a-a88b-49ec-ad29-5677e27c00aa # Common
+handle: iconList
+instructions: null
+name: 'Icon List'
+searchable: false
+settings:
+  blockTypeFields: 0
+  changedFieldIndicator: 1721906145
+  columns:
+    __assoc__:
+      -
+        - 721a4c78-f881-41e4-8774-2f09b50cd977 # Icon
+        -
+          __assoc__:
+            -
+              - width
+              - 100px
+      -
+        - 9990e566-d2c4-40c0-ae2c-e4b3815379e6 # Text
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+  contentTable: '{{%stc_iconlist}}'
+  fieldLayout: table
+  maxRows: null
+  minRows: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  selectionLabel: 'Add a list item'
+  staticField: null
+translationKeyFormat: null
+translationMethod: none
+type: verbb\supertable\fields\SuperTableField

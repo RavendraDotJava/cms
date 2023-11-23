@@ -1,0 +1,409 @@
+field: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+fieldLayouts:
+  0506bf4f-0780-4d4a-93dd-96cc6b3a500a:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 79329b7d-26e6-43b1-a8fc-ab13613488e7 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 608efeee-7e13-4f75-b9b1-d2fef14d3428
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: bc221107-1140-417d-ba48-36e020971b37 # Intro
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4b46c17e-3794-457c-a122-8e8e9d29a33f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: dc4a67b4-9feb-4c57-9842-a380ed874be1 # Cards
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c92f7ac0-6a1d-4333-b246-867c5567a288
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: fdd2cca2-b684-442d-af3f-e73d045daf1d # Sections
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1beb556a-ea11-4927-b085-7db475a8d2b7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 23a16136-6014-4415-8828-cc4ba7ed8206 # Categories
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 81f06e90-796d-4735-a753-335d348c780e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f4dbc0e0-ec94-43ee-aceb-2cccb841f080 # Backfill
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 93bf757c-8c3f-43d5-8c09-401c73702d72
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: a538916c-4601-4832-ad98-bedeb317f535 # Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b263a7c1-812c-47e6-882d-db96aefdcd40
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 996838eb-5673-4df7-b55e-a08a2d00b08e # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e882af17-9f7d-432f-93f7-be2ed416a544
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: eab5856c-96cd-4631-8b0f-afe43e6120be
+        userCondition: null
+fields:
+  23a16136-6014-4415-8828-cc4ba7ed8206: # Categories
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: categories
+    instructions: 'Use this field to define the categories to be queried by this module.'
+    name: Categories
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Entry
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\entries\EntryCondition
+      selectionLabel: null
+      showSiteMenu: true
+      sources:
+        - 'section:faaaf12d-1c6a-44fd-aa8e-ac626a39cbc6' # Categories
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  79329b7d-26e6-43b1-a8fc-ab13613488e7: # Heading
+    columnSuffix: jdgtytuc
+    contentColumnType: string
+    fieldGroup: null
+    handle: heading
+    instructions: "Use this field to add a heading to this module.\r\n\r\nTo highlight a particular piece of the heading text, wrap the targeted words in single asterisk (`*`). For example: `this is a *highlighted* heading`.\r\n\r\nThis field also allows you to set the heading level. _Please use this feature with caution and ensure proper document structure,_ as improper document structures are an accessibility concern. "
+    name: Heading
+    searchable: false
+    settings:
+      defaults:
+        __assoc__:
+          -
+            - levels
+            -
+              __assoc__:
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+          -
+            - sizing
+            -
+              __assoc__:
+                -
+                  - default
+                  - Default
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+                -
+                  - h5
+                  - H5
+      heading: ''
+      levelDefault: h2
+      levels:
+        - h2
+        - h3
+        - h4
+      sizing:
+        - h1
+        - h2
+        - h3
+        - h4
+      sizingDefault: h1
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Heading
+  996838eb-5673-4df7-b55e-a08a2d00b08e: # Module
+    columnSuffix: rxziyggf
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: white
+      decorations: ''
+      decorationsDefault: ''
+      independentPadding: ''
+      moduleId: ''
+      overflow: ''
+      padding:
+        - none
+        - small
+        - medium
+        - large
+      paddingDefault: medium
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+  a538916c-4601-4832-ad98-bedeb317f535: # Button
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: button
+    instructions: 'Use this field to define the optional button for this module.'
+    name: Button
+    searchable: true
+    settings:
+      allowCustomText: true
+      allowTarget: false
+      autoNoReferrer: false
+      customTextMaxLength: 0
+      customTextRequired: false
+      defaultLinkName: entry
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        asset:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        category:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        craftCommerce-product:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: true
+          sources: '*'
+        custom:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        email:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        entry:
+          allowCrossSiteLink: false
+          allowCustomQuery: true
+          enabled: true
+          sources:
+            - 'section:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+            - 'section:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+            - 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+        site:
+          enabled: false
+          sites: '*'
+        tel:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        url:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        user:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField
+  bc221107-1140-417d-ba48-36e020971b37: # Intro
+    columnSuffix: bfrprjmo
+    contentColumnType: string(960)
+    fieldGroup: null
+    handle: intro
+    instructions: 'Use this field to add introductory content for this module.'
+    name: Intro
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: 240
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  dc4a67b4-9feb-4c57-9842-a380ed874be1: # Cards
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: cards
+    instructions: 'Use this field to select entries to display as cards for this module.'
+    name: Cards
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Entry
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\entries\EntryCondition
+      selectionLabel: null
+      showSiteMenu: true
+      sources:
+        - 'section:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+        - 'section:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  f4dbc0e0-ec94-43ee-aceb-2cccb841f080: # Backfill
+    columnSuffix: ogqgpngo
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: backfill
+    instructions: 'Use this field to backfill the related content module if not enough items are found.'
+    name: Backfill
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  fdd2cca2-b684-442d-af3f-e73d045daf1d: # Sections
+    columnSuffix: goeqncgy
+    contentColumnType: string
+    fieldGroup: null
+    handle: sections
+    instructions: 'Use this field to define the sections to be queried by this module.'
+    name: Sections
+    searchable: false
+    settings:
+      allowedSections:
+        - '10'
+        - '6'
+        - '11'
+      excludedSections:
+        - '7'
+        - '3'
+        - '9'
+        - '2'
+        - '1'
+        - '4'
+        - '8'
+        - '5'
+      multiple: true
+      partOfHandle: ''
+      selectAll: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: wmd\sectionandproducttype\fields\SectionField
+handle: entryCards
+name: 'Entry Cards'
+sortOrder: 8

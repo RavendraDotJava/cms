@@ -1,0 +1,31 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'headingText' : '',
+  'headingBg': '',
+  'index': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<h3 class="relative py-p40 px-p20 text-white font-medium text-center w-1/2 rounded-2xl text-h5 flex flex-col transition-all {{ settings.headingBg }}">
+  <span class="mb-p20" data-heading>{{ settings.headingText }}</span>
+  <span class="absolute -bottom-p12 left-1/2 -translate-x-1/2 w-p32 h-p32 -rotate-45 rounded-lg transition-all {{ settings.headingBg }}" data-arrow></span>
+
+  {# Heading Select #}
+  <div class="inline-block mt-auto relative">
+    {{ helpers.icon('triangle-down', 'w-p12 h-p12 absolute right-p16 top-1/2 -translate-y-1/2') }}
+    <select data-index="{{ settings.index }}" class="w-full appearance-none bg-black/10 text-white text-bd pl-p20 pr-p40 py-p8 rounded-full js-select" x-on:change="onChange()">
+      {# <option selected hidden>{{ "Change"|t }}</option> #}
+    {% for heading in headings %}
+      {% set headingBg = heading.columnColour.color[0].color %}
+      {% set i = loop.index0 %}
+      <option data-color="{{ headingBg }}" data-index="{{ i }}" {{ i == settings.index ? 'selected' }} x-bind:disabled="selectedOptions.includes({{ i }})">{{ heading.columnName }}</option>
+    {% endfor %}
+    </select>
+  </div>
+</h3>

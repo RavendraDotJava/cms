@@ -1,0 +1,58 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: ab77e866-90e4-42dd-a7df-5767e239bb69 # Alert Banner
+handle: alertBanner
+instructions: "Banners will display in the order that they appear here from top to bottom.\r\n\r\nWhen a user dismisses a banner, a cookie will be set in their browser so it does not display again until it reaches the expiry date, which can be set using the Cookie Expiry field.\r\n\r\nTo get the banner to display for users who have already dismissed it, copy the existing banner contents into a new banner and delete the old one."
+name: 'Alert Banner'
+searchable: false
+settings:
+  blockTypeFields: 0
+  changedFieldIndicator: 1211518310
+  columns:
+    __assoc__:
+      -
+        - 0d4bc536-f7c2-4bc8-8efa-fb7c5b30e699 # Alert Text
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - d618d804-8392-4226-9b61-04e3547bdd4d # Dismiss Button
+        -
+          __assoc__:
+            -
+              - width
+              - 200px
+      -
+        - b9085870-974f-46ef-b23f-4cb4711311df # Delay
+        -
+          __assoc__:
+            -
+              - width
+              - 100px
+      -
+        - 2c1d5586-a028-4226-8102-387a312d3aa7 # Cookie Expiry
+        -
+          __assoc__:
+            -
+              - width
+              - 100px
+      -
+        - 7dde3bd6-c56c-403c-91ed-aab3e0b37b69 # Display
+        -
+          __assoc__:
+            -
+              - width
+              - 100px
+  contentTable: '{{%stc_alertbanner}}'
+  fieldLayout: table
+  maxRows: null
+  minRows: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  selectionLabel: 'Add an alert banner'
+  staticField: null
+translationKeyFormat: null
+translationMethod: none
+type: verbb\supertable\fields\SuperTableField

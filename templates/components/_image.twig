@@ -1,0 +1,109 @@
+{% apply spaceless %}
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'image' : false,
+  'format' : 'standard',
+  'volume' : 'images',
+  'class' : '',
+  'imageClass' : '',
+  'figure' : false,
+  'decorative' : false,
+  'alt' : true,
+  'loading' : 'lazy',
+  'button' : false,
+  'attr': '',
+} %}
+
+{% set figureDefaults = {
+  'class' : '',
+  'caption' : false,
+  'captionClass' : '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.image is numeric %}
+  {% set asset = craft.assets().id(settings.image).limit(1).one() %}
+  {% set image = imageAttributes(asset) %}
+{% elseif settings.image is iterable %}
+  {% set image = imageAttributes(settings.image) %}
+{% elseif settings.image is not empty %}
+  {% set image = imagePlaceholder(settings.image) %}
+{% else %}
+  {% set image = false %}
+{% endif %}
+
+{% if image is not empty %}
+
+  {% set sources = image.getSources(settings.format) %}
+  {% set ini = '{' %}
+  {% for source in sources %}
+    {% if source.fallback == false %}
+      {% if ini != '{' %}
+        {% set ini = ini ~ ',' %}
+      {% endif %}
+      {% set ini = ini ~ source.mediakey ~ ':{width:' ~ source.width ~ ',height:' ~ source.height ~ '}' %}
+    {% endif %}
+  {% endfor %}
+  {% set ini = ini ~ '}' %}
+
+  {% set alt = (settings.alt is not empty and settings.alt != true) ? settings.alt : image.altText %}
+  {% if settings.alt == false %}
+    {% set alt = '' %}
+  {% endif %}
+
+  {% set class = '' %}
+  {% if settings.class is not empty %}
+    {% set class = class ~ ' ' ~ settings.class %}
+  {% endif %}
+
+  {% set imageClass = 'c-img opacity-0 transition-all duration-300' %}
+  {% if settings.imageClass is not empty %}
+    {% set imageClass = imageClass ~ ' ' ~ settings.imageClass %}
+  {% endif %}
+
+  {% set defaultImage = false %}
+  {% set hasLink = (settings.button is not empty) %}
+
+  {% if sources is not empty %}
+  {% if settings.figure is not empty %}
+
+    {% set figure = settings.figure %}
+    {% set figure = figureDefaults|merge(figure) %}
+
+    <figure class="{{ figure.class }}">
+  {% endif %}
+    {{ htmlComment('Asset ' ~ image.id ~ ' | Format ' ~ settings.format) }}
+    {% if hasLink %}<a href="{{ settings.button.url }}" class="relative group">{% endif %}
+    <picture class="{{ class }}" {{ settings.attr }}>
+      {% for source in sources %}
+        {% if source.media is not empty %}
+          <source type="{{ source.type }}" media="{{ source.media }}" srcset="{{ source.srcset }}">
+        {% else %}
+          <source type="{{ source.type }}" srcset="{{ source.srcset }}">
+        {% endif %}
+        {% set defaultImage = source %}
+      {% endfor %}
+      <img class="{{ imageClass }}" src="{{ defaultImage.src }}" loading="{{ settings.loading }}" x-data="image({{ ini }})" :width="getSize()" :height="getSize('height')" alt="{{ alt }}">
+    </picture>
+    {% if hasLink %}
+      <span class="absolute z-10 bottom-0 right-0 bg-gold p-p24 group-hover:bg-heart group-focus:bg-heart transition-colors duration-300 ease-in-out">
+        {{ getIcon('arrow-right', 'image') }}
+        <span class="sr-only">{{ settings.button.text }}</span>
+      </span>
+      </a>
+    {% endif %}
+
+  {% if settings.figure is not empty %}
+    {% if figure.caption is not empty %}<figcaption class="c-caption{{ figure.captionClass is not empty ? ' ' ~ figure.captionClass : '' }}">{{ figure.caption }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+  {% endif %}
+
+{% endif %}
+{% endapply %}

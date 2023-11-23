@@ -1,0 +1,67 @@
+fieldLayouts:
+  a29f27fe-7cd3-493d-9ee7-68b8fc02bf9d:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: fdc4069e-dad1-420d-aaf6-66f0c54a7602 # Benefit Icon
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e7c62590-3721-4eb8-ba7e-23378600d7b8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 71623c41-385c-48b5-85ea-0f5c6bbf188b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 321c21ab-ea1f-44aa-8af0-d45271f50c1b # Benefit Description
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b0bb413c-1258-48e3-8072-0deebf56a05a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: df01c92c-d370-428b-ac02-5f0480171469
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Default
+section: db611318-a807-435d-8e9a-40a059d79429 # Product Benefits
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

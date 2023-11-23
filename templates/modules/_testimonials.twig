@@ -1,0 +1,70 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'content' : '',
+	'questions' : false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div class="{{ component('moduleWidth', settings.config.handle) }}">
+
+  <div>
+
+    <div class="max-w-p768 mx-auto text-center mb-p64">
+      {% if settings.heading is not empty %}
+        {{ settings.heading.set({
+            class: 'text-h2',
+        }) }}
+      {% endif %}
+
+      {% if settings.content %}
+        <div class="c-content mt-p32 text-lg">
+          {{ settings.content }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if settings.testimonials.all() is not empty %}
+
+      {% set slides = [] %}
+      {% for testimonial in settings.testimonials.all() %}
+        {% set content = '<blockquote class="text-lg">' ~ testimonial.testimonial %}
+        {% if testimonial.citation is not empty %}
+          {% set content = content ~ '<cite class="flex text-bd mt-p24 not-italic font-medium">&mdash;&nbsp;<span>' ~ testimonial.citation %}
+          {% if testimonial.citationDetail is not empty %}
+             {% set content = content ~ '<span class="block font-normal">' ~ testimonial.citationDetail ~ '</span>' %}
+          {% endif %}
+          {% set content = content ~ '</span></cite>' %}
+        {% endif %}
+        {% set content = content ~ '</blockquote>' %}
+        {% set slides = slides|merge([
+          {
+            'id' : 'slide1',
+            'content' : content,
+            'image' : testimonial.media.one(),
+          }
+        ]) %}
+      {% endfor %}
+
+    <ul class="w-full">
+      {% include 'components/_slider.twig'|siteInclude with { settings: {
+        'id' : 'tabs2',
+        'autoplay' : true,
+        'speed' : 7,
+        'slides' : slides,
+        'ctrlStyle' : settings.config.btnType,
+        }} %}
+      </ul>
+
+    {% endif %}
+
+  </div>
+
+</div>
+

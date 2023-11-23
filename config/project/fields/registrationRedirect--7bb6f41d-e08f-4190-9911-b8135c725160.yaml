@@ -1,0 +1,37 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: a952bf2b-b44b-4581-bf77-5a1b7d885121 # User
+handle: registrationRedirect
+instructions: 'Use this field to redirect a user to a specific entry when they have successfully registered their account.'
+name: 'Registration Redirect'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  selectionCondition:
+    __assoc__:
+      -
+        - elementType
+        - craft\elements\Entry
+      -
+        - fieldContext
+        - global
+      -
+        - class
+        - craft\elements\conditions\entries\EntryCondition
+  selectionLabel: null
+  showSiteMenu: false
+  sources:
+    - 'section:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+    - 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+    - singles
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

@@ -1,0 +1,37 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'id' : 'formPaymentMethod',
+  'redirectUrl' : '',
+  'successMessage': 'Payment options selected'|t,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set paymentSources = craft.commerce.paymentSources.getAllPaymentSourcesByCustomerId(currentUser.id ?? null) %}
+{% set availableGateways = craft.commerce.gateways.allCustomerEnabledGateways %}
+
+{% if availableGateways is empty %}
+  <p>{{ 'No payment methods available.'|t }}</p>
+{% endif %}
+
+<form method="post" id="{{ settings.id }}">
+  {{ csrfInput() }}
+  {{ actionInput('commerce/cart/update-cart') }}
+  {{ redirectInput(settings.redirectUrl) }}
+  {{ successMessageInput(settings.successMessage) }}
+
+  {% include 'components/_gateways' %}
+
+  {{ tag('button', {
+    type: 'submit',
+    name: 'submit',
+    id: 'form-submit',
+    class: component('button', 'primary', 'hidden'),
+    text: 'Next'|t
+  }) }}
+</form>

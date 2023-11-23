@@ -1,0 +1,24 @@
+defaultPlacement: end
+enableVersioning: true
+handle: cart
+name: Cart
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  da016506-9b96-43e4-9e38-d4c30ec3294c: # Olina
+    enabledByDefault: true
+    hasUrls: true
+    template: cart/index.twig
+    uriFormat: cart
+type: single

@@ -1,0 +1,22 @@
+columnSuffix: kgjohcth
+contentColumnType: text
+fieldGroup: a952bf2b-b44b-4581-bf77-5a1b7d885121 # User
+handle: noOrderText
+instructions: 'Use this field to enter text that will display on the customer order history page when the customer does not have any orders.'
+name: 'No Order Text'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  initialRows: 7
+  manualConfig: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  trimEmptyParagraphs: true
+  vizyConfig: Simple.json
+translationKeyFormat: null
+translationMethod: none
+type: verbb\vizy\fields\VizyField

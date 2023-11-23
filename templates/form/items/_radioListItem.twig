@@ -1,0 +1,30 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+    'id': '',
+    'checked': false,
+    'value':  settings.checked ? 1 : 0,
+    'label': '',
+    'description': ''
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<label class="{{ component('roundedCard', 'checkoutAddresses', 'mb-p16') }}">
+  <div class="flex justify-start items-center">
+    <div class="pr-p8">
+      {{ input('radio', settings.id, settings.value, {
+        checked: settings.checked,
+        class: component('checkbox', 'dark', '')
+      }) }}
+    </div>
+    <div>
+      <strong class="text-h4">{{ settings.label }}</strong><br>
+      <span>{{ settings.description }}</span>
+    </div>
+  </div>
+</label>

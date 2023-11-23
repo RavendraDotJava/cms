@@ -1,0 +1,19 @@
+{% extends "_layouts/cp" %}
+{% set title = "Fields"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+    <p class="large">Most of the fields within the CMS are relatively straightforward, with standard browser inputs and instructions explaining the nature of the field. We have attempted to make instructions as helpful as possible without crowding and cluttering the interface.</p> 
+    <p>That being said, there are a handful of fields that might benefit from some additional documentation.</p>
+    {{ docFields() }}
+    </section>   
+  </div>
+{% endblock %}

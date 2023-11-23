@@ -1,0 +1,36 @@
+.top-center {
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.overflow-mobile {
+  overflow: hidden;
+}
+@screen mq768 {
+  .overflow-mobile {
+    overflow: visible;
+  }
+}
+
+.gradient-header {
+  background: linear-gradient(90deg, rgba(0,0,0,0.304359243697479) 0%, rgba(0,0,0,0) 100%);
+}
+
+.remove-arrows {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
+[x-cloak] { display: none !important; }

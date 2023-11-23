@@ -1,0 +1,113 @@
+{% if craft.app.request.isPreview %}
+
+  {% import 'partials/_macros' as helpers %}
+
+  {% set bodyClasses = 'bg-sand antialiased lang-' ~ craft.app.language|slice(0,2) %}
+  {% if craft.app.request.isLivePreview %}
+    {% set bodyClasses = bodyClasses ~ ' live-preview' %}
+  {% endif %}
+  {% if entry is defined %}
+    {% set bodyClasses = bodyClasses ~ ' section-' ~ entry.section.handle ~ ' type-' ~ entry.type.handle %}
+    {% if entry.slug == '__home__' %}
+      {% set bodyClasses = bodyClasses ~ ' home' %}
+    {% endif %}
+  {% else %}
+    {% set bodyClasses = bodyClasses ~ ' section-none type-none' %}
+  {% endif %}
+  {% set bodyClasses = bodyClasses ~ ' text-navy font-light' %}
+
+  {% set entry = craft.entries.provisionalDrafts().id([draftId]).one() %}
+  {% if entry is empty %}
+    {% set entry = craft.entries.id([entryId]).one() %}
+  {% endif %}
+
+  <!DOCTYPE html>
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.app.language }}" class="bg-limit">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="format-detection" content="telephone=no">
+      <link rel="home" href="{{ siteUrl }}" />
+
+      {# Favicons #}
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+      <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+      <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+      <link rel="manifest" href="/favicons/site.webmanifest">
+      <link rel="shortcut icon" href="/favicons/favicon.ico">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+      <meta name="theme-color" content="#ffffff">
+
+      {# Static asset versioning #}
+      {% set ver = getVer() %}
+      {# {% do view.registerCssFile("https://fonts.googleapis.com/css?family=Poppins:ital,wght@0,300;0,500;1,300;1,500|Merriweather:300,300i&amp;display=swap") %} #}
+      {% do view.registerCssFile("/fonts/stylesheet.css") %}
+
+      {% do view.registerJsFile("/dist/scripts.min.js?ver=" ~ ver) %}
+      {% do view.registerCssFile("/dist/style.min.css?ver=" ~ ver) %}
+    </head>
+    <body class="{{ bodyClasses }}">
+      {% switch type %}
+
+        {% case 'cta' %}
+          <div class="flex flex-center px-p20 mq480:px-p24 mq768:px-p48 mq1024:px-p96 py-p48">
+            <div class="w-full max-w-p1440 mx-auto">
+              {% include 'components/_callToAction' with { 'settings': {
+                'cta': entry,
+                'ctaContent': entry.callToAction
+              }} %}
+           </div>
+          </div>
+        {% case 'order' %}
+          {% include 'checkout/_order' with {
+            success: true,
+            order: {
+              reference: '12345',
+              orderStatus: 'New',
+              dateOrdered: '10/20/2022',
+              email: 'useremail@website.com',
+              lineItems: [
+                {
+                  description: 'Line Item Product Title',
+                  qty: 2,
+                  onSale: false,
+                  priceAsCurrency: '$59.99',
+                },
+                {
+                  description: 'Line Item Product Title',
+                  qty: 1,
+                  onSale: true,
+                  priceAsCurrency: '$59.99',
+                  salePriceAsCurrency: '$49.99',
+                  saleAmountAsCurrency: '$10.00',
+                  snapshot: {
+                    sales: [
+                      {
+                        name: 'Sale Name',
+                      },
+                    ]
+                  }
+                }
+              ],
+              shippingAddress: craft.addresses().one(),
+              billingAddress: craft.addresses().one(),
+              orderTrackingNumber: '1Z3KE23F34D234',
+              orderTrackingUrl: 'http://ups.com',
+              orderTrackingCarrier: 'UPS',
+              totalShippingCostAsCurrency: '$2.99',
+              totalTaxAsCurrency: '$1.03',
+              totalTaxIncludedAsCurrency: '$0.00',
+              totalDiscount: '$10.00',
+              totalDiscountAsCurrency: '$10.00',
+              totalPriceAsCurrency: '$173.99'
+            }
+          }%}
+        {% default %}
+          No preview available
+      {% endswitch %}
+    </body>
+  </html>
+{% else %}
+  {% exit 404 %}
+{% endif %}

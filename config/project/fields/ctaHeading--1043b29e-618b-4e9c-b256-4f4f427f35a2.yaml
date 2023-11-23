@@ -1,0 +1,60 @@
+columnSuffix: yvbmkloh
+contentColumnType: string
+fieldGroup: f1f1ffc6-b86c-414b-ab39-d213b7efe85e # Modules
+handle: ctaHeading
+instructions: null
+name: 'CTA Heading'
+searchable: true
+settings:
+  defaults:
+    __assoc__:
+      -
+        - levels
+        -
+          __assoc__:
+            -
+              - h1
+              - H1
+            -
+              - h2
+              - H2
+            -
+              - h3
+              - H3
+            -
+              - h4
+              - H4
+      -
+        - sizing
+        -
+          __assoc__:
+            -
+              - default
+              - Default
+            -
+              - h1
+              - H1
+            -
+              - h2
+              - H2
+            -
+              - h3
+              - H3
+            -
+              - h4
+              - H4
+            -
+              - h5
+              - H5
+  heading: ''
+  levelDefault: h2
+  levels: ''
+  sizing:
+    - h1
+    - h2
+    - h3
+    - h4
+  sizingDefault: h2
+translationKeyFormat: null
+translationMethod: none
+type: modules\ccfieldsmodule\fields\Heading

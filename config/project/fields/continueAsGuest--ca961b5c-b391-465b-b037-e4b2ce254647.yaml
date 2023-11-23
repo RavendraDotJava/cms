@@ -1,0 +1,19 @@
+columnSuffix: meqkstyo
+contentColumnType: string(200)
+fieldGroup: 6f4fa5af-dc3c-425b-9183-f24f31360424 # Checkout
+handle: continueAsGuest
+instructions: 'Use this field to allow users to continue through checkout without creating an account. The value of this field will display as a link to the next step in the checkout process.'
+name: 'Continue As Guest'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 50
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

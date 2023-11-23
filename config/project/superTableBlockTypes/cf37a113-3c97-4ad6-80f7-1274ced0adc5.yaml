@@ -1,0 +1,72 @@
+changedFieldIndicator: 770859972
+field: 69101e0e-f3bf-4fd4-9e69-cb06f7b4c9af # Column Headings
+fieldLayouts:
+  080947f8-2163-4c93-8e30-64218470b310:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 49f2d177-25ef-412a-b1d6-ddc3c1610e32 # Column Name
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d0d0c179-5abf-4362-86fc-2b072df544aa
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 88786e95-61bb-4d87-8c2b-aa72f850c936 # Column Colour
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8f13b207-d8c6-4f70-918a-4cdce63585b3
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: eec961ef-b39a-4631-8949-3662f7d4cc9b
+        userCondition: null
+fields:
+  49f2d177-25ef-412a-b1d6-ddc3c1610e32: # Column Name
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: columnName
+    instructions: null
+    name: 'Column Name'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  88786e95-61bb-4d87-8c2b-aa72f850c936: # Column Colour
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: columnColour
+    instructions: 'Use this field to define the background colour for the column heading.'
+    name: 'Column Colour'
+    searchable: false
+    settings:
+      default: null
+      palette: Olina
+      setRandom: false
+      useConfigFile: true
+    translationKeyFormat: null
+    translationMethod: none
+    type: percipiolondon\colourswatches\fields\ColourSwatches

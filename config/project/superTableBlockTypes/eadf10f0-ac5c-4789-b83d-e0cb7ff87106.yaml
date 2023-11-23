@@ -1,0 +1,221 @@
+changedFieldIndicator: null
+field: 570cf309-122f-4a68-8eb6-0a9e52f7b434 # Ingredients
+fieldLayouts:
+  96d84ef7-d2f6-49c9-804f-a18ae1d69844:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: a72b2027-755d-4aeb-805b-63ee764f76cc # Ingredient
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8e6b7e79-4e6d-4df9-acd6-107df546f805
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 94cd2b39-c53c-465d-b3ba-3ca493faea54 # Product
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fba2787e-dd58-45dc-8d42-e31034a9c832
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 3cc6b0fd-cdf1-4336-997b-8ead86698e1f # Quantity
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 79466b45-e8c2-4a0b-b120-8443d80128c2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f7305df5-4d77-4192-8dfe-1a079611873e # Select measurement unit
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2662ef7a-3ea4-4f72-bf52-2c9d39a68ae2
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 7684adfc-2f33-47fb-8b9a-d9029aac51e1
+        userCondition: null
+fields:
+  3cc6b0fd-cdf1-4336-997b-8ead86698e1f: # Quantity
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: quantity
+    instructions: null
+    name: Quantity
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  94cd2b39-c53c-465d-b3ba-3ca493faea54: # Product
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: product
+    instructions: null
+    name: Product
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      selectionLabel: null
+      showSiteMenu: true
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\commerce\fields\Products
+  a72b2027-755d-4aeb-805b-63ee764f76cc: # Ingredient
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: ingredient
+    instructions: null
+    name: Ingredient
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Entry
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\entries\EntryCondition
+      selectionLabel: 'Select/Add Ingredient'
+      showSiteMenu: true
+      sources:
+        - 'section:c3f2bc96-b4d9-42f4-968e-149de97d6715' # Ingredient
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  f7305df5-4d77-4192-8dfe-1a079611873e: # Select measurement unit
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: measurementUnit
+    instructions: null
+    name: 'Select measurement unit'
+    searchable: false
+    settings:
+      newLabelFormat: '{{ label }}'
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - none
+            -
+              - value
+              - none
+        -
+          __assoc__:
+            -
+              - label
+              - cup
+            -
+              - value
+              - cup
+        -
+          __assoc__:
+            -
+              - label
+              - tsp
+            -
+              - value
+              - tsp
+        -
+          __assoc__:
+            -
+              - label
+              - tbsp
+            -
+              - value
+              - tbsp
+        -
+          __assoc__:
+            -
+              - label
+              - L
+            -
+              - value
+              - l
+        -
+          __assoc__:
+            -
+              - label
+              - ml
+            -
+              - value
+              - ml
+        -
+          __assoc__:
+            -
+              - label
+              - qrt
+            -
+              - value
+              - qrt
+        -
+          __assoc__:
+            -
+              - label
+              - oz
+            -
+              - value
+              - oz
+      sourceGlobal: measurements
+      sourceLabelHandle: label
+      sourceValueHandle: value
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\PresetDropdown

@@ -1,0 +1,7 @@
+<div class="relative py-p40 {{ entry.pageHeaderStyle == 'bgBorder' ? 'bg-salt' : 'bg-transparent' }}">
+  {% set type = entry.entryType %}
+  {% include 'components/_feed.twig' with { settings: {
+    'type' : type,
+    'exclude' : [],
+  }} %}
+</div>

@@ -1,0 +1,76 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+    title: '',
+    classes: '',
+    name: '',
+    primaryIdName: '',
+    sourceIdName: '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div class="js-address-fieldset" x-data="{ newAddress: '{{ not addresses|length ? true : currentUser ? false : true }}' }">
+
+  <h2 class="mb-p40">{{- settings.title -}}</h2>
+
+  {% if currentUser %}
+    {% include 'modules/_userAddresses' with { 'settings': {
+      'heading': '',
+      'itemsPerRow': '3',
+      'name': settings.name,
+      'primaryIdName': settings.primaryIdName,
+      'sourceIdName': settings.sourceIdName,
+      'primaryBillingAddressId': cart and cart.customer ? cart.customer.primaryBillingAddressId : null,
+      'primaryShippingAddressId': cart and cart.customer ? cart.customer.primaryShippingAddressId : null,
+    }} %}
+  {% endif %}
+
+  <div>
+    {% if attribute(cart, settings.name ~ 'Id') %}
+      {% set addressHasErrors = attribute(cart, settings.name) and attribute(cart, settings.name).hasErrors() %}
+    {% else %}
+      {% set addressHasErrors = false %}
+    {% endif %}
+
+
+    <div class="my-p16 flex items-start">
+      {{ input('radio', settings.name ~ 'Id', '', {
+        checked: not addresses|length or addressHasErrors,
+        class: component('radio', 'radio', 'hidden'),
+        id: settings.name ~ 'Id',
+        '@change': 'onSelectCreateNewAddress()',
+      }) }}
+      <label for="{{ settings.name ~ 'Id' }}" class="{{ component('button', false, not addresses|length ? 'hidden' : currentUser ? 'block' : 'hidden') }} cursor-pointer">{{ 'New {title}'|t({ title: settings.title }) }}</label>
+    </div>
+
+    <div class="js-new-address mt-p32" x-comp="countryCode" x-data="countryCode({ countryCode: '' })" x-cloak x-collapse x-show="newAddress">
+
+      {% if addressHasErrors %}
+        <span class="flash">{{ cart.getErrors(settings.name)|join }}</span><br>
+      {% endif %}
+
+      {% namespace settings.name %}
+        {{ include('form/items/address/_fields', {
+          address: attribute(cart, settings.name),
+          addressName: settings.name
+        }) }}
+      {% endnamespace %}
+
+      {% if currentUser %}
+        <div class="mt-p50">
+          {{ input('checkbox', 'saveOrderAddress', 0, {
+            'id': 'saveOrderAddress',
+            'class': component('checkbox', false, ''),
+          }) }}
+          <label for="saveOrderAddress" class="cursor-pointer text-h5">{{ 'Save address'|t }}</label>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<!-- Template: {{ _self }}.twig -->

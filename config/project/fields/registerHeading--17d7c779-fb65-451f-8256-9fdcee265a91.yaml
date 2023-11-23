@@ -1,0 +1,19 @@
+columnSuffix: uopiwugo
+contentColumnType: string(320)
+fieldGroup: a952bf2b-b44b-4581-bf77-5a1b7d885121 # User
+handle: registerHeading
+instructions: 'Use this field to enter a heading for the user registration form.'
+name: 'Register Heading'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 80
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,257 @@
+fieldLayouts:
+  1c357857-d89c-49aa-a777-c3f06844ee86:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: c4514b2e-8e23-4c27-926b-420561f4ca56
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: 'Header Options'
+            type: craft\fieldlayoutelements\Heading
+            uid: 43158875-fd0d-4df4-bf5d-c4e1545e31ba
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 1262417d-adab-4273-9f2b-02709eae6778 # Site Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4060c8cd-ec2b-4592-88d7-9145322a5816
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 00727e79-cbc2-4589-ba34-4d58fac1a35b # Page Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0b50f377-ed43-44bd-9c9c-da6aae905d47
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: a62d8293-6705-4d68-b2e0-1eea2bd31c8d # Header Text Color
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0c82ea9e-7d2c-4a04-9e1f-bba1e76f2572
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 2377d8c4-15a6-4459-b01f-37929083d574 # Vertical Line
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a07e9271-29dd-42fb-9b5a-7876e30e4fc4
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 7c600941-785c-4a46-9adc-fbf90130ecee
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 14b50e08-cdfa-431f-a303-5358565d2dc0 # Page Header Padding
+            instructions: null
+            label: Padding
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4cf17bd8-90d1-4275-8f37-2e99449b4931
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            heading: 'Header Background'
+            type: craft\fieldlayoutelements\Heading
+            uid: ced30392-3d93-4833-8053-220e8b63fa35
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5a88a26f-932f-4ffc-afdf-73454941ed68
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dismissible: false
+            elementCondition: null
+            style: tip
+            tip: 'Background video files must be attached to images in the Video Files asset volume. Double click the image after uploading it to see the additional fields for video files.'
+            type: craft\fieldlayoutelements\Tip
+            uid: 88746a59-1e6c-4d83-912e-96cc79db8d91
+            userCondition: null
+          -
+            elementCondition: null
+            heading: 'Header Content'
+            type: craft\fieldlayoutelements\Heading
+            uid: e8391e3e-27f9-4d32-a6d9-3c73c528804a
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 305c3ba1-4ab0-4c00-9caa-581b64b6dac2 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c58a411b-b9d2-4f51-b542-4996e89a12be
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 38698c8a-f6b7-40b5-bf68-1a145001d2d6 # Intro Paragraph
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 267d9c66-58ce-4175-934b-21a9c205cfb0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f7b31e70-1186-4058-aedb-0f579872cd6c # Buttons
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9a5b1ae2-9b8c-4ff2-8a5f-11f254936ad0
+            userCondition: null
+            warning: null
+            width: 100
+        name: Header
+        uid: 99b2da88-8f97-40bd-ac5e-5a6a417defbe
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 22d46a0b-cb13-4f96-8b06-d52dd09336c7
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 7011150c-8714-44bc-b737-8abfa98ef36d
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: f5534be7-e8ed-4cd9-9931-f8a429ce7d33 # Description
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 960e2fae-854f-482b-b33a-c0e972d6ab65
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6b73ca17-a446-4410-9dae-7d2e8144ba16 # Keywords
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c3a54561-1d1c-4c1d-8916-16c466968007
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: ae3b1630-c045-45b9-acd8-63268c2b371d # Hero Image
+            instructions: 'Use this field to select an image to be used for the SEO preview.'
+            label: 'SEO Image'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 43ff784a-7d1c-4e32-b52f-a9f08c52ee95
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 914324c7-ee2e-4375-9d32-7e56bb2d0c99 # SEO Settings
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 644e69d1-fefe-49fa-bf3b-004911bbe20a
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: 99c38bb6-bc6f-45e5-ba6e-6e17a383ccbb
+        userCondition: null
+handle: page
+hasTitleField: true
+name: 'Modular Page'
+section: 43d82d49-59c5-402b-85a6-b009c84626c8 # Pages
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

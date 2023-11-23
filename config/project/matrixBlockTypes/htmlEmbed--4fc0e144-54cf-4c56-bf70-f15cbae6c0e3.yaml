@@ -1,0 +1,200 @@
+field: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+fieldLayouts:
+  10d2a45b-89ce-426d-821c-6714e099c8e7:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 11d98a47-2dae-4c32-8385-aa9c89c3c447 # Embed Code
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 648d25e8-c85b-4937-9818-50157b9c6ec0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: a17ce85e-50af-4a1c-b85d-5c528d304c90 # Alignment
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5eb9116f-81ae-4219-be36-a3292a0c00a8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 53dc002b-5888-4b8a-acfc-5781b6d39ee9 # Width
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1bb6a639-b52a-43f2-98a4-faadd6e2d0bd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1e97c7e4-388d-49f1-aea8-bda27cd82509 # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e3c71f0f-0c46-4674-8d97-cc298732029b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 846f82f6-45ec-4c42-8066-a47f6ab662a0
+        userCondition: null
+fields:
+  1e97c7e4-388d-49f1-aea8-bda27cd82509: # Module
+    columnSuffix: dhjgbvlx
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: white
+      decorations: ''
+      decorationsDefault: ''
+      independentPadding: '1'
+      moduleId: ''
+      overflow: ''
+      padding:
+        - none
+        - small
+        - medium
+        - large
+      paddingDefault: none
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+  11d98a47-2dae-4c32-8385-aa9c89c3c447: # Embed Code
+    columnSuffix: cdwekwwa
+    contentColumnType: text
+    fieldGroup: null
+    handle: embedCode
+    instructions: 'Use this field to add the HTML code.'
+    name: 'Embed Code'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: true
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  53dc002b-5888-4b8a-acfc-5781b6d39ee9: # Width
+    columnSuffix: jzuxzpnw
+    contentColumnType: string
+    fieldGroup: null
+    handle: width
+    instructions: 'Use this field to define the width of the embed region.'
+    name: Width
+    searchable: false
+    settings:
+      newLabelFormat: '{{ label }}'
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Small
+            -
+              - value
+              - max-w-p768
+        -
+          __assoc__:
+            -
+              - label
+              - Medium
+            -
+              - value
+              - max-w-p1024
+        -
+          __assoc__:
+            -
+              - label
+              - Large
+            -
+              - value
+              - max-w-p1280
+        -
+          __assoc__:
+            -
+              - label
+              - Wide
+            -
+              - value
+              - max-w-p1440
+      sourceGlobal: widths
+      sourceLabelHandle: label
+      sourceValueHandle: value
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\PresetDropdown
+  a17ce85e-50af-4a1c-b85d-5c528d304c90: # Alignment
+    columnSuffix: hfakcicc
+    contentColumnType: string
+    fieldGroup: null
+    handle: alignment
+    instructions: 'Use this field to define the alignment of the embed region.'
+    name: Alignment
+    searchable: false
+    settings:
+      newLabelFormat: '{{ label }}'
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Left
+            -
+              - value
+              - left
+        -
+          __assoc__:
+            -
+              - label
+              - Center
+            -
+              - value
+              - center
+        -
+          __assoc__:
+            -
+              - label
+              - Right
+            -
+              - value
+              - right
+      sourceGlobal: alignment
+      sourceLabelHandle: label
+      sourceValueHandle: value
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\PresetDropdown
+handle: htmlEmbed
+name: 'HTML Embed'
+sortOrder: 14

@@ -1,0 +1,10 @@
+columnSuffix: avtufcbk
+contentColumnType: integer
+fieldGroup: d1d877d6-8695-4cbb-8eda-fa0a9e729c90 # Author
+handle: form
+instructions: null
+name: Form
+searchable: false
+translationKeyFormat: null
+translationMethod: none
+type: Solspace\Freeform\FieldTypes\FormFieldType

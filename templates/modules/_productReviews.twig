@@ -1,0 +1,195 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'textContent': '',
+  'heading': '',
+  'product': '',
+  'manualSubmissions': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if product is defined %}
+  {% set productToReview = product %}
+{% elseif settings.product is not empty %}
+  {% set productToReview = settings.product.one %}
+{% else %}
+  {% set productToReview = false %}
+{% endif %}
+
+{% set replacementTokens = {
+  '{NAME}': currentUser and currentUser.firstName is not empty ? currentUser.firstName : currentUser ? currentUser : 'Guest'|t,
+  '{PRODUCT}': productToReview,
+} %}
+
+{% if settings.manualSubmissions is not empty %}
+  {% set submissions = settings.manualSubmissions %}
+{% elseif productToReview %}
+  {% set submissions = craft.freeform.submissions({
+    orderBy: "dateCreated DESC",
+    status: "open",
+    form: 'productReviewsForm',
+    fieldSearch: {
+      reviewProduct: productToReview.slug|literal,
+    }
+  }) %}
+{% else %}
+  {% set submissions = [] %}
+{% endif %}
+
+
+<div class="{{ component('moduleWidth', settings.config.handle, '') }}">
+
+  {% if settings.textContent is not empty or settings.heading.heading is not empty %}
+    <div class="mb-p50">
+      {% include 'components/_intro.twig' with { 'settings': {
+        'heading': settings.heading,
+        'intro': settings.textContent,
+        'type': settings.config.handle,
+      }} %}
+    </div>
+  {% endif %}
+
+  {% if submissions|length %}
+    {% set totalReviews = submissions.all()|length %}
+    <ul class="mb-p50" x-data="{ reviewsToDisplay: 3 }">
+      {% for submission in submissions.all() %}
+        {% set i = loop.index %}
+        <li class="py-p40 border-b border-terracotta first:pt-none" x-show="{{ i }} <= reviewsToDisplay" x-transition>
+          {% include 'components/_review.twig' with { 'settings': {
+            'subject' : submission.subject,
+            'rating' : submission.rating,
+            'date' : submission.dateCreated,
+            'message': submission.message,
+            'author': submission.formSubmissionUser,
+            'product': submission.reviewProduct,
+            'useLength': submission.howLongHaveYouBeenUsingThisProduct,
+            'photo': submission.reviewPhotos,
+            'guestFirstName': submission.firstNameHidden,
+            'guestLastName': submission.lastNameHidden,
+            'isBrandPartner': submission.isBrandPartner,
+          }} %}
+        </li>
+      {% endfor %}
+
+      {% include 'components/_button.twig'|siteInclude with { settings: {
+        'text'  : 'Load more reviews'|t,
+        'type'  : 'button',
+        'style' : 'arrow',
+        'icon'  : 'triangle-in-circle',
+        'iconAlign': 'left',
+        'class' : 'mt-p50',
+        'atts': {
+          '@click': 'reviewsToDisplay = reviewsToDisplay + 2',
+          'x-show': 'reviewsToDisplay < ' ~ totalReviews,
+        }
+      }} %}
+    </ul>
+  {% endif %}
+
+  {% if currentUser %}
+
+    {% set cardLargeContent %}
+      <div class="mq1280:flex items-center">
+        <div class="mb-p20 mq1280:mb-auto mq1280:pr-p40">
+          <h3 class="text-h5 font-normal mb-p16">{{ reviews.ctaHeadingUser|replace(replacementTokens) }}</h3>
+          <div class="c-content">
+            {{ reviews.ctaTextUser|replace(replacementTokens)|raw }}
+          </div>
+        </div>
+        {% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Leave a review',
+          'type'  : 'button',
+          'style' : 'terracotta',
+          'class' : 'w-full mq640:w-auto ml-auto',
+          'atts': {
+            '@click': "cModalTrigger($event, 'modalId-reviewForm', 'large')",
+            'type': 'button',
+            'x-data': '',
+          }
+        }} %}
+      </div>
+    {% endset %}
+  {% else %}
+    {% set cardLargeContent %}
+      <div class="mq1280:flex items-center">
+        <div class="mb-p20 mq1280:mb-none mq768:pr-p40">
+          <h3 class="text-h5 font-normal mb-p16">{{ reviews.ctaHeadingGuest|replace(replacementTokens) }}</h3>
+          <div class="c-content">
+            {{ reviews.ctaTextGuest|replace(replacementTokens)|raw }}
+          </div>
+        </div>
+        {% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Log in / Sign up'|t,
+          'type'  : 'button',
+          'style' : 'terracotta',
+          'class' : 'w-full mq640:w-auto mb-p10 mq768:mb-none ml-auto',
+          'atts': {
+            '@click': "cModalTrigger($event, 'modalId-registerSignIn')",
+            'type': 'button',
+            'x-data': '',
+          }
+        }} %}
+        {% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : 'Continue as guest'|t,
+          'type'  : 'button',
+          'style' : 'primary',
+          'class' : 'w-full mq640:w-auto mq768:ml-p10',
+          'atts': {
+            '@click': "cModalTrigger($event, 'modalId-reviewForm')",
+            'type': 'button',
+            'x-data': '',
+          }
+        }} %}
+      </div>
+    {% endset %}
+  {% endif %}
+
+  {% if productToReview %}
+    <template id="modalId-reviewForm" x-comp="reviewForm">
+      <div x-data="reviewForm({ showReviewForm: {{ currentUser ? 'true' : 'false' }} })" x-ref="reviewForm">
+
+        <div x-show="showReviewForm" transition>
+          <div class="bg-white px-p20 rounded-2xl mq768:px-p40 py-p64 relative w-full">
+            {{ craft.freeform.form("productReviewsForm").render({
+              overrideValues: {
+                formSubmissionUser: currentUser ? currentUser.username : 'Guest'|t,
+                firstNameHidden: currentUser ? currentUser.firstName is not empty ? currentUser.firstName : '',
+                lastNameHidden: currentUser ? currentUser.lastName is not empty ? currentUser.lastName : '',
+                emailHidden: currentUser ? currentUser.email is not empty ? currentUser.email : '',
+                reviewProduct: productToReview.slug,
+              }
+            }) }}
+          </div>
+        </div>
+
+        <div x-show="!showReviewForm" transition>
+          <div class="bg-white px-p20 rounded-2xl mq768:px-p40 py-p64 relative">
+            {{ craft.freeform.form("guestInfo").render({
+              formAttributes: {
+                "x-on:submit": "formSubmit()"
+              },
+              overrideValues: {
+                productReviewed: productToReview.id,
+              },
+            }) }}
+          </div>
+        </div>
+      </div>
+    </template>
+
+    {% include 'components/_cardLarge' with { 'settings': {
+      'showDivider': false,
+      'decoration': 'horizontalBrush',
+      'cardContent': cardLargeContent,
+    }} %}
+  {% else %}
+    {% if craft.app.request.isPreview %}
+      <p>You must select a product.</p>
+    {% endif %}
+  {% endif %}
+</div>

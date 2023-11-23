@@ -1,0 +1,106 @@
+/* --------------------------------- *
+ * TYPOGRAPHY
+ * --------------------------------- */
+
+// body {
+// 	color: $black;
+// 	font: 400 118.5%/1.65 $font;
+// 	-webkit-font-smoothing: antialiased;
+// 	text-rendering: optimizeLegibility;
+// }
+
+// p, li {
+// 	font-size: 1rem;
+// 	line-height: 1.5;
+// }
+
+// p {
+// 	margin-bottom: $spacing;
+// 	&:last-child {
+// 		margin-bottom: 0;
+// 	}
+// }
+
+// pre, code {
+// 	font-size: 1rem;
+// 	font-family: 'Courier', monospace;
+// }
+
+// -----------------------------------------------------[ HEADINGS ]
+// -----------------------------------------------------[ HEADINGS ]
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	@apply font-title font-light leading-md;
+}
+
+h1, .h1 {
+	@apply text-p35 mq480:text-p40 mq768:text-h1 leading-h;
+}
+
+h2, .h2 {
+	@apply text-p26 mq480:text-h2 leading-h;
+}
+
+h3, .h3 {
+	@apply text-p20 mq480:text-h3 leading-h;
+}
+
+h4, .h4 {
+	@apply text-lg mq480:text-h4 leading-h;
+}
+
+h5, .h5 {
+	@apply font-normal mq480:text-h5 leading-tn;
+}
+
+h6, .h6 {
+	@apply text-bd font-normal;
+}
+
+// // -----------------------------------------------------[ BASIC LINKS ]
+// a:not([class]) {
+// 	display: inline;
+// 	color: $brand;
+// 	text-decoration: none;
+
+// 	@include transition(normal,color);
+
+// 	@include interact {
+// 		text-decoration: none;
+// 		color: $accent;
+// 	}
+// }
+
+// // -----------------------------------------------------[ LISTS ]
+// ul, ol {
+// 	padding: 0;
+// 	margin: 0;
+
+// 	&:not([class]) {
+// 		padding-left: $spacing;
+// 		margin: 0 0 $spacing;
+// 	}
+// }
+
+// // -----------------------------------------------------[ TABLES ]
+// table {
+// 	width: 100%;
+// 	table-layout: fixed;
+// 	margin: $spacing 0;
+// }
+
+// thead {
+// 	tr {
+// 		background-color: $grey;
+// 	}
+
+// 	th {
+// 		color: $black;
+// 		font-weight: 600;
+// 	}
+// }
+
+// td, th {
+// 	vertical-align: top;
+// 	padding: 0.5rem 1rem;
+// 	border: 1px solid $grey;
+// }

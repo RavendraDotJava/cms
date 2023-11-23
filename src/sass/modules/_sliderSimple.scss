@@ -1,0 +1,12 @@
+.dots button {
+  @apply inline-block rounded-full transition-colors w-p16 h-p16 bg-white overflow-hidden mx-p8 cursor-pointer focus:outline-none focus:bg-terracotta hover:bg-terracotta;
+  text-indent: -9999px;
+}
+
+.slick-active button {
+  @apply bg-terracotta;
+}
+
+.slick-sr-only {
+  @apply sr-only;
+}

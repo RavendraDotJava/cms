@@ -1,0 +1,38 @@
+changedFieldIndicator: 1052929160
+field: e892298c-0e56-492b-b94d-134ff89c90ae # Payment Icons
+fieldLayouts:
+  9ea355c9-5e3a-4436-a4a7-15b9f6b14608:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: af65b24a-23cb-4955-b1f5-c27eda84b228 # Icon
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8f181aa4-388f-405a-b87c-11600fd45d1d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 3eae8ba7-a4e5-4e73-90ad-61709edec993
+        userCondition: null
+fields:
+  af65b24a-23cb-4955-b1f5-c27eda84b228: # Icon
+    columnSuffix: lpwbdtyj
+    contentColumnType: string
+    fieldGroup: null
+    handle: icon
+    instructions: null
+    name: Icon
+    searchable: false
+    settings:
+      sets:
+        - UI-profile
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Icon

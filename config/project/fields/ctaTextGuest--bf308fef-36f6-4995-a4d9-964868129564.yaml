@@ -1,0 +1,22 @@
+columnSuffix: ohsmqymq
+contentColumnType: text
+fieldGroup: e54d5633-67e4-4147-ac0a-daecea3240dc # Review
+handle: ctaTextGuest
+instructions: 'Use this field to enter the CTA text for a guest user.'
+name: 'CTA Text (Guest)'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  initialRows: 2
+  manualConfig: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  trimEmptyParagraphs: true
+  vizyConfig: Simple.json
+translationKeyFormat: null
+translationMethod: none
+type: verbb\vizy\fields\VizyField

@@ -1,0 +1,48 @@
+fieldLayouts:
+  b873be4a-6540-4d60-8cb7-f9bb14b56a62:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 305c3ba1-4ab0-4c00-9caa-581b64b6dac2 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2aaa1d3d-9aa3-45b7-91ae-7d2d38f5a340
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 38698c8a-f6b7-40b5-bf68-1a145001d2d6 # Intro Paragraph
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6c5247f0-21d6-44e8-aca6-89e8c7e6a475
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f7b31e70-1186-4058-aedb-0f579872cd6c # Buttons
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 79520f42-2310-44a6-bc94-d7927d7814b8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Header
+        uid: 5e02f9e9-8671-4e70-b084-c3a603b4777c
+        userCondition: null
+handle: notFound
+name: '404'
+sortOrder: 3

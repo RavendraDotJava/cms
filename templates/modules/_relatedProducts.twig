@@ -1,0 +1,64 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'textContent' : '',
+  'cards': '',
+  'button': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+
+<section class="{{ component('moduleWidth', settings.config.handle, 'mq1024:flex') }}">
+
+  <div class="mb-p50 mq1024:order-2 mq1024:w-2/5 mq1280:w-1/2 mq1024:pl-p40 mq1280:pl-p100" x-comp="gsapGlobal" x-data="gsapGlobal()" x-init="gsapFadeIn()" x-ref="scrollTrigger">
+    {# Intro #}
+    {% if settings.textContent is not empty or settings.heading is not empty %}
+      {% include 'components/_intro.twig' with { 'settings': {
+        'heading': settings.heading,
+        'intro': settings.textContent,
+        'type': settings.config.handle,
+      }} %}
+    {% endif %}
+
+    {# Button #}
+    {% if not settings.button.isEmpty() %}
+      <div class="mt-p32 max-w-p768 mx-auto">
+        {% include 'components/_button' with { 'settings': {
+           'text': settings.button.text,
+           'href': settings.button.url,
+           'style': 'white'
+        }} %}
+      </div>
+    {% endif %}
+  </div>
+
+
+  {# Cards #}
+  {% if settings.cards is not empty %}
+  <div class="max-w-p768 mx-auto mq1024:order-1 mq1024:w-3/5 mq1280:w-1/2" x-comp="gsapGlobal" x-data="gsapGlobal()" x-ref="scrollTrigger">
+    <div class="mq640:flex mq640:-mx-p8 justify-center">
+      {% for card in settings.cards.all() %}
+        <div class="w-full mx-auto mq1024:w-1/2 px-p8" x-init="gsapFadeIn()">
+          {% include 'components/_productCard' with { 'settings': {
+            'heading' : card.title,
+            'headingLevel': 'h3',
+            'textContent' : card.productDescriptionBrief,
+            'product': card,
+            'image': card.media is not empty ? card.media.one : false,
+            'url': card.url,
+            'buttonText': card.cardButtonText,
+          }} %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+
+</section>

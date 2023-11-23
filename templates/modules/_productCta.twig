@@ -1,0 +1,103 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : 'Order Now'|t,
+  'product' : product,
+  'buttonText': 'Add to cart'|t,
+  'textContent': '',
+  'showQuantity': false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div class="{{ component('moduleWidth', settings.config.handle) }}">
+    <div class="{{ component('roundedCard', 'productCta', 'relative') }}">
+
+      <div class="text-center mq768:text-left relative z-20 max-w-2xl">
+        {% if settings.heading is not empty %}
+          <h3 class="text-p30 mq768:text-p40 font-normal mq768:font-light mb-p24">{{ settings.heading }}</h3>
+        {% endif %}
+
+        {% if settings.textContent is not empty %}
+          <div class="c-content mb-p24">
+            <p>{{ settings.textContent }}</p>
+          </div>
+
+        {% endif %}
+      </div>
+
+      <form method="post" class="flex flex-col mq480:flex-row mq480:-mx-p8 items-center flex-wrap mq768:flex-nowrap relative z-20">
+        {{ csrfInput() }}
+        {{ actionInput('commerce/cart/update-cart') }}
+        {{ successMessageInput('{product} added to cart.'|t({
+          product: settings.product.title
+        })) }}
+
+        {% if settings.product.getVariants()|length > 1 %}
+          <div class="mq480:mx-p8 mq480:flex-1 w-full mb-p20 mq480:mb-none relative">
+            {% tag 'select' with {
+              name: 'purchasableId',
+              class: component('input', false, ''),
+              } %}
+              {% for variant in settings.product.getVariants() %}
+                {{ tag('option', {
+                  value: variant.id,
+                  text: variant.title ~ ' - ' ~ variant.salePriceAsCurrency,
+                }) }}
+              {% endfor %}
+            {% endtag %}
+            {{ helpers.icon('chevron-down', 'w-p14 h-p14 fill-basalt absolute right-p24 top-1/2 -translate-y-1/2') }}
+          </div>
+        {% else %}
+          {{ hiddenInput('purchasableId', settings.product.defaultVariant.id) }}
+        {% endif %}
+        {% if settings.showQuantity %}
+          <div class="flex items-center mx-p8 grow-0 shrink-0">
+            <label class="mr-p8 font-normal">{{ "Qty:" }}</label>
+            {{ input('number', 'qty', 1, {
+                class: component('input', 'number', ''),
+                step: 1,
+                min: 1,
+                placeholder: 'Quantity'|t
+              }) }}
+          </div>
+        {% endif %}
+        <div class="w-full mq768:w-auto text-center mt-p20 mq768:mt-none">
+          {% include 'components/_button' with { 'settings': {
+            'text'  : settings.buttonText is not empty ? settings.buttonText : 'Add to cart'|t,
+            'type'  : 'button',
+            'style' : 'terracotta',
+            'class' : 'mx-auto',
+            'disabled' : false,
+            'atts' : {
+              'type': 'submit',
+            },
+            'icon'  : 'cart-alt',
+            'iconAlign' : 'right',
+            'iconReact': false,
+          }} %}
+        </div>
+
+      </form>
+
+      <div class="absolute right-0 inset-y-0 z-10 overflow-hidden rounded-r-p20 hidden mq768:block w-p230 min-h">
+        {% include 'svg/_horizontalBrush' with {'settings': {
+          'classes': 'absolute left-0 inset-y-0 h-full w-auto min-h-p288'
+        }} %}
+      </div>
+
+      <div class="absolute bottom-0 inset-x-0 h-p100 z-10 overflow-hidden rounded-b-p20 mq768:hidden">
+        {% include 'svg/_verticalBrush' with {'settings': {
+          'classes': 'relative w-full h-auto top-full -translate-y-p100'
+        }} %}
+      </div>
+
+    </div>
+
+    <div class="mt-p100 w-full h-p10 bg-sand"></div>
+</div>
+

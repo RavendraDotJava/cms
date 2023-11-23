@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * ccdocsmodule module for Craft CMS
+ *
+ * CcdocsmoduleWidget Widget Settings
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2022 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   Ccdocsmodule
+ * @since     1.0,0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("modules\\ccdocsmodule\\assetbundles\\ccdocsmodule\\CcdocsmoduleAsset") %}
+
+{{ forms.textField({
+    label: 'Message',
+    instructions: 'Enter a message here.',
+    id: 'message',
+    name: 'message',
+    value: widget['message']})
+}}

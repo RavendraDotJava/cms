@@ -1,0 +1,83 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : false,
+  'intro' : '',
+  'cards': '',
+  'button': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div class="{{ component('moduleWidth', settings.config.handle, '') }}" x-comp="gsapGlobal" x-data="gsapGlobal()" x-init="gsapFadeIn()" x-ref="scrollTrigger">
+
+  {# Intro #}
+  {% if settings.intro is not empty or settings.heading is not empty %}
+    {% include 'components/_intro.twig' with { 'settings': {
+      'heading': settings.heading,
+      'intro': settings.intro,
+      'type': settings.config.handle,
+    }} %}
+  {% endif %}
+
+  {# Cards #}
+  {% if settings.cards is not empty %}
+
+    <div class="mq1024:flex flex-wrap mq640:-mx-p8 mq1024:-mx-p16 justify-center">
+      {% for card in settings.cards.all() %}
+        {% set cardBg = card.backgroundColour.color[0].background %}
+        <div class="px-p16 mb-p16 mq1024:w-1/2 shrink-0">
+          <a href="{{ card.cardLink.url }}" class="{{ component('contentCard', '', 'bg-white') }}">
+
+            {# Background Layer #}
+            <div class="absolute inset-0 z-1 rounded-2xl transition-opacity opacity-80 group-hover:opacity-100 group-focus:opacity-100 {{ cardBg }}"></div>
+
+            {# Content Layer #}
+            <div class="relative z-10 mq640:w-3/5">
+              {% if card.readLength and card.cardLink.hasElement() %}
+                {% set linkedElement = card.cardLink.getElement() %}
+                {% set contentModules = linkedElement.contentModules.all() %}
+
+                {% for module in contentModules %}
+                  {% if module.type.handle == 'contentWell' %}
+                    {% set text = module.contentWell %}
+                    <p class="text-lg mb-p20">{{ helpers.readTime(text) }} {{ 'read'|t }}</p>
+                  {% endif %}
+                {% endfor %}
+
+              {% endif %}
+              <h3 class="font-normal">{{ card.cardLink.text }}</h3>
+            </div>
+
+            {# Image Layer #}
+            {% if card.image is not empty %}
+              <div class="w-full mq640:w-3/5 relative mq640:absolute -bottom-p50 -right-p50 mq640:right-0 mq640:inset-y-0 z-2 flex items-end justify-end rounded-r-2xl overflow-hidden">
+
+                {% include 'components/_image.twig'|siteInclude with { settings: {
+                  'image' : card.image.one,
+                  'format' : 'fit',
+                  'class': 'h-full',
+                  'imageClass': 'h-full w-auto'
+                }} %}
+              </div>
+            {% endif %}
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {# Button #}
+  {% if not settings.button.isEmpty() %}
+    <div class="text-center mt-p32">
+      {% include 'components/_button' with { 'settings': {
+         'text': settings.button.text,
+         'href': settings.button.url,
+      }} %}
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,20 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'text' : '',
+  'describes' : '',
+  'id' : ''
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<span class="relative inline-flex items-center ml-p8 h-p16" x-comp="tooltip" x-data="tooltip()" @click.away="show=false" @resize.window="onResize()">
+  <button class="relative inline text-btn w-p16 h-p16" x-ref="button" @click="onClick()" :aria-hidden="show?'false':'true'" aria-controls="{{ settings.id }}">
+    <svg role="presentation" class="c-icon block w-p16 h-p16" :class="show ? 'fill-brand' : 'fill-rule'"><use xlink:href="/ui/icons.svg?w522115534#icon-tooltip"></use></svg>    
+    <span class="sr-only">{{ 'More info'|t }}</span></button>
+  <span class="c-tooltip block absolute bottom-full left-1/2 w-p256" x-show="show" x-cloak role="tooltip" id="{{ settings.id }}" :class="setClasses()" aria-describes="{{ settings.describes }}"><span class="p relative block bg-white text-segment py-p16 px-p24 rounded-sm text-sm leading-c140">{{ settings.text }}</span></span>
+</span>

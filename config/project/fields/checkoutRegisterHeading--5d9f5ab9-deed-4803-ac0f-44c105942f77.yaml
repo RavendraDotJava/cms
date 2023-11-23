@@ -1,0 +1,58 @@
+columnSuffix: uxikdvrm
+contentColumnType: string
+fieldGroup: 6f4fa5af-dc3c-425b-9183-f24f31360424 # Checkout
+handle: checkoutRegisterHeading
+instructions: null
+name: 'Checkout Register Heading'
+searchable: false
+settings:
+  defaults:
+    __assoc__:
+      -
+        - levels
+        -
+          __assoc__:
+            -
+              - h1
+              - H1
+            -
+              - h2
+              - H2
+            -
+              - h3
+              - H3
+            -
+              - h4
+              - H4
+      -
+        - sizing
+        -
+          __assoc__:
+            -
+              - default
+              - Default
+            -
+              - h1
+              - H1
+            -
+              - h2
+              - H2
+            -
+              - h3
+              - H3
+            -
+              - h4
+              - H4
+            -
+              - h5
+              - H5
+  heading: ''
+  levelDefault: h1
+  levels: ''
+  sizing:
+    - h1
+    - h2
+  sizingDefault: h2
+translationKeyFormat: null
+translationMethod: none
+type: modules\ccfieldsmodule\fields\Heading

@@ -1,0 +1,42 @@
+{% extends "_layouts/cp" %}
+{% set title = "Introduction to Craft"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+      <p class="large">Craft CMS is the content management system that powers the Dig Insights and Upsiide websites. It allows content editors to create pages, resources and other forms of content through a consistent interface.</p>
+      <p>Unlike some other content management systems, Craft makes no specific assumptions about the nature of the site’s content. Instead, it provides the pieces required to build a purposeful content architecture that meets the site’s unique needs. These structures are then combined with a powerful templating engine and supplemented with plugins and custom modules where additional functionality is required.</p>
+    </section>
+    <section id="dashboard">
+      <h2>Dashboard</h2>
+      <p>The dashboard is the default view when first logging into the Craft admin. It contains a collection of widgets that provide a general overview of the site. Users can customize these widgets to provide a more personalized view.</p>
+      <p>One of the widgets which can be added to the dashboard is a documentation widget featuring quick links to key documentation articles.</p>
+    </section>
+    <section id="entries">
+      <h2>Entries</h2>
+      <p>The entries section is where the vast majority of content will reside. Here, you can find existing entries and add new entries to the site. For more information on entries, refer to the Sections &amp; Entries documentation.</p>
+    </section>
+    <section id="entries">
+      <h2>Globals</h2>
+      <p>The Globals section is where various site-wide settings can be defined. For more information on the specific settings in this section, refer to the Globals documentation.</p>
+    </section>
+    <section id="entries">
+      <h2>Assets</h2>
+      <p>The Assets section is where various media assets reside. Here, you can find collections of images, logos, documents and videos for embedding. For more information, refer to the Assets documentation.</p>
+    </section>
+    <section id="entries">
+      <h2>Navigation</h2>
+      <p>The Navigation section is where the site’s various menus are defined. For more information, refer to the Navigation documentation.</p>
+    </section>
+    <section id="entries">
+      <h2>SEOmatic</h2>
+    </section>
+  </div>
+{% endblock %}

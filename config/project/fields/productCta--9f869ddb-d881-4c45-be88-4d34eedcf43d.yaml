@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 0166bfae-8627-47ea-9ab1-c9cc949d3ee5 # Product
+handle: productCta
+instructions: 'A product CTA contains the product variants select list and the add to cart button.'
+name: 'Product CTA'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_productcta}}'
+  maxBlocks: 1
+  minBlocks: null
+  propagationKeyFormat: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

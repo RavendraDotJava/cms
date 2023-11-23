@@ -1,0 +1,65 @@
+{% import 'partials/_macros' as helpers %}
+
+{% if product.backgroundMedia is not empty  %}
+  {% set media = product.backgroundMedia.one %}
+  <div class="absolute w-full h-auto inset-x-0 top-0 overflow-x-clip">
+    <div class="absolute inset-0 bg-seamless-gradient z-2 -mb-p2"></div>
+    {% if media.videoFile is not empty %}
+      {% include 'components/_videoBackground.twig' with { 'settings': {
+        'videoPrimary': media.videoFile.one.url,
+        'videoSecondary': media.videoFileSecondary is not empty ? media.videoFileSecondary.one.url : '',
+        'videoWidth': '1920',
+        'videoHeight': '1080',
+        'classes': 'max-w-none mq:1024:min-w-full mq1920:w-full relative mq1024:relative z-1 left-1/2 -translate-x-1/2',
+      }} %}
+    {% else %}
+      <div>
+        {% include 'components/_image.twig'|siteInclude with { settings: {
+          'image' : media,
+          'format' : 'heroFit',
+          'imageClass': 'max-w-none mq1280:max-w-full w-full relative mq1280:relative z-1 left-1/2 -translate-x-1/2'
+        }} %}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+<section class="{{ component('modulePadding', false, 'py-p32 relative z-20') }}">
+  <div class="{{ component('moduleWidth', false, 'grid gap-p32 grid-cols-1 mq768:grid-cols-2 pt-headerSm mq768:pt-headerLg') }}">
+
+    <div>
+      <h1 class="mb-p32 text-p35 mq768:text-p60">{{ product.title }}</h1>
+
+      {% if product.productDescriptionDetailed is not empty %}
+        <div class="c-content">{{ product.productDescriptionDetailed }}</div>
+      {% endif %}
+
+      {% if product.benefits is not empty %}
+        {% include 'components/_cardList.twig' with { 'settings': {
+          'heading': product.benefits.heading,
+          'cards': product.benefits.benefits,
+          'classes': 'mq768:mt-p100',
+        }} %}
+      {% endif %}
+    </div>
+
+    {% if product.productImages is not empty %}
+
+      {% set slides = [] %}
+      {% for image in product.productImages.all() %}
+        {% set slides = slides|merge([
+          {
+            'image' : image,
+            'content': '',
+          }
+        ]) %}
+      {% endfor %}
+
+      {% include 'components/_sliderSimple.twig'|siteInclude with { settings: {
+        'id' : 'product-images',
+        'slides' : slides,
+      }} %}
+
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,44 @@
+{% extends "_layouts/cp" %}
+{% set title = "Field: Heading"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+  {
+    label: 'Fields'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/fields/'),
+  }  
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+
+      <p>The heading field is a custom field specifically for managing headings across modules. For the most part, it operates as a plain text field, but with a couple of additional bits of functionality.</p>
+
+      <h3>Automated Heading Structure</h3>
+      <p>First, the heading field is tied directly to a custom heading management system. Some modules, like the Cards module, allow for an overarching heading and individual headings for each item within the module. In order to maintain proper heading hierarchy, the item headings need to be a level below the main heading.</p>
+      <p>For example, if the module heading is an &lt;h2&gt;, the headings for all the child items should be an &lt;h3&gt;. However, if the main heading is omitted, using &lt;h3&gt; tags for the item headings would no longer be appropriate.</p>
+      <p>The heading field helps in this regard by providing methods that the templates can use to determine the appropriate heading tag based on the context.</p>
+
+      <h3>Adjustable Heading Structure</h3>
+      <p>There are rare situations in which it makes semantic sense for one module's content to fit structurally beneath a previous module. In this case, we would want to adjust the heading level. Again, the heading field can help in this regard through the level dropdown.</p>
+      {{ getDocumentationImage('field-heading.png') }}
+      <p>We can use this dropdown to define the tag applied to the heading. For example, we could configure the heading to use an &lt;h3&gt; tag to make it structurally connected to the previous module. </p>
+      <div class="readable"><blockquote class="note"><b>Note:</b> This functionality should be used with extreme care, as misuse can result in a page with an incorrect heading structure, which can result in accessibility issues. It should only ever be used to make slight adjustments and never for strictly visual changes.</blockquote></div>
+
+      <h3>Emphaized Text</h3>
+      <p>The final bit of functionality that the heading field provides is a means of adding visual emphasis to a heading. This can be accomplished by simply adding asterisk characters to the heading text.</p>
+      <p>By way of example, let's use the following heading:</p>
+      <ul>
+        <li>Heading with *emphasized text*.</li>
+      </ul>
+      <p>The heading field adds custom CSS classes that then allow the output to appear as something like:</p>
+      <ul>
+        <li>Heading with  <span class="highlight">emphasized text</span>.</li>
+      </ul>
+    </section>
+  </div>
+{% endblock %}

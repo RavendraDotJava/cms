@@ -1,0 +1,19 @@
+columnSuffix: ibdtyuxv
+contentColumnType: text
+fieldGroup: a952bf2b-b44b-4581-bf77-5a1b7d885121 # User
+handle: deactivateConfirmationMessage
+instructions: 'Enter a message to display to the user when confirming if they want to deactivate their account.'
+name: 'Deactivate Confirmation Message'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: 'Deactivating your account results in you not being able to sign in. Are you sure you want to continue?'
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

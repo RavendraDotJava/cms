@@ -1,0 +1,12 @@
+{
+  "toolbarFixed": true,
+  "buttons": [
+    "italic",
+    "bold",
+    "link",
+    "unordered-list",
+    "ordered-list",
+    "undo",
+    "redo"
+  ]
+}

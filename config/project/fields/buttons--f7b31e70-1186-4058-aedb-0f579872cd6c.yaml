@@ -1,0 +1,37 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 1901e8d3-2a7e-47ef-94ec-a27c6f4346e2 # Header
+handle: buttons
+instructions: 'Use this field to add optional buttons to the page header for this entry.'
+name: Buttons
+searchable: false
+settings:
+  blockTypeFields: 0
+  changedFieldIndicator: 1927215440
+  columns:
+    __assoc__:
+      -
+        - c3f2eb96-80e7-4395-b9bf-db4775fb4bb9 # Button
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - b03ddbec-637d-4a46-bab0-032178db88eb # Button Style
+        -
+          __assoc__:
+            -
+              - width
+              - 120px
+  contentTable: '{{%stc_buttons}}'
+  fieldLayout: table
+  maxRows: null
+  minRows: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  selectionLabel: null
+  staticField: null
+translationKeyFormat: null
+translationMethod: none
+type: verbb\supertable\fields\SuperTableField

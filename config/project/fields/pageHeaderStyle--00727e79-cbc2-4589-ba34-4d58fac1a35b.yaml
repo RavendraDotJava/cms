@@ -1,0 +1,32 @@
+columnSuffix: sqelwlni
+contentColumnType: string
+fieldGroup: 1901e8d3-2a7e-47ef-94ec-a27c6f4346e2 # Header
+handle: pageHeaderStyle
+instructions: 'This will set the style for the page header.'
+name: 'Page Header Style'
+searchable: false
+settings:
+  newLabelFormat: '{{ label }}'
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Seamless Background'
+        -
+          - value
+          - seamless
+    -
+      __assoc__:
+        -
+          - label
+          - 'Background with border'
+        -
+          - value
+          - bgBorder
+  sourceGlobal: pageHeaderStyle
+  sourceLabelHandle: label
+  sourceValueHandle: value
+translationKeyFormat: null
+translationMethod: none
+type: modules\ccfieldsmodule\fields\PresetDropdown

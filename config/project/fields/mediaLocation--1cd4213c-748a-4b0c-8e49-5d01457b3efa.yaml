@@ -1,0 +1,19 @@
+columnSuffix: comeoqpo
+contentColumnType: text
+fieldGroup: 057f05bc-e4bf-4c08-94e8-1e40cc56bea7 # Media
+handle: mediaLocation
+instructions: 'Use this field to enter location details about this asset.'
+name: 'Media Location'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

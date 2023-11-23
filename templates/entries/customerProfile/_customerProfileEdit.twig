@@ -1,0 +1,52 @@
+{% import 'partials/_macros' as helpers %}
+
+{% if currentUser %}
+
+<div class="mq768:flex">
+
+  <div class="mb-p40 text-center">
+    {% include 'components/_userPhoto.twig' with { 'settings': {
+      'classes' : 'w-p256 h-p256',
+      'fontSize': 'text-h1',
+      'imgSize': 300,
+      'id': 'user-photo-large',
+    }} %}
+  </div>
+
+  <div class="mq768:ml-p50 flex-1">
+
+    {% if not entry.linkField.isEmpty() %}
+      {% include 'components/_button.twig'|siteInclude with { settings: {
+        'text'  : entry.linkField.text,
+        'type'  : 'link',
+        'href'  : entry.linkField.url,
+        'style' : 'arrow',
+        'class' : 'mr-p8 mb-p50',
+        'icon'  : 'triangle-in-circle-left',
+        'iconAlign' : 'left',
+      }} %}
+    {% endif %}
+
+    <div class="mb-p40">
+      {% if entry.checkoutHeading is not empty %}
+        {{ entry.checkoutHeading.set({class: 'mb-p10'})|raw }}
+      {% endif %}
+
+      {% if entry.checkoutText is not empty %}
+        <div class="c-content">
+          {{ entry.checkoutText }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% include 'form/forms/_customerProfileEdit.twig' with { 'settings': {
+      'redirectUrl' : entry.formSubmissionRedirect.one is not null ? entry.formSubmissionRedirect.one.uri,
+      'successMessage': entry.formSuccessMessage,
+      'buttonText': entry.formSubmitButtonText,
+    }} %}
+
+  </div>
+</div>
+{% else %}
+    {# Anonymous user stuff here #}
+{% endif %}

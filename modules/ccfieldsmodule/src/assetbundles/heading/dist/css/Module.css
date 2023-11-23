@@ -1,0 +1,25 @@
+/**
+ * CCFields module for Craft CMS
+ *
+ * Instructions Field CSS
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2021 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   CCFieldsModule
+ * @since     1.0.0
+ */
+
+.heading-field {
+  display: flex;
+  align-items: start;
+}
+
+.heading-field .heading-segment {
+  padding-top: 20px;
+  width: 100%;
+}
+
+.heading-field .select-segment {
+  padding-left: 16px;
+}

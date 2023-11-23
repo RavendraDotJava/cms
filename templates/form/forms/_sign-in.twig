@@ -1,0 +1,87 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'buttonClass': '',
+  'id': 'formSignIn',
+  'showForgotPw': true,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set user = user ?? null %}
+
+{# Check if attempted login was a pending user account #}
+{% if craft.app.request.getParam('user') %}
+  {% set attemptedLogin = craft.app.request.getParam('user') %}
+  {% set userEmail = craft.users().email(attemptedLogin).one() %}
+  {% set notice = userGlobal.pendingActivationNotice is not empty ? userGlobal.pendingActivationNotice : 'Your account has not yet been verified. Please check your email for an activation link.'|t %}
+
+  {% if userEmail %}
+    {% if userEmail.status() == 'pending' %}
+      {% do craft.app.session.setFlash('error', notice) %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+
+{% import 'partials/_macros' as helpers %}
+<form method="post" action="" accept-charset="UTF-8" class="w-full" id="{{ settings.id ? settings.id }}">
+  {{ csrfInput() }}
+  {{ actionInput('users/login') }}
+  {{ redirectInput(redirectUrl ?? '') }}
+
+    <div x-data="{ thisPage: new URL(window.location.href) }" x-init="">
+      {% include 'form/items/_input' with { 'settings': {
+        'type': 'text',
+        'id': 'loginName',
+        'label': 'Email / Username'|t,
+        'value': craft.app.user.getRememberedUsername(),
+        'atts': {
+          'class': component('input', 'large', ''),
+          'required': true,
+          'placeholder': 'email@site.com'|t,
+          'x-on:change': "thisPage.searchParams.set('user', $el.value); window.history.pushState(null, '', thisPage)"
+        }
+      }} %}
+      {{ user ? helpers.errorList(user.getErrors('loginName')) }}
+    </div>
+
+    {% include 'form/items/_input' with { 'settings': {
+      'type': 'password',
+      'id': 'password',
+      'label': 'Password'|t,
+      'value': null,
+      'atts': {
+        'class': component('input', 'large', ''),
+        'required': true,
+        'placeholder': 'Password'|t,
+      }
+    }} %}
+    {{ user ? helpers.errorList(user.getErrors('password')) }}
+
+  {% if settings.showForgotPw %}
+  <div class="mb-p32">
+    <button type="button" class="inline-block  hover:underline focus:underline" x-on:click="visible = 'forgotPW'">{{- 'Forgot your password?'|t -}}</button>
+  </div>
+  {% endif %}
+
+  <div class="mb-p32">
+    <label class="inline-block hover:underline focus:underline cursor-pointer">
+      {{ input('checkbox', 'rememberMe', 1, {
+        'checked': true,
+        'class': component('checkbox', false, '')
+      }) }}
+      <span class="font-normal text-lg">{{ 'Remember me'|t }}</span>
+    </label>
+  </div>
+
+  {{ tag('button', {
+    type: 'submit',
+    class: component('button', false, settings.buttonClass),
+    text: 'Sign in'|t
+  }) }}
+</form>

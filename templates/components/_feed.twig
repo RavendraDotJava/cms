@@ -1,0 +1,112 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'type' : 'posts',
+  'featured' : false,
+  'exclude' : [],
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set config = feedConfig(settings.type, entry) %}
+{% set feedId = settings.type ~ '-feed' %}
+
+<div class="mb-p24 relative z-30 {{ component('modulePadding', 'feed') }}" x-comp="feed" x-data="feed({id: {{ entry.id }},filters: {{ config['filtersJs'] }},feed:'{{ settings.type }}',exclude:{{ settings.exclude is not empty ? '[' ~ settings.exclude|join(',') ~ ']' : 'false' }} })" @resize.window="onResize()">
+  <div class="mq1024:flex max-w-7xl mx-auto">
+    {% if config['filters'] is iterable %}
+
+      <!-- Filters -->
+      <div class="mq480:absolute mq480:left-0 mq480:top-0 mq480:h-full" @click.outside="showFilters = false">
+
+        <div class="mq480:absolute mq480:top-p20 z-10 mq480:rounded-r-2xl mq480:shadow-card-lg transition-all duration-500 self-start mq480:-translate-x-p370" :style="showFilters && !isMobile ? 'transform: translateX(0);' : ''" x-ref="filters">
+
+          <div class="mq480:w-p80 mq480:absolute mq480:right-0 mq480:inset-y-0">
+            <button id="{{ feedId }}-button"
+                    class="relative h-full font-normal w-full border-l border-l-sand transition-colors bg-white rounded-xl mq480:rounded-l-none p-p16 focus:outline-0"
+                    @click="toggleFilters()" aria-controls="{{ feedId }}-controls"
+                    :aria-expanded="showFilters || !isMobile"
+                    tabindex="isMobile ? 0 : -1"
+                    :class="showFilters ? 'rounded-b-none mq480:rounded-br-xl' : 'rounded-b-xl'">
+
+              <div class="mq480:rotate-90 mq480:whitespace-nowrap mq480:absolute mq480:top-p20 mq480:left-p30 origin-bottom-left flex items-center">
+                {{ helpers.icon('filters', 'fill-terracotta w-p24 h-p24 mr-p8') }}
+                <span class="text-h4">{{ config['filtersTitle']|t }}</span>
+                <span x-show="isMobile" class="ml-auto transform origin-center transition-transform duration-300" :class="showFilters ? '-rotate-90' : 'rotate-90'">{{ helpers.icon('chevron-right', 'fill-terracotta w-p18 h-p18') }}</span>
+              </div>
+              <span x-show="!isMobile" class="origin-center transition-transform duration-300 absolute bottom-p40 left-1/2 -translate-x-1/2" :class="showFilters ? '-rotate-180' : ''">{{ helpers.icon('chevron-right', 'fill-terracotta w-p20 h-p20') }}</span>
+            </button>
+          </div>
+
+          <div class="mq480:w-p450 bg-white rounded-b-2xl mq480:rounded-r-2xl mq480:pr-p80">
+            <form id="{{ feedId }}-controls" class="c-feed-form flex justify-start pl-p50 pr-p30" aria-labelledby="{{ feedId }}-button" x-show="showFilters || !isMobile" x-ref="form" @submit="doFilter($event)" x-bind:aria-hidden="!showFilters && isMobile" x-collapse.duration.500ms>
+              <div class="py-p50">
+                <div>
+                {% for index, group in config['filters'] %}
+                {% if group['filters'] is not empty %}
+                <fieldset class="sm:flex flex-wrap mq1024:block mb-p32">
+                  {% if group['heading'] is defined %}<legend class="text-p22 font-normal mb-p16">{{ group['heading'] }}</legend>{% endif %}
+                  {% for filter in group['filters'] %}
+                    <span class="flex items-start mb-p16 mr-p32">
+                      {% set type = 'checkbox' %}
+                      {% set name = 'filters[' ~ group['id'] ~ '][]' %}
+                      {% if group['type'] == 'years' %}
+                        {% set type = 'radio' %}
+                        {% set name = 'filters[' ~ group['id'] ~ ']' %}
+                      {% endif %}
+                      <input id="filter-{{ filter.filter }}" type="{{ type }}" class="{{ component('checkbox', type) }}" name="{{ name }}" value="{{ filter.filter }}" x-model="filters.{{ group['id'] }}">
+                      <label for="filter-{{ filter.filter }}" class="peer-checked:wf-darkest text-lg font-normal">{{ filter.label }}</label>
+                    </span>
+                  {% endfor %}
+                </fieldset>
+                {% endif %}
+                {% endfor %}
+                </div>
+                <div class="mt-p32 mq320:flex mq1024:block">
+                  <div class="mb-p16">
+                  {% include 'components/_button.twig'|siteInclude with { settings: {
+                    'text'  : 'Apply Filter'|t,
+                    'type'  : 'button',
+                    'class' : 'w-full mq320:w-auto mq1024:w-full',
+                    'atts'  : {
+                      '@click' : 'doFilter($event)'
+                    }
+                  }} %}
+                  </div>
+                  <div class="mb-p16">
+                  {% include 'components/_button.twig'|siteInclude with { settings: {
+                    'text'  : 'Reset'|t,
+                    'type'  : 'button',
+                    'class' : 'w-full mq320:w-auto mq1024:w-full',
+                    'style' : 'secondary',
+                    'icon'  : 'reset',
+                    'iconAlign' : 'left',
+                    'atts'  : {
+                      '@click' : 'doReset($event)'
+                    }
+                  }} %}
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+        </div>
+      </div>
+      <!-- End Filters -->
+
+    {% endif %}
+    <div id="feed-panel" class="c-feed-window relative overflow-hidden transition-height duration-500 mq768:-mx-p32 w-full shrink-0" x-comp="card" x-ref="window" :style="setHeight()" x-cloak>
+      <div class="py-p1 transition-opacity" x-ref="container" x-bind:class="showFilters ? 'mq480:opacity-60 pointer-events-none' : 'opacity-100'">
+        {% include ('feeds/_all.twig')|siteInclude with { exclude: settings.exclude } %}
+      </div>
+      <div x-show="!fade" class="absolute top-lg left-1/2 transform -translate-x-1/2 text-center">
+        {% include "svg/_loading.twig" %}
+      </div>
+    </div>
+  </div>
+</div>

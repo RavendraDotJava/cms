@@ -1,0 +1,153 @@
+{% import 'partials/_macros.twig' as helpers %}
+
+{% set defaults = {
+  'heading' : 'Order Summary',
+  'showShippingAddress': false,
+  'showShippingMethod': false,
+  'showBillingAddress': false,
+  'buttonText': 'Confirm'|t,
+  'buttonFor': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div class="mt-p50 mq768:mt-none">
+  <div class="mb-p16">
+
+    {# Heading #}
+    <h3 class="h2 mq480:text-p35 font-normal mb-p48">{{ settings.heading }}</h3>
+
+    {# Cart Line Items #}
+    <div class="{{ component('summaryItem', false, '') }}">
+      {% for item in cart.lineItems %}
+        <div class="mb-p32 last:mb-none">
+          <span class="text-p20 mq768:text-p26 font-normal leading-md">{{ item.description }}</span>
+          {% if item.qty > 1 %}
+            <span class="text-sm uppercase whitespace-nowrap">
+              {{ '× ' ~ item.qty }}
+            </span>
+          {% endif %}
+          <div class="text-h5 font-normal mt-p12">{{ item.subtotal|currency(cart.currency) }}</div>
+        </div>
+      {% else %}
+        <p>{{ 'Your cart is empty.' }}</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if settings.showShippingAddress or settings.showBillingAddress %}
+  <div class="{{ component('summaryItem', false, '') }}">
+    {# Show Shipping Address #}
+    {% if settings.showShippingAddress %}
+      <h4 class="text-p26 font-normal mb-p12">{{- 'Shipping to'|t -}}</h4>
+      {% if cart.shippingAddress %}
+        <span class="text-lg font-normal">{{ craft.app.addresses.formatAddress(cart.shippingAddress)|raw }}</span>
+      {% else %}
+        <p class="text-lg font-normal">{{ 'No shipping address selected.'|t }}</p>
+      {% endif %}
+      <a href="{{ url('/checkout/addresses') }}" class="text-sm underline hover:no-underline">{{- 'Change'|t -}}</a>
+    {% endif %}
+
+    {# Show Shipping Address #}
+    {% if settings.showBillingAddress %}
+      <h4 class="text-p26 font-normal mb-p12 mt-p20">{{- 'Billing to'|t -}}</h4>
+      {% if cart.billingAddress %}
+        {# {{ cart.billingAddress.title }} #}
+        <span class="text-lg font-normal">{{ craft.app.addresses.formatAddress(cart.billingAddress)|raw }}</span>
+      {% else %}
+        <p class="text-lg font-normal">{{ 'No billing address selected.'|t }}</p>
+      {% endif %}
+      <a href="{{ url('/checkout/addresses') }}" class="text-sm underline hover:no-underline">{{- 'Change'|t -}}</a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+
+
+  {# Show Shipping Method #}
+  {% if settings.showShippingMethod %}
+    <div class="{{ component('summaryItem', false, '') }}">
+      <h4 class="text-p26 font-normal mb-p12 mt-p20">{{- 'Shipping Method'|t -}}</h4>
+      {% if not cart.shippingMethod %}
+        <p class="text-lg font-normal">{{ 'None selected.'|t }}</p>
+        <a href="{{ url('/checkout/shipping') }}" class="text-sm underline hover:no-underline">
+          {{- 'Choose a shipping method.'|t -}}
+        </a>
+      {% else %}
+        <p class="text-lg font-normal">{{ cart.shippingMethodName }}</p>
+        <a href="{{ url('/checkout/shipping') }}" class="text-sm underline hover:no-underline">{{- 'Change'|t -}}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+
+  {# Cost Breakdown #}
+  {% set costItems = [
+    {
+      'label': 'Estimated Shipping'|t,
+      'query': cart.totalShippingCostAsCurrency,
+    },
+    {
+      'label': 'Tax'|t,
+      'query': cart.totalTaxAsCurrency,
+    },
+    {
+      'label': 'Tax (inc)'|t,
+      'query': cart.totalTaxIncluded|commerceCurrency(cart.currency),
+    },
+  ] %}
+
+  <div class="">
+
+    {% set itemClasses = 'flex mb-p12' %}
+    {% set labelClasses = 'pr-p8' %}
+
+
+    <div class="{{ component('summaryItem', false, ' mq768:text-h5') }}">
+      {% for item in costItems %}
+        <div class="{{ itemClasses }}">
+          <div class="{{ labelClasses }}">{{ item.label }}:</div>
+          <div>{{ item.query }}</div>
+        </div>
+      {% endfor %}
+
+      {% if cart.totalDiscount %}
+        <div class="{{ itemClasses }}">
+          <div class="{{ labelClasses }}">{{ 'Discount'|t }}:</div>
+          <div>{{ (cart.totalDiscount * -1)|commerceCurrency(cart.currency) }}</div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="{{ component('summaryItem', false, itemClasses ~ ' font-normal text-h3') }}">
+      <div class="{{ labelClasses }}">{{ 'Total'|t }}:</div>
+      <div>{{ cart.totalPrice|commerceCurrency(cart.currency) }}</div>
+    </div>
+
+    {% if cart.currency != cart.paymentCurrency and cart.totalPrice == cart.getOutstandingBalance() %}
+      <div class="{{ itemClasses }}">
+        <div class="{{ labelClasses }}">{{ 'Payment'|t }}:</div>
+        <div>{{ cart.totalPrice|commerceCurrency(cart.paymentCurrency,convert=true) }}</div>
+      </div>
+    {% endif %}
+
+    {% if cart.hasOutstandingBalance and cart.totalPrice != cart.getOutstandingBalance() %}
+      <div class="{{ itemClasses }}">
+        <div class="{{ labelClasses }}">{{ 'Outstanding Balance'|t }} {{ cart.paymentCurrency }}:</div>
+        <div>{{ cart.outstandingBalance|commerceCurrency(cart.paymentCurrency,convert=true) }}</div>
+      </div>
+    {% endif %}
+
+  </div>
+
+  {# <label for="{{ settings.buttonFor is not empty ? settings.buttonFor : 'submit-form' }}" class="{{ component('button', false, 'cursor-pointer w-full') }}">
+    {{ settings.buttonText is not empty ? settings.buttonText : 'Submit'|t }}
+  </label> #}
+
+  <input type="submit" form="{{ settings.buttonFor }}" class="{{ component('button', false, 'cursor-pointer w-full') }}" value="{{ settings.buttonText is not empty ? settings.buttonText : 'Submit'|t }}">
+
+</div>

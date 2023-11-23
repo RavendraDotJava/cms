@@ -1,0 +1,11 @@
+{% import 'partials/_macros' as helpers %}
+
+<a href="{{ url('cart') }}"
+   class="pr-p10 mq768:text-white mq768:py-p4 mq768:px-p12 rounded-full flex items-center relative hover:mq768:bg-white hover:bg-opacity-100 transition-colors group"
+   :class="headerStyle == 'white' ? 'mq768:bg-terracotta mq768:border hover:mq768:border-terracotta ' : 'mq768:border mq768:border-white mq768:bg-opacity-10 mq768:bg-basalt'">
+  <span :class="menuOpen ? 'text-white' : headerStyle == 'white' ? 'text-basalt' : 'text-white'" class="mq768:text-white group-hover:mq768:text-basalt group-focus:mq768:text-basalt transition-colors">
+    {{ helpers.icon('cart', 'h-p30 w-p30 mr-p8') }}
+  </span>
+  <span class="sr-only">{{- "Cart"|t -}}</span>
+  <span class="text-sm bg-salt mq768:bg-white group-hover:mq768:bg-sand transition-colors px-p12 rounded-full text-basalt font-medium mob:absolute mob:-top-p8 mob:left-p16">{{ cart.totalQty }}</span>
+</a>

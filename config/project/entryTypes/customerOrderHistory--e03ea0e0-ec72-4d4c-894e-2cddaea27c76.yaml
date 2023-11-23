@@ -1,0 +1,109 @@
+fieldLayouts:
+  ffdd97a6-8e04-4238-8ef6-0a39a59e6377:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 271d7390-13e9-4c18-a8ce-e46956d7e835
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 00727e79-cbc2-4589-ba34-4d58fac1a35b # Page Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 57746d71-5be7-4d59-885c-3657ff65ad77
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 87c963f1-603d-4c21-a1cd-8aadb39c7a9d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 51d2bc90-3f26-4860-b175-56952058e15e
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 58a66f0d-1503-4847-b56a-aee9326627eb # Order Entry
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8acf46a0-e704-407d-81d9-c0bbf4f1da6d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: e12607d1-b6e4-4d30-bf2a-2b3e527e1dd1 # No Order Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1f5a9f1b-bcb8-42f6-ba65-91b1c8763a0a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 3ed437e4-57df-474d-b42e-a8e3a4bbcdde # Link
+            instructions: 'Use this field to create a link at the bottom of the order history.'
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6177400b-247a-4084-a2cb-d27ad554d78a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Orders
+        uid: d9e492ab-463f-490b-befb-4426d5c8db52
+        userCondition: null
+handle: customerOrderHistory
+hasTitleField: false
+name: 'Customer Order History'
+section: 2f6507e5-d577-4de4-948b-33f3785ad4d6 # Customer Profile
+sortOrder: 4
+titleFormat: '{section.title|raw}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

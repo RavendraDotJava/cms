@@ -1,0 +1,38 @@
+{% extends 'checkout/_layout.twig' %}
+
+{% import 'partials/_macros' as helpers %}
+
+{% if cart is defined and cart.availableShippingMethodOptions|length < 2 and cart.shippingMethod %}
+  {% redirect 'commerce/checkout/payment-method' %}
+{% endif %}
+
+{% block mainContent %}
+
+  {% include 'components/_checkoutIntro' with { 'settings': {
+    'heading': entry.checkoutHeading,
+    'textContent': entry.checkoutText,
+    'step': entry.checkoutStep,
+  }} %}
+
+  {# If there aren't any shipping methods set up or available then continue to payment #}
+  {% if not cart.availableShippingMethodOptions|length %}
+    <p>{{- 'No shipping methods available.'|t -}}</p>
+    <a class="c-btn" href="{{ url('/checkout/payment-method') }}">{{- 'Continue'|t -}}</a>
+  {% else %}
+    {% include 'form/forms/_shipping.twig' with {'settings': {
+      'id': 'checkoutFormShipping',
+      'redirectUrl': entry.formSubmissionRedirect.one is not null ? entry.formSubmissionRedirect.one.uri,
+      'successMessage': entry.formSuccessMessage ? entry.formSuccessMessage,
+    }} %}
+  {% endif %}
+
+{% endblock %}
+{% block sidebar %}
+  {% include "components/_orderSummary.twig" with {'settings': {
+    'showShippingAddress': true,
+    'showBillingAddress': true,
+    'buttonText': entry.formSubmitButtonText,
+    'buttonFor': 'checkoutFormShipping',
+  }} %}
+  <!-- Template: {{ _self }}.twig -->
+{% endblock %}

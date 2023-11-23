@@ -1,0 +1,82 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'subject' : '',
+  'rating' : '',
+  'date' : '',
+  'message': '',
+  'author': '',
+  'product': '',
+  'useLength': '',
+  'photo': '',
+  'guestFirstName': '',
+  'guestLastName': '',
+  'isBrandPartner': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set authorName = 'Guest'|t %}
+{% set profileImage = false %}
+
+{% if settings.author is not empty %}
+  {% set authenticUser = craft.users().username(settings.author|literal).one() ?? false %}
+  {% if authenticUser %}
+    {% set authorName = authenticUser.firstName is not empty ? authenticUser.firstName ~ ' ' ~ authenticUser.lastName[:1] : settings.author %}
+  {% else %}
+    {% set authorName = settings.guestFirstName is not empty ? settings.guestFirstName ~ ' ' ~ settings.guestLastName[:1] : 'Guest' %}
+  {% endif %}
+{% endif %}
+
+{% if settings.photo is not empty %}
+  {% set profileImage = craft.assets().id(settings.photo.value).one() %}
+{% endif %}
+
+<h3 class="text-p20 font-normal mb-p10">{{ settings.subject }}</h3>
+<div class="flex items-center">
+  {% if settings.rating is not empty %}
+    <div class="my-p10">
+      {% set rating = settings.rating.value %}
+      {% set maxStars = settings.rating.maxValue %}
+      {% for star in range(1, rating) %}
+        <span class="text-terracotta text-p20">★</span>
+      {% endfor %}
+      {{ rating }}/{{ maxStars }}
+    </div>
+  {% endif %}
+  <date class="font-normal ml-auto text-sm">{{ settings.date|date('d/m/Y') }}</date>
+</div>
+
+<div class="c-content">
+  <p>{{ settings.message }}</p>
+</div>
+
+{% if settings.author is not empty %}
+<div class="mt-p16 flex items-center">
+  <div class="pr-p20">
+    {% if profileImage %}
+      {{ profileImage.getImg({width: 60, height: 60})|attr({
+        class: 'rounded-full inline-block border border-terracotta',
+      }) }}
+    {% else %}
+      {% set userAccount = craft.users().username(settings.author|literal).one() %}
+      {% include 'components/_userPhoto' with { 'settings': {
+        'imgSize': 60,
+        'classes' : 'border border-terracotta min-w-p60 min-h-p60',
+        'userAccount': userAccount,
+      }} %}
+    {% endif %}
+  </div>
+  <div>
+    <p class="font-normal">{{ "Submitted by:"|t }} {{ authorName }} {{ settings.isBrandPartner is not empty ? '(Brand Partner)' : '' }}</p>
+    {% if settings.product is not empty %}
+      <p class="font-normal">{{ settings.useLength is not empty ? settings.useLength ~ ' ' ~ 'using'|t : 'Using'|t }} {{ settings.product|replace(':trade_mark:', '™') }}</p>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+

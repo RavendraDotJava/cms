@@ -1,0 +1,65 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: f1f1ffc6-b86c-414b-ab39-d213b7efe85e # Modules
+handle: callToAction
+instructions: null
+name: 'Call To Action'
+searchable: true
+settings:
+  blockTypeFields: 0
+  changedFieldIndicator: 178935435
+  columns:
+    __assoc__:
+      -
+        - 3b45b705-e6aa-4972-859f-28beb3be31e5 # Heading
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 7918ffa1-07f2-4091-a3f0-e6bed5cd43bf # Text Content
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 6ba022d5-9f92-4b34-9fe6-21d87781114a # Image
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 71f769d8-a4c5-4c54-980a-bd10ef008795 # CTA Decoration
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 094c0a55-58b3-4e60-9591-bab1831193cc # Primary Button
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 641a23c9-d7a6-44f9-8969-514e4138dc8a # Secondary Button
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+  contentTable: '{{%stc_calltoaction}}'
+  fieldLayout: matrix
+  maxRows: null
+  minRows: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  selectionLabel: null
+  staticField: true
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

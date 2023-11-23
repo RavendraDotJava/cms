@@ -1,0 +1,212 @@
+changedFieldIndicator: 2096268439
+field: 22d1e75c-3fdd-4da1-9391-178150ab3dc0 # Cards
+fieldLayouts:
+  02dba18c-4cd8-4387-bec0-9876a4a07315:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 5eac682c-de9a-4433-9865-0a28b75890c1 # Card Link
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 133163c4-53fe-4607-9bda-37ae9a583b54
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 81a71f74-9a84-445d-b58e-78de547d7f8b # Image
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 94a80c10-6778-48cc-b692-8cba1250ae7f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: c7c1b838-2ca2-4f13-968b-5746790b612f # Read Length
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 46bac9ce-e01d-4fa7-baf0-0c1a623c08b2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b4f4c146-4572-4c72-aac1-19bbc09c66a3 # Background Colour
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9d08d701-ae25-43a8-8deb-394b2ebdd04f
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: cb4153ff-05c0-4fdb-bd2b-9fa0e4da088c
+        userCondition: null
+fields:
+  5eac682c-de9a-4433-9865-0a28b75890c1: # Card Link
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: cardLink
+    instructions: null
+    name: 'Card Link'
+    searchable: true
+    settings:
+      allowCustomText: true
+      allowTarget: true
+      autoNoReferrer: false
+      customTextMaxLength: 0
+      customTextRequired: false
+      defaultLinkName: entry
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        asset:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        category:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        craftCommerce-product:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: true
+          sources: '*'
+        custom:
+          allowAliases: false
+          disableValidation: false
+          enabled: false
+        email:
+          allowAliases: false
+          disableValidation: false
+          enabled: false
+        entry:
+          allowCrossSiteLink: false
+          allowCustomQuery: true
+          enabled: true
+          sources:
+            - 'section:3b1d5657-f4f2-42df-ad71-e8eec665b105' # Blog
+            - 'section:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+            - 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+        site:
+          enabled: false
+          sites: '*'
+        tel:
+          allowAliases: false
+          disableValidation: false
+          enabled: false
+        url:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        user:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField
+  81a71f74-9a84-445d-b58e-78de547d7f8b: # Image
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: 'Images will hug the right edge of the card. Manual cropping may be required.'
+    name: Image
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add an image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources:
+        - 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  b4f4c146-4572-4c72-aac1-19bbc09c66a3: # Background Colour
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: backgroundColour
+    instructions: null
+    name: 'Background Colour'
+    searchable: false
+    settings:
+      default: null
+      palette: 'Olina Secondary'
+      setRandom: false
+      useConfigFile: true
+    translationKeyFormat: null
+    translationMethod: none
+    type: percipiolondon\colourswatches\fields\ColourSwatches
+  c7c1b838-2ca2-4f13-968b-5746790b612f: # Read Length
+    columnSuffix: null
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: readLength
+    instructions: "Use this field to toggle the display of the read length. The read length will be calculated from the linked entry Content Well module. If there is no Content Well module on the linked entry, the read length will not display.\r\n\r\nThis will be hidden automatically if the Card Link is set an external URL."
+    name: 'Read Length'
+    searchable: false
+    settings:
+      default: true
+      offLabel: Hide
+      onLabel: Show
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch

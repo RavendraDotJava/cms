@@ -1,0 +1,24 @@
+fieldLayouts:
+  1d0aee61-fb45-4775-a50a-c5ce2be5d5c9:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: ae3b1630-c045-45b9-acd8-63268c2b371d # Hero Image
+            instructions: 'Use this field to select a default image that will display in the page header if no Background Media has been set.'
+            label: 'Default Background Media'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5c8c7168-7192-4d84-89ec-4c611ee75c72
+            userCondition: null
+            warning: null
+            width: 100
+        name: Defaults
+        uid: 4373af4f-2aa8-49cb-9d38-93cc1de73dba
+        userCondition: null
+handle: header
+name: Header
+sortOrder: 1

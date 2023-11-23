@@ -1,0 +1,19 @@
+columnSuffix: uyveenmk
+contentColumnType: string(480)
+fieldGroup: 6b18f9dd-482a-494e-a796-a558aed7a79b # Product Benefit
+handle: benefitDescription
+instructions: 'Use this field to add a longer description of this Product Benefit.'
+name: 'Benefit Description'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: 120
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

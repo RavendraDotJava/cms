@@ -1,0 +1,14 @@
+.env
+.idea
+.ideas
+package-lock.json
+.DS_Store
+/vendor
+/storage/*
+!/storage/rebrand
+/node_modules
+/public/img
+/public/volumes
+/public/cpresources
+*.sublime-project
+*.sublime-workspace

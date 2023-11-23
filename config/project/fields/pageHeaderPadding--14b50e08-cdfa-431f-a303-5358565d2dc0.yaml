@@ -1,0 +1,32 @@
+columnSuffix: yyihiedj
+contentColumnType: string
+fieldGroup: 1901e8d3-2a7e-47ef-94ec-a27c6f4346e2 # Header
+handle: pageHeaderPadding
+instructions: null
+name: 'Page Header Padding'
+searchable: false
+settings:
+  newLabelFormat: '{{ label }}'
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Large
+        -
+          - value
+          - large
+    -
+      __assoc__:
+        -
+          - label
+          - Small
+        -
+          - value
+          - small
+  sourceGlobal: pageHeaderPadding
+  sourceLabelHandle: label
+  sourceValueHandle: value
+translationKeyFormat: null
+translationMethod: none
+type: modules\ccfieldsmodule\fields\PresetDropdown

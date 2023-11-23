@@ -1,0 +1,93 @@
+{% set defaults = {
+	'pageInfo' : null,
+	'params' : null,
+	'adjacentPages' : 3,
+	'feed' : false,
+	'ellipsis' : false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{# Set the styling options.
+ # By setting them here, we can apply the same values to both the Alpine and simple Craft-based
+ # versions of the pagination #}
+{% set iconClass = 'fill-segment w-ms h-ms' %}
+{% set options = {
+	'wrapClass' : 'xl:h-p40',
+	'baseClass' : 'c-pagination__page group block focus:outline-none font-medium leading-e1 inline-flex items-center justify-center w-p32 h-p32 sm:w-p40 sm:h-p40 rounded-full mr-p8 sm:ml-p16 border border-terracotta transition-colors',
+	'currentClass' : ' bg-terracotta text-white',
+	'interactClass' : ' text-basalt kest bg-salt hover:bg-terracotta focus:bg-terracotta hover:text-white focus:text-white',
+	'pagePrev' : getIcon('arrow-left', 'pagination', iconClass) ~ '<span class="sr-only">' ~ 'Prev'|t ~ '</span>',
+	'pageNext' : '<span class="sr-only">' ~ 'Prev'|t ~ '</span>' ~ getIcon('arrow-right', 'pagination', iconClass),
+} %}
+
+{# Alpine-based Pagination #}
+{% if settings.feed %}
+
+<div class="mq640:flex my-p20 text-center mq640:text-left">
+  <p class="text-p26 mq640:text-h6 mb-p20 mq640:mb-none">
+    <span class="inline-block mr-p8 font-normal" x-text="total"></span>
+    <span class="inline-block">{{ 'articles available'|t }}</span>
+  </p>
+
+  <div class="{{ options.wrapClass }} transition duration-500 text-type inline-block mx-auto mq640:mr-none" :class="fade ? 'opacity-100' : 'opacity-0'" x-ref="pagination" x-init="setPagination({{ pageInfo|json_encode|replace('"', "'")|raw }})">
+    <div class="c-pagination flex items-center justify-start ">
+      <template x-for="item in getPagination({{ settings.adjacentPages }})">
+        <span>
+          <template x-if="item.href">
+            <a :class="item.class" :href="item.href" x-html="item.label" @click="doPage($event,item.page)"></a>
+          </template>
+          <template x-if="!item.href">
+            <span :class="item.class" x-html="item.label"></span>
+          </template>
+        </span>
+      </template>
+    </div>
+  </div>
+</div>
+
+
+
+	{# Loop through the options and apply them to a JavaScript object. #}
+	{% js %}
+		window.paginationOptions = {
+		{% for key, option in options %}
+			{{ key }} : '{{ option|raw }}',
+		{% endfor %}
+		}
+	{% endjs %}
+
+{# Static, Craft-based pagination #}
+{% else %}
+<div class="{{ options.wrapClass }}">
+
+	{% if settings.pageInfo.prevUrl %}
+	<a class="{{ options.baseClass ~ options.interactClass }}" href="{{ settings.pageInfo.prevUrl }}">{{ options.pagePrev|raw }}</a>
+	{% endif %}
+
+	{% for page, url in settings.pageInfo.getPrevUrls(settings.adjacentPages) %}
+	{% if settings.ellipsis and loop.first and page != 1 %}
+		<span class="c-pagination__ellipsis">...</span>
+	{% endif %}
+	<a class="{{ options.baseClass ~ options.interactClass }}" href="{{ url }}">{{ page }}</a>
+	{% endfor %}
+
+	<span class="{{ options.baseClass ~ options.currentClass }}">{{ settings.pageInfo.currentPage }}</span>
+
+	{% for page, url in settings.pageInfo.getNextUrls(settings.adjacentPages) %}
+	<a class="{{ options.baseClass ~ options.interactClass }}" href="{{ url }}">{{ page }}</a>
+	{% if settings.ellipsis and loop.last and page != settings.pageInfo.totalPages %}
+		<span class="c-pagination__ellipsis">...</span>
+	{% endif %}
+	{% endfor %}
+
+	{% if settings.pageInfo.nextUrl %}
+	<a class="{{ options.baseClass ~ options.interactClass }}" href="{{ settings.pageInfo.nextUrl }}">{{ options.pageNext|raw }}</a>
+	{% endif %}
+
+</div>
+{% endif %}

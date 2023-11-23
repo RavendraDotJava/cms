@@ -1,0 +1,142 @@
+fieldLayouts:
+  2508cc9e-fd6b-4d44-a906-9d580575ecf1:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 6548d3fe-949a-42e0-8d39-ad18ec8389a1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1262417d-adab-4273-9f2b-02709eae6778 # Site Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 36b49e95-3884-4870-9200-3282c4e732e4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 95f64d89-ed72-46c4-a8a9-4ca557244d58
+            userCondition: null
+            warning: null
+            width: 100
+        name: Header
+        uid: e8c445b6-062e-408b-a10e-056429d59ce9
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 74164938-bb69-469d-b4ce-1a651eee4972 # Content Well
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 291e8582-d5a8-4463-a4ba-234d192f2378
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 73703002-64ae-49f7-941d-53b96dc6c005
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: ae3b1630-c045-45b9-acd8-63268c2b371d # Hero Image
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 11f424d7-2b74-4e88-9c55-b21fb6fba0bb
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f5534be7-e8ed-4cd9-9931-f8a429ce7d33 # Description
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1541ca64-ada2-41be-8875-9d4174624ce9
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6b73ca17-a446-4410-9dae-7d2e8144ba16 # Keywords
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 68aad3cd-bf95-4057-81f7-a7485c6d403c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 914324c7-ee2e-4375-9d32-7e56bb2d0c99 # SEO Settings
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0398af8e-b132-4e71-a200-c92d2d599d89
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: e64c5338-bc0a-4b2f-bfcb-b702bd137964
+        userCondition: null
+handle: basicPage
+hasTitleField: true
+name: 'Basic Page'
+section: 43d82d49-59c5-402b-85a6-b009c84626c8 # Pages
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+sortOrder: 4
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

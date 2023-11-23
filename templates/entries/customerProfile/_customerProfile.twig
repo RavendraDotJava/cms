@@ -1,0 +1,202 @@
+{% import 'partials/_macros' as helpers %}
+
+{% if not currentUser %}
+  {% exit 404 %}
+{% endif %}
+
+{% if currentUser %}
+
+<div class="mq768:flex">
+
+  <div class="">
+    {% include 'components/_userPhoto.twig' with { 'settings': {
+      'classes' : 'w-p256 h-p256',
+      'fontSize': 'text-h1',
+      'imgSize': 300,
+      'id': 'user-photo-large',
+    }} %}
+  </div>
+
+  <div class="mq768:ml-p50 flex-1">
+
+    <h1 class="mb-p10 text-p40 font-light">{{ currentUser }}</h1>
+    <p class="font-normal text-lg">{{ currentUser.email }}</p>
+
+  {% if entry.profileModules %}
+    <div>
+      {% for block in entry.profileModules.all() %}
+        {% set currentBlockType = block.type.handle %}
+        {% switch currentBlockType %}
+        {% case 'linkSection' %}
+          <div class="{{ component('summaryItem', '', 'first:border-t-0') }}">
+            <h2 class="text-p26 font-normal mb-p12">{{ block.heading }}</h2>
+            {% if block.links %}
+              <ul class="mb-p10 last:mb-none">
+                {% for link in block.links %}
+                  {% set linkUrl = link.sectionLink.url %}
+                  {% set linkText = link.sectionLink.text %}
+                  <li class="mb-p10 last:mb-none">
+                    {% include 'components/_button.twig'|siteInclude with { settings: {
+                      'text'  : linkText,
+                      'href'  : linkUrl,
+                      'type'  : 'link',
+                      'style' : 'arrow',
+                      'icon'  : link.icon,
+                      'iconAlign': 'left',
+                    }} %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            {% if block.actions %}
+              <ul>
+                {% for action in block.actions %}
+                  {% set linkText = action.actionText is not empty ? action.actionText : action.action.label %}
+                  {% set linkAction = action.action %}
+                  <li class="mb-p10 last:mb-none">
+                    {% if linkAction == 'deactivateAccount' %}
+                      {% include "form/forms/_deactivateAccount" with { 'settings': {
+                        'buttonText': linkText,
+                        'icon': action.icon,
+                        'confirmMessage': userGlobal.deactivateConfirmationMessage
+                      }}%}
+                    {% elseif linkAction == 'deleteAccount' %}
+                      <div x-data="{ open: false }">
+
+                        {% include 'components/_button.twig'|siteInclude with { settings: {
+                          'text'  : linkText,
+                          'type'  : 'button',
+                          'style' : 'arrow',
+                          'icon'  : action.icon,
+                          'iconAlign': 'left',
+                          'atts': {
+                            'x-on:click': 'open =! open'
+                          }
+                        }} %}
+
+                        <div x-show="open" x-collapse x-cloak>
+                          {% include "form/forms/_deleteAccount" with { 'settings': {
+                            'buttonText': linkText,
+                            'icon': action.icon,
+                          }}%}
+                        </div>
+                      </div>
+                    {% elseif linkAction == 'resetPassword' %}
+                      <form method="post" accept-charset="UTF-8">
+                        {{ csrfInput() }}
+                        {{ actionInput('users/send-password-reset-email') }}
+                        {{ hiddenInput('loginName', loginName ?? craft.app.user.rememberedUsername) }}
+                        {% include 'components/_button.twig'|siteInclude with { settings: {
+                          'text'  : linkText,
+                          'type'  : 'button',
+                          'style' : 'arrow',
+                          'icon'  : action.icon,
+                          'iconAlign': 'left',
+                          'atts': {
+                            'x-on:click': 'open =! open'
+                          }
+                        }} %}
+                        {% if errors is defined %}
+                          {{ helpers.errorList(errors) }}
+                        {% endif %}
+                      </form>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endswitch %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+
+
+
+{#
+    <div class="{{ component('summaryItem', 'noBorder', '') }}">
+      <h2 class="text-p26 font-normal mb-p12">{{ "Your orders" }}</h2>
+      {% include 'components/_button.twig'|siteInclude with { settings: {
+        'text'  : "View order history"|t,
+        'href'  : 'profile/order-history',
+        'type'  : 'link',
+        'style' : 'arrow',
+        'icon'  : 'history',
+        'iconAlign': 'left',
+      }} %}
+    </div> #}
+
+    {# <div class="{{ component('summaryItem', false, '') }}">
+      <h2 class="text-p26 font-normal mb-p12">{{ "Your subscriptions" }}</h2>
+      {% include 'components/_button.twig'|siteInclude with { settings: {
+        'text'  : "Manage your subscriptions"|t,
+        'href'  : 'profile/order-history',
+        'type'  : 'link',
+        'style' : 'arrow',
+        'icon'  : 'refresh',
+        'iconAlign': 'left',
+      }} %}
+    </div> #}
+
+    {# <div class="{{ component('summaryItem', false, '') }}">
+      <h2 class="text-p26 font-normal mb-p12">{{ "Manage your account" }}</h2>
+      <ul>
+        <li class="mb-p16">
+          {% include 'components/_button.twig'|siteInclude with { settings: {
+            'text'  : "Edit your information"|t,
+            'type'  : 'button',
+            'style' : 'arrow',
+            'icon'  : 'edit',
+            'iconAlign': 'left',
+            'atts': {
+              'x-data': '{}',
+              '@click': "cModalTrigger($event, 'modalId-editUserProfile')",
+            }
+          }} %}
+
+          <div id="modalId-editUserProfile" class="hidden">
+            <div class="{{ component('roundedCard', 'form', 'w-full') }}">
+              {% include "form/_ajaxForm" with {settings: {
+                'form': 'editUser',
+                'action': '/actions/users/save-user',
+                'successMessage': 'Your profile has been updated'|t,
+                'reloadOnSuccess': true,
+                'formData': {
+                  'userId': currentUser.id,
+                  'firstName': currentUser is defined ? currentUser.firstName : '',
+                  'lastName': currentUser is defined ? currentUser.lastName : '',
+                  'email': currentUser is defined ? currentUser.email : '',
+                }
+              }} %}
+            </div>
+          </div>
+        </li>
+
+        <li>
+          {% include 'components/_button.twig'|siteInclude with { settings: {
+            'text'  : "Reset Password"|t,
+            'type'  : 'button',
+            'style' : 'arrow',
+            'icon'  : 'lock',
+            'iconAlign': 'left',
+            'atts': {
+              'x-data': '{}',
+              '@click': "cModalTrigger($event, 'modalId-userResetPassword')",
+            }
+          }} %}
+
+          <div id="modalId-userResetPassword" class="hidden">
+            <div class="{{ component('roundedCard', 'form', 'w-full') }}">
+              <h2 class="mb-p32">{{ "Reset Password"|t }}</h2>
+              {% include 'form/forms/_resetPassword' %}
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div> #}
+  </div>
+</div>
+{% else %}
+    {# Anonymous user stuff here #}
+{% endif %}

@@ -1,0 +1,109 @@
+fieldLayouts:
+  2b2c6053-744e-43b8-bd3a-eedc813d4abf:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 047365e3-34b1-46b4-b23a-9b1fd709b1d7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: 'Header Options'
+            type: craft\fieldlayoutelements\Heading
+            uid: f513dbe5-32c8-4d88-ab30-abdb6b0c3595
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 00727e79-cbc2-4589-ba34-4d58fac1a35b # Page Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9aed8720-5395-41aa-ae36-17b653bc4537
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 1262417d-adab-4273-9f2b-02709eae6778 # Site Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cb9016e8-8117-4af4-915e-8b4b050cbcf6
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            heading: 'Header Background'
+            type: craft\fieldlayoutelements\Heading
+            uid: fb176d63-05e8-4de1-8d08-787c2aa3241b
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8badce98-4bee-4d73-9cbe-a628ece4278e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Header
+        uid: 6e14bf58-ea08-404e-b5c6-1daeef859281
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: f9fbdc01-3eb1-4caf-8dd4-288175d4e836 # Profile Modules
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2293df1f-9e85-4c91-9540-edfddd1e0d28
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 63219d17-5a90-4600-b78d-fd76e302f838
+        userCondition: null
+handle: customerProfile
+hasTitleField: true
+name: 'Customer Profile'
+section: 2f6507e5-d577-4de4-948b-33f3785ad4d6 # Customer Profile
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

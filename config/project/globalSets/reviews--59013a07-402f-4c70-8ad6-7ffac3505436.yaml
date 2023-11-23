@@ -1,0 +1,116 @@
+fieldLayouts:
+  ed979e4e-a686-4911-8bcd-3e8312eb6694:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dismissible: false
+            elementCondition: null
+            style: tip
+            tip: "You can use *replacement tokens* in these fields to personalize your messages.\r\n\r\n**Available Tokens:**\r\n\r\n`{NAME}` - Will return a logged in users name. It will return *Guest* if the user is anonymous.\r\n\r\n`{PRODUCT}` - Will return the current product name."
+            type: craft\fieldlayoutelements\Tip
+            uid: 3b57e4f7-dd7b-4cfc-883d-fc5a164b44cf
+            userCondition: null
+          -
+            elementCondition: null
+            heading: 'Logged in user'
+            type: craft\fieldlayoutelements\Heading
+            uid: 4d2b0fee-72d5-4553-9540-64e6bbf65328
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: d5a89382-5ce0-4361-a919-0b7d8dbed8df # CTA Heading (User)
+            instructions: null
+            label: 'CTA Heading'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7d12f5b6-852b-437c-8d83-f4328f387fcc
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 4ec6b010-b1cb-4e15-bf9f-fa3de410dd07 # CTA Text (User)
+            instructions: null
+            label: 'CTA Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f5b1f84f-8ffb-4887-8839-309a3b849cba
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: 'Guest user'
+            type: craft\fieldlayoutelements\Heading
+            uid: dde89b6b-1dcd-4909-a704-ecaa41823333
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 3b9e6a4a-e2c6-4bf6-bed8-be124c0ef788 # CTA Heading (Guest)
+            instructions: null
+            label: 'CTA Heading'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2d6e67c0-0890-42b8-b1f1-3ea6908c146d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: bf308fef-36f6-4995-a4d9-964868129564 # CTA Text (Guest)
+            instructions: null
+            label: 'CTA Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 566a6ee3-71d2-409c-90e6-6c53898dbbe0
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Call To Action'
+        uid: 146c0806-340c-4631-93dd-190176c8874b
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 571562a4-5e51-4fbc-a266-d45495dd3cc5
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b42c4498-1bf9-4377-81ef-cec8f6669808
+            userCondition: null
+            warning: null
+            width: 100
+        name: Photos
+        uid: d01863c7-311f-4ba0-998e-603f02b91e9a
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: f291e594-fd4b-4413-a8c1-371a3ca1b43e # Review thank you message
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9384c2b1-a6f8-4196-9306-b1088b40d46c
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Thank You'
+        uid: 7692ac9c-5d95-4c21-9ff4-c64af3f0719d
+        userCondition: null
+handle: reviews
+name: Reviews
+sortOrder: 6

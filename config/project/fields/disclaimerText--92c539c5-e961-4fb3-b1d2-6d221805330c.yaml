@@ -1,0 +1,22 @@
+columnSuffix: jgqxtndx
+contentColumnType: text
+fieldGroup: c59f0e4b-c89a-405f-9488-0c6967311d94 # Footer
+handle: disclaimerText
+instructions: 'Use this field to add disclaimer text to the site footer.'
+name: 'Disclaimer Text'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  initialRows: 2
+  manualConfig: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  trimEmptyParagraphs: true
+  vizyConfig: Simple.json
+translationKeyFormat: null
+translationMethod: none
+type: verbb\vizy\fields\VizyField

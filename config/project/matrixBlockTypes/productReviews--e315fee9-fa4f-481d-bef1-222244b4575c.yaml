@@ -1,0 +1,244 @@
+field: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+fieldLayouts:
+  950ddebc-90b4-4f42-90c4-b1406dcdddff:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 92447d89-7c58-4389-83d5-cd9b430cfc51 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bd709a09-55a8-47bf-9919-a6bc222e675a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: d282b573-5ee0-4f68-a292-246258a832c5 # Text Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 69ec959c-7fc0-4248-876c-f959a99102c1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6323f401-1768-4910-a3cb-4224267e6934 # Product
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f554502a-0320-4cbc-8696-bead385c62a0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 9ff556b0-1cf4-4002-90a6-6014eef0bf88 # Manually Select Submissions
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cccd6ea8-d676-48a0-95cf-8b7120da851d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: ea57d790-907e-495c-9ae4-5b5e50286c5e # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 981a9c84-8bcf-4bb8-ae85-5a414bcd760d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 001e8f28-e4cd-4e16-aa0d-4d2366a3f5c5
+        userCondition: null
+fields:
+  9ff556b0-1cf4-4002-90a6-6014eef0bf88: # Manually Select Submissions
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: manualSubmissions
+    instructions: 'Use this field to manually select individual reviews.'
+    name: 'Manually Select Submissions'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      selectionLabel: null
+      showSiteMenu: false
+      sources:
+        - 'form:3'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: Solspace\Freeform\FieldTypes\SubmissionFieldType
+  6323f401-1768-4910-a3cb-4224267e6934: # Product
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: product
+    instructions: "**By default, approved product reviews will automatically appear on the product the review is related to.**\r\nIf you are not on a product page you can use this field to select a product to pull reviews from. This will also control which product is selected by default in the form."
+    name: Product
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      selectionLabel: 'Select a product'
+      showSiteMenu: true
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\commerce\fields\Products
+  92447d89-7c58-4389-83d5-cd9b430cfc51: # Heading
+    columnSuffix: dggukqbq
+    contentColumnType: string
+    fieldGroup: null
+    handle: heading
+    instructions: null
+    name: Heading
+    searchable: false
+    settings:
+      defaults:
+        __assoc__:
+          -
+            - levels
+            -
+              __assoc__:
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+          -
+            - sizing
+            -
+              __assoc__:
+                -
+                  - default
+                  - Default
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+                -
+                  - h5
+                  - H5
+      heading: ''
+      levelDefault: h2
+      levels:
+        - h2
+        - h3
+        - h4
+      sizing:
+        - h1
+        - h2
+        - h3
+        - h4
+        - h5
+      sizingDefault: h2
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Heading
+  d282b573-5ee0-4f68-a292-246258a832c5: # Text Content
+    columnSuffix: jdqqhxok
+    contentColumnType: text
+    fieldGroup: null
+    handle: textContent
+    instructions: null
+    name: 'Text Content'
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: '*'
+      blockTypeBehaviour: click
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      editorMode: combined
+      initialRows: 7
+      manualConfig: ''
+      maxBlocks: null
+      minBlocks: null
+      pasteAsPlainText: false
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      trimEmptyParagraphs: true
+      vizyConfig: Simple.json
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\vizy\fields\VizyField
+  ea57d790-907e-495c-9ae4-5b5e50286c5e: # Module
+    columnSuffix: bzxmuqto
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: light
+      decorations: ''
+      decorationsDefault: ''
+      independentPadding: '1'
+      moduleId: ''
+      overflow: ''
+      padding:
+        - small
+        - medium
+        - large
+      paddingDefault: medium
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+handle: productReviews
+name: 'Product Reviews'
+sortOrder: 12

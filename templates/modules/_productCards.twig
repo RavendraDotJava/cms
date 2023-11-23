@@ -1,0 +1,67 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : false,
+  'intro' : '',
+  'cards': '',
+  'cardsPerRow': '4',
+  'button': '',
+} %}
+
+{% set cardsPerRow = settings.cardsPerRow %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<section class="{{ component('moduleWidth', cardsPerRow == '5' ? 'large' : settings.config.handle, '') }}">
+
+  {# Intro #}
+  {% if settings.intro is not empty or settings.heading is not empty %}
+    {% include 'components/_intro.twig' with { 'settings': {
+      'heading': settings.heading,
+      'intro': settings.intro,
+      'type': settings.config.handle,
+    }} %}
+  {% endif %}
+
+  {# Cards #}
+  {% if settings.cards is not empty %}
+
+    {% set cards = settings.cards.all() %}
+
+    {% set cardClasses = [
+      'flex flex-col mq640:basis-1/2 mq1024:basis-1/3 mq1024:max-w-1/3 px-p8 mq1024:px-p12 mb-p12 mq1024:mb-p24 grow shrink-0',
+      cardsPerRow == '5' ? 'mq1280:basis-1/5 mq1280:max-w-1/5' : cardsPerRow == '4' ? 'mq1280:basis-1/4 mq1280:max-w-1/4' : cardsPerRow == '3' ? 'mq1280:basis-1/3 mq1280:max-w-1/3',
+    ] %}
+
+    <div class="mq640:flex flex-wrap mq640:-mx-p8 mq1024:-mx-p12 justify-center" x-comp="gsapGlobal" x-data="gsapGlobal()" x-init="gsapFadeIn()" x-ref="scrollTrigger">
+      {% for card in cards %}
+        <div class="{{ cardClasses|join(' ') }}">
+          {% include 'components/_productCard' with { 'settings': {
+            'heading' : card.title,
+            'headingLevel': 'h3',
+            'textContent' : card.productDescriptionBrief,
+            'product': card,
+            'image': card.media is not empty ? card.media.one : false,
+            'url': card.url,
+            'mode': settings.config.background,
+            'buttonText': card.cardButtonText
+          }} %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {# Button #}
+  {% if not settings.button.isEmpty() %}
+    <div class="text-center mt-p32">
+      {% include 'components/_button' with { 'settings': {
+         'text': settings.button.text,
+         'href': settings.button.url,
+      }} %}
+    </div>
+  {% endif %}
+</section>

@@ -1,0 +1,69 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'config' : false,
+  'settings' : {},
+  'class' : '',
+  'module' : false,
+  'gsap': false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set config = settings.settings|merge({'config': settings.config}) %}
+
+{% if settings.module is not empty %}
+  {% set moduleClass = (settings.config.classes ~ ' ' ~ settings.class)|trim %}
+  {% set number = settings.config.moduleCount %}
+
+  {% set decorations = false %}
+  {% if settings.config.decorations is not empty and settings.config.decorations != 'none' %}
+    {% set decorations = true %}
+    {% set decoration = settings.config.decorations %}
+    {% set exclude = ['borderTop', 'borderBottom'] %}
+
+    {% if decoration == 'borderTop' %}
+      {% set moduleClass = moduleClass ~ ' ' ~ 'border-t-8 border-t-sand' %}
+    {% endif %}
+
+    {% if decoration == 'borderBottom' %}
+      {% set moduleClass = moduleClass ~ ' ' ~ 'border-b-8 border-b-sand' %}
+    {% endif %}
+
+  {% endif %}
+
+  {% if settings.config.overflow is not empty %}
+    {% set overflow = settings.config.overflow %}
+    {% if overflow == 'hidden' %}
+      {% set moduleClass = moduleClass ~ ' ' ~ 'overflow-hidden' %}
+    {% endif %}
+  {% endif %}
+
+
+
+  {% set id = (settings.config.id is not empty) ? settings.config.id : craft.ccHelpersModule.getRandomString(8) %}
+  {{ htmlComment('Start Module ' ~ settings.module) }}
+  {# <section id="{{ id }}" class="c-module relative {{ moduleClass }}" data-module-num="{{ number }}" style="z-index: {{ settings.config.zIndex }};"> #}
+    <section id="{{ id }}" class="c-module relative {{ moduleClass }}" data-module-num="{{ number }}">
+    {# Module Content Layer
+    # The module content layer is the layer on which the module itself will render. It is set on layer higher than
+    # the background layer, which optionally contains the background illustration/seperator components #}
+    <div class="{{ component('modulePadding', settings.module, '') }}">
+      {% include ('modules/_' ~ settings.module ~ '.twig')|siteInclude with { settings: config } %}
+    </div>
+    {# Module Separator/SVG Layer
+     # The module separator/svg layer sits behind the content layer and, if present, provides us with the container in
+     # which to house background SVGs, used either as separators or as decorative items. #}
+
+    {% if decorations and (settings.config.decorations not in exclude)  %}
+      {% include ('svg/_' ~ settings.config.decorations ~ '.twig')|siteInclude with { settings: settings.config } %}
+    {% endif %}
+  </section>
+  {{ htmlComment('End Module ' ~ settings.module) }}
+{% endif %}
+
+{{ wfBreak() }}

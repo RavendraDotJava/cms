@@ -1,0 +1,6 @@
+siteUid: null
+sortOrder: 1
+template: /preview/_index.twig
+uriParts:
+  - '_preview/<type>/<entryId:\d+>/<draftId:\d+>'
+uriPattern: '_preview/<type>/<entryId:\d+>/<draftId:\d+>'

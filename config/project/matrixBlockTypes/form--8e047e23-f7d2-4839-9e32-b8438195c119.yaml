@@ -1,0 +1,193 @@
+field: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+fieldLayouts:
+  58190777-53a9-4200-901f-e8de9437ed5f:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 2ec24e1b-5f0d-4e2a-9f31-6d6b1830d3d9 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f60194ef-66ec-437a-88cc-87704ca109af
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f2267e9b-e469-4050-9b31-7d7a3df64cb4 # Text Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cf80ef6e-16b3-498d-a84a-aa1d68b1c0a3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 2083c19f-62ce-441a-b177-e0f99efaa169 # Form
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 08032ecb-45d7-4584-9141-99d52b5c7488
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 30877511-3aed-4431-a52a-6876a73518e1 # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 405c8a58-8df1-4f61-a666-19188203a5a8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 486454e1-fae8-4c68-aa30-ce014ed51faf
+        userCondition: null
+fields:
+  2ec24e1b-5f0d-4e2a-9f31-6d6b1830d3d9: # Heading
+    columnSuffix: bfxycrxn
+    contentColumnType: string
+    fieldGroup: null
+    handle: heading
+    instructions: "Use this field to add a heading to this module.\r\n\r\nTo highlight a particular piece of the heading text, wrap the targeted words in single asterisk (`*`). For example: `this is a *highlighted* heading`."
+    name: Heading
+    searchable: true
+    settings:
+      defaults:
+        __assoc__:
+          -
+            - levels
+            -
+              __assoc__:
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+          -
+            - sizing
+            -
+              __assoc__:
+                -
+                  - default
+                  - Default
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+                -
+                  - h5
+                  - H5
+      heading: ''
+      levelDefault: h2
+      levels: ''
+      sizing:
+        - h1
+        - h2
+        - h3
+        - h4
+      sizingDefault: h2
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Heading
+  2083c19f-62ce-441a-b177-e0f99efaa169: # Form
+    columnSuffix: qchcmayb
+    contentColumnType: integer
+    fieldGroup: null
+    handle: form
+    instructions: null
+    name: Form
+    searchable: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: Solspace\Freeform\FieldTypes\FormFieldType
+  30877511-3aed-4431-a52a-6876a73518e1: # Module
+    columnSuffix: bbtkamje
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: white
+      decorations:
+        - borderTop
+        - borderBottom
+      decorationsDefault: ''
+      independentPadding: '1'
+      moduleId: ''
+      overflow: ''
+      padding:
+        - none
+        - small
+        - medium
+        - large
+      paddingDefault: large
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+  f2267e9b-e469-4050-9b31-7d7a3df64cb4: # Text Content
+    columnSuffix: wultogem
+    contentColumnType: text
+    fieldGroup: null
+    handle: textContent
+    instructions: 'Use this field to add introductory content for this module.'
+    name: 'Text Content'
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      blockTypeBehaviour: click
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      editorMode: combined
+      initialRows: 7
+      manualConfig: ''
+      maxBlocks: null
+      minBlocks: null
+      pasteAsPlainText: false
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      trimEmptyParagraphs: true
+      vizyConfig: Simple.json
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\vizy\fields\VizyField
+handle: form
+name: Form
+sortOrder: 6

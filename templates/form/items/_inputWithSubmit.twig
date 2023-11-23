@@ -1,0 +1,47 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'type': 'text',
+  'name': '',
+  'id': '',
+  'label': '',
+  'value': '',
+  'placeholder': '',
+  'background': 'white',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.background == 'white' %}
+  {% set containerComponent = 'inputWithSubmitContainer' %}
+  {% set inputComponent = 'inputWithSubmit' %}
+  {% set buttonComponent = 'white' %}
+{% elseif settings.background == 'light' or settings.background == 'default' %}
+  {% set containerComponent = 'inputWithSubmitContainerLight' %}
+  {% set inputComponent = 'inputWithSubmitLight' %}
+  {% set buttonComponent = 'terracotta' %}
+{% endif %}
+
+<div class="mb-p16">
+  {% if settings.label %}
+    <label class="{{ component('label', false, 'hidden') }}" for="{{ settings.id }}">{{ settings.label }}{{ settings.atts.required ?? '*' }}</label>
+  {% endif %}
+  <div class="{{ component('input', containerComponent, 'mq768:flex') }}">
+
+    {{ input(settings.type, settings.name is not empty ? settings.name : settings.id, settings.value, {
+      class: component('input', inputComponent, ''),
+      placeholder: settings.placeholder
+    } ) }}
+
+    <div class="ml-auto mt-p16 mq768:mt-none flex">
+      {{ input('submit', 'form_page_submit', settings.label, {
+        'class': component('button', buttonComponent, 'w-full mq480:w-auto mq480:ml-auto'),
+        'data-freeform-action': 'submit'
+      }) }}
+    </div>
+  </div>
+</div>

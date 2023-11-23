@@ -1,0 +1,26 @@
+{% import 'partials/_macros.twig' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'intro'   : '',
+  'type'    : 'DEFAULT'
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+<div class="{{ component('intro', settings.type) }}">
+  {% if settings.heading is not empty %}
+    {{ settings.heading.set({
+        class: component('introHeading', settings.type),
+    }) }}
+  {% endif %}
+  {% if settings.intro %}
+    <div class="{{ component('introContent', settings.type) }}">
+      {{ settings.intro|markdown|raw }}
+    </div>
+  {% endif %}
+</div>

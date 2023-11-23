@@ -1,0 +1,124 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : false,
+  'intro' : '',
+  'entries': false,
+  'button': '',
+  'sections': ['blog', 'recipe'],
+  'limit': 3,
+  'backfill': false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{# Set initial cards array #}
+{% set cards = [] %}
+{% set exclude = ['not'] %}
+{% set sections = settings.sections is not empty ? settings.sections : [10,11] %}
+
+{% if settings.entries is not empty and cards|length < settings.limit %}
+  {% for cardEntry in settings.entries.all() %}
+    {% if cards|length < settings.limit %}
+      {% set img = cardEntry.heroImage is not empty ? cardEntry.heroImage.one() : false %}
+      {% set cards = cards|merge([{
+        'heading' : cardEntry.title,
+        'textContent' : cardEntry.description,
+        'image' : img,
+        'category': cardEntry.categories is not empty ? cardEntry.categories.one : '',
+        'url' : cardEntry.url,
+        'mode': settings.config.background,
+        'buttonText': cardEntry.cardButtonText,
+      }]) %}
+      {% set exclude = exclude|merge([cardEntry.id]) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+
+{% if cards|length < settings.limit and settings.backfill %}
+  {% set limit = settings.limit - cards|length %}
+
+  {% if settings.categories.all() is not empty %}
+    {% set cardEntries = craft.entries().sectionId(sections).relatedTo(settings.categories.all()).id(exclude).limit(limit) %}
+  {% else %}
+    {% set cardEntries = craft.entries().sectionId(sections).id(exclude).limit(limit) %}
+  {% endif %}
+
+  {% for cardEntry in cardEntries.all() %}
+  {% if cards|length < settings.limit %}
+      {% set img = cardEntry.heroImage is not empty ? cardEntry.heroImage.one() : false %}
+
+      {% set cards = cards|merge([{
+        'heading' : cardEntry.title,
+        'textContent' : cardEntry.description,
+        'image' : img,
+        'category': cardEntry.categories is not empty ? cardEntry.categories.one : '',
+        'url' : cardEntry.url,
+        'mode': settings.config.background,
+        'buttonText': cardEntry.cardButtonText,
+      }]) %}
+      {% set exclude = exclude|merge([cardEntry.id]) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{# Backfill #}
+{# Add queries #}
+{% if settings.backfill and cards|length < settings.limit %}
+  {% set limit = settings.limit - cards|length %}
+  {% set cardEntries = craft.entries().sectionId(sections).id(exclude).limit(limit) %}
+  {% for cardEntry in cardEntries.all() %}
+    {% if cards|length < settings.limit %}
+    {% set img = cardEntry.heroImage is not empty ? cardEntry.heroImage.one() : false %}
+    {% set cards = cards|merge([{
+      'heading' : cardEntry.title,
+      'textContent' : cardEntry.description,
+      'image' : img,
+      'category': cardEntry.categories is not empty ? cardEntry.categories.one : '',
+      'url' : cardEntry.url,
+      'mode': settings.config.background,
+      'buttonText': cardEntry.cardButtonText,
+    }]) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+
+<section class="{{ component('moduleWidth', settings.config.handle, '') }}">
+
+  {# Intro #}
+  {% if settings.intro is not empty or settings.heading is not empty %}
+    {% include 'components/_intro.twig' with { 'settings': {
+      'heading': settings.heading,
+      'intro': settings.intro,
+      'type': settings.config.handle,
+    }} %}
+  {% endif %}
+
+  {# Cards #}
+  {# {% if settings.cards is not empty %} #}
+    <div class="mq640:flex flex-wrap mq640:-mx-p8 mq1024:-mx-p16 justify-center" x-comp="gsapGlobal" x-data="gsapGlobal()" x-init="gsapFadeIn()" x-ref="scrollTrigger">
+      {% for card in cards %}
+          {# {% set type = card.section.handle %} #}
+          <div class="px-p8 mq768:w-1/2 mq1024:w-1/3 flex mb-p16">
+            {% include 'components/_recipeCard' with { settings: card } %}
+          </div>
+      {% endfor %}
+    </div>
+  {# {% endif %} #}
+
+  {# Button #}
+  {% if not settings.button.isEmpty() %}
+    <div class="text-center mt-p32">
+      {% include 'components/_button' with { 'settings': {
+         'text': settings.button.text,
+         'href': settings.button.url,
+      }} %}
+    </div>
+  {% endif %}
+</section>

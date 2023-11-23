@@ -1,0 +1,78 @@
+field: 9fd6a88f-cc42-48c6-9bb1-9b742c529046 # Filters
+fieldLayouts:
+  4366862d-6d70-4e97-8606-0c168e17547b:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: cde2b277-5300-412f-86b3-a6cfa218a0c2 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: aa35361f-2547-46df-b826-11dc55e76f43
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 0b17acd4-4bab-4948-8650-e0c6de8ca19e # Filter ID
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5d534fc6-02c8-4e9d-9bbd-277f67512fc0
+            userCondition: null
+            warning: null
+            width: 50
+        name: Content
+        uid: fab5974c-cd27-4c82-80d8-069f9171b9f8
+        userCondition: null
+fields:
+  0b17acd4-4bab-4948-8650-e0c6de8ca19e: # Filter ID
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: filterId
+    instructions: 'Use this field to add a custom ID to this filter. The value of this field should begin with a letter and should only contain letters, numbers, hyphens (-) and/or underscores (_).'
+    name: 'Filter ID'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  cde2b277-5300-412f-86b3-a6cfa218a0c2: # Heading
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: heading
+    instructions: 'Use this field to add a heading above the section filters.'
+    name: Heading
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: sections
+name: Sections
+sortOrder: 1

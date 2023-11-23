@@ -1,0 +1,162 @@
+/**
+ * ccdocsmodule module for Craft CMS
+ *
+ * ccdocsmodule CSS
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2022 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   Ccdocsmodule
+ * @since     1.0,0
+ */
+
+.documentation {
+  max-width: 800px;
+}
+
+.documentation section,
+.documentation .section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e4edf6;
+}
+
+.documentation section.norule {
+  padding-bottom: 0;
+  border: 0;
+}
+
+.documentation section:last-child,
+.documentation .section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.documentation p.large {
+  font-size: 1.2em;
+  line-height: 1.6em;
+}
+
+.documentation ul {
+  padding-left: 1rem;
+}
+
+.documentation ul li { 
+  list-style-type: disc;
+  margin-bottom: .5em;
+}
+
+.documentation ul li .field-doc {
+  display: inline-flex;
+  padding-left: 2px;
+}
+
+.documentation ul li .field-doc svg {
+  stroke: #000000;
+  height: 12px;
+  width: 12px;
+  position: relative;
+  top: 2px;
+}
+
+.documentation ul li .field-doc:hover svg {
+  stroke: #1f5fea;
+}
+
+.documentation ul li.hr {
+  list-style-type: none;
+}
+
+.documentation ul li.hr hr {
+  margin-top: 24px !important;
+  border-style: dashed;
+}
+
+.documentation ul.blocks {
+  padding: 0;
+}
+
+.documentation ul li.block { 
+  list-style-type: none;
+  margin-bottom: 1em;
+  border-radius: 4px;
+  background-color: #fbfcfe;
+  box-shadow: 0 0 0 1px #e4edf6, 0 2px 12px rgb(205 216 228 / 25%); 
+  overflow: hidden;
+}
+
+.documentation .block__heading {
+  padding: 1em;
+  background: #fff;
+  border-bottom: 1px solid #e4edf6;
+}
+
+.documentation .block__heading p {
+  margin: 0;
+}
+
+
+.documentation .block__body {
+  padding: 1em;
+}
+
+.documentation ul li p { 
+  margin-top: 0;
+}
+
+.documentation ul li .list-section {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #d61f2b;
+}
+
+.documentation ul li a .list-section {
+  color: var(--link-color);
+}
+
+.documentation ul li:last-child { 
+  margin-bottom: 0;
+}
+
+.documentation ul ul {
+  margin-top: .5em;
+}
+
+.documentation .contents {
+  border-radius: 4px;
+  background-color: #fbfcfe;
+  box-shadow: 0 0 0 1px #e4edf6, 0 2px 12px rgb(205 216 228 / 25%);
+  padding: 1em;
+}
+
+.documentation .screenshot {
+  border-radius: 4px;
+  background-color: #fbfcfe;
+  box-shadow: 0 0 0 1px #e4edf6, 0 2px 12px rgb(205 216 228 / 25%);
+  overflow: hidden;
+}
+
+.documentation .template {
+  border-radius: 4px;
+  background-color: #fbfcfe;
+  box-shadow: 0 0 0 1px #e4edf6, 0 2px 12px rgb(205 216 228 / 25%);
+  padding: 1em;
+}
+
+.documentation .highlight,
+.documentation code {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: #d61f2b;
+}
+
+.documentation .type {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.documentation .todo {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: #0b9b1e;
+}

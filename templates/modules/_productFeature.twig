@@ -1,0 +1,89 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'product' : '',
+  'description' : '',
+  'image' : '',
+  'button': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.product is not empty %}
+  {% set featuredProduct = settings.product.one %}
+{% endif %}
+
+
+<section class="{{ component('moduleWidth', settings.config.handle, '') }}" x-comp="gsapGlobal" x-data="gsapGlobal()" x-ref="scrollTrigger">
+  <div class="{{ component('modulePadding', settings.config.handle, 'mq768:flex items-center') }}">
+
+    {% if settings.product is not empty %}
+      <a href="{{ featuredProduct.url }}" class="mq768:max-w-1/2 w-full mq768:pr-p40" x-comp="gsapGlobal" x-data="gsapGlobal()" x-init="gsapFadeIn()" x-ref="scrollTrigger">
+        <div x-init="gsapFadeIn($duration=.4, $delay=.4)">
+          {% include 'components/_image.twig'|siteInclude with { settings: {
+            'image' : settings.image is not empty ? settings.image.one : featuredProduct.media.one,
+            'format' : 'fit',
+            'class': 'w-full text-center',
+            'imageClass': 'mx-auto',
+          }} %}
+        </div>
+      </a>
+    {% endif %}
+
+    <div class="mq768:max-w-1/2 w-full" x-init="gsapFadeIn($duration=.8)">
+      {% if settings.product is not empty %}
+
+        <h3 class="h1 font-light mq768:font-regular mb-p16">
+          <a href="{{ featuredProduct.url }}">{{ featuredProduct.title }}</a>
+        </h3>
+
+        {% if featuredProduct.benefits is not empty and settings.benefits %}
+          {% if featuredProduct.benefits.benefits is not empty %}
+            {% set benefits = featuredProduct.benefits.benefits %}
+            <ul class="mb-p20">
+              {% for benefit in benefits %}
+                <li class="inline-block text-lg mq480:text-p22 after:content-[attr(after)] last:after:content-[] mr-p8" after=", ">{{ benefit }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endif %}
+
+        <div class="c-content">
+          {% if settings.description is not empty %}
+            {{ settings.description }}
+          {% else %}
+            <p>{{ featuredProduct.productDescriptionBrief }}</p>
+          {% endif %}
+        </div>
+
+        {% include 'components/_button' with { 'settings': {
+          'text'  : settings.button.text ? settings.button.text : settings.button.defaultText,
+          'href'  : featuredProduct.url,
+          'type'  : 'link',
+          'style' : 'arrow',
+          'class': 'mt-p30',
+          'disabled' : false,
+          'params' : false,
+          'atts'  : {},
+          'icon'  : 'triangle-in-circle',
+          'iconAlign' : 'left',
+          'iconReact': false,
+        }} %}
+
+
+        <div class="mt-p30">
+          {% include 'components/_addToCart' with { 'settings': {
+            'product': featuredProduct,
+            'productVariants': featuredProduct.getVariants(),
+            'buttonIconAlign' : 'right',
+          }} %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>

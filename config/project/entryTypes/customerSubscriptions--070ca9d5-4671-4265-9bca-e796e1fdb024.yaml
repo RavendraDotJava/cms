@@ -1,0 +1,97 @@
+fieldLayouts:
+  e06ff5f6-7dff-49d7-9271-f8114b53acdc:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 500165ad-af05-4e6e-b1bd-0ade673f0785
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 00727e79-cbc2-4589-ba34-4d58fac1a35b # Page Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6957f463-6c2b-41ba-a280-95ecffd16a3e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e605c6a1-a6ef-4595-8f5b-7801b3faf25c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 08c3d3f6-eb17-4a07-8da9-68cf5b29156e
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: e12607d1-b6e4-4d30-bf2a-2b3e527e1dd1 # No Order Text
+            instructions: 'Use this field to enter text that will display on the customer subscription history page when the customer does not have any subscriptions.'
+            label: 'No Subscriptions Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bb4db4d7-756f-4f84-b6eb-579d4ce6518f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 3ed437e4-57df-474d-b42e-a8e3a4bbcdde # Link
+            instructions: 'Use this field to create a link at the bottom of the subscription history.'
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 961522a2-2e1a-4aea-a49f-6a70744ebd33
+            userCondition: null
+            warning: null
+            width: 100
+        name: Subscriptions
+        uid: b6edf1f7-8b2b-408d-ad8c-1c37175477fd
+        userCondition: null
+handle: customerSubscriptions
+hasTitleField: true
+name: 'Customer Subscriptions'
+section: 2f6507e5-d577-4de4-948b-33f3785ad4d6 # Customer Profile
+sortOrder: 7
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

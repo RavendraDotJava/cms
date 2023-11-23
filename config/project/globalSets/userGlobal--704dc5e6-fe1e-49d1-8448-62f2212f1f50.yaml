@@ -1,0 +1,217 @@
+fieldLayouts:
+  8898be04-f87f-456e-b374-3e3982f89c3c:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: b8911486-8ae8-4424-b035-45df1177b1af # Sign In Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d5fb979a-a71a-4bd7-9c2c-aef25e34d8e0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 004795e9-9ab8-44b3-a96c-6a343b346b18 # Sign In Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8a275589-62fe-4c36-a753-9852264bbbbd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 573567dd-7a09-4567-8612-0bb95b737038
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 8d46fc4e-4535-415e-b65a-6297a3e82f4a # Pending Activation Notice
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dd2a7813-c2c2-4b38-b991-8fcbae5951cb
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Sign In'
+        uid: 595b8849-035b-474d-b9ee-dbc411669be6
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            heading: 'Modal Content'
+            type: craft\fieldlayoutelements\Heading
+            uid: 1833b567-2ea8-414b-8457-7a8953e4b57c
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 17d7c779-fb65-451f-8256-9fdcee265a91 # Register Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4fb0e559-04e2-47e9-933a-ad54877f1928
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: bb39b16a-a6c2-40b5-80c7-6cfb41617f17 # Register Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b6edad53-cdd9-4903-bd7a-fbef217fd1a1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: 'Form Settings'
+            type: craft\fieldlayoutelements\Heading
+            uid: 729e4b7c-e694-483b-8f2b-6002b83fafa8
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 7bb6f41d-e08f-4190-9911-b8135c725160 # Registration Redirect
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 247bcc51-ea8d-4f8f-99ff-ed52107daa7c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Register
+        uid: 25911ae7-a68a-439c-a0e8-147dceb6afe5
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dismissible: true
+            elementCondition: null
+            style: tip
+            tip: "**Set Password** \r\n- This form will appear for users who are setting their password through an account activation or password reset email.\r\n\r\n**Forgot Password**\r\n- This form appears in the sign-in modal when a user clicks the *Forgot Password* link."
+            type: craft\fieldlayoutelements\Tip
+            uid: 02f4ce68-2935-45c0-877a-1394e57f961a
+            userCondition: null
+          -
+            elementCondition: null
+            heading: 'Set Password'
+            type: craft\fieldlayoutelements\Heading
+            uid: 674f78e4-78fb-4730-9cb3-173ec23d1896
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 849f7c0b-dd6e-4b82-b827-4debafdd372b # Password Set Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3891828c-0781-44f5-a388-c69e3836d115
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 7b8f749b-f6b8-42ec-8eb0-d78f62ee700c # Password Set Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 96aa183f-1c71-42f6-a0cb-2c45a0a8f4e8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: 'Forgot Password'
+            type: craft\fieldlayoutelements\Heading
+            uid: f22e4922-d0ea-4756-a7f8-5e23374b8094
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 04b690e2-7379-41cf-85fc-26b3c1611748 # Forgot Password Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0d126863-516a-4039-b9db-61ee9d422645
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: aadb845d-5f8e-47ef-af6b-f337ea288d6b # Forgot Password Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 73186288-3215-4194-b542-d71e34307c91
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Password Set/Forgot'
+        uid: 6ff1ee38-56f6-4120-a95a-9f03246b161a
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 4d96cfbc-c428-4085-815f-f310416b40dc # Deactivate Confirmation Message
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 93b8d3e5-1857-4933-9ca4-06b666f1a67f
+            userCondition: null
+            warning: null
+            width: 100
+        name: Deactivate
+        uid: faee2670-ec3d-4eeb-b699-a5fb1476090f
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 99ea5efc-9c8b-45fc-83c0-96f9dc748ea5 # Edit Address 
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 50f42e17-ab20-4ae3-b020-7717c458e35a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Address
+        uid: 3d32c994-85e8-405d-b8be-0189fecba13c
+        userCondition: null
+handle: userGlobal
+name: User
+sortOrder: 5

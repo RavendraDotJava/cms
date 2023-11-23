@@ -1,0 +1,29 @@
+{% import 'partials/_macros' as helpers %}
+
+{% if not currentUser %}
+    {% exit 404 %}
+{% endif %}
+
+{% if currentUser %}
+  <h1 class="text-p35 font-normal">{{ entry.title }}</h1>
+  {% include 'modules/_userAddresses' with { 'settings': {
+    'selectable': false,
+    'noAddressText': entry.noOrderText,
+    'addAddress': entry.addAddress,
+    'primaryBillingAddressId': currentUser.primaryBillingAddressId,
+    'primaryShippingAddressId': currentUser.primaryShippingAddressId,
+  }} %}
+{% endif %}
+
+{% if not entry.linkField.isEmpty() %}
+  {% include 'components/_button.twig'|siteInclude with { settings: {
+    'text'  : entry.linkField.text,
+    'type'  : 'link',
+    'href'  : entry.linkField.url,
+    'style' : 'arrow',
+    'class' : 'mr-p8 mb-p20 mt-p50',
+    'icon'  : 'triangle-in-circle-left',
+    'iconAlign' : 'left',
+  }} %}
+{% endif %}
+

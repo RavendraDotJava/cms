@@ -1,0 +1,13 @@
+.c-chevron {
+	@apply block border-l-2 border-b-2 border-l-basalt border-b-basalt w-p8 h-p8 origin-center transition-transform duration-300 ease-in-out;
+	transform: translate3d(0, -70%, 0) rotate(-45deg);
+	&.top-center {
+		transform: translate3d(0, -70%, 0) rotate(-45deg);
+	}
+	&.js-active {
+		transform: translate3d(0, -25%, 0) rotate(-135deg);
+    &.top-center {
+  		transform: translate3d(0, -25%, 0) rotate(135deg);
+    }
+	}
+}

@@ -1,0 +1,205 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'textLeft' : '',
+  'textRight' : '',
+  'textColumnAlignment': '',
+  'detailsList' : '',
+  'bgImage': '',
+  'fgImage': '',
+  'radiantCircles': false,
+  'parallax': false,
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.parallax %}
+  {% set showParallax = settings.parallax %}
+{% else %}
+  {% set showParallax = false %}
+{% endif %}
+
+{% if settings.textColumnAlignment is not empty %}
+  {% set alignment = settings.textColumnAlignment %}
+  {# {% set alignment = 'centered' %} #}
+{% else %}
+  {% set alignment = 'inline' %}
+{% endif %}
+
+
+<section class="{{ component('moduleWidth', settings.config.handle, '') }}" x-comp="deepDive" x-data="deepDive()" x-ref="container" @resize.window="onResize()">
+
+
+
+  {% if alignment == 'centered' %}
+    <div class="text-center">
+      {% if settings.heading is not empty or settings.textLeft is not empty %}
+        {% include 'components/_intro.twig' with { settings: {
+          'heading' : settings.heading,
+          'type'    : 'deepDiveCentered',
+          'intro'   : settings.textLeft,
+        }} %}
+      {% endif %}
+      <div class="c-content max-w-p768 text-center mb-p64 mx-auto">
+        {{ settings.textRight.renderHtml() }}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="mq1024:flex relative z-20">
+
+    {# Text Left #}
+    <div class="mq1024:w-1/2 basis-1/2 shrink-0 flex flex-col">
+
+      {% if alignment == 'inline' %}
+        {% if settings.heading is not empty or settings.textLeft is not empty %}
+          <div x-ref="textLeft" class="max-w-p512 mx-auto mq1024:max-w-none">
+            {% include 'components/_intro.twig' with { settings: {
+              'heading' : settings.heading,
+              'type'    : settings.config.handle,
+              'intro'   : settings.textLeft,
+            }} %}
+          </div>
+        {% endif %}
+      {% endif %}
+
+      {% if settings.detailsList is not empty %}
+        <template x-if="largeScreen">
+          <ul class="mq1024:order-1 mq1024:w-full max-w-p420 mq1024:mr-p50 mx-auto mq1024:mx-none mt-p50 mq1024:mt-none relative h-full h-auto" x-ref="listItems" id="deepDiveListItems">
+            {% for listItem in settings.detailsList.all() %}
+              <li class="mb-p50 last:mb-none px-p32 mq1024:px-none" x-comp="gsapGlobal" x-data="gsapGlobal()" x-init="gsapFadeIn($duration=.3, $delay=0, $start='top +=50%', $end='bottom +=50%', $distance='1.5rem')" x-ref="scrollTrigger">
+                {% set bgColor = listItem.colour.color[0].background  %}
+                <span class="w-p30 h-p30 inline-block mb-p20 rounded-full {{ bgColor }}"></span>
+                {% if listItem.heading is not empty %}
+                  <strong class="text-p22 mq1024:text-h4 mb-p20 block leading-e1/4">{{ listItem.heading|widont }}</strong>
+                {% endif %}
+                {% if listItem.textContent is not empty %}
+                  <p class="text-lg">{{ listItem.textContent|widont }}</p>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </template>
+      {% endif %}
+    </div>
+
+    {# Text Right #}
+    <div class="ml-auto">
+
+      {% if settings.textRight is not empty and alignment == 'inline' %}
+        <div class="mq1024:pl-p128 c-content max-w-p512 mx-auto mq1024:max-w-none" x-ref="textRight">
+          {{ settings.textRight.renderHtml() }}
+        </div>
+      {% endif %}
+
+      {% if settings.fgImage is not empty or settings.bgImage is not empty %}
+        <div class="mq1024:order-2 mq1024:ml-auto relative flex justify-center items-start mb-auto w-full my-p64" x-ref="imagePinContainer">
+
+          {% if settings.radiantCircles %}
+            <div x-ref="radiantCircles" class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10">
+              <div x-comp="gsapGlobal" x-data="gsapGlobal" x-init="radiantCircles()">
+                {% include 'svg/_radiantCircles' with { 'settings': {
+                  'classes': 'mq1024:w-p1300 mq1024:h-p1300',
+                  'xref': 'radiantCircles',
+                }} %}
+              </div>
+            </div>
+          {% endif %}
+
+          <div x-init="images()" class="relative">
+            {# When there are both background and foreground images #}
+            {# {% if settings.bgImage is not empty and settings.fgImage is not empty %}
+              <div class="absolute inset-0 z-10 flex items-center justify-center aspect-square" x-ref="bgImage">
+                {% include 'components/_image.twig'|siteInclude with { settings: {
+                  'image' : settings.bgImage,
+                  'format' : 'square',
+                  'class': 'inline-block rounded-full overflow-hidden',
+                }} %}
+              </div>
+            {% endif %} #}
+
+            {# When there is only a background image #}
+            {% if settings.bgImage is not empty %}
+              <div x-ref="bgImage" class="{{ settings.fgImage is not empty ? 'absolute inset-0 z-10 flex items-center justify-center aspect-square' : 'relative' }}">
+                {% include 'components/_image.twig'|siteInclude with { settings: {
+                  'image' : settings.bgImage,
+                  'format' : 'square',
+                  'class': 'inline-block rounded-full overflow-hidden',
+                }} %}
+                {% if isVideo(settings.bgImage) %}
+                  {% include 'components/_videoBackground.twig' with { 'settings': {
+                    'videoWidth': '600',
+                    'videoHeight': '600',
+                    'videoPrimary': settings.bgImage ? settings.bgImage.videoFile.one.url : '',
+                    'videoSecondary': settings.bgImage.videoFileSecondary.one ? settings.bgImage.videoFileSecondary.one.url : '',
+                    'classes': 'absolute z-10 inset-y-0 left-1/2 -translate-x-1/2 object-cover h-full rounded-full overflow-hidden',
+                    'atts': '',
+                  }} %}
+                {% endif %}
+              </div>
+            {% endif %}
+
+
+            {% if settings.fgImage is not empty %}
+              <div class="relative z-20 flex items-center aspect-square" x-ref="fgImage">
+                {% include 'components/_image.twig' with { 'settings': {
+                  'image' : settings.fgImage,
+                  'format' : 'fit',
+                  'class' : 'relative z-20',
+                  'imageClass' : '',
+                }} %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if settings.detailsList is not empty %}
+      <template x-if="!largeScreen">
+        <ul class="mq1024:order-1 mq1024:w-full max-w-p420 mq1024:mr-p50 mx-auto mq1024:mx-none mt-p50 relative h-full h-auto" x-ref="listItems">
+          {% for listItem in settings.detailsList.all() %}
+            <li class="mb-p50 last:mb-none px-p32 mq1024:px-none" x-comp="gsapGlobal" x-data="gsapGlobal()" x-init="gsapFadeIn()" x-ref="scrollTrigger">
+              {% set bgColor = listItem.colour.color[0].background  %}
+              <span class="w-p30 h-p30 inline-block mb-p20 rounded-full {{ bgColor }}"></span>
+              {% if listItem.heading is not empty %}
+                <strong class="text-p22 mq1024:text-h4 mb-p20 block leading-e1/4">{{ listItem.heading|widont }}</strong>
+              {% endif %}
+              {% if listItem.textContent is not empty %}
+                <p class="text-lg">{{ listItem.textContent|widont }}</p>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+    </template>
+    {% endif %}
+    {% if showParallax %}
+
+    <div class="hidden mq640:block">
+      {% for parallaxImage in settings.parallax.all() %}
+        {% set distance = parallaxImage.distance.value %}
+        {% set speed = 0 %}
+        {% if distance == 'foreground' %}
+          {% set speed = 1.75 %}
+        {% elseif distance == 'middle' %}
+          {% set speed = 1 %}
+        {% elseif distance == 'background' %}
+          {% set speed = 0.2 %}
+        {% endif %}
+        <div class="{{ component('parallaxPosition', parallaxImage.position.value, 'absolute bottom-0 z-30 max-w-p200') }}" x-init="parallax()" data-speed="{{ speed }}">
+          {% include 'components/_image.twig'|siteInclude with { settings: {
+            'image' : parallaxImage.image.one(),
+            'format' : 'fit',
+            'imageClass': component('parallaxDistance', parallaxImage.distance.value ,''),
+          }} %}
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>

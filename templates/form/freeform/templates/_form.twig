@@ -1,0 +1,186 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+    'form' : '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set background = 'white' %}
+
+{{ form.renderTag({ class: "" }) }}
+
+<script>
+  var form = document.querySelector('[data-id="{{ form.anchor }}"]');
+  if (form) {
+    form.addEventListener("freeform-ready", function (event) {
+      var freeform = event.target.freeform;
+
+      freeform.setOption("errorClassBanner", ["c-content", "p-p20", "my-p32", "rounded-lg", "border", "border-error", "text-error"]);
+      freeform.setOption("errorClassList", ["text-error", "italic", "text-sm", "mt-p8"]);
+      freeform.setOption("errorClassField", ["border-error", "bg-off-white"]);
+      freeform.setOption("successClassBanner", ["c-content", "p-p20", "my-p32", "rounded-lg", "border", "border-terracotta"]);
+    })
+
+    form.addEventListener("freeform-ajax-success", function (event) {
+      const response = event.response;
+      console.log(response);
+    });
+  }
+</script>
+
+{% if not form.ajaxEnabled and form.submittedSuccessfully %}
+  <div class="freeform-alert freeform-alert-success">
+    {{ form.successMessage | t }}
+  </div>
+{% endif %}
+
+{% if form.hasErrors %}
+  <div id="form-error" class="p-md bg-red text-white rounded-lg my-md shadow-card flex items-stretch leading-lg">
+    <div class="w-p8 rounded bg-white shrink-0 grow-0 block"></div>
+    <div class="h-mx w-mx bg-white rounded-full self-center mx-em flex items-center justify-center shrink-0 grow-0">{{ helpers.icon('warning', 'w-md h-md fill-red') }}</div>
+    <p class="text-h4 font-serif text-white">{{ form.errorMessage|t }}</p>
+  </div>
+{% endif %}
+
+{% if form.hasErrors %}
+  <div class="freeform-form-has-errors">
+    {{ form.errorMessage | t }}
+
+    {% if form.errors|length %}
+      <ul>
+        {% for error in form.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% for row in form %}
+
+  <div class="mq480:flex -mx-p8 mb-p16 mq480:mb-p32 last:mb-none {{ form.customAttributes.rowClass ~ '' }}">
+    {% for field in row %}
+
+      {% set columnClass = "px-p8 basis-none grow shrink flex flex-col justify-end " ~ form.customAttributes.columnClass %}
+
+      {% if field.type == "submit" %}
+        {% set columnClass = "px-p8 basis-none grow shrink" %}
+      {% endif %}
+
+      <div class="{{ columnClass }}"{{ field.rulesHtmlData }}>
+
+        {% if field.handle == 'reviewProduct' %}
+          {% include 'form/items/_selectProduct' with {'settings': {
+            'options': field.options,
+            'label': field.label,
+            'value': field.value,
+            'multiple': field.type == 'multiple_select' ? true : false,
+            'required': field.required,
+            'id': field.handle
+          }} %}
+        {% elseif field.handle == 'reviewPhotos' %}
+          {% include 'form/items/_reviewPhotos' with { 'settings': {
+            'name': field.handle,
+            'label': field.label,
+            'instructions': field.instructions,
+            'required': field.required,
+            'photos': field.options,
+          }} %}
+        {% elseif field.handle == 'emailWithSubmit' %}
+          {% include 'form/items/_inputWithSubmit' with { 'settings': {
+            'type': 'email',
+            'name': field.handle,
+            'label': field.label,
+            'value': field.valueAsString,
+            'placeholder': field.placeholder,
+            'background': background,
+          }} %}
+        {% elseif field.type == "radio_group" %}
+          {{ field.render({
+            labelClass: component('label', '', ''),
+            class: component('checkbox', 'radio', ''),
+            instructionsClass: 'text-sm mt-p16 block',
+            instructionsBelowField: true,
+          }) }}
+        {% elseif field.type == "checkbox" %}
+          {{ field.render({
+            labelClass: component('label', '', ''),
+            class: component('checkbox', false, ''),
+            instructionsClass: 'text-sm mt-p16 block',
+            instructionsBelowField: true,
+          }) }}
+        {% elseif field.type == "checkbox_group" %}
+          {{ field.render({
+            labelClass: component('label', '', 'mb-p10 last:mb-none'),
+            class: component('checkbox', false, ''),
+            instructionsClass: 'text-sm mt-p16 block',
+            instructionsBelowField: true,
+          }) }}
+        {% elseif field.type == "rich_text" %}
+          <div class="c-content">
+            {{ field.render() }}
+          </div>
+        {% elseif field.type == "select" or field.type == 'multiple_select' %}
+          {% include 'form/items/_select' with {'settings': {
+            'options': field.options,
+            'label': field.label,
+            'value': field.valueAsString,
+            'multiple': field.type == 'multiple_select' ? true : false,
+            'required': field.required,
+            'id': field.handle
+          }} %}
+        {% elseif field.type == 'textarea'%}
+          {{ field.render({
+            labelClass: component('label', '',  field.required ? 'after:content-["*"]'),
+            class: component('input', 'textarea', ''),
+            instructionsClass: 'text-sm mt-p16 block',
+            instructionsBelowField: true,
+          }) }}
+        {% elseif field.type == "submit" %}
+          {{ field.render({
+            class: component('button', 'terracotta', ''),
+            instructionsClass: 'text-sm mt-p16 block',
+            instructionsBelowField: true,
+          }) }}
+        {% else %}
+          {{ field.render({
+            labelClass: component('label', '',  field.required ? 'after:content-["*"]'),
+            class: component('input', 'large', ''),
+            instructionsClass: 'text-sm mt-p16 block',
+            instructionsBelowField: true,
+          }) }}
+        {% endif %}
+
+        {% if field.errors %}
+          {% for errorString in field.errors %}
+            <div class="error">{{ errorString }}</div>
+          {% endfor %}
+        {% endif %}
+
+        {% if field.layoutRows is defined %}
+          {% for layoutRow in field.layoutRows %}
+            <div class="mq480:flex -mx-p8 {{ form.customAttributes.rowClass }}">
+              {% for layoutField in layoutRow %}
+                <div class="{{ columnClass }}">
+                  {{ layoutField.render({
+                    labelClass: labelClasses,
+                    class: inputClasses|join(' '),
+                    errorClass: 'italic'
+                  }) }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}
+
+{{ form.renderClosingTag }}

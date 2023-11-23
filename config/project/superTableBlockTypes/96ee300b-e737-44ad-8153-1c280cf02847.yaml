@@ -1,0 +1,149 @@
+changedFieldIndicator: null
+field: 6ef1d25b-ab04-4063-88e3-110f404e5949 # Empty Cart Message
+fieldLayouts:
+  ba9c240b-06ec-4c50-ad8f-02f2ff78dd26:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 9b19d4b2-7974-4dcf-ae48-cba502ffa4f5 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 77206c0a-f120-474a-946e-c38d5cc2e3bb
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6fcc16ea-71a9-42cc-84ca-3c3c24a0a418 # Text Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: da6e6959-ccd9-4bab-b259-c6854a48e37e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: e90d0415-a93d-444d-80bb-836c952c6cc9 # Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f61abdb4-f038-4cf1-850b-baf25913464a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 5c6102e5-c23f-47ba-8797-2820f386dcd0
+        userCondition: null
+fields:
+  6fcc16ea-71a9-42cc-84ca-3c3c24a0a418: # Text Content
+    columnSuffix: qerrloja
+    contentColumnType: text
+    fieldGroup: null
+    handle: textContent
+    instructions: null
+    name: 'Text Content'
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      initialRows: 7
+      manualConfig: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      trimEmptyParagraphs: true
+      vizyConfig: Simple.json
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\vizy\fields\VizyField
+  9b19d4b2-7974-4dcf-ae48-cba502ffa4f5: # Heading
+    columnSuffix: hsddwzhj
+    contentColumnType: string
+    fieldGroup: null
+    handle: heading
+    instructions: null
+    name: Heading
+    searchable: false
+    settings:
+      defaults:
+        __assoc__:
+          -
+            - levels
+            -
+              __assoc__:
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+          -
+            - sizing
+            -
+              __assoc__:
+                -
+                  - default
+                  - Default
+                -
+                  - h1
+                  - H1
+                -
+                  - h2
+                  - H2
+                -
+                  - h3
+                  - H3
+                -
+                  - h4
+                  - H4
+                -
+                  - h5
+                  - H5
+      heading: ''
+      levelDefault: h1
+      levels: ''
+      sizing:
+        - h1
+        - h2
+        - h3
+        - h4
+      sizingDefault: h1
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Heading
+  e90d0415-a93d-444d-80bb-836c952c6cc9: # Button
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: button
+    instructions: null
+    name: Button
+    searchable: false
+    settings:
+      contentTable: '{{%matrixcontent_button_1}}'
+      maxBlocks: 1
+      minBlocks: null
+      propagationKeyFormat: null
+      propagationMethod: all
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix

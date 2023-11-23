@@ -1,0 +1,87 @@
+<div class="my-p32">
+  {% paginate craft.products.limit(6) as pageInfo, pageProducts %}
+    <div class="{{ component('moduleWidth', false, 'c-container') }}">
+      <div class="grid gap-p32 gap-y-p16 grid-cols-1 mq480:grid-cols-2 mq1024:grid-cols-3 mq1728:grid-cols-4">
+
+        {% for product in pageProducts %}
+          <div class="shadow-md rounded-t">
+            {% if product.media is not empty %}
+              {% set image = product.media.one %}
+              <a href="{{ product.url }}" class="relative">
+                <div class="relative w-full overflow-hidden pt-ratio-img-card">
+                  {% include 'components/_image.twig'|siteInclude with { settings: {
+                    'image' : image ? image,
+                    'class' : 'absolute inset-0 w-full h-full object-cover object-center',
+                    'imageClass': 'w-full',
+                    'format' : 'card'
+                  }} %}
+                </div>
+              </a>
+            {% endif %}
+            <div class="p-p32 rounded-b relative">
+              <a href="{{ product.url }}" class="mb-p32">
+                <h2 class="h4">{{ product.title|title }}</h2>
+                {% if product.defaultVariant.onSale %}
+                  <div class="text-sm text-accent">
+                    <s>{{ product.defaultVariant.priceAsCurrency }}</s>
+                    <span class="ml-p8 bg-accent text-tn px-p4 py-p2 font-medium text-white">{{ "SALE"|t }}</span>
+                  </div>
+                  <div class="text-type">{{ product.defaultVariant.salePriceAsCurrency }}</div>
+                {% else %}
+                  <span>{{ product.defaultVariant.priceAsCurrency }}</span>
+                {% endif %}
+              </a>
+
+              <form method="post" class="mt-p16">
+                {{ csrfInput() }}
+                {{ actionInput('commerce/cart/update-cart') }}
+
+                {{ successMessageInput('{product} added to cart.'|t({
+                  product: product.title
+                })) }}
+
+                {% if product.getVariants()|length > 1 %}
+                  {% tag 'select' with {
+                      name: 'purchasableId',
+                      class: [
+                          'px-p16',
+                          'py-p8',
+                          'border',
+                          'border-rule',
+                          'rounded',
+                          'mb-p16',
+                        ]
+                      } %}
+                  {% for variant in product.getVariants() %}
+                    {{ tag('option', {
+                      value: variant.id,
+                      text: variant.title,
+                    }) }}
+                  {% endfor %}
+                  {% endtag %}
+                {% else %}
+                  {{ hiddenInput('purchasableId', product.defaultVariant.id) }}
+                {% endif %}
+
+                <div>
+                  {% if product.availableForPurchase %}
+                    {{ tag('button', {
+                        type: 'submit',
+                        class: component('button', 'primary', ''),
+                        text: 'Add to cart'|t
+                    }) }}
+                  {% else %}
+                    {{ tag('button', {
+                        type: 'submit',
+                        class: component('button', 'primary', 'disabled'),
+                        text: 'Unavailable'|t
+                    }) }}
+                  {% endif %}
+                </div>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>

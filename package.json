@@ -1,0 +1,136 @@
+{
+  "name": "craft-boilerplate",
+  "version": "1.0.0",
+  "description": "Craft boilerplate for quickly bootstraping projects",
+  "main": "index.js",
+  "author": "Craft&Crew",
+  "license": "UNLICENSED",
+  "copyright": "Craft&Crew",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development webpack --watch --progress",
+    "build": "NODE_ENV=production webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/soshal/craft-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/soshal/craft-boilerplate/issues"
+  },
+  "homepage": "https://gitlab.com/soshal/craft-boilerplate#readme",
+  "valetDomain": "olina.test",
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@fullhuman/postcss-purgecss": "^4.0.2",
+    "autoprefixer": "^10.2.4",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.26.14",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "css-loader": "^5.2.7",
+    "cssnano": "^5.1.10",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^1.3.9",
+    "postcss-loader": "^7.0.0",
+    "resolve-url-loader": "^3.1.2",
+    "sass": "^1.49.9",
+    "sass-loader": "^13.0.0",
+    "style-loader": "^3.3.3",
+    "tailwindcss": "^3.0.24",
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "@accessible360/accessible-slick": "^1.0.1",
+    "@alpinejs/collapse": "^3.5.2",
+    "@alpinejs/focus": "^3.10.2",
+    "@alpinejs/intersect": "^3.7.0",
+    "alpinejs": "^3.5.1",
+    "gsap": "^3.11.3"
+  },
+  "jsModules": {
+    "accordion": {
+      "callback": "cAccordion"
+    },
+    "address": {
+      "callback": "cAddress"
+    },
+    "ajaxForm": {
+      "callback": "cAjaxForm"
+    },
+    "alertBanner": {
+      "callback": "cAlertBanner"
+    },
+    "card": {
+      "callback": "cCard"
+    },
+    "comparisonChart": {
+      "callback": "cComparisonChart"
+    },
+    "countryCode": {
+      "callback": "cCountryCode"
+    },
+    "feed": {
+      "callback": "cFeed"
+    },
+    "flashNotice": {
+      "callback": "cFlashNotice"
+    },
+    "paymentForm": {
+      "callback": "cPaymentForm"
+    },
+    "reviewForm": {
+      "callback": "cReviewForm"
+    },
+    "previewImage": {
+      "callback": "cPreviewImage"
+    },
+    "slider": {
+      "callback": "cSlider"
+    },
+    "sliderSimple": {
+      "callback": "cSliderSimple"
+    },
+    "tabs": {
+      "callback": "cTabs"
+    },
+    "tooltip": {
+      "callback": "cTooltip"
+    },
+    "pageHeader": {
+      "callback": "cPageHeader"
+    },
+    "quantity": {
+      "callback": "cQuantity"
+    },
+    "registerSignIn": {
+      "callback": "cRegisterSignIn"
+    },
+    "gsapGlobal": {
+      "callback": "cGsapGlobal"
+    },
+    "deepDive": {
+      "callback": "cDeepDive"
+    },
+    "modal": {
+      "callback": "cModal",
+      "store": {
+        "show": false,
+        "transition": false,
+        "heading": "",
+        "label": false,
+        "content": false,
+        "trigger": false,
+        "width": false,
+        "bg": false,
+        "transcript": false,
+        "showTranscript": false
+      },
+      "functions": [
+        "cModalTrigger"
+      ]
+    }
+  }
+}

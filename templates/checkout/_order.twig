@@ -1,0 +1,173 @@
+{% extends 'checkout/_layout.twig' %}
+
+{% import 'partials/_macros' as helpers %}
+
+
+{% if not craft.app.request.isPreview %}
+
+
+  {% set number = craft.app.request.getRequiredParam('number') %}
+  {% set success = craft.app.request.getParam('success') %}
+
+  {# @var order \craft\commerce\elements\Order #}
+  {% set order = craft.orders()
+    .number(number)
+    .one() %}
+
+  {% set extraHead %}
+  <meta name="robots" content="noindex">
+  {% endset %}
+
+  {% if not order or order.isCompleted == false %}
+    {% redirect 'commerce/customer' %}
+  {% endif %}
+
+{% endif %}
+
+{% block fullContent %}
+
+
+{# {% if currentUser.id == order.customerId %} #}
+
+
+  {% if not craft.app.request.isPreview %}
+
+  {# run queue #}
+  {% do craft.app.queue.handleResponse %}
+    {{ craft.app.response.content|raw }}
+  {% endif %}
+
+
+  <section class="w-full">
+
+    {% if success %}
+      <p class="h1 mb-p40">{{ entry.orderSuccessMessage }}</p>
+    {% endif %}
+
+    <div class="mb-p40">
+      <h1 class="text-p35 font-normal">
+        <span>{{- 'Order {ref}'|t({ ref: order.reference }) -}}</span>
+        <span>({{ order.orderStatus }})</span>
+        <small class="block text-sm text-type font-normal">{{ order.dateOrdered|date }}</small>
+      </h1>
+      {{ order.email }}
+    </div>
+
+    <div class="{{ component('summaryItem', false, '') }}">
+      {% for item in order.lineItems %}
+
+        <div class="mb-p20">
+          <h2 class="text-p26 font-normal mb-p16 last:mb-none">
+            {{ item.description }}
+            {% if item.qty > 1 %}
+              <small>×
+                {{ item.qty }}</small>
+            {% endif %}
+          </h2>
+
+          <div class="flex items-center justify-between">
+
+            <div class="text-h5 font-normal">
+              {% if item.onSale %}
+                <del class="mr-p8">{{- item.priceAsCurrency -}}</del> {{- item.salePriceAsCurrency -}}
+              {% else %}
+                {{- item.priceAsCurrency -}}
+              {% endif %}
+            </div>
+
+            {% set itemSales = item.snapshot.sales ?? [] %}
+
+            {% if itemSales|length %}
+              <div class="flex">
+                {% for sale in itemSales %}
+                  <div class="{{ component('categoryTag', 'dark', 'ml-p8') }}">{{ sale.name }}: {{ item.saleAmountAsCurrency }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+
+      {% endfor %}
+    </div>
+
+    <div class="{{ component('summaryItem', false, '') }}">
+
+      <h2 class="text-h4 mb-p12 font-normal">
+        {{- 'Shipping To'|t -}}
+      </h2>
+
+      {% if order.shippingAddress %}
+        <span class="text-lg font-normal leading-lg">{{ craft.app.addresses.formatAddress(order.shippingAddress)|raw }}</span>
+      {% else %}
+        <p>{{ 'Not submitted.'|t }}</p>
+      {% endif %}
+
+      <div class="text-lg font-normal mt-p40">
+        {{ 'Tracking Number:'|t }}
+        {% if order.orderTrackingNumber is not empty %}
+          {% if order.orderTrackingUrl is not empty %}
+            <a href="{{ order.orderTrackingUrl }}" class="underline">
+          {% endif %}
+              {{- order.orderTrackingNumber -}}
+          {% if order.orderTrackingUrl is not empty %}
+            </a>
+          {% endif %}
+        {% else %}
+          <span class="font-light">{{ "No tracking available yet"|t }}</span>
+        {% endif %}
+
+      </div>
+
+      {% if order.orderTrackingCarrier is not empty %}
+        <div class="text-lg font-normal">{{ "Order Carrier"|t }}: {{ order.orderTrackingCarrier }}</div>
+      {% endif %}
+
+    </div>
+
+    <div class="{{ component('summaryItem', false, '') }}">
+      <h2 class="text-h4 mb-p12 font-normal">
+        {{- 'Billing To'|t -}}
+      </h2>
+
+      {% if order.billingAddress %}
+        <span class="text-lg font-normal leading-lg">{{ craft.app.addresses.formatAddress(order.billingAddress)|raw }}</span>
+      {% else %}
+        <p>{{ 'Not submitted.'|t }}</p>
+      {% endif %}
+    </div>
+
+    <div class="{{ component('summaryItem', false, '') }}">
+      <div class="text-h4 mb-p12 font-normal">{{- 'Shipping'|t -}}: {{ order.totalShippingCostAsCurrency }}</div>
+      <div class="text-lg mb-p12">{{- 'Total Tax'|t -}}: {{ order.totalTaxAsCurrency }}</div>
+      <div class="text-lg mb-p12">{{- 'Total Tax (inc)'|t -}}: {{ order.totalTaxIncludedAsCurrency }}</div>
+      {% if order.totalDiscount %}
+        <div class="text-lg mb-p12">{{- 'Total Discount'|t -}}: {{ order.totalDiscountAsCurrency }}</div>
+      {% endif %}
+    </div>
+
+
+    <div class="{{ component('summaryItem', false, '') }}">
+      <h2 class="text-h3 font-normal">{{ "Total"|t }}: {{ order.totalPriceAsCurrency }}</h2>
+    </div>
+
+    {% if currentUser %}
+      {% if not entry.linkField.isEmpty() %}
+        {% include 'components/_button.twig'|siteInclude with { settings: {
+          'text'  : entry.linkField.text,
+          'type'  : 'link',
+          'href'  : entry.linkField.url,
+          'style' : 'arrow',
+          'class' : 'mr-p8 mb-p20 mt-p50',
+          'icon'  : 'triangle-in-circle-left',
+          'iconAlign' : 'left',
+        }} %}
+      {% endif %}
+    {% endif %}
+  </section>
+  <!-- Template: {{ _self }}.twig -->
+{# {% else %}
+  {% exit 404 %}
+{% endif %} #}
+{% endblock %}
+

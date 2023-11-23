@@ -1,0 +1,32 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * CCFields module for Craft CMS
+ *
+ * Instructions Field Settings
+ * This is the template that appears when configuring a new instance of this field.
+ *
+ * @author    Craft&Crew
+ * @copyright Copyright (c) 2021 Craft&Crew
+ * @link      https://craftandcrew.ca/
+ * @package   CCFieldsModule
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% set instructions = 'Choose the sets to include in the icon picker. Note: these sets are pulled directly from the icons SVG file.' %}
+{% if options is empty %}
+  {% set instructions = 'It appears as though not icon sets are defined in the icons SVG file. The field will make all icons available.' %}
+{% endif %}
+
+{{ forms.checkboxGroupField({
+	id: 'sets',
+	label: 'Icon Sets',
+	instructions: instructions|t,
+	name: 'sets',
+	values: sets,
+	options: options
+	})
+}}

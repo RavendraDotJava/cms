@@ -1,0 +1,19 @@
+columnSuffix: kaolqokh
+contentColumnType: text
+fieldGroup: a952bf2b-b44b-4581-bf77-5a1b7d885121 # User
+handle: signInText
+instructions: 'Use this field to enter text to appear above the user sign in form.'
+name: 'Sign In Text'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 2
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

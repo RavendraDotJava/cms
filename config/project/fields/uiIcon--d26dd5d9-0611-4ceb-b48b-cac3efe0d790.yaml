@@ -1,0 +1,13 @@
+columnSuffix: beexyvql
+contentColumnType: string
+fieldGroup: f197da5a-a88b-49ec-ad29-5677e27c00aa # Common
+handle: uiIcon
+instructions: null
+name: 'UI Icon'
+searchable: false
+settings:
+  sets:
+    - UI-profile
+translationKeyFormat: null
+translationMethod: none
+type: modules\ccfieldsmodule\fields\Icon

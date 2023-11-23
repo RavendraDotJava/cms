@@ -1,0 +1,90 @@
+{% import 'partials/_macros' as helpers %}
+
+<footer class="{{ component('modulePadding', 'footer', 'bg-basalt py-p80 text-white relative z-20') }} ">
+
+	<div class="{{ component('moduleWidth', 'footer') }}">
+
+  <div class="mq768:flex">
+
+    {# Logo #}
+    <a href="{{ siteUrl() }}" class="fill-white">{% include 'partials/_logo' %}</a>
+
+    {# Social #}
+    {% include 'partials/_social' %}
+  </div>
+
+  <div class="mq1024:flex mq768:my-p80 items-start">
+    <div class="mq768:flex">
+      <nav aria-label="{{ 'Primary Footer Navigation'|t }}" x-links class="py-p50 mq768:py-none mq768:pr-p100 border-b mq768:border-b-0 mq768:border-r border-rule-dark">
+        {% set nodes = craft.navigation.nodes('primaryNavigation').level(1).all() %}
+        <ul>
+          {% nav node in nodes %}
+            <li class="relative mb-p40 last:mb-none">
+              <a href="{{ node.url }}" class="font-medium text-lg relative text-white block mb-p12">
+                {% if node.active %}
+                  <span class="absolute left-0 -bottom-p12 bg-salt w-p30 h-p5"></span>
+                {% endif %}
+                {{ node.title }}
+              </a>
+            </li>
+          {% endnav %}
+        </ul>
+      </nav>
+      <nav aria-label="{{ 'Secondary Footer Navigation'|t }}" x-links class="py-p50 mq768:py-none mq768:pl-p100 border-b mq768:border-b-0 border-rule-dark">
+        {% set nodes = craft.navigation.nodes('footerNavigation').level(1).all() %}
+        <ul>
+          {% nav node in nodes %}
+            <li class="relative mb-p20 last:mb-none">
+              <a href="{{ node.url }}" class="relative text-white block hover:underline {{ node.active ? 'underline font-medium' }} {{ node.linkStyle == 'highlighted' ? 'font-normal text-lg uppercase' : 'font-light text-bd' }}">
+                {{ node.title }}
+              </a>
+            </li>
+          {% endnav %}
+        </ul>
+      </nav>
+    </div>
+    {% if footer.disclaimerText is not empty %}
+      <div class="ml-auto mq1024:pl-p40 flex-1 mq1024:max-w-lg">
+        <div class="c-content py-p40 mq1024:p-p32 border-b mq1024:border border-rule-dark">{{ footer.disclaimerText }}</div>
+      </div>
+    {% endif %}
+  </div>
+
+
+
+    <div class="mt-p50 mq1280:flex flex-wrap items-start">
+      <p class="font-light antialiased text-sm mb-p20 mq768:mb-p8 mq1280:mr-p8 mq1280:border-r border-rule-dark mq1280:pr-p8">&copy; {{ 'Copyright'|t }} {{ now|date('Y') }}. {{ footer.copyrightText }}</p>
+      {% set legalNavigation = craft.navigation.nodes('legalNavigation').level(1).all() %}
+      {% if legalNavigation %}
+        <nav aria-label="{{ 'Legal Navigation'|t }}" x-links>
+          <ul class="mq768:flex mq768:flex-wrap">
+            {% nav node in legalNavigation %}
+              <li class="mb-p10 mq768:mb-p8 mq768:first:ml-none last:pr-none mq768:border-r mq768:mr-p8 border-rule-dark last:border-none">
+                <a href="{{ node.url }}" class="font-light text-sm relative mq768:mr-p8 text-white block hover:underline {{ node.active ? 'underline font-medium' }}">
+                  {{ node.title }}
+                </a>
+              </li>
+            {% endnav %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+
+    {% if footer.paymentIcons is not empty %}
+      <ul class="flex flex-wrap mt-p50">
+        <span class="sr-only">{{ "Accepted payment methods"|t }}</span>
+        {% for icon in footer.paymentIcons %}
+          <li class="mr-p8" title="{{ icon.label }}">
+            <span class="sr-only">{{ icon.label }}</span>
+            {% include 'svg/cards/' ~ icon.value ~ '.svg' with { classes: 'h-p24 w-auto' } %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+
+	</div>
+
+</footer>
+
+{% include 'components/_modal.twig' with { settings: {}} %}

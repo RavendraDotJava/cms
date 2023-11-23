@@ -1,0 +1,35 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+    'heading': '',
+    'textContent': '',
+    'form': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.heading is not empty %}
+  <div class="{{ component('moduleWidth', settings.config.handle) }}">
+    <div class="mq1024:flex">
+      <div class="mq1024:basis-1/2 flex-1 mq1024:pr-p50 mq1024:pr-p80 mb-p32">
+        {% include 'components/_intro' with { 'settings': {
+          'heading': settings.heading,
+          'intro': settings.textContent,
+          'type': settings.config.handle,
+        }} %}
+      </div>
+      {% if settings.form is not empty %}
+        <div class="mq1024:basis-1/2 flex-1">
+          {# {{ config.config.background }} #}
+          {% include 'form/freeform/templates/_form' with { 'form': settings.form, 'background': config.config.background } %}
+        </div>
+      {% endif %}
+    </div>
+</div>
+{% endif %}
+
+

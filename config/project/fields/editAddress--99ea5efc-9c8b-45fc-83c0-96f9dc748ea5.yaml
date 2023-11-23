@@ -1,0 +1,35 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: a952bf2b-b44b-4581-bf77-5a1b7d885121 # User
+handle: editAddress
+instructions: 'Select the entry for editing an individual address.'
+name: 'Edit Address '
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  selectionCondition:
+    __assoc__:
+      -
+        - elementType
+        - craft\elements\Entry
+      -
+        - fieldContext
+        - global
+      -
+        - class
+        - craft\elements\conditions\entries\EntryCondition
+  selectionLabel: 'Select edit entry'
+  showSiteMenu: false
+  sources:
+    - 'section:2f6507e5-d577-4de4-948b-33f3785ad4d6' # Customer Profile
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

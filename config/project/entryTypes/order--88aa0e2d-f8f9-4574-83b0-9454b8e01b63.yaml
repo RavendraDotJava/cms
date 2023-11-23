@@ -1,0 +1,103 @@
+fieldLayouts:
+  2375305f-79d5-48e9-9323-604d6a3c0f50:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 986ea0e9-168c-4cf0-898d-eff29f84fe58
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1262417d-adab-4273-9f2b-02709eae6778 # Site Header Style
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 778513ec-5e85-4924-8416-8c1e996da026
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 849814e4-c9bf-4019-94d3-d8ad5ba06f16 # Background Media
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3755a9a6-1066-4a51-9672-d91c42203568
+            userCondition: null
+            warning: null
+            width: 100
+        name: Header
+        uid: 83b88da5-c4d3-4c97-937d-506924880c2b
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 3ed437e4-57df-474d-b42e-a8e3a4bbcdde # Link
+            instructions: 'Use this field to create a back link at the bottom of the order. This will only display for logged in users and could be used for redirecting a user back to their profile.'
+            label: 'Back Link'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 67f30066-4f7e-4785-81d8-7ea09c7a165a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Redirects
+        uid: 7a280d2d-ec32-457c-9fa2-2023dfc6d7c2
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 0ad367fe-f69b-412f-b5fb-de24d7d7ac7e # Order Success Message
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 92262beb-0d4e-4baa-be6a-9d20fffea307
+            userCondition: null
+            warning: null
+            width: 100
+        name: Success
+        uid: 8710210a-7c2d-49a4-a196-3676113a1c69
+        userCondition: null
+handle: order
+hasTitleField: false
+name: Order
+section: 53184d2b-0953-4653-9a07-e1fa10be2878 # Order
+sortOrder: 1
+titleFormat: '{section.name|raw}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

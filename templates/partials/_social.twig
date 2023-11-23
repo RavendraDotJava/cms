@@ -1,0 +1,15 @@
+{% import 'partials/_macros' as helpers %}
+
+{% if socialMedia.socialMedia is not empty %}
+  {% set socialLinks = socialMedia.socialMedia.all() %}
+    <ul class="ml-auto flex flex-wrap gap-p16 mt-p50 mq768:mt-none">
+      {% for item in socialLinks %}
+        <li>
+          <a href="{{ item.socialUrl }}" target="_blank" class="group">
+            {{ helpers.icon(item.icon, 'w-p40 h-p40 fill-off-white transition-colors group-hover:fill-terracotta group-focus:fill-terracotta') }}
+            <span class="sr-only">{{ item.socialTitle }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+{% endif %}

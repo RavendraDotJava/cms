@@ -1,0 +1,125 @@
+field: 9fd6a88f-cc42-48c6-9bb1-9b742c529046 # Filters
+fieldLayouts:
+  22e6a99c-7b7f-4e78-89b4-60e915406d78:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 40c0ce0d-af11-4361-84ed-81752116132e # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3a8e919c-60f6-4ed5-8888-9d1af7cf3637
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 9f3ae588-aa03-48d0-a36a-2417f9d54bce # Filter ID
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3d9e4da7-7c40-4237-8bd9-20e4a073a559
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 649c3c9c-8e4e-4849-b787-e158369f313b # Relations
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1e2ffc71-19bb-4d7e-a14e-a845f905f017
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2ba25cc0-cf44-416f-8a13-b553b2368d77
+        userCondition: null
+fields:
+  9f3ae588-aa03-48d0-a36a-2417f9d54bce: # Filter ID
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: filterId
+    instructions: 'Use this field to add a custom ID to this filter. The value of this field should begin with a letter and should only contain letters, numbers, hyphens (-) and/or underscores (_).'
+    name: 'Filter ID'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  40c0ce0d-af11-4361-84ed-81752116132e: # Heading
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: heading
+    instructions: 'Use this field to add a heading above the relations filters.'
+    name: Heading
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  649c3c9c-8e4e-4849-b787-e158369f313b: # Relations
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: relations
+    instructions: 'Use this field to define the entry relations for this filter.'
+    name: Relations
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Entry
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\entries\EntryCondition
+      selectionLabel: null
+      showSiteMenu: true
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: relations
+name: Relations
+sortOrder: 2

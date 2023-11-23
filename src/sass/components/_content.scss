@@ -1,0 +1,64 @@
+.c-content {
+
+  :last-child {
+    @apply mb-none;
+  }
+
+  h2,h3,h4,h5,h6 {
+    @apply mb-p24;
+  }
+
+  p {
+    @apply mq640:text-lg mb-p32 last:mb-none leading-lg;
+  }
+
+  p, ol, ul:not(.vizy-block) {
+    @apply mb-p24;
+  }
+  ol, ul:not(.vizy-block) {
+    @apply pl-p32;
+    li {
+      @apply mb-p12;
+      &::marker {
+        @apply text-bark;
+      }
+    }
+  }
+  ol {
+    list-style: none;
+    counter-reset: my-awesome-counter;
+    li {
+      @apply relative;
+      counter-increment: my-awesome-counter;
+      &::before {
+        @apply text-bark absolute right-bullet;
+        content: counter(my-awesome-counter) ".";
+        font-size: 1em;
+        text-align: right;
+        display: inline-block;
+      }
+    }
+  }
+  ul:not(.vizy-block) {
+    li {
+      @apply relative;
+      &::before {
+        @apply text-bark absolute text-h5 right-bullet;
+        content: "•";
+      }
+    }
+  }
+  a:not(.c-button):not(.no-override) {
+    @apply font-medium border-b-2 border-transparent text-brand-red;
+    &:hover,
+    &:focus {
+      @apply border-brand-red;
+    }
+  }
+
+  u {
+    @apply no-underline;
+  }
+}
+
+

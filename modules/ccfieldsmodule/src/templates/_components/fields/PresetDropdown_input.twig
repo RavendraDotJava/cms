@@ -1,0 +1,24 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Dynamic Dropdowns plugin for Craft CMS 3.x
+ *
+ * DynamicDropdown Field Input
+ *
+ * @author    Soshal
+ * @copyright Copyright (c) 2018 Soshal
+ * @link      https://soshal.ca
+ * @package   DynamicDropdowns
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.selectField({
+        id: id,
+        name: name,
+        value: value,
+      	options: options
+    })
+}}

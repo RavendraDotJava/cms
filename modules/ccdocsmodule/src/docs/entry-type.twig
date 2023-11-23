@@ -1,0 +1,28 @@
+{% extends "_layouts/cp" %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+  {
+    label: 'Sections & Entries'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/sections/'),
+  },
+  {
+    label: parentTitle,
+    url: url(returnAdminUrl() ~ parentPath),
+  }    
+] %}
+
+{% block content %}
+  
+  <div class="documentation">
+    <section>
+      <p class="large">{{ docTypeDescription(type, true) }}</p>
+      <p>It contains the following fields:</p>
+      {{ entryTypeDoc(handle, true) }} 
+    </section>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+columnSuffix: fhvzykgm
+contentColumnType: longtext
+fieldGroup: f1f1ffc6-b86c-414b-ab39-d213b7efe85e # Modules
+handle: contentWell
+instructions: null
+name: 'Content Well'
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes:
+    - b58b753c-d44b-4f17-9895-3819a449c7d3 # Images
+    - cef1cfe9-9f65-46a6-945b-69b7471c2fec # Videos External
+  columnType: longtext
+  configSelectionMode: choose
+  defaultTransform: ''
+  fieldData:
+    -
+      __assoc__:
+        -
+          - id
+          - group-PnyKHHd6Zo
+        -
+          - name
+          - Media
+        -
+          - blockTypes
+          -
+            -
+              __assoc__:
+                -
+                  - id
+                  - type-TYv2CzeVFV
+                -
+                  - name
+                  - Media
+                -
+                  - handle
+                  - media
+                -
+                  - icon
+                  -
+                    __assoc__:
+                      -
+                        - label
+                        - 'Block Image'
+                      -
+                        - value
+                        - block-image
+                -
+                  - enabled
+                  - true
+                -
+                  - layoutUid
+                  - 9235fa38-1632-4ef6-9bb6-12a93c605b62
+                -
+                  - layoutConfig
+                  -
+                    __assoc__:
+                      -
+                        - tabs
+                        -
+                          -
+                            __assoc__:
+                              -
+                                - name
+                                - Content
+                              -
+                                - uid
+                                - e46c2c2c-f2ad-45f4-8e5c-718ec1fe047b
+                              -
+                                - elements
+                                -
+                                  -
+                                    __assoc__:
+                                      - [type, craft\fieldlayoutelements\CustomField]
+                                      - [instructions, "Use this field to define the media to be rendered in this block. This field allows selections from the following asset volumes:\r\n\r\n* Images\r\n* Videos"]
+                                      - [required, false]
+                                      - [width, 100]
+                                      - [uid, b3cf860f-7047-4a19-93a9-06912da78786]
+                                      - [fieldUid, 5588ca64-cd6e-41cd-9faa-b87493493fc9] # Media
+                                  -
+                                    __assoc__:
+                                      - [type, craft\fieldlayoutelements\CustomField]
+                                      - [label, Caption]
+                                      - [instructions, 'Use this field to add a caption for the media in this block.']
+                                      - [required, false]
+                                      - [width, 100]
+                                      - [uid, 6d369968-240f-4c44-a811-375f6c823b0e]
+                                      - [fieldUid, f5534be7-e8ed-4cd9-9931-f8a429ce7d33] # Description
+  initialRows: 7
+  manualConfig: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  trimEmptyParagraphs: true
+  vizyConfig: Standard.json
+translationKeyFormat: null
+translationMethod: none
+type: verbb\vizy\fields\VizyField

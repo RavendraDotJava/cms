@@ -1,0 +1,19 @@
+columnSuffix: wbuaxpxl
+contentColumnType: text
+fieldGroup: e45d60f9-6bb1-4f38-8e88-322a944a0cbc # Order
+handle: orderTrackingNumber
+instructions: null
+name: 'Order Tracking Number'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

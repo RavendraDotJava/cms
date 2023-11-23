@@ -1,0 +1,12 @@
+{% import 'partials/_macros' as helpers %}
+<div class="my-p32">
+  {% set listItems = iconList.all() %}
+  <ul class="vizy-block">
+    {% for item in listItems %}
+      <li class="flex items-start mb-p16">
+        {{ helpers.icon(item.icon, 'h-p24 w-p24 fill-terracotta mr-p20 mt-p4') }}
+        <div>{{ item.text }}</div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

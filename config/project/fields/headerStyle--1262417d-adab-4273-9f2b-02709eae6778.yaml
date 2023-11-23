@@ -1,0 +1,32 @@
+columnSuffix: wsjyzaof
+contentColumnType: string
+fieldGroup: 1901e8d3-2a7e-47ef-94ec-a27c6f4346e2 # Header
+handle: headerStyle
+instructions: 'This will set the style for the site header containing the logo, main navigation, user menu, and cart.'
+name: 'Site Header Style'
+searchable: false
+settings:
+  newLabelFormat: '{{ label }}'
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - White
+        -
+          - value
+          - white
+    -
+      __assoc__:
+        -
+          - label
+          - Transparent
+        -
+          - value
+          - transparent
+  sourceGlobal: headerStyle
+  sourceLabelHandle: label
+  sourceValueHandle: value
+translationKeyFormat: null
+translationMethod: none
+type: modules\ccfieldsmodule\fields\PresetDropdown

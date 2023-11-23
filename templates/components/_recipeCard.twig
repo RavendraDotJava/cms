@@ -1,0 +1,81 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'textContent' : '',
+  'image': '',
+  'button': '',
+  'category': '',
+  'url': '',
+  'mode': 'salt',
+  'buttonText': '',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% if settings.mode == 'salt' %}
+  {% set classes = 'hover:shadow-card-lg' %}
+{% elseif settings.mode == 'white' %}
+  {% set classes = 'shadow-card-lg hover:shadow-card-lg-hover' %}
+{% else %}
+  {% set classes = '' %}
+{% endif %}
+
+<a href="{{ settings.url }}" class="rounded-2xl transition-all max-w-p448 group h-full flex flex-col mx-auto w-full {{ classes }}">
+
+  {# Image Container #}
+  <div class="rounded-t-2xl overflow-hidden relative">
+    {% if settings.image is not empty %}
+
+      {# Image hover overlay/circle #}
+      <div class="absolute z-1 inset-0 bg-basalt opacity-0 transition-opacity group-hover:opacity-20 group-focus:opacity-30 duration-500"></div>
+      <div class="absolute z-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-p10 duration-700 transition-all rounded-full w-p100 h-p100 bg-basalt opacity-0 group-hover:opacity-40 group-hover:mt-none group-focus:opacity-40 group-focus:mt-none flex items-center justify-center">
+        {{ helpers.icon('eye', 'w-p40 h-p40 fill-white') }}
+      </div>
+
+      {# Image #}
+      {% include 'components/_image.twig'|siteInclude with { settings: {
+        'image' : settings.image,
+        'class' : 'w-full h-full object-cover object-center',
+        'imageClass' : 'w-full',
+        'format' : 'card'
+      }} %}
+    {% endif %}
+
+    {# Category Tag #}
+    {% if settings.category is not empty %}
+      <span class="{{ component('categoryTag', '', 'absolute left-p40 bottom-p16 z-10') }}">{{ settings.category }}</span>
+    {% endif %}
+  </div>
+
+  {# Content Container #}
+  <div class="bg-white p-p32 mq768:px-p50 mq768:py-p40 rounded-b-2xl grow">
+
+    {# Heading #}
+    {% if settings.heading is not empty %}
+      <h3 class="text-p20 mq480:text-p26 font-normal mb-p32">{{ settings.heading }}</h3>
+    {% endif %}
+
+    {# Text Content #}
+    {% if settings.textContent is not empty %}
+      <div class="text-lg">{{ settings.textContent|raw }}</div>
+    {% endif %}
+
+
+    {% include 'components/_button' with { 'settings': {
+      'text'  : settings.buttonText is not empty ? settings.buttonText : 'Learn More'|t,
+      'type'  : 'button',
+      'style' : 'arrow',
+      'disabled' : false,
+      'params' : false,
+      'icon'  : 'triangle-in-circle',
+      'iconAlign' : 'left',
+      'iconReact': false,
+      'class': 'mt-p20'
+    }} %}
+  </div>
+</a>

@@ -1,0 +1,41 @@
+{% extends "_layouts/cp" %}
+{% set title = "Field: Entry Link"|t('plugin-handle') %}
+
+{% set crumbs = [
+  {
+    label: 'Documentation'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/'),
+  },
+  {
+    label: 'Fields'|t('plugin-handle'),
+    url: url(returnAdminUrl() ~ 'documentation/fields/'),
+  }  
+] %}
+
+{% block content %}
+  <div class="documentation">
+    <section>
+      <p>A common pattern within the various fields is to define a custom CTA link or button to be rendered on the front-end. To achieve this, we're using a plugin called Typed link field, which introduces a new field type specifically for creating links (known as <span class="type">LinkField</span> within field listings in this documentation).</p>
+      <p>Thie field will look something like this:</p>
+      {{ getDocumentationImage('field-link.png') }}
+      <p>The exact options available in each instance of the field will vary, depending on the context in which it is deployed. General options include:</p>
+      <ul>
+        <li>The first line allows us to define the type of link to use. The values available will vary slightly depending on how the specific field is configured for use, but standard options include:
+          <ul>
+            <li><span class="highlight">Entry</span> - selecting this will allow for the selection of a specific entry within the CMS. The available entries here can vary based on how the field is configured. This is the most common use case. When using the Entry link type, there is also an option to add a query string (<span class="highlight">?</span>) for passing custom variables to a page, or to add a hash (<span class="highlight">#</span>) for triggering jump link via module IDs.</li> However, due to the implicity layout of this feature, we have configured it to be <em>unavailable in Live Preview</em>.
+            <li><span class="highlight">Mail</span> - this will allow for the inclusion of an email address link. Simply enter the email address (without the <span class="highlight">mailto:</span> protocol, which is added automatically).</li>
+            <li><span class="highlight">Telephone</span> - this will allow for the inclusion of a telephone link. Simply enter the telephone (without the <span class="highlight">tel:</span> protocol, which is added automatically).</li>
+            <li><span class="highlight">URL</span> -  this will allow for the inclusion of a custom URL. When using this option the entered value must have a valid URL format.</li>
+            <li><span class="highlight">Asset</span> - this allows for the inclusion of a link that points to an asset.</li>
+            <li><span class="highlight">Custom</span> - this allows for the inclusion of a freeform link. This is useful for the inclusion of jump links (using the <span class="highlight">‘#’</span> hash syntax). This format can also be used to link to external sites in the same tab. By default, the front-end will attempt to open links on a different domain in a new tab. To prevent this behaviour, use the Custom option and prefix the URL with the string _self::. For example:
+              <ul>
+                <li><span class="highlight">_self::https://www.externalsite.com/</span></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><span class="highlight">Custom link text</span> - Use this to add custom link text. This is required for most types of links and will allow for the overriding of Entry types, which use the entry title by default.</li>
+      </ul>
+    </section>
+  </div>
+{% endblock %}

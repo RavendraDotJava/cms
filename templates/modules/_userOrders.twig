@@ -1,0 +1,75 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'heading' : '',
+  'noOrderText': "No orders"|t,
+  'limit': false,
+  'orderUrl': '/',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% set orders = craft.orders()
+.customer(currentUser)
+.isCompleted(true)
+.orderBy('dateOrdered DESC')
+%}
+
+{% set limitPreviewLineItems = 3 %}
+
+{% set orders = settings.limit ? orders.limit(settings.limit) : orders %}
+
+{% if orders|length %}
+  <ul class="mt-p20">
+    {% for order in orders %}
+      {% set totalLineItems = order.lineItems|length %}
+      <li class="{{ component('summaryItem', false, 'last:border-b') }}">
+        <div>
+          <h2 class="text-p26 font-medium">
+            <a class="inline-block group hover:underline mb-p8" href="{{ url(settings.orderUrl, { number: order.number }) }}">
+              <span class="mr-p8 inline-block">{{- 'Order'|t -}}</span>
+              <span class="mr-p8 inline-block">#{{- order.reference -}} </span>
+              <span class="mr-p8 inline-block">({{- order.orderStatus -}})</span>
+              {{ helpers.icon('chevron-right', 'h-p24 w-p24 fill-terracotta transition-all group-hover:translate-x-p10') }}
+            </a>
+          </h2>
+          <div class="font-medium text-h5">{{ order.dateOrdered|date }}</div>
+          <div class="font-medium text-h5">{{ order.totalPriceAsCurrency }}</div>
+        </div>
+
+        <div class="mt-p16">
+          {{ '{x} {items}:'|t({
+              x: order.totalQty,
+              items: order.totalQty == 1 ? 'item' : 'items'
+          }) }}
+        </div>
+
+        <div class="text-type">
+          {% for item in order.lineItems|slice(0, limitPreviewLineItems) %}
+            {{ item.description }}
+            {%- if item.qty > 1 -%}
+              <span class="text-sm">
+                ×
+                {{ item.qty }}</span>
+            {%- endif -%}
+            {% if not loop.last %},
+            {% endif %}
+          {%- endfor -%}
+
+          {%- if totalLineItems > limitPreviewLineItems and loop.last -%}
+            ,
+            {{ 'and {x} other items'|t({
+                x: totalLineItems - limitPreviewLineItems
+            }) }}
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <div class="my-p50 c-content">{{ settings.noOrderText }}</div>
+{% endif %}

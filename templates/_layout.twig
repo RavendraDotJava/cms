@@ -1,0 +1,143 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set bodyClasses = 'mx-auto bg-salt antialiased overflow-x-hidden relative lang-' ~ craft.app.language|slice(0,2) %}
+{% if craft.app.request.isLivePreview %}
+	{% set bodyClasses = bodyClasses ~ ' live-preview' %}
+{% endif %}
+{% if entry is defined %}
+	{% set bodyClasses = bodyClasses ~ ' section-' ~ entry.section.handle ~ ' type-' ~ entry.type.handle %}
+	{% if entry.slug == '__home__' %}
+		{% set bodyClasses = bodyClasses ~ ' home' %}
+	{% endif %}
+{% else %}
+	{% set bodyClasses = bodyClasses ~ ' section-none type-none' %}
+{% endif %}
+{% set bodyClasses = bodyClasses ~ ' text-basalt font-light' %}
+
+{% if entry is not defined %}
+	{% set entry = getPseudoEntry() %}
+{% endif %}
+
+{% if cart is not defined %}
+  {% set cart = craft.commerce.carts.cart %}
+{% endif %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.app.language }}" class="bg-limit overflow-x-hidden relative">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="home" href="{{ siteUrl }}" />
+
+		{# Favicons #}
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#e19480">
+    <meta name="msapplication-TileColor" content="#e19480">
+    <meta name="theme-color" content="#e19480">
+
+		{# Static asset versioning #}
+		{% set ver = getVer() %}
+		{# {% do view.registerCssFile("https://fonts.googleapis.com/css?family=Poppins:ital,wght@0,300;0,500;1,300;1,500|Merriweather:300,300i&amp;display=swap") %} #}
+    {% do view.registerCssFile("/fonts/stylesheet.css") %}
+
+    {% do view.registerJsFile("/dist/scripts.min.js?ver=" ~ ver) %}
+		{% do view.registerCssFile("/dist/style.min.css?ver=" ~ ver) %}
+
+	</head>
+	<body class="{{ bodyClasses }}">
+
+    {% if alerts.alertBanner is not empty %}
+      {% set alerts = alerts.alertBanner.inReverse().all() %}
+
+      <div data-alerts x-comp="alertBanner" x-data="alertBanner({ render: false })">
+        {% for alert in alerts %}
+          {% set alertId = 'alert-id--' ~ alert.uid %}
+          {% if alert.display %}
+            <template x-if="checkCookie('{{ alertId }}')">
+            {% include 'components/_alertBanner.twig' with { 'settings': {
+              'id': alertId,
+              'textContent': alert.alertText,
+              'dismissText': alert.dismissButton,
+              'delay': alert.delay,
+              'expiry': alert.cookieExpiry,
+            }} %}
+            </template>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+
+    {# {% if alerts.displayConsentBanner %}
+      {% include 'components/_alertBanner.twig' with { 'settings': {
+        'id': alerts.consentBannerUniqueId is not empty ? alerts.consentBannerUniqueId : 'consentBanner',
+        'dismissText': alerts.consentBannerDismissButton,
+        'textContent': alerts.consentBannerText,
+        'expiry': alerts.consentBannerCookieExpiry,
+      }} %}
+    {% endif %} #}
+
+		{% include 'partials/_header'|siteInclude %}
+
+    {% include 'components/_userSignInModal'|siteInclude %}
+
+    {% include 'components/_flashNotice'|siteInclude %}
+
+		<main id="main" class="main relative overflow-hidden">
+
+      <div id="page-header" class="relative">
+
+        {# Post Header #}
+        {% if (entry.section.handle == 'recipe') or (entry.section.handle == 'blog') %}
+          {% include 'partials/_postHeader'|siteInclude %}
+
+        {# Page Header #}
+        {% elseif entry.section.handle == 'page' and entry.type.handle != 'basicPage' %}
+          {% include 'partials/_pageHeader'|siteInclude %}
+        {% endif %}
+
+        {# Product Header #}
+        {% if product is defined %}
+          {% include 'partials/_productHeader'|siteInclude %}
+        {% endif %}
+      </div>
+      <div id="main-content">
+
+        {# Checkout/Cart/Profile BG #}
+        {% if (entry.section.handle == 'cart') or (entry.section.handle == 'checkout') or (entry.section.handle == 'customerProfile') or (entry.type.handle == 'basicPage') %}
+          {% include 'partials/_checkoutHeader'|siteInclude %}
+        {% endif %}
+
+        {% block content %}
+          {# Content will be added here #}
+        {% endblock %}
+      </div>
+		</main>
+
+		{# {% if entry is defined and entry.isEditable() and not craft.app.request.isLivePreview %}
+		<a id="edit-link" href="{{ entry.cpEditUrl }}" target="_blank">{{ "Edit entry"|t }}&nbsp;&rsaquo;</a>
+		{% endif %} #}
+
+    {# {{ dump(cart.errors) }} #}
+
+		{% include 'partials/_footer'|siteInclude %}
+
+		{% if getenv('SHOW_GRID') == 'true' %}
+		<div class="pointer-events-none fixed inset-0 px-p24 mq768:px-p48 mq1024:px-p96"  style="z-index: 99999;">
+			<div class="pointer-events-none max-w-p1440 mx-auto h-full">
+				<div class="pointer-events-none flex -mx-p16 h-full">
+					{% set cols = [1,2,3,4,5,6,7,8,9,10,11,12] %}
+					{% for col in cols %}
+						<div class="pointer-events-none bg-brand h-full opacity-25 mx-p16 w-full"></div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+	</body>
+</html>

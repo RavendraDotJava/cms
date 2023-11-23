@@ -1,0 +1,208 @@
+field: c9f8a280-0c30-494c-80eb-db78eb439064 # Content Modules
+fieldLayouts:
+  3e804d57-054d-4858-9dbd-290acd1297ef:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 50d573b1-ebb8-4c84-beee-6e0e58c331e9 # Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f9398a78-e393-416c-8c9b-ea0f9ddee071
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: c8160e92-5f1d-47c6-a195-3eb3eb0dc21b # Module
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a07211e5-0358-41c7-8586-ca10a9226f97
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: db50eed7-6413-4716-9177-f152557b4a9f
+        userCondition: null
+fields:
+  50d573b1-ebb8-4c84-beee-6e0e58c331e9: # Content
+    columnSuffix: djdnvkng
+    contentColumnType: mediumtext
+    fieldGroup: null
+    handle: contentWell
+    instructions: 'Use this field to add the content for this module.'
+    name: Content
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: '*'
+      blockTypeBehaviour: click
+      columnType: mediumtext
+      configSelectionMode: choose
+      defaultTransform: ''
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      editorMode: combined
+      fieldData:
+        -
+          __assoc__:
+            -
+              - id
+              - group-ElLh1mCmBs
+            -
+              - name
+              - BLOCKS
+            -
+              - blockTypes
+              -
+                -
+                  __assoc__:
+                    -
+                      - id
+                      - type-CBD8vTFllc
+                    -
+                      - name
+                      - Content
+                    -
+                      - handle
+                      - content
+                    -
+                      - icon
+                      -
+                        __assoc__:
+                          -
+                            - label
+                            - 'Block Button'
+                          -
+                            - value
+                            - block-button
+                    -
+                      - template
+                      - blocks/_buttons.twig
+                    -
+                      - enabled
+                      - true
+                    -
+                      - layoutUid
+                      - 62026a3d-7eaa-4a7a-869b-3d217ea331d3
+                    -
+                      - layoutConfig
+                      -
+                        __assoc__:
+                          -
+                            - tabs
+                            -
+                              -
+                                __assoc__:
+                                  0:
+                                    - name
+                                    - Content
+                                  1:
+                                    - uid
+                                    - 94363328-15f4-439b-a2f1-601e18ddd76e
+                                  4:
+                                    - elements
+                                    -
+                                      - { __assoc__: { 0: [type, craft\fieldlayoutelements\CustomField], 2: [instructions, 'Use this field to add optional buttons to this block.'], 5: [required, false], 6: [width, 100], 7: [uid, 3e4d8ac6-b36e-4f09-a80a-007056e43900], 10: [fieldUid, f7b31e70-1186-4058-aedb-0f579872cd6c] } } # Buttons
+                -
+                  __assoc__:
+                    -
+                      - id
+                      - type-WFTTWYvjwV
+                    -
+                      - name
+                      - Media
+                    -
+                      - handle
+                      - media
+                    -
+                      - icon
+                      -
+                        __assoc__:
+                          -
+                            - label
+                            - 'Block Image'
+                          -
+                            - value
+                            - block-image
+                    -
+                      - template
+                      - blocks/_media.twig
+                    -
+                      - enabled
+                      - true
+                    -
+                      - layoutUid
+                      - 0dff1c7d-475d-4c84-8556-91d395c6e010
+                    -
+                      - layoutConfig
+                      -
+                        __assoc__:
+                          -
+                            - tabs
+                            -
+                              -
+                                __assoc__:
+                                  0:
+                                    - name
+                                    - Content
+                                  1:
+                                    - uid
+                                    - f5d066a6-1210-4bdf-869b-21388dc10785
+                                  4:
+                                    - elements
+                                    -
+                                      - { __assoc__: { 0: [type, craft\fieldlayoutelements\CustomField], 2: [instructions, "Use this field to define the media to be rendered in this block. This field allows selections from the following asset volumes:\r\n\r\n* Images\r\n* Videos"], 5: [required, false], 6: [width, 100], 7: [uid, 87eac7ed-d9ff-4037-9ee4-e95c9ecc38da], 10: [fieldUid, 5588ca64-cd6e-41cd-9faa-b87493493fc9] } } # Media
+                                      - { __assoc__: { 0: [type, craft\fieldlayoutelements\CustomField], 1: [label, Caption], 2: [instructions, 'Use this field to add a caption for the media in this block.'], 5: [required, false], 6: [width, 100], 7: [uid, 30d954dd-2c3a-48f1-b05f-e0019443a50d], 10: [fieldUid, f5534be7-e8ed-4cd9-9931-f8a429ce7d33] } } # Description
+      initialRows: 7
+      manualConfig: ''
+      maxBlocks: null
+      minBlocks: null
+      pasteAsPlainText: false
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      trimEmptyParagraphs: true
+      vizyConfig: Standard.json
+    translationKeyFormat: null
+    translationMethod: none
+    type: verbb\vizy\fields\VizyField
+  c8160e92-5f1d-47c6-a195-3eb3eb0dc21b: # Module
+    columnSuffix: uxwaspkw
+    contentColumnType: string
+    fieldGroup: null
+    handle: module
+    instructions: "Use this field to control layout options for this module. Click `Module Settings` to reveal the settings.\r\n\r\nProviding a custom ID allows for the creation of custom jump links. IDs must start with a letter, must only contain alphanumeric characters, hyphens and dashes. They are limited to 48 characters."
+    name: Module
+    searchable: false
+    settings:
+      backgrounds:
+        - white
+        - light
+        - transparent
+      backgroundsDefault: light
+      decorations:
+        - borderTop
+        - borderBottom
+      decorationsDefault: ''
+      independentPadding: '1'
+      moduleId: ''
+      overflow: ''
+      padding:
+        - none
+        - small
+        - medium
+        - large
+      paddingDefault: medium
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\Module
+handle: contentWell
+name: 'Content Well'
+sortOrder: 5

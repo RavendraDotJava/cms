@@ -1,0 +1,29 @@
+{% if currentUser and not craft.app.request.isPreview %}
+  {% set redirectUrl = entry.currentUserRedirect.one is not null ? entry.currentUserRedirect.one.uri : '' %}
+  {% redirect redirectUrl %}
+{% endif %}
+
+{% extends 'checkout/_layout.twig' %}
+
+{% block mainContent %}
+
+  {% include 'components/_checkoutIntro' with { 'settings': {
+      'heading': entry.checkoutHeading,
+      'textContent': entry.checkoutText,
+      'step': entry.checkoutStep,
+  }} %}
+
+  {% include 'form/forms/_email.twig' with { 'settings': {
+    'redirectUrl': entry.formSubmissionRedirect.one.uri,
+    'successMessage': entry.formSuccessMessage,
+    'id': 'formCheckoutEmail',
+  }} %}
+
+{% endblock %}
+{% block sidebar %}
+  {% include "components/_orderSummary.twig" with {'settings': {
+    'buttonText': entry.formSubmitButtonText,
+    'buttonFor': 'formCheckoutEmail',
+  }} %}
+  <!-- Template: {{ _self }}.twig -->
+{% endblock %}

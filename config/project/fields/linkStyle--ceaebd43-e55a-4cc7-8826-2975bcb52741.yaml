@@ -1,0 +1,34 @@
+columnSuffix: icqzjkxz
+contentColumnType: string
+fieldGroup: ca24fc01-d22d-4780-bd35-fa4e3a5762cf # Navigation
+handle: linkStyle
+instructions: null
+name: 'Link Style'
+searchable: false
+settings:
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Default
+        -
+          - value
+          - default
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Highlighted
+        -
+          - value
+          - highlighted
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

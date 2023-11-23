@@ -1,0 +1,84 @@
+{% import 'partials/_macros' as helpers %}
+
+{% if not currentUser %}
+    {% exit 404 %}
+{% endif %}
+
+{% if not entry.linkField.isEmpty() %}
+  {% include 'components/_button.twig'|siteInclude with { settings: {
+    'text'  : entry.linkField.text,
+    'type'  : 'link',
+    'href'  : entry.linkField.url,
+    'style' : 'arrow',
+    'class' : 'mr-p8 mb-p50',
+    'icon'  : 'triangle-in-circle-left',
+    'iconAlign' : 'left',
+  }} %}
+{% endif %}
+
+{% if currentUser %}
+  <h1 class="text-p35 font-normal">{{ entry.title }}</h1>
+
+  {% set subscriptions = craft.subscriptions().user(currentUser).all() %}
+
+  {% if subscriptions|length %}
+    <ul class="mt-p20">
+    {% for subscription in subscriptions %}
+
+      {% set plan = subscription.plan ?? null %}
+
+      {# {{ dump(subscription) }} #}
+
+      {% if plan %}
+        <li class="{{ component('summaryItem', false, 'last:border-b') }}">
+          <h2 class="text-p26 font-medium mb-p10">{{ plan }}</h2>
+          {# <div class="font-medium text-h5">{{ subscription.getNextPaymentAmount()|currency }}</div> #}
+
+          {% set information = plan.getInformation() ?? null %}
+
+          {% if information %}
+            {# <ul class="text-sm">
+              <li>{{ 'ID' }}: {{ information.id }}</li>
+              <li>{{ 'Title' }}: {{ information.title }}</li>
+            </ul> #}
+          {% endif %}
+
+
+          {# {{ plan.planData }} #}
+
+          {% if subscription.isCanceled %}
+            <div class="text-h6">
+              {{- 'Canceled on: {date}.'|t({ date: subscription.dateCanceled|date('F j, Y') }) -}}
+            </div>
+          {% else %}
+            <div class="text-h6">
+              {{ 'Next payment:'|t }} {{ subscription.getNextPaymentAmount()|currency }} {{ "on"|t }} {{ subscription.nextPaymentDate|date('F j, Y') }}
+            </div>
+
+            <form method="post" action="" class="mt-p16">
+              {{ csrfInput() }}
+              {{ actionInput('commerce/subscriptions/cancel') }}
+              {{ hiddenInput('subscriptionUid', subscription.uid|hash) }}
+              {{ redirectInput(false) }}
+
+              {{ subscription.plan.getGateway().getCancelSubscriptionFormHtml(subscription)|raw }}
+
+              {{ tag('button', {
+                type: 'submit',
+                class: component('button', 'small', ''),
+                text: 'Unsubscribe'|t
+              }) }}
+            </form>
+          {% endif %}
+          <div class="text-h6">
+            {{- subscription.isCanceled ? 'Expiry: {date}.'|t({ date: subscription.nextPaymentDate|date('F j, Y') }) : '' -}}
+          </div>
+        </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  {% else %}
+    <div class="my-p50 c-content">{{ entry.noOrderText }}</div>
+  {% endif %}
+{% endif %}
+

@@ -1,0 +1,403 @@
+changedFieldIndicator: null
+field: b3eff42f-970a-4d56-b873-a196d75a54d8 # Call To Action
+fieldLayouts:
+  d9234675-fd96-4a28-be20-f961911b8006:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 3b45b705-e6aa-4972-859f-28beb3be31e5 # Heading
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e99f8d76-d2b8-403d-8658-161e4166ba0e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 7918ffa1-07f2-4091-a3f0-e6bed5cd43bf # Text Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f8a0b18a-5b59-4296-8c39-2dd87a005544
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6ba022d5-9f92-4b34-9fe6-21d87781114a # Image
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ebc475d0-d04a-4391-8459-d000f5b50090
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 71f769d8-a4c5-4c54-980a-bd10ef008795 # CTA Decoration
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5f8a3bf8-79c2-4a0c-8401-5d81730251d1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 094c0a55-58b3-4e60-9591-bab1831193cc # Primary Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0627d113-c004-41a4-9862-c0e610a7ca15
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 4f37786c-6a3f-457d-bd5b-5d1076c56f59 # Secondary Button Prefix
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e6b35754-91a6-4079-8da7-bd145cef1d6d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 641a23c9-d7a6-44f9-8969-514e4138dc8a # Secondary Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b86b89be-40a5-4900-a17c-0a7f7954b20b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 99bf493e-e3f7-40f0-9b72-eda9dc42bd41
+        userCondition: null
+fields:
+  3b45b705-e6aa-4972-859f-28beb3be31e5: # Heading
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: heading
+    instructions: 'By default the CTA title will display. Use this field to override the title text without changing the title.'
+    name: Heading
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  4f37786c-6a3f-457d-bd5b-5d1076c56f59: # Secondary Button Prefix
+    columnSuffix: jbvnlzvu
+    contentColumnType: string(320)
+    fieldGroup: null
+    handle: secondaryButtonPrefix
+    instructions: 'Use this field to enter text that will appear before the Secondary Button. '
+    name: 'Secondary Button Prefix'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: 80
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  6ba022d5-9f92-4b34-9fe6-21d87781114a: # Image
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: 'The image will be slightly offset on the left side on larger screens. For best results, upload a transparent PNG file.'
+    name: Image
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      defaultUploadLocationSubpath: CTA
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add an image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources:
+        - 'volume:b58b753c-d44b-4f17-9895-3819a449c7d3' # Images
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  71f769d8-a4c5-4c54-980a-bd10ef008795: # CTA Decoration
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: ctaDecoration
+    instructions: null
+    name: 'CTA Decoration'
+    searchable: false
+    settings:
+      newLabelFormat: '{{ label }}'
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - None
+            -
+              - value
+              - none
+        -
+          __assoc__:
+            -
+              - label
+              - 'Diagonal Brush Top Left'
+            -
+              - value
+              - diagonalBrushTL
+        -
+          __assoc__:
+            -
+              - label
+              - 'Diagonal Brush Bottom Left'
+            -
+              - value
+              - diagonalBrushBL
+        -
+          __assoc__:
+            -
+              - label
+              - 'Brush Right'
+            -
+              - value
+              - horizontalBrush
+        -
+          __assoc__:
+            -
+              - label
+              - 'Brush Bottom'
+            -
+              - value
+              - verticalBrush
+      sourceGlobal: ctaDecorations
+      sourceLabelHandle: label
+      sourceValueHandle: value
+    translationKeyFormat: null
+    translationMethod: none
+    type: modules\ccfieldsmodule\fields\PresetDropdown
+  094c0a55-58b3-4e60-9591-bab1831193cc: # Primary Button
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: primaryButton
+    instructions: 'The primary button will display as a large button.'
+    name: 'Primary Button'
+    searchable: false
+    settings:
+      allowCustomText: true
+      allowTarget: false
+      autoNoReferrer: false
+      customTextMaxLength: 100
+      customTextRequired: false
+      defaultLinkName: asset
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        asset:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        category:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        craftCommerce-product:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: true
+          sources: '*'
+        custom:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        email:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        entry:
+          allowCrossSiteLink: false
+          allowCustomQuery: true
+          enabled: true
+          sources:
+            - 'section:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+            - 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+        site:
+          enabled: false
+          sites: '*'
+        tel:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        url:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        user:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField
+  641a23c9-d7a6-44f9-8969-514e4138dc8a: # Secondary Button
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: secondaryButton
+    instructions: 'The secondary button will display as a text link.'
+    name: 'Secondary Button'
+    searchable: false
+    settings:
+      allowCustomText: true
+      allowTarget: false
+      autoNoReferrer: false
+      customTextMaxLength: 100
+      customTextRequired: false
+      defaultLinkName: entry
+      defaultText: ''
+      enableAllLinkTypes: false
+      enableAriaLabel: false
+      enableElementCache: false
+      enableTitle: false
+      typeSettings:
+        asset:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        category:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+        craftCommerce-product:
+          allowCrossSiteLink: false
+          allowCustomQuery: true
+          enabled: true
+          sources: '*'
+        custom:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        email:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        entry:
+          allowCrossSiteLink: false
+          allowCustomQuery: true
+          enabled: true
+          sources:
+            - 'section:6f418409-f60c-4dcb-9e0e-c78b08721a12' # Recipe
+            - 'section:43d82d49-59c5-402b-85a6-b009c84626c8' # Pages
+        site:
+          enabled: false
+          sites: '*'
+        tel:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        url:
+          allowAliases: false
+          disableValidation: false
+          enabled: true
+        user:
+          allowCrossSiteLink: false
+          allowCustomQuery: false
+          enabled: false
+          sources: '*'
+    translationKeyFormat: null
+    translationMethod: none
+    type: lenz\linkfield\fields\LinkField
+  7918ffa1-07f2-4091-a3f0-e6bed5cd43bf: # Text Content
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: textContent
+    instructions: 'Use this field to enter text content to appear below the heading.'
+    name: 'Text Content'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText

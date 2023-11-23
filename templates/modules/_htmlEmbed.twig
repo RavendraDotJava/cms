@@ -1,0 +1,28 @@
+{% import 'partials/_macros' as helpers %}
+
+{% set defaults = {
+  'embedCode' : '',
+  'alignment' : 'left',
+  'width' : 'max-w-p1440',
+} %}
+
+{% if settings is defined %}
+  {% set settings = defaults|merge(settings) %}
+{% else %}
+  {% set settings = defaults %}
+{% endif %}
+
+{% switch settings.alignment %}
+  {% case 'left' %}
+    {% set alignment = 'mr-auto' %}
+  {% case 'right' %}
+    {% set alignment = 'ml-auto' %}
+  {% default %}
+    {% set alignment = 'mx-auto' %}
+{% endswitch %}
+
+<div class="{{ settings.config.classes }} px-p24 mq768:px-p48 mq1024:px-p96">
+  <div class="{{ settings.width }} {{ alignment }}">
+    {{ settings.embedCode|raw }}    
+  </div>
+</div>

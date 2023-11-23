@@ -1,0 +1,13 @@
+columnSuffix: zetvhtcf
+contentColumnType: string
+fieldGroup: 6b18f9dd-482a-494e-a796-a558aed7a79b # Product Benefit
+handle: benefitIcon
+instructions: null
+name: 'Benefit Icon'
+searchable: false
+settings:
+  sets:
+    - benefits
+translationKeyFormat: null
+translationMethod: none
+type: modules\ccfieldsmodule\fields\Icon
